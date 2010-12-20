@@ -1,0 +1,97 @@
+package org.iru.tirepd.ws.b2g.impl;
+
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+
+import javax.annotation.Resource;
+import javax.jws.WebService;
+import javax.servlet.ServletContext;
+import javax.xml.ws.WebServiceContext;
+import javax.xml.ws.handler.MessageContext;
+
+import org.apache.commons.io.IOUtils;
+import org.iru.common.crypto.wscrypto.CryptoUtil;
+import org.iru.tirepd.ws.b2g.base.AbstractB2GService;
+import org.iru.tirepd.ws.b2g_1.TIREPDB2GUploadAck;
+import org.iru.tirepd.ws.b2g_1.TIREPDB2GUploadParams;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+@WebService(endpointInterface="org.iru.tirepd.ws.b2g_1.TIREPDB2GServiceClassSoap")
+public class NoopB2GService extends AbstractB2GService {
+
+	private static final Logger log = LoggerFactory.getLogger(NoopB2GService.class);
+	
+	private Object initLock = new Object();
+	private boolean inited = false;
+	private byte[] privateKey;
+	private String certTP;
+	private String subscriber;
+	
+	@Resource 
+	private WebServiceContext context;
+
+	@Override
+	protected String getHostID() {
+		try {
+			return InetAddress.getLocalHost().getHostName();
+		} catch (UnknownHostException e) {
+			log.warn(e.getLocalizedMessage(), e);
+			return "localhost";
+		}
+	}
+
+	@Override
+	protected byte[] lookupPrivateKey(String certificateThumbprint,
+			String subscriber) {
+		if (certTP.equals(certificateThumbprint.toLowerCase()) && this.subscriber.equals(subscriber))
+			return privateKey;
+		return null;
+	}
+
+	@Override
+	protected Class<?> lookupMessageName(String messageName) {
+		return String.class;
+	}
+
+	@Override
+	protected void ackMessageContent(Object messageContent, String messageName)
+			throws Exception {
+		String message = (String) messageContent;
+		log.info(messageName+" => "+message);
+	}
+
+	
+	@Override
+	public TIREPDB2GUploadAck tirepdb2G(TIREPDB2GUploadParams su) {
+		synchronized (initLock) {
+			if (! inited) {
+				inited = true;
+				MessageContext mctx = context.getMessageContext();
+				ServletContext sctx = (ServletContext) mctx.get(MessageContext.SERVLET_CONTEXT);
+				
+				String pkf = sctx.getInitParameter("PrivateKeyFile");
+				try {
+					privateKey = IOUtils.toByteArray(Thread.currentThread().getContextClassLoader().getResourceAsStream(pkf)); 
+				} catch (Exception e) {
+					log.warn("Could not load PrivateKeyFile: "+pkf, e);
+					return ackMessage(null, 1200);
+				}
+				
+				String cf = sctx.getInitParameter("CertificateFile");
+				try {
+					certTP = CryptoUtil.getThumbprint(CryptoUtil.loadCertificate(IOUtils.toByteArray(Thread.currentThread().getContextClassLoader().getResourceAsStream(cf))));
+				} catch (Exception e) {
+					log.warn("Could not load CertificateFile: "+cf, e);
+					return ackMessage(null, 1200);
+				}
+				
+				subscriber = sctx.getInitParameter("Subscriber");
+				
+			}
+		}		
+		
+		return super.tirepdb2G(su);
+	}
+
+}
