@@ -11,7 +11,7 @@
 
 	<groupId>org.iru.tirepd.b2g</groupId>
 	<artifactId>b2g-noop</artifactId>
-	<name>Business to Government Noop implementation</name>
+	<name>B2G NOOP implementation (war)</name>
 	<packaging>war</packaging>
 
 	<dependencies>
