@@ -11,6 +11,7 @@
 
 	<modules>
 	  <module>b2g</module>
+	  <module>g2b</module>
 	</modules>
 
 	<repositories>
