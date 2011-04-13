@@ -10,6 +10,7 @@
         <packaging>pom</packaging>
 
 	<modules>
+	  <module>tirepd-bo-nons</module>
 	  <module>b2g</module>
 	  <module>g2b</module>
 	</modules>

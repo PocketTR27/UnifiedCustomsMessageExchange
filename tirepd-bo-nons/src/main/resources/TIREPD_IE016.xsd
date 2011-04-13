@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<!--P4 Compliant-->
+	<xs:element name="EPD016">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="HEAHEA" minOccurs="1" maxOccurs="1">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="RefNumHEA4" minOccurs="1">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="22" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="TypOfDecHEA24" minOccurs="1">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:enumeration value="TIR" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<!--One or the other, but not both, of the next two elements must be supplied-->
+							<xs:element name="DeclarationRejectionDate" type="xs:date" minOccurs="0" />
+							<xs:element name=" DecRejDatHEA159" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:length value="8" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="DecRejReaHEA252" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="350" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="DecRejReaHEA252LNG" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:length value="2" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="FUNERRER1" minOccurs="0" maxOccurs="999">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="ErrTypER11" minOccurs="1">
+								<xs:simpleType>
+									<xs:restriction base="xs:integer">
+										<xs:totalDigits value="2" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="ErrPoiER12" minOccurs="1" >
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="210" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="ErrReaER13" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="140" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="OriAttValER14" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="140" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
