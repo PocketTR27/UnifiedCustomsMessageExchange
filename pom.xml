@@ -11,6 +11,7 @@
 
 	<modules>
 	  <module>tirepd-bo-nons</module>
+	  <module>tirepd-messages</module>
 	  <module>b2g</module>
 	  <module>g2b</module>
 	</modules>
