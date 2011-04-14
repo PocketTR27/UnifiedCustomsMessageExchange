@@ -1,10 +1,9 @@
-package org.iru.tirepd.ws.b2g.impl;
+package org.iru.tirepd.ws.b2g.example;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 import javax.annotation.Resource;
-import javax.jws.WebService;
 import javax.servlet.ServletContext;
 import javax.xml.ws.WebServiceContext;
 import javax.xml.ws.handler.MessageContext;
@@ -17,22 +16,21 @@ import org.iru.tirepd.ws.b2g_1.TIREPDB2GUploadParams;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@WebService(endpointInterface="org.iru.tirepd.ws.b2g_1.TIREPDB2GServiceClassSoap")
-public class NoopB2GService extends AbstractB2GService {
+public abstract class AbstractB2GExampleService extends AbstractB2GService {
 
-	private static final Logger log = LoggerFactory.getLogger(NoopB2GService.class);
+	protected final Logger log = LoggerFactory.getLogger(getClass());
 	
 	private Object initLock = new Object();
 	private boolean inited = false;
 	private byte[] privateKey;
 	private String certTP;
-	private String subscriber;
+	protected String subscriber;
 	
 	@Resource 
-	private WebServiceContext context;
+	protected WebServiceContext context;
 
 	@Override
-	protected String getHostID() {
+	protected final String getHostID() {
 		try {
 			return InetAddress.getLocalHost().getHostName();
 		} catch (UnknownHostException e) {
@@ -42,23 +40,11 @@ public class NoopB2GService extends AbstractB2GService {
 	}
 
 	@Override
-	protected byte[] lookupPrivateKey(String certificateThumbprint,
+	protected final byte[] lookupPrivateKey(String certificateThumbprint,
 			String subscriber) {
 		if (certTP.equals(certificateThumbprint.toLowerCase()) && this.subscriber.equals(subscriber))
 			return privateKey;
 		return null;
-	}
-
-	@Override
-	protected Class<?> lookupMessageName(String messageName) {
-		return String.class;
-	}
-
-	@Override
-	protected void ackMessageContent(Object messageContent, String messageName)
-			throws Exception {
-		String message = (String) messageContent;
-		log.info(messageName+" => "+message);
 	}
 
 	
@@ -66,7 +52,7 @@ public class NoopB2GService extends AbstractB2GService {
 	public TIREPDB2GUploadAck tirepdb2G(TIREPDB2GUploadParams su) {
 		synchronized (initLock) {
 			if (! inited) {
-				inited = true;
+				
 				MessageContext mctx = context.getMessageContext();
 				ServletContext sctx = (ServletContext) mctx.get(MessageContext.SERVLET_CONTEXT);
 				
@@ -88,6 +74,7 @@ public class NoopB2GService extends AbstractB2GService {
 				
 				subscriber = sctx.getInitParameter("Subscriber");
 				
+				inited = true;
 			}
 		}		
 		

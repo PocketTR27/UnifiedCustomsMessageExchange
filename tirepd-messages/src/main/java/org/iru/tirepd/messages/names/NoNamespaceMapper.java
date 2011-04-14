@@ -28,7 +28,7 @@ public class NoNamespaceMapper {
 
 	private static BidiMap g2bNameToClass = new DualHashBidiMap();
 	static {
-		g2bNameToClass.put(G2BMessage.TIRPreDeclarationRecieved, EPD928.class);
+		g2bNameToClass.put(G2BMessage.TIRPreDeclarationReceived, EPD928.class);
 		g2bNameToClass.put(G2BMessage.TIRPreDeclarationError, EPD917.class);
 		g2bNameToClass.put(G2BMessage.TIRPreDeclarationAccepted, EPD028.class);
 		g2bNameToClass.put(G2BMessage.TIRPreDeclarationRejected, EPD016.class);
@@ -57,7 +57,7 @@ public class NoNamespaceMapper {
 	}
 	
 	public static String getG2BMessageName(Object message) {
-		G2BMessage msg = (G2BMessage) b2gNameToClass.inverseBidiMap().get(message.getClass());
+		G2BMessage msg = (G2BMessage) g2bNameToClass.inverseBidiMap().get(message.getClass());
 		return msg.toString();
 	}
 }

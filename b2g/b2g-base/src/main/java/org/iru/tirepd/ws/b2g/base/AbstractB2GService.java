@@ -22,7 +22,10 @@ public abstract class AbstractB2GService implements TIREPDB2GServiceClassSoap {
 	
 	protected abstract Class<?> lookupMessageName(String messageName);
 	
-	protected abstract void ackMessageContent(Object messageContent, String messageName) throws Exception;
+	/**
+	 * @return the content to use for a synchronous reply, null if nothing should be done.
+	 */
+	protected abstract void processMessageContent(Object messageContent, String messageName) throws Exception;
 
 	protected abstract String getHostID();
 
@@ -40,7 +43,6 @@ public abstract class AbstractB2GService implements TIREPDB2GServiceClassSoap {
 		ack.setHostID(getHostID());
 		ack.setSubscriberMessageID(subscriberMessageID);
 		ack.setReturnCode(returnCode);
-		ack.setReturnCodeReason(0);
 		return ack;
 	}
 
@@ -96,13 +98,12 @@ public abstract class AbstractB2GService implements TIREPDB2GServiceClassSoap {
 		}
 		
 		try {
-			ackMessageContent(content, mn);
+			processMessageContent(content, mn);
 		} catch (Exception e) {
 			return ackMessage(subscriberMessageID, 1200, e);
 		}
 		
 		return ackMessage(subscriberMessageID, 2);
-		
 	}
 
 }

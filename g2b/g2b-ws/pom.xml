@@ -23,6 +23,7 @@
                                 <version>1.12</version>
 				<configuration>
 					<args><arg>-extension</arg></args>
+					<wsdlFiles><wsdlFile>TIREPDG2BService.WSDL</wsdlFile></wsdlFiles>
 					<packageName>org.iru.tirepd.ws.g2b_1</packageName>
 				</configuration>
 				<executions>

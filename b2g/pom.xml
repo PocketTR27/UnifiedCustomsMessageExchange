@@ -17,7 +17,7 @@
 	<modules>
 	  <module>b2g-ws</module>
 	  <module>b2g-base</module>
-	  <module>b2g-noop</module>
+	  <module>b2g-example</module>
 	</modules>
 
 </project>

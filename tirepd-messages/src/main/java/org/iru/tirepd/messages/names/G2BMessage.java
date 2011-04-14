@@ -2,7 +2,7 @@ package org.iru.tirepd.messages.names;
 
 public enum G2BMessage {
 
-	TIRPreDeclarationRecieved, /* typo as in documentation */
+	TIRPreDeclarationReceived,
 	TIRPreDeclarationError,
 	TIRPreDeclarationAccepted,
 	TIRPreDeclarationRejected,
