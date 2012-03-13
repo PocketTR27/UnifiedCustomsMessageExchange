@@ -6,7 +6,7 @@
 	<parent>
 	  <groupId>org.iru</groupId>
 	  <artifactId>tirepd</artifactId>
-	  <version>1.0</version>
+	  <version>1.1-SNAPSHOT</version>
 	</parent>
 
         <groupId>org.iru.tirepd</groupId>
@@ -17,7 +17,7 @@
         	<dependency>
         		<groupId>org.iru.tirepd</groupId>
         		<artifactId>tirepd-bo-nons</artifactId>
-        		<version>1.0</version>
+        		<version>1.1-SNAPSHOT</version>
         		<type>jar</type>
         		<scope>compile</scope>
         	</dependency>

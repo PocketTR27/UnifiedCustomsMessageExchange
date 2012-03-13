@@ -6,7 +6,7 @@
         <groupId>org.iru</groupId>
         <artifactId>tirepd</artifactId>
         <name>TIR-EPD Webservices (pom)</name>
-        <version>1.0</version>
+        <version>1.1-SNAPSHOT</version>
         <packaging>pom</packaging>
 
 	<modules>
