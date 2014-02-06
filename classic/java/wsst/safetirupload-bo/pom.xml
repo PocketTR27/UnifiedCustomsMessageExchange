@@ -4,30 +4,44 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>org.iru.rts</groupId>
+		<groupId>org.iru.rts.classic</groupId>
 		<artifactId>wsst</artifactId>
-		<version>1.5.3-SNAPSHOT</version>
+		<version>1.6.0-SNAPSHOT</version>
 	</parent>
 
-	<groupId>org.iru.rts.wsst</groupId>
+	<groupId>org.iru.rts.classic.wsst</groupId>
 	<artifactId>safetirupload-bo</artifactId>
-	<name>SafeTIR Upload (business objects)</name>
-	<packaging>jar</packaging>
 
 	<build>
 		<plugins>
 
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<groupId>org.iru.maven.plugins</groupId>
+				<artifactId>maven-jaxbgenser-plugin</artifactId>
+			</plugin>
+
+			<plugin>
 				<groupId>org.jvnet.jaxb2.maven2</groupId>
 				<artifactId>maven-jaxb2-plugin</artifactId>
-				<version>0.7.4</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>generate</goal>
-						</goals>
-					</execution>
-				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
 			</plugin>
 
 		</plugins>

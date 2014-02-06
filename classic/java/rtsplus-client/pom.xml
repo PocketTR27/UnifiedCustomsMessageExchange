@@ -4,42 +4,34 @@
         <modelVersion>4.0.0</modelVersion>
 
 	<parent>
-	        <groupId>org.iru</groupId>
-        	<artifactId>rts</artifactId>
-	        <version>1.5.3-SNAPSHOT</version>
+		<groupId>org.iru.rts.classic</groupId>
+		<artifactId>rtsjava-client</artifactId>
+		<version>1.6.0-SNAPSHOT</version>
 	</parent>
 
-        <groupId>org.iru.rts</groupId>
-        <artifactId>rtsplus-client</artifactId>
-        <name>RTS+ Client API on RTS Client</name>
-        <packaging>jar</packaging>
+        <groupId>org.iru.rts.classic</groupId>
+        <artifactId>rtsplus-client-impl</artifactId>
 
         <dependencies>
 		<dependency>
-        		<groupId>org.iru.rts</groupId>
-        		<artifactId>rts-client</artifactId>
-        		<version>1.5.3-SNAPSHOT</version>
-        		<type>jar</type>
-        		<scope>compile</scope>
+        		<groupId>org.iru.rts.classic</groupId>
+        		<artifactId>rts-client-impl</artifactId>
+        		<version>${project.version}</version>
         	</dependency>
         	<dependency>
-        		<groupId>org.iru.rts.wsst</groupId>
+        		<groupId>org.iru.rts.classic.wsst</groupId>
         		<artifactId>safetirupload-bo</artifactId>
-        		<version>1.5.3-SNAPSHOT</version>
-        		<type>jar</type>
-        		<scope>compile</scope>
+        		<version>${project.version}</version>
         	</dependency>
         	<dependency>
-        		<groupId>org.iru.rts.wsrq</groupId>
+        		<groupId>org.iru.rts.classic.wsrq</groupId>
         		<artifactId>safetirreconciliation-bo</artifactId>
-        		<version>1.5.3-SNAPSHOT</version>
-        		<type>jar</type>
-        		<scope>compile</scope>
+        		<version>${project.version}</version>
         	</dependency>
         	<dependency>
-				<groupId>org.iru.rtsplus</groupId>
-				<artifactId>rtsplus-model</artifactId>
-				<version>1.4</version>        		
+			<groupId>org.iru.rtsplus</groupId>
+			<artifactId>rtsplus-model</artifactId>
+			<version>${rtsplus.api.version}</version>        		
         	</dependency>
         </dependencies>
 
@@ -49,8 +41,8 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-assembly-plugin</artifactId>
-				<version>2.2.1</version>
 				<configuration>
+					<appendAssemblyId>false</appendAssemblyId>
 					<descriptors>
 						<descriptor>assembly.xml</descriptor>
 					</descriptors>

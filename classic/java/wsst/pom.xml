@@ -4,19 +4,17 @@
         <modelVersion>4.0.0</modelVersion>
 
 	<parent>
-	        <groupId>org.iru</groupId>
-        	<artifactId>rts</artifactId>
-        	<version>1.5.3-SNAPSHOT</version>
+		<groupId>org.iru.rts.classic</groupId>
+		<artifactId>rtsjava-client</artifactId>
+		<version>1.6.0-SNAPSHOT</version>
 	</parent>
 
-        <groupId>org.iru.rts</groupId>
         <artifactId>wsst</artifactId>
-        <name>SafeTIR Upload (pom)</name>
         <packaging>pom</packaging>
 
 	<modules>
-	  <module>safetirupload-bo</module>
-	  <module>wsst-ws</module>
+		<module>safetirupload-bo</module>
+		<module>wsst-ws</module>
 	</modules>
 
 </project>

@@ -4,19 +4,17 @@
         <modelVersion>4.0.0</modelVersion>
 
 	<parent>
-	        <groupId>org.iru</groupId>
-        	<artifactId>rts</artifactId>
-	        <version>1.5.3-SNAPSHOT</version>
+		<groupId>org.iru.rts.classic</groupId>
+		<artifactId>rtsjava-client</artifactId>
+		<version>1.6.0-SNAPSHOT</version>
 	</parent>
 
-        <groupId>org.iru.rts</groupId>
         <artifactId>tchq</artifactId>
-        <name>TIR Carnet Holder Query (pom)</name>
         <packaging>pom</packaging>
 
 	<modules>
-	  <module>tchq-bo</module>
-	  <module>tchq-ws</module>
+		<module>tchq-bo</module>
+		<module>tchq-ws</module>
 	</modules>
 
 </project>
