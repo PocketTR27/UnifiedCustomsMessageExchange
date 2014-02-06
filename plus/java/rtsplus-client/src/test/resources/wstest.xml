@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+        
+		
+				
+	<bean id="rtsSubscriber" class="java.lang.String">
+		<constructor-arg value="RTSJAVA"/>
+	</bean>
+	
+	<bean id="rtsIRUCertificateFile" class="java.io.File">
+	<!-- <constructor-arg value="/home/mverbert/git-repos/local/R/RTSJavaClient/rts-client/src/test/resources/RTSJAVA_IRU_Cert.cer"/>-->
+		<constructor-arg value="/home/mverbert/git-repos/local/R/RTSJavaClient/rts-client/src/test/resources/rtsj1024.crt"/>
+	</bean>
+	
+	<bean id="rtsplusSigningKeyFile" class="java.io.File">
+		<constructor-arg value="/home/mverbert/tmp/rts+/RSA_2048_test_RTS+_OUTGOING_2014012234.key.der"/>
+	</bean>	
+	
+	<bean id="rtsplusSigningCertificateFile" class="java.io.File">
+		<constructor-arg value="/home/mverbert/tmp/rts+/RSA_2048_test_RTS+_OUTGOING_2014012234.cer.der"/>
+	</bean>	
+	
+	<bean id="rtsplusVerifyingCertificateFile" class="java.io.File">
+		<constructor-arg value="/home/mverbert/tmp/rts+/RSA_2048_test_RTS+_INCOMING_2014012209.cer"/>
+	</bean>	
+	
+	<bean class="org.iru.rtsplus.client.CarnetServiceClient">
+		<property name="rtsEndpoint">
+			<bean class="java.net.URL">
+				<constructor-arg type="java.lang.String" value="http://ws-test.iruworld.org/rts/services/CarnetService-1.svc?wsdl"/>
+			</bean>
+		</property>
+		
+		<property name="portNameSuffix" value="_2"/>
+
+		<!-- 
+		<property name="sender" ref="rtsSubscriber"/>		
+
+
+		<property name="certificate">
+			<bean class="org.apache.commons.io.FileUtils"  scope="prototype"  factory-method="readFileToByteArray" >
+				<constructor-arg ref="rtsIRUCertificateFile"/>
+			</bean>
+		</property>
+ -->
+ 
+ 		<property name="signingCertificateDER">
+			<bean class="org.apache.commons.io.FileUtils"  scope="prototype"  factory-method="readFileToByteArray" >
+				<constructor-arg ref="rtsplusSigningCertificateFile"/>
+			</bean>
+		</property>
+ 
+		<property name="signingKeyDER">
+			<bean class="org.apache.commons.io.FileUtils"  scope="prototype"  factory-method="readFileToByteArray" >
+				<constructor-arg ref="rtsplusSigningKeyFile"/>
+			</bean>
+		</property>
+		
+		<property name="verifyingCertificateDER">
+			<bean class="org.apache.commons.io.FileUtils"  scope="prototype"  factory-method="readFileToByteArray" >
+				<constructor-arg ref="rtsplusVerifyingCertificateFile"/>
+			</bean>
+		</property>
+
+	</bean>
+</beans>

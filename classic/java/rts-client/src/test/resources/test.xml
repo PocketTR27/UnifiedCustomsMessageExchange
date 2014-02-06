@@ -1,0 +1,122 @@
+<?xml version="1.0"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+        
+	<bean id="iruCertificate" class="org.iru.rts.test.FileUtils" factory-method="locateFileInClasspath">
+		<constructor-arg><value>RTSJAVA_IRU_Cert.cer</value></constructor-arg>
+	</bean>
+		
+	<bean id="sender" class="java.lang.String">
+		<constructor-arg value="RTSJAVA"/>
+	</bean>
+
+	<bean id="datatypeFactory" class="javax.xml.datatype.DatatypeFactory" factory-method="newInstance"/>
+	<bean id="xdate" factory-bean="datatypeFactory" factory-method="newXMLGregorianCalendar">
+		<constructor-arg>
+			<bean id="date" class="java.util.GregorianCalendar">
+				<constructor-arg index="0"><value>2004</value></constructor-arg>
+				<constructor-arg index="1"><value>5</value></constructor-arg>
+				<constructor-arg index="2"><value>19</value></constructor-arg>
+			</bean>
+		</constructor-arg>
+	</bean>
+
+	<bean id="abstract-record" abstract="true">
+		<property name="TNO" value="AB12345678" />
+		<property name="ICC" value="CHE" />
+		<property name="DCL" ref="xdate"/>
+		<property name="CNL" value="CNL1" />
+		<property name="COF" value="Customs Office 1" />
+		<property name="DDI" ref="xdate" />
+		<property name="RND" value="RND1" />
+		<property name="PFD">
+			<bean class="org.iru.rts.safetirupload.PFDType" factory-method="valueOf">
+				<constructor-arg><value>PD</value></constructor-arg>
+			</bean>
+		</property>
+		<property name="CWR">
+			<bean class="org.iru.rts.safetirupload.CWRType" factory-method="valueOf">
+				<constructor-arg><value>OK</value></constructor-arg>
+			</bean>
+		</property>
+		<property name="VPN" value="4" />
+		<property name="COM" value="My comments are these" />
+		<property name="RBC">
+			<bean class="org.iru.rts.safetirupload.RBCType" factory-method="valueOf">
+				<constructor-arg><value>CR</value></constructor-arg>
+			</bean>
+		</property>
+		<property name="PIC" value="23" />
+	</bean>
+	
+	<bean class="org.iru.rts.safetirupload.Records.Record" parent="abstract-record">
+			<property name="UPG">
+			<bean class="org.iru.rts.safetirupload.UPGType" factory-method="valueOf">
+				<constructor-arg><value>N</value></constructor-arg>
+			</bean>
+		</property>
+	</bean>
+	
+	<bean class="org.iru.rts.safetirupload.RequestReplyRecords.RequestReplyRecord" parent="abstract-record">
+		<property name="requestID" value="MyRequestID"/>
+		<property name="requestReplyType" value="1" />
+	</bean>
+
+	<bean class="org.iru.rts.test.TestHolderQuery.Carnet">
+		<property name="number" value="AB12345678" />
+		<property name="result" value="5" />
+	</bean>
+	
+	
+	<bean id="abstract-client" abstract="true">
+		<property name="iruCertificate" ref="iruCertificate"/>
+		<property name="sender" ref="sender"/>		
+	</bean>
+	
+	<bean class="org.iru.rts.client.UploadClient" parent="abstract-client">
+		<property name="rtsEndpoint">
+			<bean class="java.net.URL">
+				<constructor-arg type="java.lang.String" value="http://apps-test.iru.org/rts2/wsst_ws/safetirupload.asmx?WSDL"/>
+			</bean>
+		</property>
+	</bean>
+
+	
+	<bean id="abstract-query-client" parent="abstract-client" abstract="true">
+		<property name="localCertificateToPrivateKeys">
+			<map>
+				<entry>
+					<key>
+						<bean class="org.iru.rts.test.FileUtils" factory-method="locateFileInClasspath">
+							<constructor-arg><value>rtsj1024.crt</value></constructor-arg>
+						</bean>
+					</key>
+					<bean class="org.iru.rts.test.FileUtils" factory-method="locateFileInClasspath">
+						<constructor-arg><value>rtsj1024.der</value></constructor-arg>
+					</bean>
+				</entry>
+			</map>
+		</property>
+	</bean>
+	
+	<bean class="org.iru.rts.client.HolderQueryClient" parent="abstract-query-client">
+		<property name="rtsEndpoint">
+			<bean class="java.net.URL">
+				<constructor-arg type="java.lang.String" value="http://apps-test.iru.org/rts2/tchq_ws/tircarnetquery.asmx?WSDL"/>
+			</bean>
+		</property>
+	</bean>
+
+	<bean class="org.iru.rts.client.ReconciliationClient" parent="abstract-query-client">
+		<property name="rtsEndpoint">
+			<bean class="java.net.URL">
+				<constructor-arg type="java.lang.String" value="http://apps-test.iru.org/rts2/wsrq_ws/wsrq.asmx?WSDL"/>
+			</bean>
+		</property>
+	</bean>
+
+</beans>
