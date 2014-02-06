@@ -9,9 +9,9 @@ import javax.xml.datatype.DatatypeConfigurationException;
 
 import org.iru.rts.converter.TCHQConverter;
 import org.iru.rts.model.carnet_1.CarnetType;
-import org.iru.rtsplus.client.CarnetServiceClient;
+import org.iru.rtsplus.client.CarnetServiceClientImpl;
 
-public class HolderQueryClient extends CarnetServiceClient {
+public class HolderQueryClientImpl extends CarnetServiceClientImpl implements HolderQueryClient {
 	
 	public static class Response {
 	    int result;
@@ -40,17 +40,17 @@ public class HolderQueryClient extends CarnetServiceClient {
 	    Integer numTerminations;
 	}
 	
-	public Response queryCarnet(String carnetNumber, String queryID) throws DatatypeConfigurationException, IOException, JAXBException, GeneralSecurityException  {
+	public HolderQueryResponse queryCarnet(String carnetNumber, String queryID) throws DatatypeConfigurationException, IOException, JAXBException, GeneralSecurityException  {
 		return queryCarnet(carnetNumber, queryID, HolderQueryReason.OTHER);
 	}
 	
-	public Response queryCarnet(String carnetNumber, String queryID, HolderQueryReason reason) throws DatatypeConfigurationException, IOException, JAXBException, GeneralSecurityException  {
+	public HolderQueryResponse queryCarnet(String carnetNumber, String queryID, HolderQueryReason reason) throws DatatypeConfigurationException, IOException, JAXBException, GeneralSecurityException  {
 		CarnetType carnet = queryCarnet(carnetNumber);
-		Response response = new Response();
+		HolderQueryResponse response = new HolderQueryResponse();
 		response.result = TCHQConverter.convertStatusToResult(carnet.getStatus());
 		response.carnetNumber = carnet.getTIRCarnetNumber();
 		response.holderID = response.holderID = TCHQConverter.convertHolderToID(carnet.getHolder());
-		response.validityDate = TCHQConverter.convertToDate(carnet.getExpiryDate());
+		response.validityDate = TCHQConverter.convertToGregorianCalendar(carnet.getExpiryDate());
 		response.association = TCHQConverter.convertAssociationToID(carnet.getAssociation());
 		response.numTerminations =  TCHQConverter.convertToNumTerminations(carnet.getTIROperationTerminations());
 		return response;

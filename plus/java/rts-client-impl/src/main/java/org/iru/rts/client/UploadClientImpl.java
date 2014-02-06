@@ -20,14 +20,15 @@ import org.iru.rts.safetirupload.PFDType;
 import org.iru.rts.safetirupload.Records;
 import org.iru.rts.safetirupload.RequestReplyRecords;
 import org.iru.rts.safetirupload.UPGType;
-import org.iru.rtsplus.client.TerminationServiceClient;
+import org.iru.rtsplus.client.TerminationServiceClientImpl;
 
-public class UploadClient extends TerminationServiceClient {
+public class UploadClientImpl extends TerminationServiceClientImpl implements UploadClient {
 	
 	public ReturnCode wsst(List<Records.Record> safeTIRRecords, String messageID) throws JAXBException, GeneralSecurityException, DatatypeConfigurationException {
 		return wsst(safeTIRRecords, messageID, new Date());
 	}
 	
+	@Override
 	public ReturnCode wsst(List<Records.Record> safeTIRRecords, String messageID, Date sentTime) throws JAXBException, GeneralSecurityException, DatatypeConfigurationException {
 		TIROperationTerminationsType terminations = new TIROperationTerminationsType();
 		ObjectFactory of = new ObjectFactory();
@@ -65,7 +66,7 @@ public class UploadClient extends TerminationServiceClient {
 		return ReturnCode.SUCCESS;
 	}
 
-	
+	@Override
 	public ReturnCode wsre(List<RequestReplyRecords.RequestReplyRecord> rrRecords, String messageID) throws JAXBException, GeneralSecurityException, DatatypeConfigurationException {
 		ReconciliationRequestRepliesType reconciliationRequestReplies = new ReconciliationRequestRepliesType();
 		try {

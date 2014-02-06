@@ -17,9 +17,11 @@ import javax.xml.ws.WebServiceException;
 
 import org.iru.model.tir_actor_1.Customs;
 import org.iru.model.tir_actor_1.IRU;
+import org.iru.rts.client.AbstractClient;
 import org.iru.rts.client.ReconciliationClient;
+import org.iru.rts.client.ReconciliationClientImpl;
 import org.iru.rts.client.ReturnCode;
-import org.iru.rts.client.UploadClient;
+import org.iru.rts.client.UploadClientImpl;
 import org.iru.rts.model.termination_1.MissingTIROperationTerminationType;
 import org.iru.rts.model.termination_1.ReconciliationRequestReasonType;
 import org.iru.rts.model.termination_1.ReconciliationRequestRepliesType;
@@ -33,13 +35,13 @@ import org.iru.rts.safetirreconciliation.RequestRecords.RequestRecord;
 import org.iru.rts.safetirupload.CWRType;
 import org.iru.rts.safetirupload.PFDType;
 import org.iru.rts.safetirupload.Records;
-import org.iru.rts.safetirupload.UPGType;
 import org.iru.rts.safetirupload.Records.Record;
 import org.iru.rts.safetirupload.RequestReplyRecords;
+import org.iru.rts.safetirupload.UPGType;
 
-public class TerminationServiceClient extends AbstractWSSClient {
+public class TerminationServiceClientImpl extends AbstractWSSClient implements TerminationServiceClient {
 
-	private UploadClient upload;
+	private UploadClientImpl upload;
 	private Object uploadLock = new Object();
 	private boolean uploadSet;
 	private ReconciliationClient reconciliation;
@@ -50,12 +52,12 @@ public class TerminationServiceClient extends AbstractWSSClient {
 		transmitTIROperationTerminations(tirOperationTerminations, transmissionId, new Date());
 	}
 
-	protected UploadClient getUpload() {
-		return new UploadClient();
+	protected UploadClientImpl getUpload() {
+		return new UploadClientImpl();
 	}
 	
 	protected ReconciliationClient getReconciliation() {
-		return new ReconciliationClient();
+		return new ReconciliationClientImpl();
 	}
 	
 	private void setUpload() {
@@ -187,6 +189,7 @@ public class TerminationServiceClient extends AbstractWSSClient {
 		return rr;
 	}
 
+	@Override
 	public void transmitTIROperationTerminations(TIROperationTerminationsType tirOperationTerminations, String transmissionId, Date transmissionTime) throws DatatypeConfigurationException {
 		setUpload();
 	
@@ -215,15 +218,13 @@ public class TerminationServiceClient extends AbstractWSSClient {
 		}
 	}
 
-	public void setReconciliationRequestRetrievalRange(Long retrievalRange) {
-	}
-
-	public Set<ReconciliationRequestType> getReconciliationRequests(Date from, Date to) throws DatatypeConfigurationException {
+	@Override
+	public Set<ReconciliationRequestType> getReconciliationRequests(Date from, Date to, Long retrievalRange) throws DatatypeConfigurationException {
 		synchronized (reconciliationLock) {
 			if (! reconciliationSet) {
 				try {
 					reconciliation = getReconciliation();
-					updateClientSettings(reconciliation);
+					updateClientSettings((AbstractClient) reconciliation);
 				} finally {
 					reconciliationSet = true;
 				}
@@ -249,7 +250,7 @@ public class TerminationServiceClient extends AbstractWSSClient {
 		return matching;
 	}
 
-
+	@Override
 	public void transmitReconciliationRequestReplies(ReconciliationRequestRepliesType reconciliationRequestReplies, String transmissionId, Date transmissionTime) throws DatatypeConfigurationException {
 		setUpload();
 		

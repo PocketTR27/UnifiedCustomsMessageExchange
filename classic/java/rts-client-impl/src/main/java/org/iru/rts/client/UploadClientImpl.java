@@ -24,8 +24,7 @@ import org.iru.rts.ws.wsst_1.SafeTIRUploadParams;
 import org.iru.rts.ws.wsst_1.SafeTirUpload;
 import org.iru.rts.ws.wsst_1.SafeTirUploadSoap;
 
-public class UploadClient extends AbstractClient {
-
+public class UploadClientImpl extends AbstractClient implements UploadClient {
 
 	private static final String INFORMATION_EXCHANGE_VERSION = "2.0.0";
 
@@ -66,6 +65,7 @@ public class UploadClient extends AbstractClient {
 		return wsst(safeTIRRecords, messageID, new Date());
 	}
 	
+	@Override
 	public ReturnCode wsst(List<Records.Record> safeTIRRecords, String messageID, Date sentTime) throws JAXBException, GeneralSecurityException, DatatypeConfigurationException {
 		
 		SafeTIR st = makeWsstSafeTIR(safeTIRRecords, messageID, sentTime);
@@ -101,6 +101,7 @@ public class UploadClient extends AbstractClient {
 		return st;
 	}
 	
+	@Override
 	public ReturnCode wsre(List<RequestReplyRecords.RequestReplyRecord> rrRecords, String messageID) throws JAXBException, GeneralSecurityException, DatatypeConfigurationException {
 	
 		SafeTIR st = makeWsreSafeTIR(rrRecords, messageID);

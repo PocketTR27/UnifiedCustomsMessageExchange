@@ -22,7 +22,7 @@ import org.iru.rts.ws.wsrq_1.ReconciliationQueryServiceClass;
 import org.iru.rts.ws.wsrq_1.ReconciliationQueryServiceClassSoap;
 import org.iru.rts.ws.wsrq_1.ReconciliationResponse;
 
-public class ReconciliationClient extends AbstractQueryClient {
+public class ReconciliationClientImpl extends AbstractQueryClient implements ReconciliationClient {
 
 	private static final String INFORMATION_EXCHANGE_VERSION = "1.0.0";
 	

@@ -12,6 +12,13 @@
 	<artifactId>rts-client-impl</artifactId>
 
 	<dependencies>
+	
+		<dependency>
+			<groupId>org.iru.rts.classic</groupId>
+			<artifactId>rts-client-api</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+	
 		<dependency>
 			<groupId>org.iru.rts.classic.tchq</groupId>
 			<artifactId>tchq-bo</artifactId>

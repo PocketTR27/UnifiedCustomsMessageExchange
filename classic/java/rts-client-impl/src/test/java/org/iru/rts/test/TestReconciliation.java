@@ -9,7 +9,7 @@ import java.util.List;
 import javax.xml.bind.JAXBException;
 import javax.xml.datatype.DatatypeConfigurationException;
 
-import org.iru.rts.client.ReconciliationClient;
+import org.iru.rts.client.ReconciliationClientImpl;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,7 +22,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class TestReconciliation {
 
 	@Autowired
-	private ReconciliationClient wsrq;
+	private ReconciliationClientImpl wsrq;
 	 
 	@Test
 	public void wsrq() throws JAXBException, GeneralSecurityException, IOException, DatatypeConfigurationException {

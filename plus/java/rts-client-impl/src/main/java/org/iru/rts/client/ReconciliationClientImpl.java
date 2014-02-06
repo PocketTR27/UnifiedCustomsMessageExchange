@@ -15,12 +15,13 @@ import org.iru.rts.model.termination_1.MissingTIROperationTerminationType;
 import org.iru.rts.model.termination_1.ReconciliationRequestType;
 import org.iru.rts.model.termination_1.TIROperationTerminationType;
 import org.iru.rts.safetirreconciliation.RequestRecords;
-import org.iru.rtsplus.client.TerminationServiceClient;
+import org.iru.rtsplus.client.TerminationServiceClientImpl;
 
-public class ReconciliationClient extends TerminationServiceClient {
+public class ReconciliationClientImpl extends TerminationServiceClientImpl implements ReconciliationClient {
 
+	@Override
 	public List<RequestRecords.RequestRecord> downloadReconciliationRequests(String senderMessageID) throws JAXBException, GeneralSecurityException, IOException, DatatypeConfigurationException {	
-		Set<ReconciliationRequestType> requests = getReconciliationRequests(null, null);
+		Set<ReconciliationRequestType> requests = getReconciliationRequests(null, null, null);
 		
 		List<RequestRecords.RequestRecord> records = new ArrayList<RequestRecords.RequestRecord>(requests.size());
 		for (ReconciliationRequestType request : requests) {

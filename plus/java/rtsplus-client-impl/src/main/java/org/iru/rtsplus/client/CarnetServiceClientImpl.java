@@ -16,7 +16,7 @@ import org.iru.rts.services.carnetservice_1.CarnetServiceSEI;
 import org.iru.rts.services.carnetservice_1.StoppedCarnetsType;
 import org.iru.rts.services.carnetservice_1.StoppedCarnetsType.StoppedCarnets;
 
-public class CarnetServiceClient extends AbstractWSSClient {
+public class CarnetServiceClientImpl extends AbstractWSSClient implements CarnetServiceClient {
 
 	private Long retrievalRange;
 	
@@ -24,6 +24,7 @@ public class CarnetServiceClient extends AbstractWSSClient {
 		this.retrievalRange = retrievalRange;
 	}
 	
+	@Override
 	public Set<StoppedCarnetType> getStoppedCarnets(Date from, Date to) throws DatatypeConfigurationException {
 		CarnetServiceSEI wsPort = getWsPort();
 		
@@ -61,6 +62,7 @@ public class CarnetServiceClient extends AbstractWSSClient {
 		return getWsPort(CarnetService.class, CarnetServiceSEI.class);
 	}
 	
+	@Override
 	public CarnetType queryCarnet(String tirCarnetNumber) {
 		CarnetServiceSEI wsPort = getWsPort();
 		return wsPort.queryCarnet(tirCarnetNumber);

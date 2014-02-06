@@ -9,13 +9,16 @@ import javax.xml.datatype.DatatypeConfigurationException;
 
 import org.iru.model.tir_actor_1.Association;
 import org.iru.model.tir_actor_1.HaulierType;
+import org.iru.rts.client.AbstractClient;
 import org.iru.rts.client.HolderQueryClient;
-import org.iru.rts.client.HolderQueryClient.Response;
+import org.iru.rts.client.HolderQueryClientImpl;
+import org.iru.rts.client.HolderQueryReason;
+import org.iru.rts.client.HolderQueryResponse;
 import org.iru.rts.model.carnet_1.CarnetStatusType;
 import org.iru.rts.model.carnet_1.CarnetType;
 import org.iru.rts.model.carnet_1.StoppedCarnetType;
 
-public class CarnetServiceClient extends AbstractWSSClient {
+public class CarnetServiceClientImpl extends AbstractWSSClient implements CarnetServiceClient {
 
 	HolderQueryClient tchq;
 	boolean tchqSet;
@@ -24,27 +27,29 @@ public class CarnetServiceClient extends AbstractWSSClient {
 		throw new UnsupportedOperationException();
 	}
 
+	@Override
 	public Set<StoppedCarnetType> getStoppedCarnets(Date from, Date to) throws DatatypeConfigurationException {
 		throw new UnsupportedOperationException();
 	}
 
 	protected HolderQueryClient getTCHQ() {
-		return new HolderQueryClient();
+		return new HolderQueryClientImpl();
 	}
 	
+	@Override
 	public CarnetType queryCarnet(String tirCarnetNumber) {
 		synchronized (this) {
 			if (! tchqSet) {
 				try {
 					tchq = getTCHQ();
-					updateClientSettings(tchq);
+					updateClientSettings((AbstractClient) tchq);
 				} finally {
 					tchqSet = true;
 				}
 			}
 		}
 		try {
-			Response response = tchq.queryCarnet(tirCarnetNumber, UUID.randomUUID().toString());
+			HolderQueryResponse response = tchq.queryCarnet(tirCarnetNumber, UUID.randomUUID().toString(), HolderQueryReason.OTHER);
 			CarnetType carnet = new CarnetType();
 			carnet.setTIRCarnetNumber(response.getCarnetNumber());
 			if (response.getAssociation() != null) {

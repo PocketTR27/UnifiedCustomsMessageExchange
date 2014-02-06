@@ -8,7 +8,6 @@ import java.util.Set;
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.namespace.QName;
-import javax.xml.ws.soap.AddressingFeature;
 
 import org.iru.rts.model.termination_1.ReconciliationRequestRepliesType;
 import org.iru.rts.model.termination_1.ReconciliationRequestType;
@@ -19,9 +18,7 @@ import org.iru.rts.services.terminationservice_1.TerminationServiceSEI;
 import org.iru.rts.services.terminationservice_1.TransmitReconciliationRequestReplies;
 import org.iru.rts.services.terminationservice_1.TransmitTIROperationTerminations;
 
-public class TerminationServiceClient extends AbstractWSSClient {
-
-	private Long retrievalRange;
+public class TerminationServiceClientImpl extends AbstractWSSClient implements TerminationServiceClient {
 
 	protected QName getServiceQName() {
 		return new QName("http://rts.iru.org/services/TerminationService-1", "TerminationService");
@@ -39,6 +36,7 @@ public class TerminationServiceClient extends AbstractWSSClient {
 		transmitTIROperationTerminations(tirOperationTerminations, transmissionId, new Date());
 	}
 
+	@Override
 	public void transmitTIROperationTerminations(TIROperationTerminationsType tirOperationTerminations, String transmissionId, Date transmissionTime) throws DatatypeConfigurationException {
 		TransmitTIROperationTerminations parameters = new TransmitTIROperationTerminations();
 		parameters.setTIROperationTerminations(tirOperationTerminations);
@@ -49,11 +47,8 @@ public class TerminationServiceClient extends AbstractWSSClient {
 		wsPort.transmitTIROperationTerminations(parameters);     
 	}
 
-	public void setReconciliationRequestRetrievalRange(Long retrievalRange) {
-		this.retrievalRange = retrievalRange;
-	}
-
-	public Set<ReconciliationRequestType> getReconciliationRequests(Date from, Date to) throws DatatypeConfigurationException {
+	@Override
+	public Set<ReconciliationRequestType> getReconciliationRequests(Date from, Date to, Long retrievalRange) throws DatatypeConfigurationException {
 		TerminationServiceSEI wsPort = getWsPort();
 
 		XMLGregorianCalendar xFrom = convertToXML(from); 
@@ -74,6 +69,7 @@ public class TerminationServiceClient extends AbstractWSSClient {
 		return reconciliationRequests;
 	}
 
+	@Override
 	public void transmitReconciliationRequestReplies(ReconciliationRequestRepliesType reconciliationRequestReplies, String transmissionId, Date transmissionTime) throws DatatypeConfigurationException {
 		TransmitReconciliationRequestReplies parameters = new TransmitReconciliationRequestReplies();
 		parameters.setReconciliationRequestReplies(reconciliationRequestReplies);

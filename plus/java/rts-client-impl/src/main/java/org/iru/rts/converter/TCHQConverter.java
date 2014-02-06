@@ -1,6 +1,7 @@
 package org.iru.rts.converter;
 
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 import javax.xml.datatype.XMLGregorianCalendar;
 
@@ -36,8 +37,8 @@ public class TCHQConverter {
 		return association != null ? Long.toString(association.getId()) : null;
 	}
 	
-	public static Date convertToDate(XMLGregorianCalendar date) {
-		return date != null ? date.toGregorianCalendar().getTime() : null;
+	public static GregorianCalendar convertToGregorianCalendar(XMLGregorianCalendar date) {
+		return date != null ? date.toGregorianCalendar() : null;
 	}
 	
 	public static Integer convertToNumTerminations(CarnetType.TIROperationTerminations tirOperationTerminations) {

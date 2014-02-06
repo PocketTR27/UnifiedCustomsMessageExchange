@@ -10,8 +10,8 @@ import javax.xml.datatype.DatatypeConfigurationException;
 
 import junit.framework.Assert;
 
-import org.iru.rts.client.HolderQueryClient;
-import org.iru.rts.client.HolderQueryClient.Response;
+import org.iru.rts.client.HolderQueryClientImpl;
+import org.iru.rts.client.HolderQueryResponse;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +23,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class TestHolderQuery {
 
 	@Autowired
-	private HolderQueryClient tchq;
+	private HolderQueryClientImpl tchq;
 	
 	public static class Carnet {
 		private String number;
@@ -43,7 +43,7 @@ public class TestHolderQuery {
 	@Test
 	public void queryInvalidCarnet() throws DatatypeConfigurationException, IOException, JAXBException, GeneralSecurityException {
 		
-		Response response = tchq.queryCarnet(carnet.number, new SimpleDateFormat("yyyyMMddHHmmssZ").format(new Date()));
+		HolderQueryResponse response = tchq.queryCarnet(carnet.number, new SimpleDateFormat("yyyyMMddHHmmssZ").format(new Date()));
 
 		Assert.assertEquals(carnet.result, response.getResult());
 		Assert.assertEquals(carnet.number, response.getCarnetNumber());

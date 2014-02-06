@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.Set;
 
 import org.iru.rts.model.carnet_1.StoppedCarnetType;
-import org.iru.rtsplus.client.CarnetServiceClient;
+import org.iru.rtsplus.client.CarnetServiceClientImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ import org.springframework.util.Assert;
 public class TestCarnetService {
 	
 	@Autowired
-	CarnetServiceClient carn;
+	CarnetServiceClientImpl carn;
 	
 	@Test
 	public void listLastYearInvalidatedCarnets() throws Exception {

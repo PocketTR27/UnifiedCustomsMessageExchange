@@ -13,6 +13,7 @@
 	<packaging>pom</packaging>
 
 	<modules>
+		<module>rtsplus-client-api</module>
 		<module>rtsplus-client-impl</module>
 		<module>rts-client-impl</module>
 	</modules>

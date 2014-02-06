@@ -11,7 +11,7 @@ import javax.xml.datatype.DatatypeConfigurationException;
 import junit.framework.Assert;
 
 import org.iru.rts.client.ReturnCode;
-import org.iru.rts.client.UploadClient;
+import org.iru.rts.client.UploadClientImpl;
 import org.iru.rts.safetirupload.Records;
 import org.iru.rts.safetirupload.RequestReplyRecords;
 import org.junit.Test;
@@ -25,7 +25,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class TestUpload {
 
 	@Autowired
-	UploadClient stuc;
+	UploadClientImpl stuc;
 	@Autowired
 	Records.Record wsstRecord;
 	@Autowired

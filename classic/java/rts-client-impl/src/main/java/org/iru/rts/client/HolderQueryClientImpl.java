@@ -23,40 +23,15 @@ import org.iru.rts.ws.tchq_1.SafeTIRHolderQueryServiceClassSoap;
 import org.iru.rts.ws.tchq_1.TIRHolderQuery;
 import org.iru.rts.ws.tchq_1.TIRHolderResponse;
 
-public class HolderQueryClient extends AbstractQueryClient {
-
-	public static class Response {
-	    int result;
-	    public int getResult() {
-			return result;
-		}
-		public String getCarnetNumber() {
-			return carnetNumber;
-		}
-		public String getHolderID() {
-			return holderID;
-		}
-		public GregorianCalendar getValidityDate() {
-			return validityDate;
-		}
-		public String getAssociation() {
-			return association;
-		}
-		public Integer getNumTerminations() {
-			return numTerminations;
-		}
-		String carnetNumber;
-	    String holderID;
-	    GregorianCalendar validityDate;
-	    String association;
-	    Integer numTerminations;
-	}
+public class HolderQueryClientImpl extends AbstractQueryClient implements HolderQueryClient {
 	
-	public Response queryCarnet(String carnetNumber, String queryID) throws DatatypeConfigurationException, IOException, JAXBException, GeneralSecurityException  {
+	
+	public HolderQueryResponse queryCarnet(String carnetNumber, String queryID) throws DatatypeConfigurationException, IOException, JAXBException, GeneralSecurityException  {
 		return queryCarnet(carnetNumber, queryID, HolderQueryReason.OTHER);
 	}
 	
-	public Response queryCarnet(String carnetNumber, String queryID, HolderQueryReason reason) throws DatatypeConfigurationException, IOException, JAXBException, GeneralSecurityException  {
+	@Override
+	public HolderQueryResponse queryCarnet(String carnetNumber, String queryID, HolderQueryReason reason) throws DatatypeConfigurationException, IOException, JAXBException, GeneralSecurityException  {
 			
 		BodyType b = new BodyType();
 		b.setCarnetNumber(carnetNumber);
@@ -110,7 +85,7 @@ public class HolderQueryClient extends AbstractQueryClient {
 		
 		QueryResponse qr = (QueryResponse) dec.decryptPayload(d, QueryResponse.class);
 		
-		Response result = new Response();
+		HolderQueryResponse result = new HolderQueryResponse();
 		result.result = qr.getBody().getResult();
 		result.association = qr.getBody().getAssociation();
 		result.carnetNumber = qr.getBody().getCarnetNumber();

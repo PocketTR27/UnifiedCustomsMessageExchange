@@ -14,6 +14,12 @@
 	
 	<dependencies>
 		<dependency>
+			<groupId>org.iru.rts.plus</groupId>
+			<artifactId>rtsplus-client-api</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+	
+		<dependency>
 			<groupId>org.iru.rtsplus</groupId>
 			<artifactId>rtsplus-model</artifactId>
 			<version>${rtsplus.api.version}</version>
