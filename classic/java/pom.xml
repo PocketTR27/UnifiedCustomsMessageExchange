@@ -17,8 +17,8 @@
 		<module>wsst</module>
 		<module>wsrq</module>
 		<module>wscrypto</module>
-		<module>rts-client</module>
-		<module>rtsplus-client</module>
+		<module>rts-client-impl</module>
+		<module>rtsplus-client-impl</module>
 	</modules>
 
 	<build>
