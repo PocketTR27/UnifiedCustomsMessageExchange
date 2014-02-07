@@ -1,4 +1,4 @@
-package org.iru.rts.client;
+package org.iru.rts.client.classic;
 
 import java.math.BigInteger;
 import java.security.GeneralSecurityException;
@@ -13,6 +13,8 @@ import javax.xml.namespace.QName;
 
 import org.iru.common.crypto.wscrypto.CipheredData;
 import org.iru.common.crypto.wscrypto.Encrypter;
+import org.iru.rts.client.ReturnCode;
+import org.iru.rts.client.UploadClient;
 import org.iru.rts.safetirupload.BodyType;
 import org.iru.rts.safetirupload.EnvelopeType;
 import org.iru.rts.safetirupload.Records;

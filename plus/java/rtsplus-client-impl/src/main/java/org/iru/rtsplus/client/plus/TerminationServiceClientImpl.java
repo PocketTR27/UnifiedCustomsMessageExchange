@@ -1,4 +1,4 @@
-package org.iru.rtsplus.client;
+package org.iru.rtsplus.client.plus;
 
 import java.math.BigInteger;
 import java.util.Date;
@@ -17,6 +17,7 @@ import org.iru.rts.services.terminationservice_1.TerminationService;
 import org.iru.rts.services.terminationservice_1.TerminationServiceSEI;
 import org.iru.rts.services.terminationservice_1.TransmitReconciliationRequestReplies;
 import org.iru.rts.services.terminationservice_1.TransmitTIROperationTerminations;
+import org.iru.rtsplus.client.TerminationServiceClient;
 
 public class TerminationServiceClientImpl extends AbstractWSSClient implements TerminationServiceClient {
 

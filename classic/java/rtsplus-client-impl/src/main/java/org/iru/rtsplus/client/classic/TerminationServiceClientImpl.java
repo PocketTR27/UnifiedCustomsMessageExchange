@@ -1,4 +1,4 @@
-package org.iru.rtsplus.client;
+package org.iru.rtsplus.client.classic;
 
 import java.io.Serializable;
 import java.lang.reflect.UndeclaredThrowableException;
@@ -17,11 +17,11 @@ import javax.xml.ws.WebServiceException;
 
 import org.iru.model.tir_actor_1.Customs;
 import org.iru.model.tir_actor_1.IRU;
-import org.iru.rts.client.AbstractClient;
 import org.iru.rts.client.ReconciliationClient;
-import org.iru.rts.client.ReconciliationClientImpl;
 import org.iru.rts.client.ReturnCode;
-import org.iru.rts.client.UploadClientImpl;
+import org.iru.rts.client.classic.AbstractClient;
+import org.iru.rts.client.classic.ReconciliationClientImpl;
+import org.iru.rts.client.classic.UploadClientImpl;
 import org.iru.rts.model.termination_1.MissingTIROperationTerminationType;
 import org.iru.rts.model.termination_1.ReconciliationRequestReasonType;
 import org.iru.rts.model.termination_1.ReconciliationRequestRepliesType;
@@ -38,6 +38,7 @@ import org.iru.rts.safetirupload.Records;
 import org.iru.rts.safetirupload.Records.Record;
 import org.iru.rts.safetirupload.RequestReplyRecords;
 import org.iru.rts.safetirupload.UPGType;
+import org.iru.rtsplus.client.TerminationServiceClient;
 
 public class TerminationServiceClientImpl extends AbstractWSSClient implements TerminationServiceClient {
 

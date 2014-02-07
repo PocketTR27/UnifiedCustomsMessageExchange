@@ -1,4 +1,4 @@
-package org.iru.rts.client;
+package org.iru.rts.client.classic;
 
 import java.io.IOException;
 import java.security.GeneralSecurityException;
@@ -13,6 +13,8 @@ import javax.xml.namespace.QName;
 import org.iru.common.crypto.wscrypto.CipheredData;
 import org.iru.common.crypto.wscrypto.Decrypter;
 import org.iru.common.crypto.wscrypto.Encrypter;
+import org.iru.rts.client.ReconciliationClient;
+import org.iru.rts.client.ReturnCode;
 import org.iru.rts.safetirreconciliation.EnvelopeType;
 import org.iru.rts.safetirreconciliation.ReconciliationQuery;
 import org.iru.rts.safetirreconciliation.ReconciliationQueryBodyType;

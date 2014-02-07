@@ -1,4 +1,4 @@
-package org.iru.rts.client;
+package org.iru.rts.client.classic;
 
 import java.io.File;
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package org.iru.rts.client;
+package org.iru.rts.client.classic;
 
 import java.io.IOException;
 import java.math.BigInteger;
@@ -14,6 +14,10 @@ import javax.xml.namespace.QName;
 import org.iru.common.crypto.wscrypto.CipheredData;
 import org.iru.common.crypto.wscrypto.Decrypter;
 import org.iru.common.crypto.wscrypto.Encrypter;
+import org.iru.rts.client.HolderQueryClient;
+import org.iru.rts.client.HolderQueryReason;
+import org.iru.rts.client.HolderQueryResponse;
+import org.iru.rts.client.ReturnCode;
 import org.iru.rts.tchq.tchqresponse.QueryResponse;
 import org.iru.rts.tchq.tchquery.BodyType;
 import org.iru.rts.tchq.tchquery.EnvelopeType;
@@ -86,16 +90,16 @@ public class HolderQueryClientImpl extends AbstractQueryClient implements Holder
 		QueryResponse qr = (QueryResponse) dec.decryptPayload(d, QueryResponse.class);
 		
 		HolderQueryResponse result = new HolderQueryResponse();
-		result.result = qr.getBody().getResult();
-		result.association = qr.getBody().getAssociation();
-		result.carnetNumber = qr.getBody().getCarnetNumber();
-		result.holderID = qr.getBody().getHolderID();
+		result.setResult(qr.getBody().getResult());
+		result.setAssociation(qr.getBody().getAssociation());
+		result.setCarnetNumber(qr.getBody().getCarnetNumber());
+		result.setHolderID(qr.getBody().getHolderID());
 		BigInteger numTerminations = qr.getBody().getNumTerminations();
 		if (numTerminations != null)
-			result.numTerminations = numTerminations.intValue();
+			result.setNumTerminations(numTerminations.intValue());
 		XMLGregorianCalendar validityDate = qr.getBody().getValidityDate();
 		if (validityDate != null)
-			result.validityDate = validityDate.toGregorianCalendar();
+			result.setValidityDate(validityDate.toGregorianCalendar());
 		
 		return result;
 	}

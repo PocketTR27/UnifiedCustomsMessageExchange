@@ -10,8 +10,8 @@ import javax.xml.datatype.DatatypeConfigurationException;
 
 import junit.framework.Assert;
 
-import org.iru.rts.client.HolderQueryClientImpl;
 import org.iru.rts.client.HolderQueryResponse;
+import org.iru.rts.client.classic.HolderQueryClientImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

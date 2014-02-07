@@ -1,4 +1,4 @@
-package org.iru.rtsplus.client;
+package org.iru.rtsplus.client.plus;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;

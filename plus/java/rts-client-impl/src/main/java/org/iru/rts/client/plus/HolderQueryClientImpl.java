@@ -1,4 +1,4 @@
-package org.iru.rts.client;
+package org.iru.rts.client.plus;
 
 import java.io.IOException;
 import java.security.GeneralSecurityException;
@@ -7,9 +7,12 @@ import java.util.Date;
 import javax.xml.bind.JAXBException;
 import javax.xml.datatype.DatatypeConfigurationException;
 
-import org.iru.rts.converter.TCHQConverter;
+import org.iru.rts.client.HolderQueryClient;
+import org.iru.rts.client.HolderQueryReason;
+import org.iru.rts.client.HolderQueryResponse;
+import org.iru.rts.client.plus.converter.TCHQConverter;
 import org.iru.rts.model.carnet_1.CarnetType;
-import org.iru.rtsplus.client.CarnetServiceClientImpl;
+import org.iru.rtsplus.client.plus.CarnetServiceClientImpl;
 
 public class HolderQueryClientImpl extends CarnetServiceClientImpl implements HolderQueryClient {
 	
@@ -47,12 +50,12 @@ public class HolderQueryClientImpl extends CarnetServiceClientImpl implements Ho
 	public HolderQueryResponse queryCarnet(String carnetNumber, String queryID, HolderQueryReason reason) throws DatatypeConfigurationException, IOException, JAXBException, GeneralSecurityException  {
 		CarnetType carnet = queryCarnet(carnetNumber);
 		HolderQueryResponse response = new HolderQueryResponse();
-		response.result = TCHQConverter.convertStatusToResult(carnet.getStatus());
-		response.carnetNumber = carnet.getTIRCarnetNumber();
-		response.holderID = response.holderID = TCHQConverter.convertHolderToID(carnet.getHolder());
-		response.validityDate = TCHQConverter.convertToGregorianCalendar(carnet.getExpiryDate());
-		response.association = TCHQConverter.convertAssociationToID(carnet.getAssociation());
-		response.numTerminations =  TCHQConverter.convertToNumTerminations(carnet.getTIROperationTerminations());
+		response.setResult(TCHQConverter.convertStatusToResult(carnet.getStatus()));
+		response.setCarnetNumber(carnet.getTIRCarnetNumber());
+		response.setHolderID(TCHQConverter.convertHolderToID(carnet.getHolder()));
+		response.setValidityDate(TCHQConverter.convertToGregorianCalendar(carnet.getExpiryDate()));
+		response.setAssociation(TCHQConverter.convertAssociationToID(carnet.getAssociation()));
+		response.setNumTerminations(TCHQConverter.convertToNumTerminations(carnet.getTIROperationTerminations()));
 		return response;
 	}
 	

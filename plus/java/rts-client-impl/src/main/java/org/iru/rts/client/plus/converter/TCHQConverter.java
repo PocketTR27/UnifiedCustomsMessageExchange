@@ -1,6 +1,5 @@
-package org.iru.rts.converter;
+package org.iru.rts.client.plus.converter;
 
-import java.util.Date;
 import java.util.GregorianCalendar;
 
 import javax.xml.datatype.XMLGregorianCalendar;

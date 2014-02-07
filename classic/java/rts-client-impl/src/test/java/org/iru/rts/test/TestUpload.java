@@ -11,7 +11,7 @@ import javax.xml.datatype.DatatypeConfigurationException;
 import junit.framework.Assert;
 
 import org.iru.rts.client.ReturnCode;
-import org.iru.rts.client.UploadClientImpl;
+import org.iru.rts.client.classic.UploadClientImpl;
 import org.iru.rts.safetirupload.Records;
 import org.iru.rts.safetirupload.RequestReplyRecords;
 import org.junit.Test;

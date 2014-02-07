@@ -1,4 +1,4 @@
-package org.iru.rtsplus.client;
+package org.iru.rtsplus.client.classic;
 
 import java.lang.reflect.UndeclaredThrowableException;
 import java.util.Date;
@@ -9,14 +9,15 @@ import javax.xml.datatype.DatatypeConfigurationException;
 
 import org.iru.model.tir_actor_1.Association;
 import org.iru.model.tir_actor_1.HaulierType;
-import org.iru.rts.client.AbstractClient;
 import org.iru.rts.client.HolderQueryClient;
-import org.iru.rts.client.HolderQueryClientImpl;
 import org.iru.rts.client.HolderQueryReason;
 import org.iru.rts.client.HolderQueryResponse;
+import org.iru.rts.client.classic.AbstractClient;
+import org.iru.rts.client.classic.HolderQueryClientImpl;
 import org.iru.rts.model.carnet_1.CarnetStatusType;
 import org.iru.rts.model.carnet_1.CarnetType;
 import org.iru.rts.model.carnet_1.StoppedCarnetType;
+import org.iru.rtsplus.client.CarnetServiceClient;
 
 public class CarnetServiceClientImpl extends AbstractWSSClient implements CarnetServiceClient {
 

@@ -1,4 +1,4 @@
-package org.iru.rts.client;
+package org.iru.rts.client.plus;
 
 import java.security.GeneralSecurityException;
 import java.util.Date;
@@ -9,7 +9,9 @@ import javax.xml.bind.JAXBException;
 import javax.xml.datatype.DatatypeConfigurationException;
 
 import org.iru.model.tir_actor_1.Customs;
-import org.iru.rts.converter.WSREConverter;
+import org.iru.rts.client.ReturnCode;
+import org.iru.rts.client.UploadClient;
+import org.iru.rts.client.plus.converter.WSREConverter;
 import org.iru.rts.model.termination_1.ObjectFactory;
 import org.iru.rts.model.termination_1.ReconciliationRequestRepliesType;
 import org.iru.rts.model.termination_1.ReconciliationRequestReplyType;
@@ -20,7 +22,7 @@ import org.iru.rts.safetirupload.PFDType;
 import org.iru.rts.safetirupload.Records;
 import org.iru.rts.safetirupload.RequestReplyRecords;
 import org.iru.rts.safetirupload.UPGType;
-import org.iru.rtsplus.client.TerminationServiceClientImpl;
+import org.iru.rtsplus.client.plus.TerminationServiceClientImpl;
 
 public class UploadClientImpl extends TerminationServiceClientImpl implements UploadClient {
 	

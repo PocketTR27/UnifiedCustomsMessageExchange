@@ -14,7 +14,7 @@ public enum HolderQueryReason {
 		this.reasonCode = reasonCode;
 	}
 	
-	int codeValue() { 
+	public int codeValue() { 
 		return reasonCode; 
 	}
 	

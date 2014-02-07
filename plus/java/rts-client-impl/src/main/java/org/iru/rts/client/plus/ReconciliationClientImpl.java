@@ -1,4 +1,4 @@
-package org.iru.rts.client;
+package org.iru.rts.client.plus;
 
 import java.io.IOException;
 import java.math.BigInteger;
@@ -10,12 +10,13 @@ import java.util.Set;
 import javax.xml.bind.JAXBException;
 import javax.xml.datatype.DatatypeConfigurationException;
 
-import org.iru.rts.converter.WSRQConverter;
+import org.iru.rts.client.ReconciliationClient;
+import org.iru.rts.client.plus.converter.WSRQConverter;
 import org.iru.rts.model.termination_1.MissingTIROperationTerminationType;
 import org.iru.rts.model.termination_1.ReconciliationRequestType;
 import org.iru.rts.model.termination_1.TIROperationTerminationType;
 import org.iru.rts.safetirreconciliation.RequestRecords;
-import org.iru.rtsplus.client.TerminationServiceClientImpl;
+import org.iru.rtsplus.client.plus.TerminationServiceClientImpl;
 
 public class ReconciliationClientImpl extends TerminationServiceClientImpl implements ReconciliationClient {
 

@@ -1,4 +1,4 @@
-package org.iru.rts.converter;
+package org.iru.rts.client.plus.converter;
 
 public class WSREConverter {
 

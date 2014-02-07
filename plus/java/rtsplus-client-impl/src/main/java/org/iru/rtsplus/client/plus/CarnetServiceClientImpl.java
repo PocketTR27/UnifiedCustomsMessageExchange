@@ -1,4 +1,4 @@
-package org.iru.rtsplus.client;
+package org.iru.rtsplus.client.plus;
 
 import java.util.Date;
 import java.util.LinkedHashSet;
@@ -15,6 +15,7 @@ import org.iru.rts.services.carnetservice_1.CarnetService;
 import org.iru.rts.services.carnetservice_1.CarnetServiceSEI;
 import org.iru.rts.services.carnetservice_1.StoppedCarnetsType;
 import org.iru.rts.services.carnetservice_1.StoppedCarnetsType.StoppedCarnets;
+import org.iru.rtsplus.client.CarnetServiceClient;
 
 public class CarnetServiceClientImpl extends AbstractWSSClient implements CarnetServiceClient {
 

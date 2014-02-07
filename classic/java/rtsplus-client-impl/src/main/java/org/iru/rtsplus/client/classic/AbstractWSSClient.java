@@ -1,4 +1,4 @@
-package org.iru.rtsplus.client;
+package org.iru.rtsplus.client.classic;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -16,8 +16,8 @@ import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 
 import org.apache.commons.codec.digest.DigestUtils;
-import org.iru.rts.client.AbstractClient;
-import org.iru.rts.client.AbstractQueryClient;
+import org.iru.rts.client.classic.AbstractClient;
+import org.iru.rts.client.classic.AbstractQueryClient;
 
 public class AbstractWSSClient extends AbstractQueryClient {
 
