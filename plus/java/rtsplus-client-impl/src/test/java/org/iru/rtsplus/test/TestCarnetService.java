@@ -25,7 +25,7 @@ public class TestCarnetService {
 		System.setProperty("com.sun.xml.ws.transport.http.client.HttpTransportPipe.dump", "true");
 
 		Date lastYear = new Date(now - 120L*24L*3600000L);
-		Set<StoppedCarnetType> stopped = carn.getStoppedCarnets(lastYear, new Date(now));
+		Set<StoppedCarnetType> stopped = carn.getStoppedCarnets(lastYear, new Date(now), null);
 		System.out.println(stopped.size());
 		Assert.notEmpty(stopped);
 	}

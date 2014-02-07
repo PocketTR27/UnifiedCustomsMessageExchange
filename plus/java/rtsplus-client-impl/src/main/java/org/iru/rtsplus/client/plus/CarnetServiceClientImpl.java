@@ -19,18 +19,14 @@ import org.iru.rtsplus.client.CarnetServiceClient;
 
 public class CarnetServiceClientImpl extends AbstractWSSClient implements CarnetServiceClient {
 
-	private Long retrievalRange;
-	
-	public void setStoppedCarnetRetrievalRange(Long retrievalRange) {
-		this.retrievalRange = retrievalRange;
-	}
-	
 	@Override
-	public Set<StoppedCarnetType> getStoppedCarnets(Date from, Date to) throws DatatypeConfigurationException {
+	public Set<StoppedCarnetType> getStoppedCarnets(Date from, Date to, Long retrievalRange) throws DatatypeConfigurationException {
 		CarnetServiceSEI wsPort = getWsPort();
 		
 		XMLGregorianCalendar xFrom = convertToXML(from); 
 		XMLGregorianCalendar xTo = convertToXML(to);
+		
+		Long range = retrievalRange;
 		
 		int offset = 0;
 		Set<StoppedCarnetType> stoppedCarnets = new LinkedHashSet<StoppedCarnetType>();
@@ -39,10 +35,10 @@ public class CarnetServiceClientImpl extends AbstractWSSClient implements Carnet
 	        Holder<org.iru.rts.services.carnetservice_1.StoppedCarnetsType.Total> totalHolder = new Holder<StoppedCarnetsType.Total>();
 	        Holder<org.iru.rts.services.carnetservice_1.StoppedCarnetsType.StoppedCarnets> stoppedCarnetsHolder = new Holder<org.iru.rts.services.carnetservice_1.StoppedCarnetsType.StoppedCarnets>();
 			
-			wsPort.getStoppedCarnets(xFrom, xTo, offset, retrievalRange, totalHolder, stoppedCarnetsHolder);
+			wsPort.getStoppedCarnets(xFrom, xTo, offset, range, totalHolder, stoppedCarnetsHolder);
 			StoppedCarnets data = stoppedCarnetsHolder.value;
 			stoppedCarnets.addAll(data.getStoppedCarnet());
-			retrievalRange = (long) data.getCount();
+			range = (long) data.getCount();
 			if (data.isEndReached())
 				break;
 			else

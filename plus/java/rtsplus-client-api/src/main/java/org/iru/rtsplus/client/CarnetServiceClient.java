@@ -12,5 +12,5 @@ public interface CarnetServiceClient {
 
 	public CarnetType queryCarnet(String tirCarnetNumber);
 	
-	public Set<StoppedCarnetType> getStoppedCarnets(Date from, Date to) throws DatatypeConfigurationException;
+	public Set<StoppedCarnetType> getStoppedCarnets(Date from, Date to, Long retrievalRange) throws DatatypeConfigurationException;
 }

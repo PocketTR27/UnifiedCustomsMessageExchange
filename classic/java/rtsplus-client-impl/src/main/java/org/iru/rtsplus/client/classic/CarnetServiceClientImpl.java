@@ -24,12 +24,8 @@ public class CarnetServiceClientImpl extends AbstractWSSClient implements Carnet
 	HolderQueryClient tchq;
 	boolean tchqSet;
 
-	public void setStoppedCarnetRetrievalRange(Long retrievalRange) {
-		throw new UnsupportedOperationException();
-	}
-
 	@Override
-	public Set<StoppedCarnetType> getStoppedCarnets(Date from, Date to) throws DatatypeConfigurationException {
+	public Set<StoppedCarnetType> getStoppedCarnets(Date from, Date to, Long retrievalRange) throws DatatypeConfigurationException {
 		throw new UnsupportedOperationException();
 	}
 
