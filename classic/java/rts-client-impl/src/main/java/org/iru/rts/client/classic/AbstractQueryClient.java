@@ -16,6 +16,16 @@ public class AbstractQueryClient extends AbstractClient {
 
 	private Map<String, byte[]> localCertificateThumbprintsToPrivateKeys;
 	
+	public void setIncomingCertificateToPrivateKeys(Map<byte[], byte[]> localCertToPrivateKeys) throws IOException, CertificateException {
+		this.localCertificateThumbprintsToPrivateKeys = new HashMap<String, byte[]>();
+		for (Map.Entry<byte[], byte[]> ctk : localCertToPrivateKeys.entrySet()) {
+			X509Certificate x509 = CryptoUtil.loadCertificate(ctk.getKey());
+			String thumbprint = CryptoUtil.getThumbprint(x509);
+			byte[] privKey = ctk.getValue();
+			localCertificateThumbprintsToPrivateKeys.put(thumbprint, privKey);
+		}
+	}
+	
 	public void setLocalCertificateToPrivateKeys(Map<File, File> localCertToPrivateKeys) throws IOException, CertificateException {
 		this.localCertificateThumbprintsToPrivateKeys = new HashMap<String, byte[]>();
 		for (Map.Entry<File, File> ctk : localCertToPrivateKeys.entrySet()) {

@@ -22,6 +22,7 @@ import org.iru.rts.client.classic.AbstractQueryClient;
 public class AbstractWSSClient extends AbstractQueryClient {
 
 	private File iruCertificateFile;
+	private byte[] iruCertificateData;
 	private Map<File, File> localCertToPrivateKeys;
 
 	public static X509Certificate loadCertificate(byte[] cert) throws CertificateException {
@@ -54,7 +55,12 @@ public class AbstractWSSClient extends AbstractQueryClient {
 		super.setIruCertificate(iruCertificate);
 		this.iruCertificateFile = iruCertificate;
 	}
-	
+
+	public void setIruCertificateData(byte[] iruCertificate) throws IOException {
+		super.setIruCerficateData(iruCertificate);;
+		this.iruCertificateData = iruCertificate;
+	}
+
 	public void setLocalCertificateToPrivateKeys(Map<File, File> localCertToPrivateKeys) throws IOException, CertificateException {
 		super.setLocalCertificateToPrivateKeys(localCertToPrivateKeys);
 		this.localCertToPrivateKeys = localCertToPrivateKeys;
@@ -65,7 +71,10 @@ public class AbstractWSSClient extends AbstractQueryClient {
 		client.setPassword(password);
 		client.setRtsEndpoint(rtsEndpoint);
 		try {
-			client.setIruCertificate(iruCertificateFile);
+			if (iruCertificateFile != null)
+				client.setIruCertificate(iruCertificateFile);
+			else
+				client.setIruCerficateData(iruCertificateData);
 		} catch (IOException e) {
 			throw new UndeclaredThrowableException(e);
 		}

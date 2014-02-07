@@ -18,7 +18,7 @@ public class AbstractClient {
 	protected URL rtsEndpoint;
 	protected Map<String, Object> bindingProviderRequestContext;
 	
-	private byte[] iruCertificate;
+	byte[] iruCertificate;
 
 	public void setSender(String sender) {
 		this.sender = sender;
@@ -29,7 +29,12 @@ public class AbstractClient {
 	}
 
 	public void setIruCertificate(File iruCertificate) throws IOException {
-		this.iruCertificate = FileUtils.readFileToByteArray(iruCertificate);
+		byte[] certByteArray = FileUtils.readFileToByteArray(iruCertificate);
+		setIruCerficateData(certByteArray);
+	}
+
+	public void setIruCerficateData(byte[] certByteArray) {
+		this.iruCertificate = certByteArray;
 	}
 
 	public void setRtsEndpoint(URL rtsEndpoint) {
