@@ -156,7 +156,7 @@
     <None Include="Service References\SafeTIRUploadWS\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="copyright">
+    <None Include="..\..\..\copyright">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Diagram.cd" />
