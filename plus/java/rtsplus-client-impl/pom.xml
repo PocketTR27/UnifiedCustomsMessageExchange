@@ -57,6 +57,12 @@
 			<artifactId>junit</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>org.iru.rts.plus</groupId>
+			<artifactId>rtsplus-keys</artifactId>
+			<version>${project.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-beans</artifactId>
 			<version>${spring.version}</version>

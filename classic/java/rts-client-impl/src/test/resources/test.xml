@@ -7,13 +7,13 @@
         http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
         
 	<bean id="iruCertificateContent" class="org.iru.rts.test.FileUtils" factory-method="loadFileInClasspath">
-		<constructor-arg><value>RTSJAVA_IRU_Cert.cer</value></constructor-arg>
+		<constructor-arg><value>RTSJAVA_send.cer.der</value></constructor-arg>
 	</bean>
 	<bean id="certContent" class="org.iru.rts.test.FileUtils" factory-method="loadFileInClasspath">
-		<constructor-arg><value>rtsj1024.crt</value></constructor-arg>
+		<constructor-arg><value>RTSJAVA_recv.cer.pem</value></constructor-arg>
 	</bean>
 	<bean id="keyContent" class="org.iru.rts.test.FileUtils" factory-method="loadFileInClasspath">
-		<constructor-arg><value>rtsj1024.der</value></constructor-arg>
+		<constructor-arg><value>RTSJAVA_recv.key.der</value></constructor-arg>
 	</bean>
 		
 		

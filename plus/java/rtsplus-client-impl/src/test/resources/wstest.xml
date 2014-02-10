@@ -11,24 +11,17 @@
 		<property name="outgoingKey" ref="signingKeyDER"/>
 		<property name="incomingCertificate" ref="verifyingCertificateDER"/>
 	</bean> 
-				
-	<bean id="rtsIRUCertificateFile" class="java.io.File">
-	<!-- <constructor-arg value="/home/mverbert/git-repos/local/R/RTSJavaClient/rts-client/src/test/resources/RTSJAVA_IRU_Cert.cer"/>-->
-		<constructor-arg value="/home/mverbert/git-repos/local/R/RTSJavaClient/rts-client/src/test/resources/rtsj1024.crt"/>
+			
+	<bean id="signingCertificateDER" class="org.iru.rtsplus.test.FileUtils" factory-method="loadFileInClasspath">
+		<constructor-arg><value>RSA_2048_test_RTS+_OUTGOING_2014012234.cer.der</value></constructor-arg>
 	</bean>
-	
-	<bean id="rtsplusSigningKeyFile" class="java.io.File">
-		<constructor-arg value="/home/mverbert/tmp/rts+/RSA_2048_test_RTS+_OUTGOING_2014012234.key.der"/>
-	</bean>	
-	
-	<bean id="rtsplusSigningCertificateFile" class="java.io.File">
-		<constructor-arg value="/home/mverbert/tmp/rts+/RSA_2048_test_RTS+_OUTGOING_2014012234.cer.der"/>
-	</bean>	
-	
-	<bean id="rtsplusVerifyingCertificateFile" class="java.io.File">
-		<constructor-arg value="/home/mverbert/tmp/rts+/RSA_2048_test_RTS+_INCOMING_2014012209.cer"/>
-	</bean>	
-	
+	<bean id="signingKeyDER" class="org.iru.rtsplus.test.FileUtils" factory-method="loadFileInClasspath">
+		<constructor-arg><value>RSA_2048_test_RTS+_OUTGOING_2014012234.key.der</value></constructor-arg>
+	</bean>
+	<bean id="verifyingCertificateDER" class="org.iru.rtsplus.test.FileUtils" factory-method="loadFileInClasspath">
+		<constructor-arg><value>RSA_2048_test_RTS+_INCOMING_2014012209.cer.der</value></constructor-arg>
+	</bean>
+		
 	<bean factory-bean="rtsplusFactory" factory-method="getCarnetServiceClient" >
 		<constructor-arg>
 			<bean class="java.net.URL">
@@ -37,16 +30,4 @@
 		</constructor-arg>
 	</bean>
  
-		<bean id="signingCertificateDER" class="org.apache.commons.io.FileUtils"  scope="prototype"  factory-method="readFileToByteArray" >
-			<constructor-arg ref="rtsplusSigningCertificateFile"/>
-		</bean>
-		<bean id="signingKeyDER" class="org.apache.commons.io.FileUtils"  scope="prototype"  factory-method="readFileToByteArray" >
-			<constructor-arg ref="rtsplusSigningKeyFile"/>
-		</bean>
-	
-		<bean id="verifyingCertificateDER" class="org.apache.commons.io.FileUtils"  scope="prototype"  factory-method="readFileToByteArray" >
-			<constructor-arg ref="rtsplusVerifyingCertificateFile"/>
-		</bean>
-
-
 </beans>
