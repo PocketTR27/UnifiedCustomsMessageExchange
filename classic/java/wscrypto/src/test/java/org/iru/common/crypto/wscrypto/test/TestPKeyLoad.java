@@ -12,7 +12,7 @@ public class TestPKeyLoad {
 
 	@Test
 	public void loadGenKey() throws Exception {
-		URL k = Thread.currentThread().getContextClassLoader().getResource("rtsj1024.der");
+		URL k = Thread.currentThread().getContextClassLoader().getResource("RTSJAVA_recv.key.der");
 		File kf = new File(k.getFile());
 		byte[] kb = FileUtils.readFileToByteArray(kf);
 		Decrypter dc = new Decrypter();

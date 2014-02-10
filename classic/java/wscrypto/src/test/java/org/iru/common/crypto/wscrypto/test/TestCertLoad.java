@@ -12,7 +12,7 @@ public class TestCertLoad {
 
 	@Test
 	public void loadGenKey() throws Exception {
-		URL k = Thread.currentThread().getContextClassLoader().getResource("rtsj1024.crt");
+		URL k = Thread.currentThread().getContextClassLoader().getResource("RTSJAVA_recv.cer.pem");
 		File kf = new File(k.getFile());
 		byte[] kb = FileUtils.readFileToByteArray(kf);
 		Encrypter enc = new Encrypter();
