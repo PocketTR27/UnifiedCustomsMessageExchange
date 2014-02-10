@@ -1,9 +1,8 @@
 package org.iru.common.crypto.wscrypto.test;
 
-import java.io.File;
-import java.net.URL;
+import java.io.InputStream;
 
-import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
 import org.iru.common.crypto.wscrypto.Encrypter;
 import org.junit.Assert;
 import org.junit.Test;
@@ -12,9 +11,8 @@ public class TestCertLoad {
 
 	@Test
 	public void loadGenKey() throws Exception {
-		URL k = Thread.currentThread().getContextClassLoader().getResource("RTSJAVA_recv.cer.pem");
-		File kf = new File(k.getFile());
-		byte[] kb = FileUtils.readFileToByteArray(kf);
+		InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream("RTSJAVA_recv.cer.pem");
+		byte[] kb = IOUtils.toByteArray(is);
 		Encrypter enc = new Encrypter();
 		enc.setCertificate(kb);
 		Assert.assertNotNull(enc.getCertificateThumbprint());

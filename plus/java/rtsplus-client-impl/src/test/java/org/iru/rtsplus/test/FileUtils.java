@@ -1,17 +1,15 @@
 package org.iru.rtsplus.test;
 
-import java.io.File;
 import java.io.IOException;
-import java.net.URL;
+import java.io.InputStream;
+
+import org.apache.commons.io.IOUtils;
 
 class FileUtils {
 
-	static File locateFileInClasspath(String filename) {
-		URL uf = Thread.currentThread().getContextClassLoader().getResource(filename);
-		return new File(uf.getFile());
+	public static byte[] loadFileInClasspath(String filename) throws IOException {
+		InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream(filename);
+		return IOUtils.toByteArray(is);
 	}
 	
-	public static byte[] loadFileInClasspath(String filename) throws IOException {
-		return org.apache.commons.io.FileUtils.readFileToByteArray(locateFileInClasspath(filename));
-	}
 }
