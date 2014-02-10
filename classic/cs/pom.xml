@@ -13,4 +13,24 @@
 	<artifactId>rtsdotnet-client</artifactId>
 	<packaging>pom</packaging>
 
+	<profiles>
+		<profile>
+			<activation>
+				<os>
+					<family>Windows</family>
+				</os>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.codehaus.sonar-plugins.dotnet</groupId>
+						<artifactId>maven-dotnet-plugin</artifactId>
+						<version>1.1</version>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
+
 </project>
