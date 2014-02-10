@@ -6,26 +6,13 @@ import java.util.Collections;
 import org.iru.rtsplus.client.CarnetServiceClient;
 import org.iru.rtsplus.client.ClientFactory;
 import org.iru.rtsplus.client.TerminationServiceClient;
-import org.iru.rts.client.HolderQueryClient;
-import org.iru.rts.client.ReconciliationClient;
-import org.iru.rts.client.UploadClient;
-import org.iru.rts.client.classic.AbstractClient;
-import org.iru.rts.client.classic.AbstractQueryClient;
-import org.iru.rts.client.classic.HolderQueryClientImpl;
-import org.iru.rts.client.classic.ReconciliationClientImpl;
 
 public class ClientFactoryImpl implements ClientFactory {
 
-	private URL wsdlLocation;
 	private byte[] outgoingCertificate;
 	private byte[] incomingCertificate;
 	private byte[] incomingKey;
 	private String sender;
-
-	@Override
-	public void setWsdlLocation(URL wsdlLocation) {
-		this.wsdlLocation = wsdlLocation;
-	}
 
 	@Override
 	public void setSender(String sender) {
@@ -55,7 +42,7 @@ public class ClientFactoryImpl implements ClientFactory {
 		this.incomingKey = key;
 	}
 
-	private void setAbstractWSSClientProperties(AbstractWSSClient c) {
+	private void setAbstractWSSClientProperties(AbstractWSSClient c, URL wsdlLocation) {
 		c.setSender(sender);
 		c.setRtsEndpoint(wsdlLocation);
 		c.setIruCerficateData(outgoingCertificate);
@@ -67,16 +54,16 @@ public class ClientFactoryImpl implements ClientFactory {
 	}
 	
 	@Override
-	public CarnetServiceClient getCarnetServiceClient() {
+	public CarnetServiceClient getCarnetServiceClient(URL wsdlLocation) {
 		CarnetServiceClientImpl c = new CarnetServiceClientImpl();
-		setAbstractWSSClientProperties(c);
+		setAbstractWSSClientProperties(c, wsdlLocation);
 		return c;
 	}
 
 	@Override
-	public TerminationServiceClient getTerminationServiceClient() {
+	public TerminationServiceClient getTerminationServiceClient(URL wsdlLocation) {
 		TerminationServiceClientImpl c = new TerminationServiceClientImpl();
-		setAbstractWSSClientProperties(c);
+		setAbstractWSSClientProperties(c, wsdlLocation);
 		return c;
 	}
 

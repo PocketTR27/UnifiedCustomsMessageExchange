@@ -4,13 +4,11 @@ import java.net.URL;
 
 public interface ClientFactory {
 
-	HolderQueryClient getHolderQueryClient();
-	ReconciliationClient getReconciliationClient();
-	UploadClient getUploadClient();
+	HolderQueryClient getHolderQueryClient(URL wsdlLocation);
+	ReconciliationClient getReconciliationClient(URL wsdlLocation);
+	UploadClient getUploadClient(URL wsdlLocation);
 	
 	public void setSender(String sender);
-	
-	public void setWsdlLocation(URL wsdlLocation);
 	
 	public void setOutgoingCertificate(byte[] certificate);
 	public void setOutgoingKey(byte[] key);

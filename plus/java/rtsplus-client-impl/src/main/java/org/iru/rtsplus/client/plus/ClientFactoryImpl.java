@@ -8,15 +8,9 @@ import org.iru.rtsplus.client.TerminationServiceClient;
 
 public class ClientFactoryImpl implements ClientFactory {
 
-	private URL wsdlLocation;
 	private byte[] outgoingCertificate;
 	private byte[] outgoingKey;
 	private byte[] incomingCertificate;
-
-	@Override
-	public void setWsdlLocation(URL wsdlLocation) {
-		this.wsdlLocation = wsdlLocation;
-	}
 
 	@Override
 	/**
@@ -50,13 +44,13 @@ public class ClientFactoryImpl implements ClientFactory {
 
 
 	@Override
-	public CarnetServiceClient getCarnetServiceClient() {
+	public CarnetServiceClient getCarnetServiceClient(URL wsdlLocation) {
 		CarnetServiceClientImpl c = new CarnetServiceClientImpl();
-		setAbstractWSSClientProperties(c);
+		setAbstractWSSClientProperties(c, wsdlLocation);
 		return c;
 	}
 
-	private void setAbstractWSSClientProperties(AbstractWSSClient c) {
+	private void setAbstractWSSClientProperties(AbstractWSSClient c, URL wsdlLocation) {
 		c.setRtsEndpoint(wsdlLocation);
 		c.setPortNameSuffix("_2"); // port using X509
 		try {
@@ -70,9 +64,9 @@ public class ClientFactoryImpl implements ClientFactory {
 	
 	
 	@Override
-	public TerminationServiceClient getTerminationServiceClient() {
+	public TerminationServiceClient getTerminationServiceClient(URL wsdlLocation) {
 		TerminationServiceClientImpl c = new TerminationServiceClientImpl();
-		setAbstractWSSClientProperties(c);
+		setAbstractWSSClientProperties(c, wsdlLocation);
 		return c;
 	}
 

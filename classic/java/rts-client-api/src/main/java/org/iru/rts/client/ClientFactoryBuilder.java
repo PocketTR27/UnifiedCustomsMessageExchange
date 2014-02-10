@@ -10,7 +10,7 @@ public class ClientFactoryBuilder {
 	public static ClientFactory newInstance() {
 		ClassLoader contextClassLoader = Thread.currentThread().getContextClassLoader();
 		String fname = ClientFactory.class.getName();
-		InputStream is = contextClassLoader.getResourceAsStream("/META-INF/services/"+fname);
+		InputStream is = contextClassLoader.getResourceAsStream("META-INF/services/"+fname);
 		if (is == null) {
 			throw new RuntimeException("No implementation found of "+fname);
 		}

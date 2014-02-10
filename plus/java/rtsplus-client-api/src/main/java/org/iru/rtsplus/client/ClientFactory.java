@@ -4,12 +4,10 @@ import java.net.URL;
 
 public interface ClientFactory {
 
-	CarnetServiceClient getCarnetServiceClient();
-	TerminationServiceClient getTerminationServiceClient();
+	CarnetServiceClient getCarnetServiceClient(URL wsdlLocation);
+	TerminationServiceClient getTerminationServiceClient(URL wsdlLocation);
 	
 	public void setSender(String sender);
-	
-	public void setWsdlLocation(URL wsdlLocation);
 	
 	public void setOutgoingCertificate(byte[] certificate);
 	public void setOutgoingKey(byte[] key);

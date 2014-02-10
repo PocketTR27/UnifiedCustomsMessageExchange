@@ -11,15 +11,9 @@ import org.iru.rtsplus.client.plus.AbstractWSSClient;
 public class ClientFactoryImpl implements ClientFactory {
 
 
-	private URL wsdlLocation;
 	private byte[] outgoingCertificate;
 	private byte[] outgoingKey;
 	private byte[] incomingCertificate;
-
-	@Override
-	public void setWsdlLocation(URL wsdlLocation) {
-		this.wsdlLocation = wsdlLocation;
-	}
 
 	@Override
 	/**
@@ -53,13 +47,13 @@ public class ClientFactoryImpl implements ClientFactory {
 
 	
 	@Override
-	public HolderQueryClient getHolderQueryClient() {
+	public HolderQueryClient getHolderQueryClient(URL wsdlLocation) {
 		HolderQueryClientImpl c = new HolderQueryClientImpl();
-		setAbstractWSSClientProperties(c);
+		setAbstractWSSClientProperties(c, wsdlLocation);
 		return c;
 	}
 
-	private void setAbstractWSSClientProperties(AbstractWSSClient c) {
+	private void setAbstractWSSClientProperties(AbstractWSSClient c, URL wsdlLocation) {
 		c.setRtsEndpoint(wsdlLocation);
 		c.setPortNameSuffix("_2"); // port using X509
 		try {
@@ -73,16 +67,16 @@ public class ClientFactoryImpl implements ClientFactory {
 	
 
 	@Override
-	public ReconciliationClient getReconciliationClient() {
+	public ReconciliationClient getReconciliationClient(URL wsdlLocation) {
 		ReconciliationClientImpl c = new ReconciliationClientImpl();
-		setAbstractWSSClientProperties(c);
+		setAbstractWSSClientProperties(c, wsdlLocation);
 		return c;
 	}
 
 	@Override
-	public UploadClient getUploadClient() {
+	public UploadClient getUploadClient(URL wsdlLocation) {
 		UploadClientImpl c = new UploadClientImpl();
-		setAbstractWSSClientProperties(c);
+		setAbstractWSSClientProperties(c, wsdlLocation);
 		return c;
 	}
 

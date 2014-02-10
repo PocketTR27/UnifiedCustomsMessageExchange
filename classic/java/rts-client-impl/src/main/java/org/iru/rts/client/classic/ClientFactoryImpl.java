@@ -11,16 +11,10 @@ import org.iru.rts.client.UploadClient;
 public class ClientFactoryImpl implements ClientFactory {
 
 
-	private URL wsdlLocation;
 	private byte[] outgoingCertificate;
 	private byte[] incomingCertificate;
 	private byte[] incomingKey;
 	private String sender;
-
-	@Override
-	public void setWsdlLocation(URL wsdlLocation) {
-		this.wsdlLocation = wsdlLocation;
-	}
 
 	@Override
 	public void setSender(String sender) {
@@ -52,14 +46,14 @@ public class ClientFactoryImpl implements ClientFactory {
 
 	
 	@Override
-	public HolderQueryClient getHolderQueryClient() {
+	public HolderQueryClient getHolderQueryClient(URL wsdlLocation) {
 		HolderQueryClientImpl c = new HolderQueryClientImpl();
-		setAbstractQueryClientProperties(c);
+		setAbstractQueryClientProperties(c, wsdlLocation);
 		return c;
 	}
 
-	private void setAbstractQueryClientProperties(AbstractQueryClient c) {
-		setAbstractClientProperties(c);
+	private void setAbstractQueryClientProperties(AbstractQueryClient c, URL wsdlLocation) {
+		setAbstractClientProperties(c, wsdlLocation);
 		try {
 			c.setIncomingCertificateToPrivateKeys(Collections.singletonMap(incomingCertificate, incomingKey));
 		} catch (Exception e) {
@@ -67,7 +61,7 @@ public class ClientFactoryImpl implements ClientFactory {
 		}
 	}
 	
-	private void setAbstractClientProperties(AbstractClient c) {
+	private void setAbstractClientProperties(AbstractClient c, URL wsdlLocation) {
 		c.setSender(sender);
 		c.setRtsEndpoint(wsdlLocation);
 		c.iruCertificate = outgoingCertificate;
@@ -75,16 +69,16 @@ public class ClientFactoryImpl implements ClientFactory {
 	
 
 	@Override
-	public ReconciliationClient getReconciliationClient() {
+	public ReconciliationClient getReconciliationClient(URL wsdlLocation) {
 		ReconciliationClientImpl c = new ReconciliationClientImpl();
-		setAbstractQueryClientProperties(c);
+		setAbstractQueryClientProperties(c, wsdlLocation);
 		return c;
 	}
 
 	@Override
-	public UploadClient getUploadClient() {
+	public UploadClient getUploadClient(URL wsdlLocation) {
 		UploadClientImpl c = new UploadClientImpl();
-		setAbstractClientProperties(c);
+		setAbstractClientProperties(c, wsdlLocation);
 		return c;
 	}
 

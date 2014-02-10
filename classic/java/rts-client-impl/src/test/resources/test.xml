@@ -6,13 +6,49 @@
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
         http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
         
-	<bean id="iruCertificate" class="org.iru.rts.test.FileUtils" factory-method="locateFileInClasspath">
+	<bean id="iruCertificateContent" class="org.iru.rts.test.FileUtils" factory-method="loadFileInClasspath">
 		<constructor-arg><value>RTSJAVA_IRU_Cert.cer</value></constructor-arg>
 	</bean>
-		
-	<bean id="sender" class="java.lang.String">
-		<constructor-arg value="RTSJAVA"/>
+	<bean id="certContent" class="org.iru.rts.test.FileUtils" factory-method="loadFileInClasspath">
+		<constructor-arg><value>rtsj1024.crt</value></constructor-arg>
 	</bean>
+	<bean id="keyContent" class="org.iru.rts.test.FileUtils" factory-method="loadFileInClasspath">
+		<constructor-arg><value>rtsj1024.der</value></constructor-arg>
+	</bean>
+		
+		
+	<bean id="rtsjavaFactory" class="org.iru.rts.client.ClientFactoryBuilder" factory-method="newInstance">
+		<property name="sender" value="RTSJAVA"/>
+		<property name="outgoingCertificate" ref="iruCertificateContent"/>
+		<property name="incomingCertificate" ref="certContent"/>
+		<property name="incomingKey" ref="keyContent"/>
+	</bean> 
+
+	<bean class="org.iru.rts.client.UploadClient" factory-bean="rtsjavaFactory" factory-method="getUploadClient">
+		<constructor-arg>
+			<bean class="java.net.URL">
+				<constructor-arg type="java.lang.String" value="http://apps-test.iru.org/rts2/wsst_ws/safetirupload.asmx?WSDL"/>
+			</bean>
+		</constructor-arg>
+	</bean>
+	
+	<bean class="org.iru.rts.client.HolderQueryClient" factory-bean="rtsjavaFactory" factory-method="getHolderQueryClient">
+		<constructor-arg>
+			<bean class="java.net.URL">
+				<constructor-arg type="java.lang.String" value="http://apps-test.iru.org/rts2/tchq_ws/tircarnetquery.asmx?WSDL"/>
+			</bean>
+		</constructor-arg>
+	</bean>
+
+	<bean class="org.iru.rts.client.ReconciliationClient" factory-bean="rtsjavaFactory" factory-method="getReconciliationClient">
+		<constructor-arg>
+			<bean class="java.net.URL">
+				<constructor-arg type="java.lang.String" value="http://apps-test.iru.org/rts2/wsrq_ws/wsrq.asmx?WSDL"/>
+			</bean>
+		</constructor-arg>
+	</bean>
+
+
 
 	<bean id="datatypeFactory" class="javax.xml.datatype.DatatypeFactory" factory-method="newInstance"/>
 	<bean id="xdate" factory-bean="datatypeFactory" factory-method="newXMLGregorianCalendar">
@@ -71,52 +107,4 @@
 		<property name="result" value="5" />
 	</bean>
 	
-	
-	<bean id="abstract-client" abstract="true">
-		<property name="iruCertificate" ref="iruCertificate"/>
-		<property name="sender" ref="sender"/>		
-	</bean>
-	
-	<bean class="org.iru.rts.client.UploadClient" parent="abstract-client">
-		<property name="rtsEndpoint">
-			<bean class="java.net.URL">
-				<constructor-arg type="java.lang.String" value="http://apps-test.iru.org/rts2/wsst_ws/safetirupload.asmx?WSDL"/>
-			</bean>
-		</property>
-	</bean>
-
-	
-	<bean id="abstract-query-client" parent="abstract-client" abstract="true">
-		<property name="localCertificateToPrivateKeys">
-			<map>
-				<entry>
-					<key>
-						<bean class="org.iru.rts.test.FileUtils" factory-method="locateFileInClasspath">
-							<constructor-arg><value>rtsj1024.crt</value></constructor-arg>
-						</bean>
-					</key>
-					<bean class="org.iru.rts.test.FileUtils" factory-method="locateFileInClasspath">
-						<constructor-arg><value>rtsj1024.der</value></constructor-arg>
-					</bean>
-				</entry>
-			</map>
-		</property>
-	</bean>
-	
-	<bean class="org.iru.rts.client.HolderQueryClient" parent="abstract-query-client">
-		<property name="rtsEndpoint">
-			<bean class="java.net.URL">
-				<constructor-arg type="java.lang.String" value="http://apps-test.iru.org/rts2/tchq_ws/tircarnetquery.asmx?WSDL"/>
-			</bean>
-		</property>
-	</bean>
-
-	<bean class="org.iru.rts.client.ReconciliationClient" parent="abstract-query-client">
-		<property name="rtsEndpoint">
-			<bean class="java.net.URL">
-				<constructor-arg type="java.lang.String" value="http://apps-test.iru.org/rts2/wsrq_ws/wsrq.asmx?WSDL"/>
-			</bean>
-		</property>
-	</bean>
-
 </beans>
