@@ -6,10 +6,12 @@
         <formats>
                 <format>zip</format>
         </formats>
+	<includeBaseDirectory>false</includeBaseDirectory>
 
         <fileSets>
                 <fileSet>
                         <directory>RTSDotNETClient.TestClient/bin/Release</directory>
+			<outputDirectory>.</outputDirectory>
                 </fileSet>
         </fileSets>
 
