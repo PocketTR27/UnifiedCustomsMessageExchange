@@ -1,2 +1,7 @@
 obj/
 bin/
+Help/Working/
+*.suo
+*.user
+*.log
+*.shfbproj_*
