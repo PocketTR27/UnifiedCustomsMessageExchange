@@ -46,10 +46,12 @@ public class ClientFactoryImpl implements ClientFactory {
 		c.setSender(sender);
 		c.setRtsEndpoint(wsdlLocation);
 		c.setIruCertificateData(outgoingCertificate);
-		try {
-			c.setIncomingCertificateToPrivateKeys(Collections.singletonMap(incomingCertificate, incomingKey));
-		} catch (Exception e) {
-			throw new SecurityException(e);
+		if (incomingCertificate != null && incomingKey != null) {
+			try {
+				c.setIncomingCertificateToPrivateKeys(Collections.singletonMap(incomingCertificate, incomingKey));
+			} catch (Exception e) {
+				throw new SecurityException(e);
+			}
 		}
 	}
 	
