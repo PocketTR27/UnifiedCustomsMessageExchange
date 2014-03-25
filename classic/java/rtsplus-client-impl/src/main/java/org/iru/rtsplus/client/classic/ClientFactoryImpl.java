@@ -45,7 +45,7 @@ public class ClientFactoryImpl implements ClientFactory {
 	private void setAbstractWSSClientProperties(AbstractWSSClient c, URL wsdlLocation) {
 		c.setSender(sender);
 		c.setRtsEndpoint(wsdlLocation);
-		c.setIruCerficateData(outgoingCertificate);
+		c.setIruCertificateData(outgoingCertificate);
 		try {
 			c.setIncomingCertificateToPrivateKeys(Collections.singletonMap(incomingCertificate, incomingKey));
 		} catch (Exception e) {

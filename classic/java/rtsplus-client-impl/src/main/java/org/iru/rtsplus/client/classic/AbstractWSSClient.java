@@ -50,17 +50,19 @@ public class AbstractWSSClient extends AbstractQueryClient {
 		return DatatypeFactory.newInstance().newXMLGregorianCalendar(d);
 	}
 
-
+	@Override
 	public void setIruCertificate(File iruCertificate) throws IOException {
 		super.setIruCertificate(iruCertificate);
 		this.iruCertificateFile = iruCertificate;
 	}
 
-	public void setIruCertificateData(byte[] iruCertificate) throws IOException {
-		super.setIruCerficateData(iruCertificate);;
+	@Override
+	public void setIruCertificateData(byte[] iruCertificate) {
+		super.setIruCertificateData(iruCertificate);;
 		this.iruCertificateData = iruCertificate;
 	}
 
+	@Override
 	public void setLocalCertificateToPrivateKeys(Map<File, File> localCertToPrivateKeys) throws IOException, CertificateException {
 		super.setLocalCertificateToPrivateKeys(localCertToPrivateKeys);
 		this.localCertToPrivateKeys = localCertToPrivateKeys;
@@ -74,7 +76,7 @@ public class AbstractWSSClient extends AbstractQueryClient {
 			if (iruCertificateFile != null)
 				client.setIruCertificate(iruCertificateFile);
 			else
-				client.setIruCerficateData(iruCertificateData);
+				client.setIruCertificateData(iruCertificateData);
 		} catch (IOException e) {
 			throw new UndeclaredThrowableException(e);
 		}

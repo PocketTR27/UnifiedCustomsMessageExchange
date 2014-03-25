@@ -30,10 +30,10 @@ public class AbstractClient {
 
 	public void setIruCertificate(File iruCertificate) throws IOException {
 		byte[] certByteArray = FileUtils.readFileToByteArray(iruCertificate);
-		setIruCerficateData(certByteArray);
+		setIruCertificateData(certByteArray);
 	}
 
-	public void setIruCerficateData(byte[] certByteArray) {
+	public void setIruCertificateData(byte[] certByteArray) {
 		this.iruCertificate = certByteArray;
 	}
 
