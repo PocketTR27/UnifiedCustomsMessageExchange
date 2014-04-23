@@ -46,12 +46,9 @@ maxOccurs="1"/>
        </xs:restriction>
    </xs:simpleType>
    <xs:simpleType name="QueryType">
-       <!--
-          1=CarnetHolder.
-          Currently there is only one type of query.
-          But this is included for expansion -->
        <xs:restriction base="xs:int">
-          <xs:enumeration value="1" />
+          <xs:enumeration value="1" />       <!-- 1=CarnetHolder -->
+	  <xs:enumeration value="2" />       <!-- 2=Carnet and Voucher -->
        </xs:restriction>
    </xs:simpleType>
    <xs:simpleType name="QueryReasonType">

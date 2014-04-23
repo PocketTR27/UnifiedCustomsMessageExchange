@@ -5,29 +5,29 @@
 
 	<parent>
 		<groupId>org.iru.rts.classic</groupId>
-		<artifactId>rts-classic</artifactId>
+		<artifactId>tvqr</artifactId>
 		<version>1.6.3-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>rtsjava-client</artifactId>
-	<packaging>pom</packaging>
-
-	<modules>
-		<module>tchq</module>
-		<module>wsst</module>
-		<module>wsrq</module>
-		<module>tvqr</module>
-		<module>wscrypto</module>
-		<module>rts-client-api</module>
-		<module>rts-client-impl</module>
-		<module>rtsplus-client-impl</module>
-	</modules>
+	<groupId>org.iru.rts.classic.tvqr</groupId>
+	<artifactId>tvqr-bo</artifactId>
 
 	<build>
 		<plugins>
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-resources-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<groupId>org.iru.maven.plugins</groupId>
+				<artifactId>maven-jaxbgenser-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<groupId>org.jvnet.jaxb2.maven2</groupId>
+				<artifactId>maven-jaxb2-plugin</artifactId>
 			</plugin>
 
 			<plugin>
@@ -43,6 +43,7 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
 			</plugin>
+
 		</plugins>
 	</build>
 
