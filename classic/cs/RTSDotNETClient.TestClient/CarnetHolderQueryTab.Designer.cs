@@ -47,6 +47,10 @@
             this.label8 = new System.Windows.Forms.Label();
             this.tbQueryId = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.cbQueryType = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.tbVoucherNumber = new System.Windows.Forms.TextBox();
+            this.lbVoucherNumber = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // tbReturnCode
@@ -55,7 +59,7 @@
             this.tbReturnCode.Name = "tbReturnCode";
             this.tbReturnCode.ReadOnly = true;
             this.tbReturnCode.Size = new System.Drawing.Size(237, 20);
-            this.tbReturnCode.TabIndex = 4;
+            this.tbReturnCode.TabIndex = 6;
             // 
             // label6
             // 
@@ -103,7 +107,7 @@
             this.btnCarnetHolderQuery.Location = new System.Drawing.Point(17, 220);
             this.btnCarnetHolderQuery.Name = "btnCarnetHolderQuery";
             this.btnCarnetHolderQuery.Size = new System.Drawing.Size(98, 23);
-            this.btnCarnetHolderQuery.TabIndex = 3;
+            this.btnCarnetHolderQuery.TabIndex = 5;
             this.btnCarnetHolderQuery.Text = "Query";
             this.btnCarnetHolderQuery.UseVisualStyleBackColor = true;
             this.btnCarnetHolderQuery.Click += new System.EventHandler(this.btnCarnetHolderQuery_Click);
@@ -130,7 +134,7 @@
             this.tbValidityDate.Name = "tbValidityDate";
             this.tbValidityDate.ReadOnly = true;
             this.tbValidityDate.Size = new System.Drawing.Size(109, 20);
-            this.tbValidityDate.TabIndex = 6;
+            this.tbValidityDate.TabIndex = 8;
             // 
             // label2
             // 
@@ -147,7 +151,7 @@
             this.tbHolderID.Name = "tbHolderID";
             this.tbHolderID.ReadOnly = true;
             this.tbHolderID.Size = new System.Drawing.Size(237, 20);
-            this.tbHolderID.TabIndex = 5;
+            this.tbHolderID.TabIndex = 7;
             // 
             // label3
             // 
@@ -164,7 +168,7 @@
             this.tbAssociation.Name = "tbAssociation";
             this.tbAssociation.ReadOnly = true;
             this.tbAssociation.Size = new System.Drawing.Size(178, 20);
-            this.tbAssociation.TabIndex = 7;
+            this.tbAssociation.TabIndex = 9;
             // 
             // label7
             // 
@@ -181,7 +185,7 @@
             this.tbNumTerminations.Name = "tbNumTerminations";
             this.tbNumTerminations.ReadOnly = true;
             this.tbNumTerminations.Size = new System.Drawing.Size(183, 20);
-            this.tbNumTerminations.TabIndex = 8;
+            this.tbNumTerminations.TabIndex = 10;
             // 
             // label8
             // 
@@ -197,7 +201,7 @@
             this.tbQueryId.Location = new System.Drawing.Point(17, 176);
             this.tbQueryId.Name = "tbQueryId";
             this.tbQueryId.Size = new System.Drawing.Size(237, 20);
-            this.tbQueryId.TabIndex = 25;
+            this.tbQueryId.TabIndex = 3;
             // 
             // label9
             // 
@@ -208,10 +212,50 @@
             this.label9.TabIndex = 26;
             this.label9.Text = "Query ID :";
             // 
+            // cbQueryType
+            // 
+            this.cbQueryType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbQueryType.FormattingEnabled = true;
+            this.cbQueryType.Location = new System.Drawing.Point(288, 28);
+            this.cbQueryType.Name = "cbQueryType";
+            this.cbQueryType.Size = new System.Drawing.Size(209, 21);
+            this.cbQueryType.TabIndex = 4;
+            this.cbQueryType.SelectedIndexChanged += new System.EventHandler(this.cbQueryType_SelectedIndexChanged);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(285, 12);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(68, 13);
+            this.label10.TabIndex = 28;
+            this.label10.Text = "Query Type :";
+            // 
+            // tbVoucherNumber
+            // 
+            this.tbVoucherNumber.Location = new System.Drawing.Point(503, 275);
+            this.tbVoucherNumber.Name = "tbVoucherNumber";
+            this.tbVoucherNumber.ReadOnly = true;
+            this.tbVoucherNumber.Size = new System.Drawing.Size(176, 20);
+            this.tbVoucherNumber.TabIndex = 11;
+            // 
+            // lbVoucherNumber
+            // 
+            this.lbVoucherNumber.AutoSize = true;
+            this.lbVoucherNumber.Location = new System.Drawing.Point(500, 259);
+            this.lbVoucherNumber.Name = "lbVoucherNumber";
+            this.lbVoucherNumber.Size = new System.Drawing.Size(93, 13);
+            this.lbVoucherNumber.TabIndex = 30;
+            this.lbVoucherNumber.Text = "Voucher Number :";
+            // 
             // CarnetHolderQueryTab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.tbVoucherNumber);
+            this.Controls.Add(this.lbVoucherNumber);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.cbQueryType);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.tbQueryId);
             this.Controls.Add(this.tbNumTerminations);
@@ -232,7 +276,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tbTirCarnet);
             this.Name = "CarnetHolderQueryTab";
-            this.Size = new System.Drawing.Size(604, 390);
+            this.Size = new System.Drawing.Size(701, 362);
             this.Load += new System.EventHandler(this.CarnetHolderQueryTab_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -260,5 +304,9 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox tbQueryId;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ComboBox cbQueryType;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox tbVoucherNumber;
+        private System.Windows.Forms.Label lbVoucherNumber;
     }
 }

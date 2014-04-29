@@ -30,6 +30,8 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tbPassword = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnPfxFile = new System.Windows.Forms.Button();
@@ -45,8 +47,6 @@
             this.tabReconciliationRequestReplies = new System.Windows.Forms.TabPage();
             this.tabEncryptDecrypt = new System.Windows.Forms.TabPage();
             this.tabTrace = new System.Windows.Forms.TabPage();
-            this.tbPassword = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.carnetHolderQueryTab1 = new RTSDotNETClient.TestClient.CarnetHolderQueryTab();
             this.reconciliationQueryTab1 = new RTSDotNETClient.TestClient.ReconciliationQueryTab();
             this.safeTIRTransmissionTab1 = new RTSDotNETClient.TestClient.SafeTIRTransmissionTab();
@@ -92,6 +92,23 @@
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Certificates";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(425, 30);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(59, 13);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Password :";
+            // 
+            // tbPassword
+            // 
+            this.tbPassword.Location = new System.Drawing.Point(428, 46);
+            this.tbPassword.Name = "tbPassword";
+            this.tbPassword.PasswordChar = '*';
+            this.tbPassword.Size = new System.Drawing.Size(205, 20);
+            this.tbPassword.TabIndex = 12;
             // 
             // label3
             // 
@@ -148,7 +165,7 @@
             // openFileDialogCer
             // 
             this.openFileDialogCer.DefaultExt = "cer";
-            this.openFileDialogCer.Filter = ".cer files|*.cer|All files|*.*";
+            this.openFileDialogCer.Filter = ".cer .der files|*.cer;*.der|All files|*.*";
             // 
             // openFileDialogPfx
             // 
@@ -238,23 +255,6 @@
             this.tabTrace.TabIndex = 4;
             this.tabTrace.Text = "Trace";
             this.tabTrace.UseVisualStyleBackColor = true;
-            // 
-            // tbPassword
-            // 
-            this.tbPassword.Location = new System.Drawing.Point(428, 46);
-            this.tbPassword.Name = "tbPassword";
-            this.tbPassword.PasswordChar = '*';
-            this.tbPassword.Size = new System.Drawing.Size(205, 20);
-            this.tbPassword.TabIndex = 12;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(425, 30);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(59, 13);
-            this.label1.TabIndex = 13;
-            this.label1.Text = "Password :";
             // 
             // carnetHolderQueryTab1
             // 

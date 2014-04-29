@@ -117,7 +117,14 @@ namespace RTSDotNETClient.TCHQ
         /// <summary>
         /// The number of termination (SafeTIR) records for this carnet. Only for Result = 1, 2.
         /// </summary>
-        public int NumTerminations { get; set; }        
+        public int NumTerminations { get; set; }
+
+        /// <summary>
+        /// The Voucher Number of TIR Plus additional guarantee which is associated to the TIR carnet.
+        /// <remarks>It can be null and it is returned only if Query_Type argument of the query has the flag 2.</remarks>
+        /// </summary>
+        [XmlElement("Voucher_Number")]
+        public string VoucherNumber { get; set; }
     }
     
 }

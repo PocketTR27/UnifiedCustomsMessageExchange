@@ -101,12 +101,6 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="App.config" />
-    <None Include="..\..\rts-keys\src\main\resources\RTSJAVA_recv.all.pfx">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="..\..\rts-keys\src\main\resources\RTSJAVA_send.cer.der">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -170,4 +164,7 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <PropertyGroup>
+    <PostBuildEvent>IF EXIST $(ProjectDir)\..\..\rts-keys\src\main\resources COPY /Y $(ProjectDir)\..\..\rts-keys\src\main\resources\*.* $(TargetDir)</PostBuildEvent>
+  </PropertyGroup>
 </Project>

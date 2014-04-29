@@ -14,13 +14,17 @@ namespace RTSDotNETClient.TCHQ
     /// <summary>
     /// Type of the query
     /// </summary>
+    [Flags]
     public enum QueryType
     {
         /// <summary>
         /// Carnet Holder
         /// </summary>
         [XmlEnum("1")]
-        CarnetHolder = 1
+        CarnetHolder = 1,
+
+        [XmlEnum("2")]
+        CarnetAndVoucher = 2
     }
 
     /// <summary>
