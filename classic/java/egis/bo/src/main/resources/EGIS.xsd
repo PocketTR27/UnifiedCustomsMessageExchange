@@ -1,0 +1,35 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://rts.iru.org/services/classic/EGIS" 
+	xmlns="http://rts.iru.org/services/classic/EGIS"
+	xmlns:tchqr="http://www.iru.org/TCHQResponse"
+	xmlns:wsst="http://www.iru.org/SafeTIRUpload"
+	elementFormDefault="qualified">
+	<xs:import namespace="http://www.iru.org/TCHQResponse" schemaLocation="TCHQResponse.xsd" />
+	<xs:import namespace="http://www.iru.org/SafeTIRUpload" schemaLocation="SafeTIRUpload.xsd" />
+
+	<xs:element name="EGISResponse" type="EGISResponseType"/>
+
+	<xs:complexType name="EGISResponseType">
+		<xs:sequence>
+			<xs:element name="Envelope" type="tchqr:EnvelopeType" />
+			<xs:element name="Body" type="ResponseBodyType" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType="ResponseBodyType">
+		<xs:complexContent>
+			<xs:extension base="tchqr:BodyType">
+				<xs:element name="TIROperationMessages" type="TIROperationMessagesType" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="TIROperationMessagesType">
+		<xs:sequence>
+			<xs:element name="StartMessage" type="EPD029Type" minOccurs="0" />
+			<xs:element name="ExitMessage" type="EPD025Type" minOccurs="0" maxOccurs="unbounded" />
+			<xs:element name="TerminationMessages" type="wsst:Records" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+
+</xs:schema>
