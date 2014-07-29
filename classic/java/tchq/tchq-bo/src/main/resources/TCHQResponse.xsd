@@ -55,7 +55,7 @@ by the IRU, 4=Carnet is not in circulation, 5=Carnet number is incorrect-->
 	</xs:simpleType>
 	<xs:simpleType name="CarnetNumberType">
 		<xs:restriction base="xs:string">
-			<xs:pattern value="[A-Z]{2}[0-9]{8}" />
+			<xs:pattern value="([A-Z]{2})?[0-9]+" />
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="VoucherNumberType">
