@@ -12,11 +12,13 @@
 		</jxb:schemaBindings>
 	</jxb:bindings>
 
+	<!--
 	<jxb:bindings schemaLocation="TIREPD_Types.xsd">
 		<jxb:schemaBindings>
 			<jxb:package name="org.iru.epd.message.common" />
 		</jxb:schemaBindings>
 	</jxb:bindings>
+	-->
 	
 	<jxb:bindings schemaLocation="TCHQuery.xsd">
 		<jxb:schemaBindings>
