@@ -17,6 +17,7 @@
 		<module>wsst</module>
 		<module>wsrq</module>
 		<module>tvqr</module>
+		<module>egis</module>
 		<module>wscrypto</module>
 		<module>rts-client-api</module>
 		<module>rts-client-impl</module>
@@ -25,6 +26,24 @@
 
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy-other-bo-xsd-for-xsd</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>unpack-dependencies</goal>
+						</goals>
+						<configuration>
+							<includes>*.xsd</includes>
+							<outputDirectory>${basedir}/src/main/resources</outputDirectory>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-resources-plugin</artifactId>
