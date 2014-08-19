@@ -5,47 +5,32 @@
 
 	<parent>
 		<groupId>org.iru.rts.classic</groupId>
-		<artifactId>rts-classic</artifactId>
+		<artifactId>egis</artifactId>
 		<version>1.6.3-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>rtsjava-client</artifactId>
-	<packaging>pom</packaging>
-
-	<modules>
-		<module>tchq</module>
-		<module>wsst</module>
-		<module>wsrq</module>
-		<module>egis</module>
-		<module>wscrypto</module>
-		<module>rts-client-api</module>
-		<module>rts-client-impl</module>
-		<module>rtsplus-client-impl</module>
-	</modules>
+	<groupId>org.iru.rts.classic.egis</groupId>
+	<artifactId>egis-ws</artifactId>
 
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-dependency-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>copy-other-bo-xsd-for-xsd</id>
-						<phase>generate-sources</phase>
-						<goals>
-							<goal>unpack-dependencies</goal>
-						</goals>
-						<configuration>
-							<includes>*.xsd</includes>
-							<outputDirectory>${basedir}/src/main/resources</outputDirectory>
-						</configuration>
-					</execution>
-				</executions>
+				<artifactId>maven-resources-plugin</artifactId>
 			</plugin>
 
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-resources-plugin</artifactId>
+				<groupId>org.iru.maven.plugins</groupId>
+				<artifactId>maven-jaxbgenser-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<groupId>org.jvnet.jax-ws-commons</groupId>
+				<artifactId>jaxws-maven-plugin</artifactId>
+				<configuration>
+					<extension>true</extension>
+					<packageName>org.iru.rts.ws.egis_1</packageName>
+				</configuration>
 			</plugin>
 
 			<plugin>
@@ -61,6 +46,7 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
 			</plugin>
+
 		</plugins>
 	</build>
 
