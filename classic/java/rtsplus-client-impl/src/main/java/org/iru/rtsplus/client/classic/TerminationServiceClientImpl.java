@@ -169,16 +169,11 @@ public class TerminationServiceClientImpl extends AbstractWSSClient implements T
 			termination.setCertificateOfTerminationDate(record.getDDI());
 			termination.setCertificateOfTerminationReference(record.getRND());
 			
-			termination.setIsFinal(record.getPFD().startsWith(PFDType.FD.value()));
-			if (record.getPFD().length() > 2) {
-				String seq = record.getPFD().substring(2);
-				try {
-					termination.setSequenceNumber(Short.valueOf(seq));
-				} catch (NumberFormatException e) {
-					// FIXME: NEVERMIND
-				}
-			}
-			termination.setIsWithReservation(record.getCWR().equals(CWRType.OK.value()));
+			termination.setIsFinal(PFDType.FD.equals(record.getPFD()));
+			/* TODO?: extract the termination number which can be append to PFD
+			 * from 3rd character and pass it to termination.setSequenceNumber
+			 */
+			termination.setIsWithReservation(CWRType.R.equals(record.getCWR()));
 			
 			termination.setCustomsComment(record.getCOM());
 			termination.setPackageCount(record.getPIC() != null ? record.getPIC().longValue() : null);

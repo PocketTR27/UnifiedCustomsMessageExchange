@@ -4,3 +4,4 @@ target/
 .settings/
 .classpath
 *.orig
+nb-configuration.xml
