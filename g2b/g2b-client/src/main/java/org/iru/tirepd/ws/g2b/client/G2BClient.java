@@ -37,7 +37,7 @@ public class G2BClient {
 	}
 	
 	public int upload(String messageID, String messageName, Object payload) throws JAXBException, GeneralSecurityException, DatatypeConfigurationException {
-		TIREPDG2BService service = new TIREPDG2BService(epdg2bEndpoint, new QName("http://www.iru.org/", "TIREPDG2BService"));
+		TIREPDG2BService service = new TIREPDG2BService(epdg2bEndpoint, new QName("http://www.iru.org", "TIREPDG2BService"));
 		
 		TIREPDG2BServiceClassSoap g2b = service.getTIREPDG2BServiceClassSoap();
 		TIREPDG2BUploadParams su = new TIREPDG2BUploadParams();
