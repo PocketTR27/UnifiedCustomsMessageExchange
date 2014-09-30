@@ -37,8 +37,8 @@ namespace RTSDotNETClient.TestClient
         {
             if (Program.LoadTestData)
             {
-                tbPfxFile.Text = Path.Combine(appDirectory, "RTSJAVA_recv.all.pfx");
-                tbCerFile.Text = Path.Combine(appDirectory, "RTSJAVA_send.cer.der");
+                tbPfxFile.Text = Path.Combine(appDirectory, Path.Combine("certificates", "RTSJAVA_recv.all.pfx"));
+                tbCerFile.Text = Path.Combine(appDirectory, Path.Combine("certificates", "RTSJAVA_send.cer.der"));
             }
         }
 
