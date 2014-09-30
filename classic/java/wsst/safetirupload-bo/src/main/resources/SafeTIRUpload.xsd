@@ -13,7 +13,7 @@
 	<xs:complexType name="BodyType">
 		<xs:choice>
 			<!-- WSST -->
-			<xs:sequence>
+			<xs:sequence id="WSST">
 				<xs:element name="Version" type="Upl:VersionType" />
 				<xs:element name="SubscriberID" type="Upl:SubscriberIDType" />
 				<xs:element name="Password" type="Upl:PasswordType" minOccurs="0" maxOccurs="1" />
@@ -24,7 +24,7 @@
 				<xs:element name="SafeTIRRecords" type="Upl:Records" />
 			</xs:sequence>
 			<!-- WSRE -->
-			<xs:sequence>
+			<xs:sequence id="WSRE">
 				<xs:element name="NumberOfRecords" type="xs:int" />
 				<xs:element name="RequestReplyRecords" type="Upl:RequestReplyRecords" />
 			</xs:sequence>
