@@ -141,6 +141,12 @@ namespace RTSDotNETClient.WSRQ
         public string PFD { get; set; }
 
         /// <summary>
+        /// TIR Carnet Operation (optional). It will be EXIT for SafeTIR exit messages (eTIR)
+        /// </summary>
+        [XmlAttribute("TCO")]
+        public string TCO { get; set; }
+
+        /// <summary>
         /// Discharge with or without Reservation. (If Discharge is without reservation, the string "OK" will be used; if with Reserva-tion, one character string, "R", will be used.)
         /// </summary>
         [XmlAttribute("CWR")]
