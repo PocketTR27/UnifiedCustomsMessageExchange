@@ -22,6 +22,11 @@
 			<groupId>org.iru.rts.classic.wsst</groupId>
 			<artifactId>safetirupload-bo</artifactId>
 			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.iru.epd</groupId>
+			<artifactId>epd-messages</artifactId>
+			<version>1.0.1</version>
 		</dependency>		
 	</dependencies>
 	
@@ -40,11 +45,9 @@
 						<fileset>
 							<directory>src/main/resources</directory>
 							<includes>
-								<!--
-								<include>TIREPD_*.xsd</include>
-								-->
 								<include>SafeTIRUpload.xsd</include>
 								<include>TCHQ*.xsd</include>
+								<include>TIREPD_*.xsd</include>
 							</includes>
 						</fileset>
 					</filesets>
@@ -74,13 +77,11 @@
 						<configuration>
 							<target>
 								<delete>
-									<!--
-									<fileset dir="target/generated-sources/xjc/org/iru/epd"
-										includes="**/*.java" />
-									-->
 									<fileset dir="target/generated-sources/xjc/org/iru/rts/tchq"
 										includes="**/*.java" />
 									<fileset dir="target/generated-sources/xjc/org/iru/rts/safetirupload"
+										includes="**/*.java" />
+									<fileset dir="target/generated-sources/xjc/org/iru/epd"
 										includes="**/*.java" />
 								</delete>
 							</target>
