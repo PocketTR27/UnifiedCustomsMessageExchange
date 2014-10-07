@@ -37,6 +37,7 @@ import org.iru.rts.safetirupload.PFDType;
 import org.iru.rts.safetirupload.Records;
 import org.iru.rts.safetirupload.Records.Record;
 import org.iru.rts.safetirupload.RequestReplyRecords;
+import org.iru.rts.safetirupload.TCOType;
 import org.iru.rts.safetirupload.UPGType;
 import org.iru.rtsplus.client.TerminationServiceClient;
 
@@ -85,8 +86,9 @@ public class TerminationServiceClientImpl extends AbstractWSSClient implements T
 		r.setDCL(termination.getCustomsLedgerEntryDate());
 		r.setRND(termination.getCertificateOfTerminationReference());
 		r.setDDI(termination.getCertificateOfTerminationDate());
-		r.setPFD(termination.isIsFinal() ? PFDType.FD : PFDType.PD);
+		r.setPFD(termination.isIsExit() ? null : (termination.isIsFinal() ? PFDType.FD : PFDType.PD));
 		r.setCWR(termination.isIsWithReservation() ? CWRType.R : CWRType.OK);
+		r.setTCO(termination.isIsExit() ? TCOType.EXIT : null);
 		r.setCOM(termination.getCustomsComment());
 		r.setUPG(isNewRecord ? UPGType.N : UPGType.C);
 		r.setPIC(termination.getPackageCount() != null ? BigInteger.valueOf(termination.getPackageCount()) : null);
@@ -117,8 +119,9 @@ public class TerminationServiceClientImpl extends AbstractWSSClient implements T
 			r.setDCL(termination.getCustomsLedgerEntryDate());
 			r.setRND(termination.getCertificateOfTerminationReference());
 			r.setDDI(termination.getCertificateOfTerminationDate());
-			r.setPFD(termination.isIsFinal() ? PFDType.FD : PFDType.PD);
+			r.setPFD(termination.isIsExit() ? null : (termination.isIsFinal() ? PFDType.FD : PFDType.PD));
 			r.setCWR(termination.isIsWithReservation() ? CWRType.R : CWRType.OK);
+			r.setTCO(termination.isIsExit() ? TCOType.EXIT : null);
 			r.setCOM(termination.getCustomsComment());
 			r.setPIC(termination.getPackageCount() != null ? BigInteger.valueOf(termination.getPackageCount()) : null);
 		}
@@ -174,6 +177,7 @@ public class TerminationServiceClientImpl extends AbstractWSSClient implements T
 			 * from 3rd character and pass it to termination.setSequenceNumber
 			 */
 			termination.setIsWithReservation(CWRType.R.equals(record.getCWR()));
+			termination.setIsExit(TCOType.EXIT.equals(record.getTCO()));
 			
 			termination.setCustomsComment(record.getCOM());
 			termination.setPackageCount(record.getPIC() != null ? record.getPIC().longValue() : null);

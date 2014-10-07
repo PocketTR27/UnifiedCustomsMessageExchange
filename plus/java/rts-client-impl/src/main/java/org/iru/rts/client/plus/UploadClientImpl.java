@@ -21,6 +21,7 @@ import org.iru.rts.safetirupload.CWRType;
 import org.iru.rts.safetirupload.PFDType;
 import org.iru.rts.safetirupload.Records;
 import org.iru.rts.safetirupload.RequestReplyRecords;
+import org.iru.rts.safetirupload.TCOType;
 import org.iru.rts.safetirupload.UPGType;
 import org.iru.rtsplus.client.plus.TerminationServiceClientImpl;
 
@@ -47,13 +48,14 @@ public class UploadClientImpl extends TerminationServiceClientImpl implements Up
 				termination.setCustomsLedgerEntryDate(safeTIRRecord.getDCL());
 				termination.setCertificateOfTerminationReference(safeTIRRecord.getRND());
 				termination.setCertificateOfTerminationDate(safeTIRRecord.getDDI());
-				termination.setIsFinal(safeTIRRecord.getPFD().equals(PFDType.FD));
-				termination.setIsWithReservation(safeTIRRecord.getCWR().equals(CWRType.R));
+				termination.setIsFinal(PFDType.FD.equals(safeTIRRecord.getPFD()));
+				termination.setIsWithReservation(CWRType.R.equals(safeTIRRecord.getCWR()));
+				termination.setIsExit(TCOType.EXIT.equals(safeTIRRecord.getTCO()));
 				termination.setCustomsComment(safeTIRRecord.getCOM());
 				termination.setPackageCount(safeTIRRecord.getPIC() != null ? safeTIRRecord.getPIC().longValue() : null);
 
 				JAXBElement<TIROperationTerminationType> t;
-				if (safeTIRRecord.getUPG().equals(UPGType.N)) {
+				if (UPGType.N.equals(safeTIRRecord.getUPG())) {
 					t = of.createNewTIROperationTermination(termination);
 				} else {
 					t = of.createCancelledTIROperationTermination(termination);
@@ -87,8 +89,9 @@ public class UploadClientImpl extends TerminationServiceClientImpl implements Up
 				termination.setCustomsLedgerEntryDate(rrRecord.getDCL());
 				termination.setCertificateOfTerminationReference(rrRecord.getRND());
 				termination.setCertificateOfTerminationDate(rrRecord.getDDI());
-				termination.setIsFinal(rrRecord.getPFD().equals(PFDType.FD));
-				termination.setIsWithReservation(rrRecord.getCWR().equals(CWRType.R));
+				termination.setIsFinal(PFDType.FD.equals(rrRecord.getPFD()));
+				termination.setIsWithReservation(CWRType.R.equals(rrRecord.getCWR()));
+				termination.setIsExit(TCOType.EXIT.equals(rrRecord.getTCO()));
 				termination.setCustomsComment(rrRecord.getCOM());
 				termination.setPackageCount(rrRecord.getPIC() != null ? rrRecord.getPIC().longValue() : null);
 				

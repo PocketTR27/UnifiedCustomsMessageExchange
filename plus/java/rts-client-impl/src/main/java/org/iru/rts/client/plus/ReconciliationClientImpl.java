@@ -18,6 +18,7 @@ import org.iru.rts.model.termination_1.TIROperationTerminationType;
 import org.iru.rts.safetirreconciliation.CWRType;
 import org.iru.rts.safetirreconciliation.PFDType;
 import org.iru.rts.safetirreconciliation.RequestRecords;
+import org.iru.rts.safetirreconciliation.TCOType;
 import org.iru.rtsplus.client.plus.TerminationServiceClientImpl;
 
 public class ReconciliationClientImpl extends TerminationServiceClientImpl implements ReconciliationClient {
@@ -54,11 +55,10 @@ public class ReconciliationClientImpl extends TerminationServiceClientImpl imple
 					record.setCOF(termination.getCustomsOffice());
 					record.setDDI(termination.getCertificateOfTerminationDate());
 					record.setRND(termination.getCertificateOfTerminationReference());					
-					PFDType pfd = termination.isIsFinal() ? PFDType.FD : PFDType.PD;
 					// TODO?: re-append the termination.getSequenceNumber() to PFD
-					record.setPFD(pfd);
-					CWRType cwr = termination.isIsWithReservation() ? CWRType.R : CWRType.OK;
-					record.setCWR(cwr);
+					record.setPFD(termination.isIsExit() ? null : (termination.isIsFinal() ? PFDType.FD : PFDType.PD));
+					record.setCWR(termination.isIsWithReservation() ? CWRType.R : CWRType.OK);
+					record.setTCO(termination.isIsExit() ? TCOType.EXIT : null);
 					record.setVPN(BigInteger.valueOf(termination.getVoletPageNumber()));
 					record.setCOM(termination.getCustomsComment());
 					record.setPIC(termination.getPackageCount() != null ? BigInteger.valueOf(termination.getPackageCount()) : null);
