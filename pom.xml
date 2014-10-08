@@ -13,7 +13,7 @@
 	</modules>
 
 	<properties>
-		<rtsplus.api.version>1.6.5</rtsplus.api.version>
+		<rtsplus.api.version>2.0.0</rtsplus.api.version>
 		<spring.version>3.0.5.RELEASE</spring.version>
 	</properties>
 
