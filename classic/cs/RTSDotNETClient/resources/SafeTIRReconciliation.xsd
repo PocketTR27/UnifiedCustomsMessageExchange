@@ -66,7 +66,7 @@
 					<xs:attribute name="RND" type="RNDType" use="optional" />
 					<xs:attribute name="PFD" type="PFDType" use="optional" />
 					<xs:attribute name="TCO" type="TCOType" use="optional" />
-					<xs:attribute name="CWR" type="CWRType" use="optional" />
+					<xs:attribute name="CWR" type="CWRType" use="required" />
 					<xs:attribute name="VPN" type="VPNType" use="optional" />
 					<xs:attribute name="COM" type="COMType" use="optional" />
 					<xs:attribute name="RBC" type="RBCType" use="optional" />
