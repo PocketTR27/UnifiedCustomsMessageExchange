@@ -1,6 +1,5 @@
 package org.iru.rtsplus.client.plus;
 
-import java.math.BigInteger;
 import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -8,6 +7,7 @@ import java.util.Set;
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.namespace.QName;
+import javax.xml.ws.Holder;
 
 import org.iru.rts.model.termination_1.ReconciliationRequestRepliesType;
 import org.iru.rts.model.termination_1.ReconciliationRequestType;
@@ -16,7 +16,6 @@ import org.iru.rts.services.terminationservice_1.ReconciliationRequestsType;
 import org.iru.rts.services.terminationservice_1.TerminationService;
 import org.iru.rts.services.terminationservice_1.TerminationServiceSEI;
 import org.iru.rts.services.terminationservice_1.TransmitReconciliationRequestReplies;
-import org.iru.rts.services.terminationservice_1.TransmitTIROperationTerminations;
 import org.iru.rtsplus.client.TerminationServiceClient;
 
 public class TerminationServiceClientImpl extends AbstractWSSClient implements TerminationServiceClient {
@@ -38,14 +37,14 @@ public class TerminationServiceClientImpl extends AbstractWSSClient implements T
 	}
 
 	@Override
-	public void transmitTIROperationTerminations(TIROperationTerminationsType tirOperationTerminations, String transmissionId, Date transmissionTime) throws DatatypeConfigurationException {
-		TransmitTIROperationTerminations parameters = new TransmitTIROperationTerminations();
-		parameters.setTIROperationTerminations(tirOperationTerminations);
-		parameters.setTransmissionId(transmissionId);
-		parameters.setTransmissionTime(convertToXML(transmissionTime));
+	public void transmitTIROperationTerminations(TIROperationTerminationsType tirOperationTerminations, String transmissionId, Date transmissionTime) throws DatatypeConfigurationException {     
+		Holder<XMLGregorianCalendar> transmissionTimeH = new Holder<XMLGregorianCalendar>();
+		Holder<Boolean> success = new Holder<Boolean>();
+        
+		transmissionTimeH.value = convertToXML(transmissionTime);
 
 		TerminationServiceSEI wsPort = getWsPort();
-		wsPort.transmitTIROperationTerminations(parameters);     
+		wsPort.transmitTIROperationTerminations(transmissionTimeH, transmissionId, tirOperationTerminations, success); 
 	}
 
 	@Override
@@ -59,7 +58,7 @@ public class TerminationServiceClientImpl extends AbstractWSSClient implements T
 
 		Set<ReconciliationRequestType> reconciliationRequests = new LinkedHashSet<ReconciliationRequestType>();
 		while (true) {
-			ReconciliationRequestsType.ReconciliationRequests data = wsPort.getReconciliationRequests(xFrom, xTo, BigInteger.valueOf((long) offset), retrievalRange).getReconciliationRequests();
+			ReconciliationRequestsType.ReconciliationRequests data = wsPort.getReconciliationRequests(xFrom, xTo, offset, retrievalRange).getReconciliationRequests();
 			reconciliationRequests.addAll(data.getReconciliationRequest());
 			retrievalRange = (long) data.getCount();
 			if (data.isEndReached())
