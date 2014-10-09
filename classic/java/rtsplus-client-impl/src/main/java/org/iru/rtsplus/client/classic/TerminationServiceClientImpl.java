@@ -31,7 +31,7 @@ import org.iru.rts.model.termination_1.ReconciliationRequestType.Originator;
 import org.iru.rts.model.termination_1.TIROperationTerminationType;
 import org.iru.rts.model.termination_1.TIROperationTerminationsType;
 import org.iru.rts.model.termination_1.UpdatedTIROperationTerminationType;
-import org.iru.rts.safetirreconciliation.RequestRecords.RequestRecord;
+import org.iru.rts.safetirreconciliation.RequestRecord;
 import org.iru.rts.safetirupload.CWRType;
 import org.iru.rts.safetirupload.PFDType;
 import org.iru.rts.safetirupload.Records;
