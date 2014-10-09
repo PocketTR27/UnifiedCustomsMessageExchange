@@ -17,19 +17,19 @@ import org.iru.rts.model.termination_1.ReconciliationRequestType;
 import org.iru.rts.model.termination_1.TIROperationTerminationType;
 import org.iru.rts.safetirreconciliation.CWRType;
 import org.iru.rts.safetirreconciliation.PFDType;
-import org.iru.rts.safetirreconciliation.RequestRecords;
+import org.iru.rts.safetirreconciliation.RequestRecord;
 import org.iru.rts.safetirreconciliation.TCOType;
 import org.iru.rtsplus.client.plus.TerminationServiceClientImpl;
 
 public class ReconciliationClientImpl extends TerminationServiceClientImpl implements ReconciliationClient {
 
 	@Override
-	public List<RequestRecords.RequestRecord> downloadReconciliationRequests(String senderMessageID) throws JAXBException, GeneralSecurityException, IOException, DatatypeConfigurationException {	
+	public List<RequestRecord> downloadReconciliationRequests(String senderMessageID) throws JAXBException, GeneralSecurityException, IOException, DatatypeConfigurationException {	
 		Set<ReconciliationRequestType> requests = getReconciliationRequests(null, null, null);
 		
-		List<RequestRecords.RequestRecord> records = new ArrayList<RequestRecords.RequestRecord>(requests.size());
+		List<RequestRecord> records = new ArrayList<RequestRecord>(requests.size());
 		for (ReconciliationRequestType request : requests) {
-			RequestRecords.RequestRecord record = new RequestRecords.RequestRecord();
+			RequestRecord record = new RequestRecord();
 			record.setRequestID(request.getId());
 			record.setRequestDate(request.getDate());
 			record.setRequestReminderNum((int) request.getReminderCount());
