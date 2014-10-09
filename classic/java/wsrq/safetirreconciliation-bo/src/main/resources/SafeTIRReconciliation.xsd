@@ -1,23 +1,35 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.iru.org/SafeTIRReconciliation"
 	xmlns="http://www.iru.org/SafeTIRReconciliation" elementFormDefault="qualified"  version="1.0.0">
-	<xs:element name="ReconciliationQuery">
+
+	<!-- WSRQ -->
+	<xs:element name="ReconciliationQuery" id="WSRQRequest">
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="Envelope" type="EnvelopeType" />
 				<xs:element name="Body" type="ReconciliationQueryBodyType" />
 			</xs:sequence>
-		<xs:attribute name="Sender_Document_Version" type="xs:string" use="optional"/>
+			<xs:attribute name="Sender_Document_Version" type="xs:string" use="optional"/>
 		</xs:complexType>
 	</xs:element>
-	<xs:element name="SafeTIR">
+	<xs:element name="SafeTIR" id="WSRQAnswer">
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="Envelope" type="EnvelopeType" />
 				<xs:element name="Body" type="SafeTIRBodyType" />
 			</xs:sequence>
-		<xs:attribute name="Sender_Document_Version" type="xs:string" use="optional"/>
+			<xs:attribute name="Sender_Document_Version" type="xs:string" use="optional"/>
 		</xs:complexType>
 	</xs:element>
+	<!-- WSRQNR -->
+	<xs:element name="SafeTIRReconciliation" id="WSRQNewRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Body" type="SafeTIRReconciliationBodyType" />
+			</xs:sequence>
+			<xs:attribute name="Sender_Document_Version" type="xs:string" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+
 	<xs:complexType name="ReconciliationQueryBodyType">
 		<xs:sequence>
 			<xs:element name="SentTime" type="xs:dateTime" />
@@ -29,6 +41,11 @@
 		<xs:sequence>
 			<xs:element name="NumberOfRecords" type="xs:int" />
 			<xs:element name="RequestRecords" type="RequestRecords" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SafeTIRReconciliationBodyType">
+		<xs:sequence>
+			<xs:element name="RequestRecord" type="RequestRecord" minOccurs="1" maxOccurs="1" />
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="EnvelopeType">
@@ -51,30 +68,29 @@
 	</xs:simpleType>
 	<xs:complexType name="RequestRecords">
 		<xs:sequence>
-			<xs:element name="RequestRecord" minOccurs="0" maxOccurs="unbounded">
-				<xs:complexType>
-					<xs:attribute name="RequestID" type="RequestIDType" use="required" />
-					<xs:attribute name="RequestDate" type="xs:date" use="required" />
-					<xs:attribute name="RequestReminderNum" type="xs:int" use="required" />
-					<xs:attribute name="RequestDataSource" type="RequestDataSourceType" use="required" />
-					<xs:attribute name="TNO" type="TNOType" use="required" />
-					<xs:attribute name="ICC" type="ICCType" use="required" />
-					<xs:attribute name="DCL" type="xs:date" use="optional" />
-					<xs:attribute name="CNL" type="CNLType" use="optional" />
-					<xs:attribute name="COF" type="COFType" use="required" />
-					<xs:attribute name="DDI" type="xs:date" use="optional" />
-					<xs:attribute name="RND" type="RNDType" use="optional" />
-					<xs:attribute name="PFD" type="PFDType" use="optional" />
-					<xs:attribute name="TCO" type="TCOType" use="optional" />
-					<xs:attribute name="CWR" type="CWRType" use="required" />
-					<xs:attribute name="VPN" type="VPNType" use="optional" />
-					<xs:attribute name="COM" type="COMType" use="optional" />
-					<xs:attribute name="RBC" type="RBCType" use="optional" />
-					<xs:attribute name="PIC" type="xs:nonNegativeInteger" use="optional" />
-					<xs:attribute name="RequestRemark" type="RequestRemarkType" use="optional" />
-				</xs:complexType>
-			</xs:element>
+			<xs:element name="RequestRecord" type="RequestRecord" minOccurs="0" maxOccurs="unbounded" />
 		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RequestRecord">
+		<xs:attribute name="RequestID" type="RequestIDType" use="required" />
+		<xs:attribute name="RequestDate" type="xs:date" use="required" />
+		<xs:attribute name="RequestReminderNum" type="xs:int" use="required" />
+		<xs:attribute name="RequestDataSource" type="RequestDataSourceType" use="required" />
+		<xs:attribute name="TNO" type="TNOType" use="required" />
+		<xs:attribute name="ICC" type="ICCType" use="required" />
+		<xs:attribute name="DCL" type="xs:date" use="optional" />
+		<xs:attribute name="CNL" type="CNLType" use="optional" />
+		<xs:attribute name="COF" type="COFType" use="required" />
+		<xs:attribute name="DDI" type="xs:date" use="optional" />
+		<xs:attribute name="RND" type="RNDType" use="optional" />
+		<xs:attribute name="PFD" type="PFDType" use="optional" />
+		<xs:attribute name="TCO" type="TCOType" use="optional" />
+		<xs:attribute name="CWR" type="CWRType" use="optional" />
+		<xs:attribute name="VPN" type="VPNType" use="optional" />
+		<xs:attribute name="COM" type="COMType" use="optional" />
+		<xs:attribute name="RBC" type="RBCType" use="optional" />
+		<xs:attribute name="PIC" type="xs:nonNegativeInteger" use="optional" />
+		<xs:attribute name="RequestRemark" type="RequestRemarkType" use="optional" />
 	</xs:complexType>
 	<xs:simpleType name="RequestIDType">
 		<xs:restriction base="xs:string">
