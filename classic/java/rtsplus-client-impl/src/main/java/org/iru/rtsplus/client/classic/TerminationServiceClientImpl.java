@@ -79,7 +79,7 @@ public class TerminationServiceClientImpl extends AbstractWSSClient implements T
 		Record r = new Record();
 		
 		r.setTNO(termination.getTIRCarnetNumber());
-		r.setVPN(BigInteger.valueOf(termination.getVoletPageNumber()));
+		r.setVPN(termination.getVoletPageNumber() != null ? BigInteger.valueOf(termination.getVoletPageNumber()) : BigInteger.ZERO);
 		r.setICC(termination.getCustoms().getCountryCode());
 		r.setCOF(termination.getCustomsOffice());
 		r.setCNL(termination.getCustomsLedgerEntryReference());
@@ -112,7 +112,7 @@ public class TerminationServiceClientImpl extends AbstractWSSClient implements T
 		TIROperationTerminationType termination = rrr.getCorrectedTIROperationTermination();
 		if (termination != null) { 
 			r.setTNO(termination.getTIRCarnetNumber());
-			r.setVPN(BigInteger.valueOf(termination.getVoletPageNumber()));
+			r.setVPN(termination.getVoletPageNumber() != null ? BigInteger.valueOf(termination.getVoletPageNumber()) : BigInteger.ZERO);
 			r.setICC(termination.getCustoms().getCountryCode());
 			r.setCOF(termination.getCustomsOffice());
 			r.setCNL(termination.getCustomsLedgerEntryReference());
@@ -154,7 +154,7 @@ public class TerminationServiceClientImpl extends AbstractWSSClient implements T
 			Customs c = new Customs();
 			c.setCountryCode(record.getICC());
 			termination.setCustoms(c);
-			termination.setVoletPageNumber(record.getVPN().shortValue());
+			termination.setVoletPageNumber(record.getVPN() != null && !BigInteger.ZERO.equals(record.getVPN()) ? record.getVPN().shortValue() : null);
 			
 			rr.setMissingTIROperationTermination(termination);
 			rr.setReason(ReconciliationRequestReasonType.MISSING);
@@ -164,7 +164,7 @@ public class TerminationServiceClientImpl extends AbstractWSSClient implements T
 			Customs c = new Customs();
 			c.setCountryCode(record.getICC());
 			termination.setCustoms(c);
-			termination.setVoletPageNumber(record.getVPN().shortValue());
+			termination.setVoletPageNumber(record.getVPN() != null && !BigInteger.ZERO.equals(record.getVPN()) ? record.getVPN().shortValue() : null);
 			termination.setCustomsOffice(record.getCOF());
 			
 			termination.setCustomsLedgerEntryDate(record.getDCL());

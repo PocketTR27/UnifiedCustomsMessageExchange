@@ -1,5 +1,6 @@
 package org.iru.rts.client.plus;
 
+import java.math.BigInteger;
 import java.security.GeneralSecurityException;
 import java.util.Date;
 import java.util.List;
@@ -39,7 +40,7 @@ public class UploadClientImpl extends TerminationServiceClientImpl implements Up
 			for (Records.Record safeTIRRecord: safeTIRRecords) {
 				TIROperationTerminationType termination = new TIROperationTerminationType();
 				termination.setTIRCarnetNumber(safeTIRRecord.getTNO());
-				termination.setVoletPageNumber(safeTIRRecord.getVPN().shortValue());
+				termination.setVoletPageNumber(safeTIRRecord.getVPN() != null && !BigInteger.ZERO.equals(safeTIRRecord.getVPN()) ? safeTIRRecord.getVPN().shortValue() : null);
 				Customs customs = new Customs();
 				customs.setCountryCode(safeTIRRecord.getICC());
 				termination.setCustoms(customs);
@@ -80,7 +81,7 @@ public class UploadClientImpl extends TerminationServiceClientImpl implements Up
 				requestReply.setReplyType(WSREConverter.convertRequestReplyToReplyType(rrRecord.getRequestReplyType()));
 				TIROperationTerminationType termination = new TIROperationTerminationType();
 				termination.setTIRCarnetNumber(rrRecord.getTNO());
-				termination.setVoletPageNumber(rrRecord.getVPN().shortValue());
+				termination.setVoletPageNumber(rrRecord.getVPN() != null && !BigInteger.ZERO.equals(rrRecord.getVPN()) ? rrRecord.getVPN().shortValue() : null);
 				Customs customs = new Customs();
 				customs.setCountryCode(rrRecord.getICC());
 				termination.setCustoms(customs);

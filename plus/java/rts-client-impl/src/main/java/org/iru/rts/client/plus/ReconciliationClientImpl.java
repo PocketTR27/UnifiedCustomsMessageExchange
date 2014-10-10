@@ -42,7 +42,7 @@ public class ReconciliationClientImpl extends TerminationServiceClientImpl imple
 					MissingTIROperationTerminationType termination = request.getMissingTIROperationTermination();
 					record.setTNO(termination.getTIRCarnetNumber());
 					record.setICC(termination.getCustoms().getCountryCode());
-					record.setVPN(BigInteger.valueOf(termination.getVoletPageNumber()));
+					record.setVPN(termination.getVoletPageNumber() != null ? BigInteger.valueOf(termination.getVoletPageNumber()) : BigInteger.ZERO);
 				}
 				break;
 			case DISCREPANCY:
@@ -59,7 +59,7 @@ public class ReconciliationClientImpl extends TerminationServiceClientImpl imple
 					record.setPFD(termination.isIsExit() ? null : (termination.isIsFinal() ? PFDType.FD : PFDType.PD));
 					record.setCWR(termination.isIsWithReservation() ? CWRType.R : CWRType.OK);
 					record.setTCO(termination.isIsExit() ? TCOType.EXIT : null);
-					record.setVPN(BigInteger.valueOf(termination.getVoletPageNumber()));
+					record.setVPN(termination.getVoletPageNumber() != null ? BigInteger.valueOf(termination.getVoletPageNumber()) : BigInteger.ZERO);
 					record.setCOM(termination.getCustomsComment());
 					record.setPIC(termination.getPackageCount() != null ? BigInteger.valueOf(termination.getPackageCount()) : null);
 				}
