@@ -31,6 +31,25 @@
 	</dependencies>
 	
 	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>false</filtering>
+				<excludes>
+					<exclude>TIREPD_*.xsd</exclude>
+				</excludes>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>false</filtering>
+				<includes>
+					<include>TIREPD_IE025.xsd</include>
+					<include>TIREPD_IE029.xsd</include>
+					<include>TIREPD_Types.xsd</include>
+				</includes>
+			</resource>
+		</resources>
+
 		<plugins>
 
 			<plugin>
