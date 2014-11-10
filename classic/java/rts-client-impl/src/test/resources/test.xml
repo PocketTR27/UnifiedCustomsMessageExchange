@@ -27,7 +27,7 @@
 	<bean class="org.iru.rts.client.UploadClient" factory-bean="rtsjavaFactory" factory-method="getUploadClient">
 		<constructor-arg>
 			<bean class="java.net.URL">
-				<constructor-arg type="java.lang.String" value="http://apps-test.iru.org/rts2/wsst_ws/safetirupload.asmx?WSDL"/>
+				<constructor-arg type="java.lang.String" value="https://apps-test.iru.org/rts2/wsst_ws/safetirupload.asmx?WSDL"/>
 			</bean>
 		</constructor-arg>
 	</bean>
@@ -35,7 +35,7 @@
 	<bean class="org.iru.rts.client.HolderQueryClient" factory-bean="rtsjavaFactory" factory-method="getHolderQueryClient">
 		<constructor-arg>
 			<bean class="java.net.URL">
-				<constructor-arg type="java.lang.String" value="http://apps-test.iru.org/rts2/tchq_ws/tircarnetquery.asmx?WSDL"/>
+				<constructor-arg type="java.lang.String" value="https://apps-test.iru.org/rts2/tchq_ws/tircarnetquery.asmx?WSDL"/>
 			</bean>
 		</constructor-arg>
 	</bean>
@@ -43,7 +43,7 @@
 	<bean class="org.iru.rts.client.ReconciliationClient" factory-bean="rtsjavaFactory" factory-method="getReconciliationClient">
 		<constructor-arg>
 			<bean class="java.net.URL">
-				<constructor-arg type="java.lang.String" value="http://apps-test.iru.org/rts2/wsrq_ws/wsrq.asmx?WSDL"/>
+				<constructor-arg type="java.lang.String" value="https://apps-test.iru.org/rts2/wsrq_ws/wsrq.asmx?WSDL"/>
 			</bean>
 		</constructor-arg>
 	</bean>

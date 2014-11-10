@@ -25,7 +25,7 @@
 	<bean factory-bean="rtsplusFactory" factory-method="getCarnetServiceClient" >
 		<constructor-arg>
 			<bean class="java.net.URL">
-				<constructor-arg type="java.lang.String" value="http://ws-test.iruworld.org/rts/services/CarnetService-1.svc?wsdl"/>
+				<constructor-arg type="java.lang.String" value="https://ws-test.iru.org/rts/services/CarnetService-1.svc?wsdl"/>
 			</bean>
 		</constructor-arg>
 	</bean>
