@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>org.iru.rts.classic</groupId>
 		<artifactId>tvqr</artifactId>
-		<version>1.6.12-SNAPSHOT</version>
+		<version>1.6.12</version>
 	</parent>
 
 	<groupId>org.iru.rts.classic.tvqr</groupId>
