@@ -86,9 +86,9 @@ public class TerminationServiceClientImpl extends AbstractWSSClient implements T
 		r.setDCL(termination.getCustomsLedgerEntryDate());
 		r.setRND(termination.getCertificateOfTerminationReference());
 		r.setDDI(termination.getCertificateOfTerminationDate());
-		r.setPFD(termination.isIsExit() ? null : (termination.isIsFinal() ? PFDType.FD : PFDType.PD));
+		r.setPFD(Boolean.TRUE.equals(termination.isIsExit()) ? null : (termination.isIsFinal() ? PFDType.FD : PFDType.PD));
 		r.setCWR(termination.isIsWithReservation() ? CWRType.R : CWRType.OK);
-		r.setTCO(termination.isIsExit() ? TCOType.EXIT : null);
+		r.setTCO(Boolean.TRUE.equals(termination.isIsExit()) ? TCOType.EXIT : null);
 		r.setCOM(termination.getCustomsComment());
 		r.setUPG(isNewRecord ? UPGType.N : UPGType.C);
 		r.setPIC(termination.getPackageCount() != null ? BigInteger.valueOf(termination.getPackageCount()) : null);
@@ -119,9 +119,9 @@ public class TerminationServiceClientImpl extends AbstractWSSClient implements T
 			r.setDCL(termination.getCustomsLedgerEntryDate());
 			r.setRND(termination.getCertificateOfTerminationReference());
 			r.setDDI(termination.getCertificateOfTerminationDate());
-			r.setPFD(termination.isIsExit() ? null : (termination.isIsFinal() ? PFDType.FD : PFDType.PD));
+			r.setPFD(Boolean.TRUE.equals(termination.isIsExit()) ? null : (termination.isIsFinal() ? PFDType.FD : PFDType.PD));
 			r.setCWR(termination.isIsWithReservation() ? CWRType.R : CWRType.OK);
-			r.setTCO(termination.isIsExit() ? TCOType.EXIT : null);
+			r.setTCO(Boolean.TRUE.equals(termination.isIsExit()) ? TCOType.EXIT : null);
 			r.setCOM(termination.getCustomsComment());
 			r.setPIC(termination.getPackageCount() != null ? BigInteger.valueOf(termination.getPackageCount()) : null);
 		}
