@@ -45,6 +45,7 @@
 				<includes>
 					<include>TIREPD_IE025.xsd</include>
 					<include>TIREPD_IE029.xsd</include>
+					<include>TIREPD_IE045.xsd</include>
 					<include>TIREPD_Types.xsd</include>
 				</includes>
 			</resource>

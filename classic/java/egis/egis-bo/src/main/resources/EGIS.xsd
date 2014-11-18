@@ -54,6 +54,7 @@
 		<xs:complexContent>
 			<xs:extension base="tchqr:BodyType">
 				<xs:sequence>
+					<xs:element name="RequestedGuaranteeNumber" type="tchqr:CarnetNumberType" />
 					<xs:element name="TIROperationMessages" type="egis:TIROperationMessagesType" />
 				</xs:sequence>
 			</xs:extension>
@@ -63,6 +64,12 @@
 	<xs:complexType name="StartMessagesType">
 		<xs:sequence>
 			<xs:element ref="EPD029" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="DischargeMessagesType">
+		<xs:sequence>
+			<xs:element ref="EPD045" maxOccurs="unbounded" />
 		</xs:sequence>
 	</xs:complexType>
 
@@ -76,6 +83,7 @@
 		<xs:sequence>
 			<xs:element name="StartMessages" type="egis:StartMessagesType" minOccurs="0" />
 			<xs:element name="TerminationAndExitMessages" type="wsst:Records" minOccurs="0" />
+			<xs:element name="DischargeMessages" type="egis:DischargeMessagesType" minOccurs="0" />
 			<xs:element name="UpdateSealsMessages" type="egis:UpdateSealsMessagesType" minOccurs="0" />
 		</xs:sequence>
 	</xs:complexType>
