@@ -141,12 +141,8 @@ public class TerminationServiceClientImpl extends AbstractWSSClient implements T
 		rr.setOriginator(orig);
 		rr.setRemark(record.getRequestRemark());
 		
-		
-		boolean missing = isEmpty(record.getCOF()) && 
-				isEmpty(record.getDCL()) && isEmpty(record.getCNL()) &&
-				isEmpty(record.getDDI()) && isEmpty(record.getRND()) && 
-				isEmpty(record.getPFD()) && isEmpty(record.getCWR()) &&
-				isEmpty(record.getCOM()) && isEmpty(record.getPIC());
+		int rds = record.getRequestDataSource();
+		boolean missing = rds == 1; // TIR Carnet data
 				
 		if (missing) {
 			MissingTIROperationTerminationType termination = new MissingTIROperationTerminationType();
@@ -155,7 +151,27 @@ public class TerminationServiceClientImpl extends AbstractWSSClient implements T
 			c.setCountryCode(record.getICC());
 			termination.setCustoms(c);
 			termination.setVoletPageNumber(record.getVPN() != null && !BigInteger.ZERO.equals(record.getVPN()) ? record.getVPN().shortValue() : null);
+
+			termination.setCustomsOffice(record.getCOF());
 			
+			termination.setCustomsLedgerEntryDate(record.getDCL());
+			termination.setCustomsLedgerEntryReference(record.getCNL());
+			termination.setCertificateOfTerminationDate(record.getDDI());
+			termination.setCertificateOfTerminationReference(record.getRND());
+			
+			if (record.getPFD() != null)
+				termination.setIsFinal(PFDType.FD.equals(record.getPFD()));
+			/* TODO?: extract the termination number which can be append to PFD
+			 * from 3rd character and pass it to termination.setSequenceNumber
+			 */
+			if (record.getCWR() != null)
+				termination.setIsWithReservation(CWRType.R.equals(record.getCWR()));
+			if (record.getTCO() != null)
+				termination.setIsExit(TCOType.EXIT.equals(record.getTCO()));
+			
+			termination.setCustomsComment(record.getCOM());
+			termination.setPackageCount(record.getPIC() != null ? record.getPIC().longValue() : null);
+
 			rr.setMissingTIROperationTermination(termination);
 			rr.setReason(ReconciliationRequestReasonType.MISSING);
 		} else {
@@ -177,7 +193,8 @@ public class TerminationServiceClientImpl extends AbstractWSSClient implements T
 			 * from 3rd character and pass it to termination.setSequenceNumber
 			 */
 			termination.setIsWithReservation(CWRType.R.equals(record.getCWR()));
-			termination.setIsExit(TCOType.EXIT.equals(record.getTCO()));
+			if (record.getTCO() != null)
+				termination.setIsExit(TCOType.EXIT.equals(record.getTCO()));
 			
 			termination.setCustomsComment(record.getCOM());
 			termination.setPackageCount(record.getPIC() != null ? record.getPIC().longValue() : null);

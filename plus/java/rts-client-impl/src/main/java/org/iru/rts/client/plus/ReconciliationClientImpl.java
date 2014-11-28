@@ -43,6 +43,20 @@ public class ReconciliationClientImpl extends TerminationServiceClientImpl imple
 					record.setTNO(termination.getTIRCarnetNumber());
 					record.setICC(termination.getCustoms().getCountryCode());
 					record.setVPN(termination.getVoletPageNumber() != null ? BigInteger.valueOf(termination.getVoletPageNumber()) : BigInteger.ZERO);
+					record.setCNL(termination.getCustomsLedgerEntryReference());
+					record.setCOF(termination.getCustomsOffice());
+					record.setDDI(termination.getCertificateOfTerminationDate());
+					record.setRND(termination.getCertificateOfTerminationReference());					
+					// TODO?: re-append the termination.getSequenceNumber() to PFD
+					if (termination.isIsExit() != null)
+						record.setPFD(termination.isIsExit() ? null : (termination.isIsFinal() ? PFDType.FD : PFDType.PD));
+					if (termination.isIsWithReservation() != null)
+						record.setCWR(termination.isIsWithReservation() ? CWRType.R : CWRType.OK);
+					if (termination.isIsExit() != null)
+						record.setTCO(termination.isIsExit() ? TCOType.EXIT : null);
+					record.setVPN(termination.getVoletPageNumber() != null ? BigInteger.valueOf(termination.getVoletPageNumber()) : BigInteger.ZERO);
+					record.setCOM(termination.getCustomsComment());
+					record.setPIC(termination.getPackageCount() != null ? BigInteger.valueOf(termination.getPackageCount()) : null);
 				}
 				break;
 			case DISCREPANCY:
@@ -56,9 +70,11 @@ public class ReconciliationClientImpl extends TerminationServiceClientImpl imple
 					record.setDDI(termination.getCertificateOfTerminationDate());
 					record.setRND(termination.getCertificateOfTerminationReference());					
 					// TODO?: re-append the termination.getSequenceNumber() to PFD
-					record.setPFD(termination.isIsExit() ? null : (termination.isIsFinal() ? PFDType.FD : PFDType.PD));
+					if (termination.isIsExit() != null)
+						record.setPFD(termination.isIsExit() ? null : (termination.isIsFinal() ? PFDType.FD : PFDType.PD));
 					record.setCWR(termination.isIsWithReservation() ? CWRType.R : CWRType.OK);
-					record.setTCO(termination.isIsExit() ? TCOType.EXIT : null);
+					if (termination.isIsExit() != null)
+						record.setTCO(termination.isIsExit() ? TCOType.EXIT : null);
 					record.setVPN(termination.getVoletPageNumber() != null ? BigInteger.valueOf(termination.getVoletPageNumber()) : BigInteger.ZERO);
 					record.setCOM(termination.getCustomsComment());
 					record.setPIC(termination.getPackageCount() != null ? BigInteger.valueOf(termination.getPackageCount()) : null);
