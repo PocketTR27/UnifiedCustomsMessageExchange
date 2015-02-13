@@ -2,14 +2,14 @@
 using System.ServiceModel;
 using System.Security.Cryptography.X509Certificates;
 
-namespace RTSDotNETClient.TCHQ
+namespace RTSDotNETClient.EGIS
 {
 
     /// <summary>
-    /// The HolderQueryClient class allows to query the TCHQ Web Service
+    /// The ElectronicGuaranteeInformationServiceClient class allows to query the EGIS Web Service
     /// in order to retrieve some information related to a TIR Carnet (status, holder, association, etc)
     /// </summary>
-    public class HolderQueryClient : BaseWSClient
+    public class ElectronicGuaranteeInformationServiceClient : BaseWSClient
     {
         /// <summary>
         /// The private certificate used for decryption of the response
@@ -17,12 +17,13 @@ namespace RTSDotNETClient.TCHQ
         public X509Certificate2 PrivateCertificate { get; set; }        
         
         /// <summary>
-        /// Send a query to the TCHQ Web Service to retrieve some information related to a TIR Carnet (status, holder, association, etc)
+        /// Send a query to the EGIS Web Service to retrieve some information related to a TIR Carnet (status, holder, association, etc),
+        /// the EPD messages needed for eTIR (Releases for transit, Write-offs, ...) and the SafeTIR messages (Terminations, Exit, ...)
         /// </summary>
         /// <param name="query">The query object</param>
         /// <param name="queryId">The query id (optional value the sender may use to track this message)</param>
-        /// <returns>The response returned by the TCHQ Web Service</returns>
-        public Response QueryCarnet(Query query, string queryId)
+        /// <returns>The response returned by the EGIS Web Service</returns>
+        public EGISResponse EGISQuery(EGISQuery query, string queryId)
         {
             SanityChecks();
             if (this.PrivateCertificate == null)
@@ -31,7 +32,7 @@ namespace RTSDotNETClient.TCHQ
             query.CalculateHash();
             string queryStr = query.Serialize();
 
-            Global.Trace("TCHQ QUERY:\r\n" + queryStr + "\r\n");
+            Global.Trace("EGIS QUERY:\r\n" + queryStr + "\r\n");
 
             // Encryption
             EncryptionResult encrypted = EncryptionHelper.X509EncryptString(queryStr, this.PublicCertificate);
@@ -63,30 +64,29 @@ namespace RTSDotNETClient.TCHQ
             }
 
             // Call the Web Service
-            CarnetHolderQueryWS.SafeTIRHolderQueryServiceClassSoap ws = new CarnetHolderQueryWS.SafeTIRHolderQueryServiceClassSoapClient(binding, remoteAddress);
+            ElectronicGuaranteeInformationServiceWS.EGISClassSoap ws = new ElectronicGuaranteeInformationServiceWS.EGISClassSoapClient(binding, remoteAddress);
 
-            CarnetHolderQueryWS.WSTCHQRequest request = new CarnetHolderQueryWS.WSTCHQRequest();
-            request.Body = new CarnetHolderQueryWS.WSTCHQRequestBody();
-            request.Body.su = new CarnetHolderQueryWS.TIRHolderQuery();
-            request.Body.su.SubscriberID = query.Body.Sender;
-            request.Body.su.Query_ID = queryId;
-            request.Body.su.MessageTag = encrypted.Thumbprint;
-            request.Body.su.ESessionKey = encrypted.SessionKey;
-            request.Body.su.TIRCarnetHolderQueryParams = encrypted.Encrypted;
-            
-            CarnetHolderQueryWS.WSTCHQResponse response = ws.WSTCHQ(request);
+            ElectronicGuaranteeInformationServiceWS.EGISQueryRequest request = new ElectronicGuaranteeInformationServiceWS.EGISQueryRequest();
+            request.su = new ElectronicGuaranteeInformationServiceWS.EGISQueryType();
+            request.su.SubscriberID = query.Body.Sender;
+            request.su.Query_ID = queryId;
+            request.su.MessageTag = encrypted.Thumbprint;
+            request.su.ESessionKey = encrypted.SessionKey;
+            request.su.EGISQueryParams = encrypted.Encrypted;
+
+            ElectronicGuaranteeInformationServiceWS.EGISQueryResponse response = ws.EGISQuery(request);
 
             // Verify the Return Code => it should be 2 (OK)
-            ReturnCode returnCode = (ReturnCode)response.Body.WSTCHQResult.ReturnCode;
+            ReturnCode returnCode = (ReturnCode)response.EGISResult.ReturnCode;
             if (returnCode != ReturnCode.SUCCESS)
                 throw new RTSWebServiceException(String.Format("{0} ({1})", returnCode.ToString(), (int)returnCode),(int)returnCode);
 
-            string respStr = EncryptionHelper.X509DecryptString(response.Body.WSTCHQResult.ESessionKey,
-                    response.Body.WSTCHQResult.TIRCarnetHolderResponseParams, response.Body.WSTCHQResult.MessageTag, this.PrivateCertificate);
+            string respStr = EncryptionHelper.X509DecryptString(response.EGISResult.ESessionKey,
+                    response.EGISResult.EGISResponseParams, response.EGISResult.MessageTag, this.PrivateCertificate);
 
-            Global.Trace(string.Format("TCHQ RESPONSE: RETURN_CODE={0} ({1})\r\n{2}\r\n", (int)returnCode, returnCode, respStr));
+            Global.Trace(string.Format("EGIS RESPONSE: RETURN_CODE={0} ({1})\r\n{2}\r\n", (int)returnCode, returnCode, respStr));
 
-            return QueryResponseFactory.Deserialize<Response>(respStr, Response.Xsd);
+            return QueryResponseFactory.Deserialize<EGISResponse>(respStr, EGISResponse.Xsd);
         }
     }
 }

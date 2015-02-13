@@ -60,5 +60,15 @@ namespace RTSDotNETClient
             get { return (string)this["SafeTirUploadWSUrl"]; }
             set { this["SafeTirUploadWSUrl"] = value; }
         }
+
+        /// <summary>
+        /// The url of the Electronic Guarantee Information web service
+        /// </summary>
+        [ConfigurationProperty("ElectronicGuaranteeInformationServiceWSUrl", DefaultValue = "", IsRequired = false)]
+        public string ElectronicGuaranteeInformationServiceWSUrl
+        {
+            get { return (string)this["ElectronicGuaranteeInformationServiceWSUrl"]; }
+            set { this["ElectronicGuaranteeInformationServiceWSUrl"] = value; }
+        }
     }
 }

@@ -11,16 +11,59 @@ using System.Xml.Serialization;
 
 namespace RTSDotNETClient
 {
-    
     /// <summary>
     /// The envelope of queries or responses
     /// </summary>
-    public class Envelope 
+    public class Envelope: IXmlSerializable
     {
         /// <summary>
         /// The hash of the query / response body
         /// </summary>
         public string Hash { get; set; }
+
+        #region IXmlSerializable Members
+
+        /// <summary>
+        /// This method is reserved and should not be used. It implements IXmlSerializable.
+        /// </summary>
+        /// <returns>null</returns>
+        virtual public XmlSchema GetSchema()
+        {
+            return null;
+        }
+
+        /// <summary>
+        /// Generates an object from its XML representation. It implements IXmlSerializable.
+        /// </summary>
+        /// <param name="reader">The XmlReader stream from which the object is deserialized.</param>
+        virtual public void ReadXml(XmlReader reader)
+        {
+            reader.ReadStartElement();
+            reader.MoveToContent();
+            if (!reader.IsEmptyElement)
+            {
+                if (reader.LocalName == "Hash")
+                {
+                    Hash = reader.ReadElementString();
+                }
+                else
+                {
+                    throw new XmlException("Hash element expected");
+                }
+            }
+            reader.ReadEndElement();
+        }
+
+        /// <summary>
+        /// Converts an object into its XML representation. It implements IXmlSerializable.
+        /// </summary>
+        /// <param name="writer">The XmlWriter stream to which the object is serialized.</param>
+        virtual public void WriteXml(XmlWriter writer)
+        {
+            writer.WriteElementString("Hash", Hash);
+        }
+
+        #endregion
     }
 
     /// <summary>
@@ -34,6 +77,11 @@ namespace RTSDotNETClient
         protected string xsd;
 
         /// <summary>
+        /// A list of Extra Types for XML Serialization
+        /// </summary>
+        protected List<Type> extraTypes = new List<Type>();
+
+        /// <summary>
         /// The envelope of the query of response
         /// </summary>
         public Envelope Envelope { get; set; }
@@ -43,6 +91,7 @@ namespace RTSDotNETClient
         /// </summary>
         public BaseQueryResponse()
         {
+            this.extraTypes.Add(typeof(Envelope));
             this.Envelope = new Envelope();
         }
 
@@ -72,7 +121,7 @@ namespace RTSDotNETClient
         /// <returns></returns>
         public string Serialize()
         {
-            XmlSerializer ser = new XmlSerializer(this.GetType());
+            XmlSerializer ser = new XmlSerializer(this.GetType(), extraTypes.ToArray());
             string xml;
             using (StringWriter sw = new StringWriter())
             {
@@ -96,6 +145,29 @@ namespace RTSDotNETClient
                     });
                     Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(Assembly.GetExecutingAssembly().GetName().Name + ".resources." + xsd);
                     config.Schemas.Add(null, XmlReader.Create(stream));
+                    List<string> lsSchemasAdded = new List<string>();
+                    lsSchemasAdded.Add(xsd);
+                    bool bSchemaAdded = true;
+                    while (bSchemaAdded)
+                    {
+                        bSchemaAdded = false;
+                        foreach (XmlSchema schema in config.Schemas.Schemas().OfType<XmlSchema>().ToList())
+                        {
+                            foreach (XmlSchemaExternal external in schema.Includes.OfType<XmlSchemaExternal>().ToList())
+                            {
+                                if (!lsSchemasAdded.Contains(external.SchemaLocation))
+                                {
+                                    lsSchemasAdded.Add(external.SchemaLocation);
+                                    stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(Assembly.GetExecutingAssembly().GetName().Name + ".resources." + external.SchemaLocation);
+                                    if (stream != null)
+                                    {
+                                        config.Schemas.Add(null, XmlReader.Create(stream));
+                                        bSchemaAdded = true;
+                                    }
+                                }
+                            }
+                        }
+                    }
 
                     StringReader sr = new StringReader(xml);
                     XmlReader reader = XmlReader.Create(sr, config);

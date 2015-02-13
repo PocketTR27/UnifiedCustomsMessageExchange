@@ -7,6 +7,7 @@ using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
 using System.Reflection;
+using System.ComponentModel;
 
 namespace RTSDotNETClient.TCHQ
 {
@@ -77,7 +78,7 @@ namespace RTSDotNETClient.TCHQ
         /// <summary>
         /// The body of the query
         /// </summary>
-        public Body Body = new Body();
+        public Body<QueryType> Body = new Body<QueryType>();
 
         /// <summary>
         /// The default constructor
@@ -92,8 +93,10 @@ namespace RTSDotNETClient.TCHQ
     /// <summary>
     /// The query body
     /// </summary>
-    public class Body
+    public class Body<T>
     {
+        private QueryReason QueryReasonField;
+
         /// <summary>
         /// The identification of the sender.
         /// </summary>
@@ -123,13 +126,28 @@ namespace RTSDotNETClient.TCHQ
         /// Type of the query
         /// </summary>
         [XmlElement("Query_Type")]
-        public QueryType QueryType{ get; set; }
+        public T QueryType{ get; set; }
+
+        [XmlIgnore()]
+        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public bool QueryReasonSpecified { get; set; }
 
         /// <summary>
         /// Reason for the query
         /// </summary>
         [XmlElement("Query_Reason")]
-        public QueryReason QueryReason{ get; set; }
+        public QueryReason QueryReason
+        {
+            get
+            {
+                return QueryReasonField;
+            }
+            set
+            {
+                QueryReasonField = value;
+                QueryReasonSpecified = true;
+            }
+        }
 
         /// <summary>
         /// The Carnet Number

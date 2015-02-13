@@ -1,9 +1,12 @@
 ﻿using System;
 using System.IO;
 using System.Reflection;
+using System.Linq;
+using System.Text;
 using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
+using System.Collections.Generic;
 
 namespace RTSDotNETClient
 {
@@ -34,11 +37,38 @@ namespace RTSDotNETClient
                     });
                     Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(Assembly.GetExecutingAssembly().GetName().Name + ".resources." + xsd);
                     config.Schemas.Add(null, XmlReader.Create(stream));
+                    List<string> lsSchemasAdded = new List<string>();
+                    lsSchemasAdded.Add(xsd);
+                    bool bSchemaAdded = true;
+                    while (bSchemaAdded)
+                    {
+                        bSchemaAdded = false;
+                        foreach (XmlSchema schema in config.Schemas.Schemas().OfType<XmlSchema>().ToList())
+                        {
+                            foreach (XmlSchemaExternal external in schema.Includes.OfType<XmlSchemaExternal>().ToList())
+                            {
+                                if (!lsSchemasAdded.Contains(external.SchemaLocation))
+                                {
+                                    lsSchemasAdded.Add(external.SchemaLocation);
+                                    stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(Assembly.GetExecutingAssembly().GetName().Name + ".resources." + external.SchemaLocation);
+                                    if (stream != null)
+                                    {
+                                        config.Schemas.Add(null, XmlReader.Create(stream));
+                                        bSchemaAdded = true;
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
                 StringReader sr = new StringReader(xml);
                 XmlSerializer ser = new XmlSerializer(typeof(T));
                 XmlReader reader = XmlReader.Create(sr, config);
-                return (T)ser.Deserialize(reader);
+                T result = (T)ser.Deserialize(reader);
+                //StringBuilder sb = new StringBuilder();
+                //TextWriter tw = new StringWriter(sb);
+                //ser.Serialize(tw, result);
+                return result;
             }
             catch (InvalidOperationException ex)
             {

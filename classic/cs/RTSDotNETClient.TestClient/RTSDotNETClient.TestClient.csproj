@@ -55,6 +55,12 @@
     <Compile Include="CarnetHolderQueryTab.Designer.cs">
       <DependentUpon>CarnetHolderQueryTab.cs</DependentUpon>
     </Compile>
+    <Compile Include="EGISQueryTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EGISQueryTab.Designer.cs">
+      <DependentUpon>EGISQueryTab.cs</DependentUpon>
+    </Compile>
     <Compile Include="EncrypDecryptTab.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -71,6 +77,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="CarnetHolderQueryTab.resx">
       <DependentUpon>CarnetHolderQueryTab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EGISQueryTab.resx">
+      <DependentUpon>EGISQueryTab.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EncrypDecryptTab.resx">
       <DependentUpon>EncrypDecryptTab.cs</DependentUpon>
@@ -143,6 +152,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="queries\EGISQuerySample.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="queries\TCHQQuerySample.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

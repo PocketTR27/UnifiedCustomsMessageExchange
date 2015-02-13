@@ -283,7 +283,7 @@ namespace RTSDotNETClient.WSST
         /// <summary>
         /// Number of packages discharged
         /// </summary>
-        [XmlIgnore]
+        [XmlIgnore()]
         public uint? PIC { get; set; }
 
         /// <summary>

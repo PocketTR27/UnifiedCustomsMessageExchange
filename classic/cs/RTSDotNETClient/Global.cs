@@ -34,6 +34,11 @@ namespace RTSDotNETClient
         public static string SafeTirUploadWSUrl { get; set; }
 
         /// <summary>
+        /// The url of the Electronic Guarantee Information web service
+        /// </summary>
+        public static string ElectronicGuaranteeInformationServiceWSUrl { get; set; }
+
+        /// <summary>
         /// Loads the RTSDotNETClient configuration from the configuration file (.config file)
         /// </summary>
         public static void LoadConfiguration()
@@ -54,6 +59,7 @@ namespace RTSDotNETClient
             Global.TirCarnetQueryWSUrl = config.TirCarnetQueryWSUrl;
             Global.ReconciliationWSUrl = config.ReconciliationWSUrl;
             Global.SafeTirUploadWSUrl = config.SafeTirUploadWSUrl;
+            Global.ElectronicGuaranteeInformationServiceWSUrl = config.ElectronicGuaranteeInformationServiceWSUrl;
             Global.XsdValidationDisabled = config.XsdValidationDisabled;
         }
 
@@ -67,6 +73,7 @@ namespace RTSDotNETClient
             TirCarnetQueryWSUrl = "";
             ReconciliationWSUrl = "";
             SafeTirUploadWSUrl = "";
+            ElectronicGuaranteeInformationServiceWSUrl = "";
         }
 
         /// <summary>

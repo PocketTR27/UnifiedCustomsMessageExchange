@@ -74,16 +74,19 @@ namespace RTSDotNETClient.TCHQ
         /// <summary>
         /// The identification of the sender
         /// </summary>
+        [XmlElement(Namespace = "http://www.iru.org/TCHQResponse")]
         public string Sender{ get; set; }
 
         /// <summary>
         /// The identification of the customs post which generated the query.
         /// </summary>
+        [XmlElement(Namespace = "http://www.iru.org/TCHQResponse")]
         public string Originator{ get; set; }
 
         /// <summary>
         /// The date and time the Response was sent. Time in UTC. See ISO 8601.
         /// </summary>
+        [XmlElement(Namespace = "http://www.iru.org/TCHQResponse")]
         public DateTime ResponseTime{ get; set; } 
        
         /// <summary>
@@ -91,39 +94,44 @@ namespace RTSDotNETClient.TCHQ
         /// <remarks>2 means that although the association has not informed the IRU that the carnet has been issued, other factors make it seem possible.
         /// 5 means that the carnet number is not syntactically correct.</remarks>
         /// </summary>
+        [XmlElement(Namespace = "http://www.iru.org/TCHQResponse")]
         public ResponseResult Result{ get; set; } 
        
         /// <summary>
         /// The carnet number in the query.
         /// </summary>
-        [XmlElement("Carnet_Number")]
+        [XmlElement("Carnet_Number", Namespace = "http://www.iru.org/TCHQResponse")]
         public string CarnetNumber { get; set; }
 
         /// <summary>
         /// The holder ID. Only for Result = 1
         /// </summary>
+        [XmlElement(Namespace = "http://www.iru.org/TCHQResponse")]
         public string HolderID { get; set; }
 
         /// <summary>
         /// The validity date. Only for Result = 1
         /// </summary>
+        [XmlElement(Namespace = "http://www.iru.org/TCHQResponse")]
         public DateTime ValidityDate { get; set; }
 
         /// <summary>
         /// The short name of the association. This is the association to which the IRU issued the carnet. Only for Result = 1, 2.
         /// </summary>
+        [XmlElement(Namespace = "http://www.iru.org/TCHQResponse")]
         public string Association { get; set; }
 
         /// <summary>
         /// The number of termination (SafeTIR) records for this carnet. Only for Result = 1, 2.
         /// </summary>
+        [XmlElement(Namespace = "http://www.iru.org/TCHQResponse")]
         public int NumTerminations { get; set; }
 
         /// <summary>
         /// The Voucher Number of TIR Plus additional guarantee which is associated to the TIR carnet.
         /// <remarks>It can be null and it is returned only if Query_Type argument of the query has the flag 2.</remarks>
         /// </summary>
-        [XmlElement("Voucher_Number")]
+        [XmlElement("Voucher_Number", Namespace = "http://www.iru.org/TCHQResponse")]
         public string VoucherNumber { get; set; }
     }
     

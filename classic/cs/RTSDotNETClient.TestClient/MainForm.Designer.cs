@@ -42,17 +42,19 @@
             this.openFileDialogPfx = new System.Windows.Forms.OpenFileDialog();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabCarnetHolderQuery = new System.Windows.Forms.TabPage();
-            this.tabReconciliationQuery = new System.Windows.Forms.TabPage();
-            this.tabSafeTIRTransmission = new System.Windows.Forms.TabPage();
-            this.tabReconciliationRequestReplies = new System.Windows.Forms.TabPage();
-            this.tabEncryptDecrypt = new System.Windows.Forms.TabPage();
-            this.tabTrace = new System.Windows.Forms.TabPage();
             this.carnetHolderQueryTab1 = new RTSDotNETClient.TestClient.CarnetHolderQueryTab();
+            this.tabReconciliationQuery = new System.Windows.Forms.TabPage();
             this.reconciliationQueryTab1 = new RTSDotNETClient.TestClient.ReconciliationQueryTab();
+            this.tabSafeTIRTransmission = new System.Windows.Forms.TabPage();
             this.safeTIRTransmissionTab1 = new RTSDotNETClient.TestClient.SafeTIRTransmissionTab();
+            this.tabReconciliationRequestReplies = new System.Windows.Forms.TabPage();
             this.reconciliationRequestRepliesTab1 = new RTSDotNETClient.TestClient.ReconciliationRequestRepliesTab();
+            this.tabEGISQuery = new System.Windows.Forms.TabPage();
+            this.tabEncryptDecrypt = new System.Windows.Forms.TabPage();
             this.encrypDecryptTab1 = new RTSDotNETClient.TestClient.EncrypDecryptTab();
+            this.tabTrace = new System.Windows.Forms.TabPage();
             this.traceTab1 = new RTSDotNETClient.TestClient.TraceTab();
+            this.egisQueryTab1 = new RTSDotNETClient.TestClient.EGISQueryTab();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabControl.SuspendLayout();
@@ -60,6 +62,7 @@
             this.tabReconciliationQuery.SuspendLayout();
             this.tabSafeTIRTransmission.SuspendLayout();
             this.tabReconciliationRequestReplies.SuspendLayout();
+            this.tabEGISQuery.SuspendLayout();
             this.tabEncryptDecrypt.SuspendLayout();
             this.tabTrace.SuspendLayout();
             this.SuspendLayout();
@@ -181,6 +184,7 @@
             this.tabControl.Controls.Add(this.tabReconciliationQuery);
             this.tabControl.Controls.Add(this.tabSafeTIRTransmission);
             this.tabControl.Controls.Add(this.tabReconciliationRequestReplies);
+            this.tabControl.Controls.Add(this.tabEGISQuery);
             this.tabControl.Controls.Add(this.tabEncryptDecrypt);
             this.tabControl.Controls.Add(this.tabTrace);
             this.tabControl.Location = new System.Drawing.Point(-2, 152);
@@ -201,6 +205,16 @@
             this.tabCarnetHolderQuery.Text = "TIR Carnet Holder Query (TCHQ)";
             this.tabCarnetHolderQuery.UseVisualStyleBackColor = true;
             // 
+            // carnetHolderQueryTab1
+            // 
+            this.carnetHolderQueryTab1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.carnetHolderQueryTab1.Location = new System.Drawing.Point(6, 6);
+            this.carnetHolderQueryTab1.Name = "carnetHolderQueryTab1";
+            this.carnetHolderQueryTab1.Size = new System.Drawing.Size(721, 349);
+            this.carnetHolderQueryTab1.TabIndex = 0;
+            // 
             // tabReconciliationQuery
             // 
             this.tabReconciliationQuery.Controls.Add(this.reconciliationQueryTab1);
@@ -211,6 +225,16 @@
             this.tabReconciliationQuery.TabIndex = 1;
             this.tabReconciliationQuery.Text = "Reconciliation Query (WSRQ)";
             this.tabReconciliationQuery.UseVisualStyleBackColor = true;
+            // 
+            // reconciliationQueryTab1
+            // 
+            this.reconciliationQueryTab1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.reconciliationQueryTab1.Location = new System.Drawing.Point(3, 6);
+            this.reconciliationQueryTab1.Name = "reconciliationQueryTab1";
+            this.reconciliationQueryTab1.Size = new System.Drawing.Size(729, 371);
+            this.reconciliationQueryTab1.TabIndex = 0;
             // 
             // tabSafeTIRTransmission
             // 
@@ -223,6 +247,16 @@
             this.tabSafeTIRTransmission.Text = "SafeTIR Transmission (WSST)";
             this.tabSafeTIRTransmission.UseVisualStyleBackColor = true;
             // 
+            // safeTIRTransmissionTab1
+            // 
+            this.safeTIRTransmissionTab1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.safeTIRTransmissionTab1.Location = new System.Drawing.Point(3, 3);
+            this.safeTIRTransmissionTab1.Name = "safeTIRTransmissionTab1";
+            this.safeTIRTransmissionTab1.Size = new System.Drawing.Size(740, 376);
+            this.safeTIRTransmissionTab1.TabIndex = 0;
+            // 
             // tabReconciliationRequestReplies
             // 
             this.tabReconciliationRequestReplies.Controls.Add(this.reconciliationRequestRepliesTab1);
@@ -233,58 +267,6 @@
             this.tabReconciliationRequestReplies.TabIndex = 3;
             this.tabReconciliationRequestReplies.Text = "Reconciliation Request Replies (WSRE)";
             this.tabReconciliationRequestReplies.UseVisualStyleBackColor = true;
-            // 
-            // tabEncryptDecrypt
-            // 
-            this.tabEncryptDecrypt.Controls.Add(this.encrypDecryptTab1);
-            this.tabEncryptDecrypt.Location = new System.Drawing.Point(4, 22);
-            this.tabEncryptDecrypt.Name = "tabEncryptDecrypt";
-            this.tabEncryptDecrypt.Padding = new System.Windows.Forms.Padding(3);
-            this.tabEncryptDecrypt.Size = new System.Drawing.Size(735, 394);
-            this.tabEncryptDecrypt.TabIndex = 5;
-            this.tabEncryptDecrypt.Text = "Encrypt / Decrypt";
-            this.tabEncryptDecrypt.UseVisualStyleBackColor = true;
-            // 
-            // tabTrace
-            // 
-            this.tabTrace.Controls.Add(this.traceTab1);
-            this.tabTrace.Location = new System.Drawing.Point(4, 22);
-            this.tabTrace.Name = "tabTrace";
-            this.tabTrace.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTrace.Size = new System.Drawing.Size(735, 394);
-            this.tabTrace.TabIndex = 4;
-            this.tabTrace.Text = "Trace";
-            this.tabTrace.UseVisualStyleBackColor = true;
-            // 
-            // carnetHolderQueryTab1
-            // 
-            this.carnetHolderQueryTab1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.carnetHolderQueryTab1.Location = new System.Drawing.Point(6, 6);
-            this.carnetHolderQueryTab1.Name = "carnetHolderQueryTab1";
-            this.carnetHolderQueryTab1.Size = new System.Drawing.Size(721, 349);
-            this.carnetHolderQueryTab1.TabIndex = 0;
-            // 
-            // reconciliationQueryTab1
-            // 
-            this.reconciliationQueryTab1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.reconciliationQueryTab1.Location = new System.Drawing.Point(3, 6);
-            this.reconciliationQueryTab1.Name = "reconciliationQueryTab1";
-            this.reconciliationQueryTab1.Size = new System.Drawing.Size(729, 371);
-            this.reconciliationQueryTab1.TabIndex = 0;
-            // 
-            // safeTIRTransmissionTab1
-            // 
-            this.safeTIRTransmissionTab1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.safeTIRTransmissionTab1.Location = new System.Drawing.Point(3, 3);
-            this.safeTIRTransmissionTab1.Name = "safeTIRTransmissionTab1";
-            this.safeTIRTransmissionTab1.Size = new System.Drawing.Size(740, 376);
-            this.safeTIRTransmissionTab1.TabIndex = 0;
             // 
             // reconciliationRequestRepliesTab1
             // 
@@ -297,6 +279,28 @@
             this.reconciliationRequestRepliesTab1.Size = new System.Drawing.Size(729, 370);
             this.reconciliationRequestRepliesTab1.TabIndex = 0;
             // 
+            // tabEGISQuery
+            // 
+            this.tabEGISQuery.Controls.Add(this.egisQueryTab1);
+            this.tabEGISQuery.Location = new System.Drawing.Point(4, 22);
+            this.tabEGISQuery.Name = "tabEGISQuery";
+            this.tabEGISQuery.Padding = new System.Windows.Forms.Padding(3);
+            this.tabEGISQuery.Size = new System.Drawing.Size(735, 394);
+            this.tabEGISQuery.TabIndex = 6;
+            this.tabEGISQuery.Text = "Electronic Guarantee Information Service (EGIS)";
+            this.tabEGISQuery.UseVisualStyleBackColor = true;
+            // 
+            // tabEncryptDecrypt
+            // 
+            this.tabEncryptDecrypt.Controls.Add(this.encrypDecryptTab1);
+            this.tabEncryptDecrypt.Location = new System.Drawing.Point(4, 22);
+            this.tabEncryptDecrypt.Name = "tabEncryptDecrypt";
+            this.tabEncryptDecrypt.Padding = new System.Windows.Forms.Padding(3);
+            this.tabEncryptDecrypt.Size = new System.Drawing.Size(735, 394);
+            this.tabEncryptDecrypt.TabIndex = 5;
+            this.tabEncryptDecrypt.Text = "Encrypt / Decrypt";
+            this.tabEncryptDecrypt.UseVisualStyleBackColor = true;
+            // 
             // encrypDecryptTab1
             // 
             this.encrypDecryptTab1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
@@ -307,6 +311,17 @@
             this.encrypDecryptTab1.Size = new System.Drawing.Size(721, 360);
             this.encrypDecryptTab1.TabIndex = 0;
             // 
+            // tabTrace
+            // 
+            this.tabTrace.Controls.Add(this.traceTab1);
+            this.tabTrace.Location = new System.Drawing.Point(4, 22);
+            this.tabTrace.Name = "tabTrace";
+            this.tabTrace.Padding = new System.Windows.Forms.Padding(3);
+            this.tabTrace.Size = new System.Drawing.Size(735, 394);
+            this.tabTrace.TabIndex = 4;
+            this.tabTrace.Text = "Trace";
+            this.tabTrace.UseVisualStyleBackColor = true;
+            // 
             // traceTab1
             // 
             this.traceTab1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
@@ -316,6 +331,16 @@
             this.traceTab1.Name = "traceTab1";
             this.traceTab1.Size = new System.Drawing.Size(726, 368);
             this.traceTab1.TabIndex = 0;
+            // 
+            // egisQueryTab1
+            // 
+            this.egisQueryTab1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.egisQueryTab1.Location = new System.Drawing.Point(3, 6);
+            this.egisQueryTab1.Name = "egisQueryTab1";
+            this.egisQueryTab1.Size = new System.Drawing.Size(729, 370);
+            this.egisQueryTab1.TabIndex = 0;
             // 
             // MainForm
             // 
@@ -334,6 +359,7 @@
             this.tabReconciliationQuery.ResumeLayout(false);
             this.tabSafeTIRTransmission.ResumeLayout(false);
             this.tabReconciliationRequestReplies.ResumeLayout(false);
+            this.tabEGISQuery.ResumeLayout(false);
             this.tabEncryptDecrypt.ResumeLayout(false);
             this.tabTrace.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -367,6 +393,8 @@
         private EncrypDecryptTab encrypDecryptTab1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tbPassword;
+        private System.Windows.Forms.TabPage tabEGISQuery;
+        private EGISQueryTab egisQueryTab1;
     }
 }
 

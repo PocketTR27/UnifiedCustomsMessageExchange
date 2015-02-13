@@ -59,12 +59,22 @@
     <Compile Include="BaseWSClient.cs" />
     <Compile Include="CommonEnums.cs" />
     <Compile Include="Configuration.cs" />
+    <Compile Include="EGIS\ElectronicGuaranteeInformationServiceClient.cs" />
+    <Compile Include="EGIS\Response.cs" />
+    <Compile Include="EGIS\SafeTIR.cs" />
+    <Compile Include="EGIS\TIREpd.cs" />
     <Compile Include="Global.cs" />
     <Compile Include="EncryptionHelper.cs" />
     <Compile Include="QueryResponseFactory.cs" />
+    <Compile Include="EGIS\Query.cs" />
     <Compile Include="ReturnCode.cs" />
     <Compile Include="Exceptions.cs" />
     <Compile Include="Service References\CarnetHolderQueryWS\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ElectronicGuaranteeInformationServiceWS\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -100,6 +110,7 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\CarnetHolderQueryWS\" />
+    <WCFMetadataStorage Include="Service References\ElectronicGuaranteeInformationServiceWS\" />
     <WCFMetadataStorage Include="Service References\ReconciliationWS\" />
     <WCFMetadataStorage Include="Service References\SafeTIRUploadWS\" />
   </ItemGroup>
@@ -160,11 +171,33 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Diagram.cd" />
+    <EmbeddedResource Include="resources\EGIS.xsd" />
+    <EmbeddedResource Include="resources\EGISTIREpd.xsd" />
+    <EmbeddedResource Include="resources\TIREPD_IE025.xsd" />
+    <EmbeddedResource Include="resources\TIREPD_IE029.xsd" />
+    <EmbeddedResource Include="resources\TIREPD_IE045.xsd" />
+    <EmbeddedResource Include="resources\TIREPD_Types.xsd" />
+    <None Include="Service References\ElectronicGuaranteeInformationServiceWS\electronicGuaranteeInformationService.wsdl" />
     <None Include="Service References\SafeTIRUploadWS\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <None Include="Service References\SafeTIRUploadWS\RTSDotNETClient.SafeTIRUploadWS.SafeTIRUploadAck.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ElectronicGuaranteeInformationServiceWS\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ElectronicGuaranteeInformationServiceWS\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ElectronicGuaranteeInformationServiceWS\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\ElectronicGuaranteeInformationServiceWS\RTSDotNETClient.ElectronicGuaranteeInformationServiceWS.EGISResponseType.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
   </ItemGroup>

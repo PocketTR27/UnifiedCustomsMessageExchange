@@ -39,8 +39,17 @@ namespace RTSDotNETClient.WSRQ
             EncryptionResult encrypted = EncryptionHelper.X509EncryptString(queryStr, this.PublicCertificate);
 
             BasicHttpBinding binding = new BasicHttpBinding();
-            binding.MaxReceivedMessageSize = int.MaxValue;
             binding.ReaderQuotas.MaxArrayLength = int.MaxValue;
+            binding.ReaderQuotas.MaxBytesPerRead = int.MaxValue;
+            binding.ReaderQuotas.MaxDepth = int.MaxValue;
+            binding.ReaderQuotas.MaxNameTableCharCount = int.MaxValue;
+            binding.ReaderQuotas.MaxStringContentLength = int.MaxValue;
+            binding.MaxBufferSize = int.MaxValue;
+            binding.MaxReceivedMessageSize = int.MaxValue;
+            binding.OpenTimeout = TimeSpan.FromMinutes(3.0);
+            binding.SendTimeout = TimeSpan.FromMinutes(5.0);
+            binding.ReceiveTimeout = TimeSpan.FromMinutes(5.0);
+            binding.CloseTimeout = TimeSpan.FromMinutes(3.0);
             EndpointAddress remoteAddress = new EndpointAddress(this.WebServiceUrl);
             switch (remoteAddress.Uri.Scheme)
             {
