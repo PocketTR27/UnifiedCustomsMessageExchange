@@ -109,6 +109,9 @@ namespace RTSDotNETClient.TCHQ
         [XmlElement(Namespace = "http://www.iru.org/TCHQResponse")]
         public string HolderID { get; set; }
 
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool ValidityDateSpecified;
+
         /// <summary>
         /// The validity date. Only for Result = 1
         /// </summary>

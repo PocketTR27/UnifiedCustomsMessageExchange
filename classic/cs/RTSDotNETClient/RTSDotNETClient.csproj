@@ -63,6 +63,7 @@
     <Compile Include="EGIS\Response.cs" />
     <Compile Include="EGIS\SafeTIR.cs" />
     <Compile Include="EGIS\TIREpd.cs" />
+    <Compile Include="Extensions.cs" />
     <Compile Include="Global.cs" />
     <Compile Include="EncryptionHelper.cs" />
     <Compile Include="QueryResponseFactory.cs" />

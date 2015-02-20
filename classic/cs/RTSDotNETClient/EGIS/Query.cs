@@ -34,9 +34,7 @@ namespace RTSDotNETClient.EGIS
         public EGISQuery()
         {
             this.xsd = Xsd;
-            this.extraTypes.Clear();
-            this.extraTypes.Add(typeof(EGISEnvelope));
-            this.Envelope = new EGISEnvelope();
+            this.Envelope.NamespaceOfHash = "http://www.iru.org/TCHQuery";
         }
     }
 
@@ -51,25 +49,5 @@ namespace RTSDotNETClient.EGIS
         /// </summary>
         [XmlEnum("1")]
         StandardElectronicGuaranteeInformation = 1
-    }
-
-    /// <summary>
-    /// The envelope of queries or responses
-    /// </summary>
-    [XmlRoot("Envelope", Namespace = "http://rts.iru.org/egis")]
-    public class EGISEnvelope: Envelope
-    {
-        #region IXmlSerializable Members
-
-        /// <summary>
-        /// Converts an object into its XML representation. It implements IXmlSerializable.
-        /// </summary>
-        /// <param name="writer">The XmlWriter stream to which the object is serialized.</param>
-        override public void WriteXml(XmlWriter writer)
-        {
-            writer.WriteElementString("Hash", "http://www.iru.org/TCHQuery", Hash);
-        }
-
-        #endregion
     }
 }

@@ -86,7 +86,10 @@ namespace RTSDotNETClient.EGIS
 
             Global.Trace(string.Format("EGIS RESPONSE: RETURN_CODE={0} ({1})\r\n{2}\r\n", (int)returnCode, returnCode, respStr));
 
-            return QueryResponseFactory.Deserialize<EGISResponse>(respStr, EGISResponse.Xsd);
+            EGISResponse result = QueryResponseFactory.Deserialize<EGISResponse>(respStr, EGISResponse.Xsd);
+            result.RebuildHash(respStr);
+
+            return result;
         }
     }
 }

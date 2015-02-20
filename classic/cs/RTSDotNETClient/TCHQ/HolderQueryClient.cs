@@ -86,7 +86,10 @@ namespace RTSDotNETClient.TCHQ
 
             Global.Trace(string.Format("TCHQ RESPONSE: RETURN_CODE={0} ({1})\r\n{2}\r\n", (int)returnCode, returnCode, respStr));
 
-            return QueryResponseFactory.Deserialize<Response>(respStr, Response.Xsd);
+            Response result = QueryResponseFactory.Deserialize<Response>(respStr, Response.Xsd);
+            result.RebuildHash(respStr);
+
+            return result;
         }
     }
 }

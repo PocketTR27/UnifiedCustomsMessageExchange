@@ -4,6 +4,8 @@ using System.Windows.Forms;
 using RTSDotNETClient.EGIS;
 using System.Configuration;
 using System.Diagnostics;
+using System.Linq;
+using System.Xml.Linq;
 
 namespace RTSDotNETClient.TestClient
 {
@@ -18,8 +20,8 @@ namespace RTSDotNETClient.TestClient
         {
             if (this.DesignMode)
                 return;
-            InitTestData();
             InitComboBox();
+            InitTestData();
         }
 
         private void InitTestData()
@@ -48,7 +50,7 @@ namespace RTSDotNETClient.TestClient
         private void btnEGISQuery_Click(object sender, EventArgs e)
         {
             try
-            {                
+            {
                 ClearUI();
                 btnEGISQuery.Enabled = false;
                 Cursor.Current = Cursors.WaitCursor;
@@ -60,7 +62,7 @@ namespace RTSDotNETClient.TestClient
                 query.Body.Sender = tbSender.Text;
                 query.Body.Originator = tbOriginator.Text;
                 query.Body.QueryType = (QueryType)cbQueryType.SelectedItem;
-                query.Body.CarnetNumber = tbTirCarnet.Text;                
+                query.Body.CarnetNumber = tbTirCarnet.Text;
 
                 // call the web service
                 ElectronicGuaranteeInformationServiceClient egisClient = new ElectronicGuaranteeInformationServiceClient();
@@ -86,6 +88,13 @@ namespace RTSDotNETClient.TestClient
             tbNumTerminations.Text = response.Body.NumTerminations.ToString();
             tbValidityDate.Text = (response.Body.ValidityDate > DateTime.MinValue) ? response.Body.ValidityDate.ToShortDateString() : "";
             tbVoucherNumber.Text = response.Body.VoucherNumber;
+            if (response.Body.TIROperationMessages != null)
+            {
+                PopulateTreeView(treeViewStartMessages, response.Body.TIROperationMessages.StartMessages.Serialize());
+                dataGridViewTerminationAndExit.DataSource = response.Body.TIROperationMessages.TerminationAndExitMessages;
+                PopulateTreeView(treeViewDischargeMessages, response.Body.TIROperationMessages.DischargeMessages.Serialize());
+                PopulateTreeView(treeViewUpdateSealsMessages, response.Body.TIROperationMessages.UpdateSealsMessages.Serialize());
+            }
         }
 
         private void ClearUI()
@@ -96,6 +105,45 @@ namespace RTSDotNETClient.TestClient
             tbHolderID.Text = "";
             tbValidityDate.Text = "";
             tbVoucherNumber.Text = "";
+            treeViewStartMessages.Nodes.Clear();
+            dataGridViewTerminationAndExit.DataSource = null;
+            treeViewDischargeMessages.Nodes.Clear();
+            treeViewUpdateSealsMessages.Nodes.Clear();
+        }
+
+        private void PopulateTreeView(TreeView treeview, string xml)
+        {
+            XElement xe = XElement.Parse(xml);
+            foreach (XElement element in xe.Elements())
+            {
+                AddTreeViewChildNodes(treeview.Nodes, element);
+            }
+        }
+
+        private void AddTreeViewChildNodes(TreeNodeCollection nodes, XElement element)
+        {
+            TreeNode node = nodes.Add(element.Name.ToString());
+
+            foreach (XElement child in element.Elements())
+            {
+                AddTreeViewChildNodes(node.Nodes, child);
+            }
+
+            foreach (XAttribute attribute in element.Attributes())
+            {
+                node.Nodes.Add(String.Format("{0}: {1}", attribute.Name, attribute.Value));
+                //node.EnsureVisible();
+            }
+
+            if (element.Elements().Count() == 0 && !String.IsNullOrEmpty(element.Value))
+            {
+                node.Text += String.Format(": {0}", element.Value);
+            }
+
+            if (node.Nodes.Count == 0)
+            {
+                //node.EnsureVisible();
+            }
         }
 
         private void cbQueryType_SelectedIndexChanged(object sender, EventArgs e)
@@ -108,6 +156,12 @@ namespace RTSDotNETClient.TestClient
 
             lbVoucherNumber.Visible = bVisible;
             tbVoucherNumber.Visible = bVisible;
+        }
+
+        private void dataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            string columnName = (sender as DataGridView).Columns[e.ColumnIndex].HeaderText;
+            MessageBox.Show(this, string.Format("Column {0}: {1}", columnName, e.Exception.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
     }

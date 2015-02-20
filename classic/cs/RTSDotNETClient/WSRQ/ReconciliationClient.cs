@@ -91,8 +91,10 @@ namespace RTSDotNETClient.WSRQ
 
             respStr = respStr.Replace(" DDI=\"\"", "");
 
-            return QueryResponseFactory.Deserialize<Response>(respStr, Response.Xsd);
+            Response result = QueryResponseFactory.Deserialize<Response>(respStr, Response.Xsd);
+            result.RebuildHash(respStr);
 
+            return result;
         }
     }
 }

@@ -16,10 +16,29 @@ namespace RTSDotNETClient
     /// </summary>
     public class Envelope: IXmlSerializable
     {
+        internal string _RebuiltHash = String.Empty;
+
+        /// <summary>
+        /// Namespace of the Hash. It can be null to indicate same namespace then the Envelope.
+        /// </summary>
+        public string NamespaceOfHash { get; set; }
+
         /// <summary>
         /// The hash of the query / response body
         /// </summary>
         public string Hash { get; set; }
+
+        /// <summary>
+        /// The hash value rebuilt with a returned response body
+        /// </summary>
+        [XmlIgnore()]
+        public string RebuiltHash
+        {
+            get
+            {
+                return _RebuiltHash; 
+            }
+        }
 
         #region IXmlSerializable Members
 
@@ -44,6 +63,7 @@ namespace RTSDotNETClient
             {
                 if (reader.LocalName == "Hash")
                 {
+                    NamespaceOfHash = reader.NamespaceURI;
                     Hash = reader.ReadElementString();
                 }
                 else
@@ -60,7 +80,14 @@ namespace RTSDotNETClient
         /// <param name="writer">The XmlWriter stream to which the object is serialized.</param>
         virtual public void WriteXml(XmlWriter writer)
         {
-            writer.WriteElementString("Hash", Hash);
+            if (NamespaceOfHash != null)
+            {
+                writer.WriteElementString("Hash", NamespaceOfHash, Hash);
+            }
+            else
+            {
+                writer.WriteElementString("Hash", Hash);
+            }
         }
 
         #endregion
@@ -77,11 +104,6 @@ namespace RTSDotNETClient
         protected string xsd;
 
         /// <summary>
-        /// A list of Extra Types for XML Serialization
-        /// </summary>
-        protected List<Type> extraTypes = new List<Type>();
-
-        /// <summary>
         /// The envelope of the query of response
         /// </summary>
         public Envelope Envelope { get; set; }
@@ -91,7 +113,6 @@ namespace RTSDotNETClient
         /// </summary>
         public BaseQueryResponse()
         {
-            this.extraTypes.Add(typeof(Envelope));
             this.Envelope = new Envelope();
         }
 
@@ -104,15 +125,28 @@ namespace RTSDotNETClient
                 this.Envelope.Hash = "";
             string xml = this.Serialize();
 
-            Match m = Regex.Match(xml, "<Body>(.*?)</Body>", RegexOptions.IgnoreCase | RegexOptions.Singleline);
+            Match m = Regex.Match(xml, @"<([^:]+:){0,1}Body[^>]*>(.*)<[^/]*/.*Body\s*>", RegexOptions.IgnoreCase | RegexOptions.Singleline);
             if (m.Success)
             {
-                //string sBodyToSign = Regex.Replace(m.Groups[1].Value.Trim(), @"\s+", "");
-                string sBodyToSign = m.Groups[1].Value.Trim();
+                //string sBodyToSign = Regex.Replace(m.Groups[2].Value.Trim(), @"\s+", "");
+                string sBodyToSign = m.Groups[2].Value;
                 this.Envelope.Hash = EncryptionHelper.GenerateHash(sBodyToSign);
             }
             else
                 throw new Exception("Body not found!");
+        }
+
+        public void RebuildHash(string xml)
+        {
+            Match m = Regex.Match(xml, @"<([^:]+:){0,1}Body[^>]*>(.*)<[^/]*/.*Body\s*>", RegexOptions.IgnoreCase | RegexOptions.Singleline);
+            if (m.Success)
+            {
+                //string sBodyToSign = Regex.Replace(m.Groups[2].Value.Trim(), @"\s+", "");
+                string sBodyToSign = m.Groups[2].Value;
+                this.Envelope._RebuiltHash = EncryptionHelper.GenerateHash(sBodyToSign);
+            }
+            else
+                throw new Exception("Body not found within XML content!");
         }
 
         /// <summary>
@@ -121,7 +155,7 @@ namespace RTSDotNETClient
         /// <returns></returns>
         public string Serialize()
         {
-            XmlSerializer ser = new XmlSerializer(this.GetType(), extraTypes.ToArray());
+            XmlSerializer ser = new XmlSerializer(this.GetType());
             string xml;
             using (StringWriter sw = new StringWriter())
             {
