@@ -33,33 +33,33 @@
         	<dependency>
         		<groupId>org.iru.rts.classic.tchq</groupId>
         		<artifactId>tchq-bo</artifactId>
-        		<version>${project.version}</version>
+        		<version>${rtsapi.version}</version>
         	</dependency>
         	<dependency>
         		<groupId>org.iru.rts.classic.tchq</groupId>
         		<artifactId>tchq-ws</artifactId>
-        		<version>${project.version}</version>
+        		<version>${rtsapi.version}</version>
         	</dependency>
 
         	<dependency>
         		<groupId>org.iru.rts.classic.wsst</groupId>
         		<artifactId>safetirupload-bo</artifactId>
-        		<version>${project.version}</version>
+        		<version>${rtsapi.version}</version>
         	</dependency>
         	<dependency>
         		<groupId>org.iru.rts.classic.wsst</groupId>
         		<artifactId>wsst-ws</artifactId>
-        		<version>${project.version}</version>
+        		<version>${rtsapi.version}</version>
         	</dependency>
         	<dependency>
         		<groupId>org.iru.rts.classic.wsrq</groupId>
         		<artifactId>safetirreconciliation-bo</artifactId>
-        		<version>${project.version}</version>
+        		<version>${rtsapi.version}</version>
         	</dependency>
         	<dependency>
         		<groupId>org.iru.rts.classic.wsrq</groupId>
         		<artifactId>wsrq-ws</artifactId>
-        		<version>${project.version}</version>
+        		<version>${rtsapi.version}</version>
         	</dependency>
 
         	<dependency>

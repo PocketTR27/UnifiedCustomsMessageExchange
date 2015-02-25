@@ -22,17 +22,17 @@
 		<dependency>
 			<groupId>org.iru.rts.classic.tchq</groupId>
 			<artifactId>tchq-bo</artifactId>
-			<version>${project.version}</version>
+			<version>${rtsapi.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.iru.rts.classic.wsst</groupId>
 			<artifactId>safetirupload-bo</artifactId>
-			<version>${project.version}</version>
+			<version>${rtsapi.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.iru.rts.classic.wsrq</groupId>
 			<artifactId>safetirreconciliation-bo</artifactId>
-			<version>${project.version}</version>
+			<version>${rtsapi.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.iru.rts.plus</groupId>

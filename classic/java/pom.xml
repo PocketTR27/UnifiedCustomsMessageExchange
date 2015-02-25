@@ -13,11 +13,6 @@
 	<packaging>pom</packaging>
 
 	<modules>
-		<module>tchq</module>
-		<module>wsst</module>
-		<module>wsrq</module>
-		<module>tvqr</module>
-		<module>egis</module>
 		<module>wscrypto</module>
 		<module>rts-client-api</module>
 		<module>rts-client-impl</module>
