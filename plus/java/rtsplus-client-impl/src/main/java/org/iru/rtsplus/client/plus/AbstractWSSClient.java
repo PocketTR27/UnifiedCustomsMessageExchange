@@ -237,7 +237,7 @@ public abstract class AbstractWSSClient  {
 							WSEncryptionPart tsEncPart = new WSEncryptionPart(ts.getId(), encMod);
 							parts.add(tsEncPart);
 							
-							String[] policyAddrEncParts = { "Action", "MessageID", "To", "ReplyTo" };
+							String[] policyAddrEncParts = { "Action", "MessageID", "To", "ReplyTo", "FaultTo" };
 							for (String policyAddrEncPart : policyAddrEncParts){ 
 								WSEncryptionPart actionEncPart = new WSEncryptionPart(policyAddrEncPart, "http://www.w3.org/2005/08/addressing", encMod);
 								parts.add(actionEncPart);
