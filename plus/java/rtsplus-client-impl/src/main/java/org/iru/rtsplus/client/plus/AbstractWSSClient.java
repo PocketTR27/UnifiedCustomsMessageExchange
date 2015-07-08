@@ -53,6 +53,8 @@ import org.apache.ws.security.util.WSSecurityUtil;
 
 public abstract class AbstractWSSClient  {
 
+	protected static final String WS_ADDRESSING_NAMESPACE  = "http://www.w3.org/2005/08/addressing";
+	
 	protected String sender;
 	protected String password; 
 	protected URL rtsEndpoint;
@@ -236,11 +238,13 @@ public abstract class AbstractWSSClient  {
 							
 							WSEncryptionPart tsEncPart = new WSEncryptionPart(ts.getId(), encMod);
 							parts.add(tsEncPart);
-							
-							String[] policyAddrEncParts = { "Action", "MessageID", "To", "ReplyTo", "FaultTo" };
+													
+							String[] policyAddrEncParts = { "MessageID", "RelatesTo", "To", "Action", "From", "ReplyTo", "FaultTo" };
 							for (String policyAddrEncPart : policyAddrEncParts){ 
-								WSEncryptionPart actionEncPart = new WSEncryptionPart(policyAddrEncPart, "http://www.w3.org/2005/08/addressing", encMod);
-								parts.add(actionEncPart);
+								if (WSSecurityUtil.findElement(envelope, policyAddrEncPart, WS_ADDRESSING_NAMESPACE) != null) {
+									WSEncryptionPart actionEncPart = new WSEncryptionPart(policyAddrEncPart, WS_ADDRESSING_NAMESPACE, encMod);
+									parts.add(actionEncPart);
+								}
 							}
 							
 							sign.setParts(parts);
