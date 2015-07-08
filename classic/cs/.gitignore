@@ -1,7 +1,9 @@
 obj/
 bin/
 Help/Working/
+Help/*.chm
 *.suo
 *.user
 *.log
 *.shfbproj_*
+*.cache
