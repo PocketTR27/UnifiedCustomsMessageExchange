@@ -61,13 +61,12 @@ namespace RTSDotNETClient
                         }
                     }
                 }
+
                 StringReader sr = new StringReader(xml);
                 XmlSerializer ser = new XmlSerializer(typeof(T));
                 XmlReader reader = XmlReader.Create(sr, config);
                 T result = (T)ser.Deserialize(reader);
-                //StringBuilder sb = new StringBuilder();
-                //TextWriter tw = new StringWriter(sb);
-                //ser.Serialize(tw, result);
+
                 return result;
             }
             catch (InvalidOperationException ex)

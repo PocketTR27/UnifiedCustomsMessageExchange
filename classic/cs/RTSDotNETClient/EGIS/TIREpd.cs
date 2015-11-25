@@ -6,6 +6,7 @@ using System.Collections;
 using System.Xml.Schema;
 using System.ComponentModel;
 using System.Collections.Generic;
+using RTSDotNETClient.Types;
 
 namespace RTSDotNETClient.EGIS
 {
@@ -1328,7 +1329,7 @@ namespace RTSDotNETClient.EGIS
 
         private string comOfInfDC25LNGField;
 
-        private System.DateTime docRefDateField;
+        private SerializableDateTimeOffset docRefDateField;
 
         private bool docRefDateFieldSpecified;
 
@@ -1398,8 +1399,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType = "date")]
-        public System.DateTime DocRefDate
+        public SerializableDateTimeOffset DocRefDate
         {
             get
             {
@@ -1444,7 +1444,7 @@ namespace RTSDotNETClient.EGIS
 
         private string comOfInfAR29LNGField;
 
-        private System.DateTime preDocRefDateField;
+        private SerializableDateTimeOffset preDocRefDateField;
 
         private bool preDocRefDateFieldSpecified;
 
@@ -1514,8 +1514,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType = "date")]
-        public System.DateTime PreDocRefDate
+        public SerializableDateTimeOffset PreDocRefDate
         {
             get
             {
@@ -2403,11 +2402,11 @@ namespace RTSDotNETClient.EGIS
 
         private string issCtryDRVField;
 
-        private System.DateTime issDatDRVField;
+        private SerializableDateTimeOffset issDatDRVField;
 
         private bool issDatDRVFieldSpecified;
 
-        private System.DateTime expDatDRVField;
+        private SerializableDateTimeOffset expDatDRVField;
 
         private bool expDatDRVFieldSpecified;
 
@@ -2464,8 +2463,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType = "date")]
-        public System.DateTime IssDatDRV
+        public SerializableDateTimeOffset IssDatDRV
         {
             get
             {
@@ -2492,8 +2490,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType = "date")]
-        public System.DateTime ExpDatDRV
+        public SerializableDateTimeOffset ExpDatDRV
         {
             get
             {
@@ -2538,7 +2535,7 @@ namespace RTSDotNETClient.EGIS
 
         private string placeOfBrtDRVField;
 
-        private System.DateTime datOfBrtDRVField;
+        private SerializableDateTimeOffset datOfBrtDRVField;
 
         private bool datOfBrtDRVFieldSpecified;
 
@@ -2610,8 +2607,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType = "date")]
-        public System.DateTime DatOfBrtDRV
+        public SerializableDateTimeOffset DatOfBrtDRV
         {
             get
             {
@@ -3560,13 +3556,13 @@ namespace RTSDotNETClient.EGIS
 
         private bool nCTRetCopHEA104FieldSpecified;
 
-        private System.DateTime declarationAcceptanceDateField;
+        private SerializableDateTimeOffset declarationAcceptanceDateField;
 
         private bool declarationAcceptanceDateFieldSpecified;
 
         private string accDatHEA158Field;
 
-        private System.DateTime declarationReleasedDateField;
+        private SerializableDateTimeOffset declarationReleasedDateField;
 
         private bool declarationReleasedDateFieldSpecified;
 
@@ -3588,7 +3584,7 @@ namespace RTSDotNETClient.EGIS
 
         private ADDITIONALINFORMATIONType aDDITIONALINFORMATIONField;
 
-        private System.DateTime declarationDateField;
+        private SerializableDateTimeOffset declarationDateField;
 
         private bool declarationDateFieldSpecified;
 
@@ -3963,8 +3959,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType = "date")]
-        public System.DateTime DeclarationAcceptanceDate
+        public SerializableDateTimeOffset DeclarationAcceptanceDate
         {
             get
             {
@@ -4004,8 +3999,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType = "date")]
-        public System.DateTime DeclarationReleasedDate
+        public SerializableDateTimeOffset DeclarationReleasedDate
         {
             get
             {
@@ -4153,8 +4147,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType = "date")]
-        public System.DateTime DeclarationDate
+        public SerializableDateTimeOffset DeclarationDate
         {
             get
             {
