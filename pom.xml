@@ -13,7 +13,7 @@
 	</modules>
 
 	<properties>
-		<rtsapi.version>2.4</rtsapi.version>
+		<rtsapi.version>2.5</rtsapi.version>
 		<spring.version>3.0.5.RELEASE</spring.version>
 	</properties>
 
