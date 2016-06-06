@@ -14,7 +14,7 @@ public class AsyncNoopB2GService extends AbstractB2GExampleService {
 	}
 
 	@Override
-	protected void processMessageContent(Object messageContent, String messageName)
+	protected void processMessageContent(String subscriberMessageID, Object messageContent, String messageName)
 			throws Exception {
 		String message = (String) messageContent;
 		log.info(messageName+" => "+message);

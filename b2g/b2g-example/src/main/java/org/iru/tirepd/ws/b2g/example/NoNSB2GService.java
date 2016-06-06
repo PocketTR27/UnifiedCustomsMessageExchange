@@ -33,7 +33,7 @@ public class NoNSB2GService extends AbstractB2GExampleService {
 	}
 
 	@Override
-	protected void processMessageContent(Object messageContent, String messageName)	throws Exception {
+	protected void processMessageContent(String subscriberMessageID, Object messageContent, String messageName)	throws Exception {
 		log.info(messageName+" => "+messageContent.getClass().getName());
 		if (messageContent instanceof EPD015) {
 			EPD015 epd = (EPD015) messageContent;
