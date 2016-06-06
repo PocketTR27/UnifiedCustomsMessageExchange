@@ -9,9 +9,10 @@ import javax.servlet.ServletContext;
 import javax.xml.ws.handler.MessageContext;
 
 import org.apache.commons.io.IOUtils;
+import org.iru.epd.message.CUSOFFDEPEPTType;
+import org.iru.epd.message.EPD015;
+import org.iru.epd.message.EPD928;
 import org.iru.tirepd.messages.names.NoNamespaceMapper;
-import org.iru.tirepd.messages.nons.EPD015;
-import org.iru.tirepd.messages.nons.EPD928;
 import org.iru.tirepd.ws.b2g_1.TIREPDB2GUploadAck;
 import org.iru.tirepd.ws.b2g_1.TIREPDB2GUploadParams;
 import org.iru.tirepd.ws.g2b.client.NoNSG2BClient;
@@ -42,7 +43,7 @@ public class NoNSB2GService extends AbstractB2GExampleService {
 			epdReceived.setHEAHEA(heahea);
 			heahea.setRefNumHEA4(epd.getHEAHEA().getRefNumHEA4());
 
-			EPD928.CUSOFFDEPEPT cusoffdepept = new EPD928.CUSOFFDEPEPT();
+			CUSOFFDEPEPTType cusoffdepept = new CUSOFFDEPEPTType();
 			epdReceived.setCUSOFFDEPEPT(cusoffdepept);
 			cusoffdepept.setRefNumEPT1(epd.getCUSOFFDEPEPT().getRefNumEPT1());
 
