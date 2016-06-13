@@ -48,12 +48,10 @@ public class ReconciliationClientImpl extends TerminationServiceClientImpl imple
 					record.setDDI(termination.getCertificateOfTerminationDate());
 					record.setRND(termination.getCertificateOfTerminationReference());					
 					// TODO?: re-append the termination.getSequenceNumber() to PFD
-					if (termination.isIsExit() != null)
-						record.setPFD(termination.isIsExit() ? null : (termination.isIsFinal() ? PFDType.FD : PFDType.PD));
+					record.setPFD(Boolean.TRUE.equals(termination.isIsBeforeLoad()) || Boolean.TRUE.equals(termination.isIsExit()) ? null : Boolean.TRUE.equals(termination.isIsFinal()) ? PFDType.FD : PFDType.PD);
 					if (termination.isIsWithReservation() != null)
 						record.setCWR(termination.isIsWithReservation() ? CWRType.R : CWRType.OK);
-					if (termination.isIsExit() != null)
-						record.setTCO(termination.isIsExit() ? TCOType.EXIT : null);
+					record.setTCO(Boolean.TRUE.equals(termination.isIsBeforeLoad()) ? TCOType.LOAD : Boolean.TRUE.equals(termination.isIsExit()) ? TCOType.EXIT : null);
 					record.setVPN(termination.getVoletPageNumber() != null ? BigInteger.valueOf(termination.getVoletPageNumber()) : BigInteger.ZERO);
 					record.setCOM(termination.getCustomsComment());
 					record.setPIC(termination.getPackageCount() != null ? BigInteger.valueOf(termination.getPackageCount()) : null);
@@ -70,11 +68,9 @@ public class ReconciliationClientImpl extends TerminationServiceClientImpl imple
 					record.setDDI(termination.getCertificateOfTerminationDate());
 					record.setRND(termination.getCertificateOfTerminationReference());					
 					// TODO?: re-append the termination.getSequenceNumber() to PFD
-					if (termination.isIsExit() != null)
-						record.setPFD(termination.isIsExit() ? null : (termination.isIsFinal() ? PFDType.FD : PFDType.PD));
+					record.setPFD(Boolean.TRUE.equals(termination.isIsBeforeLoad()) || Boolean.TRUE.equals(termination.isIsExit()) ? null : Boolean.TRUE.equals(termination.isIsFinal()) ? PFDType.FD : PFDType.PD);
 					record.setCWR(termination.isIsWithReservation() ? CWRType.R : CWRType.OK);
-					if (termination.isIsExit() != null)
-						record.setTCO(termination.isIsExit() ? TCOType.EXIT : null);
+					record.setTCO(Boolean.TRUE.equals(termination.isIsBeforeLoad()) ? TCOType.LOAD : Boolean.TRUE.equals(termination.isIsExit()) ? TCOType.EXIT : null);
 					record.setVPN(termination.getVoletPageNumber() != null ? BigInteger.valueOf(termination.getVoletPageNumber()) : BigInteger.ZERO);
 					record.setCOM(termination.getCustomsComment());
 					record.setPIC(termination.getPackageCount() != null ? BigInteger.valueOf(termination.getPackageCount()) : null);

@@ -49,9 +49,10 @@ public class UploadClientImpl extends TerminationServiceClientImpl implements Up
 				termination.setCustomsLedgerEntryDate(safeTIRRecord.getDCL());
 				termination.setCertificateOfTerminationReference(safeTIRRecord.getRND());
 				termination.setCertificateOfTerminationDate(safeTIRRecord.getDDI());
-				termination.setIsFinal(PFDType.FD.equals(safeTIRRecord.getPFD()));
+				termination.setIsFinal(safeTIRRecord.getTCO() != null ? null : PFDType.FD.equals(safeTIRRecord.getPFD()));
 				termination.setIsWithReservation(CWRType.R.equals(safeTIRRecord.getCWR()));
-				termination.setIsExit(TCOType.EXIT.equals(safeTIRRecord.getTCO()));
+				termination.setIsBeforeLoad(TCOType.LOAD.equals(safeTIRRecord.getTCO()) ? true : null);
+				termination.setIsExit(TCOType.EXIT.equals(safeTIRRecord.getTCO()) ? true : null);
 				termination.setCustomsComment(safeTIRRecord.getCOM());
 				termination.setPackageCount(safeTIRRecord.getPIC() != null ? safeTIRRecord.getPIC().longValue() : null);
 
@@ -90,9 +91,10 @@ public class UploadClientImpl extends TerminationServiceClientImpl implements Up
 				termination.setCustomsLedgerEntryDate(rrRecord.getDCL());
 				termination.setCertificateOfTerminationReference(rrRecord.getRND());
 				termination.setCertificateOfTerminationDate(rrRecord.getDDI());
-				termination.setIsFinal(PFDType.FD.equals(rrRecord.getPFD()));
+				termination.setIsFinal(rrRecord.getTCO() != null ? null : PFDType.FD.equals(rrRecord.getPFD()));
 				termination.setIsWithReservation(CWRType.R.equals(rrRecord.getCWR()));
-				termination.setIsExit(TCOType.EXIT.equals(rrRecord.getTCO()));
+				termination.setIsBeforeLoad(TCOType.LOAD.equals(rrRecord.getTCO()) ? true : null);
+				termination.setIsExit(TCOType.EXIT.equals(rrRecord.getTCO()) ? true : null);
 				termination.setCustomsComment(rrRecord.getCOM());
 				termination.setPackageCount(rrRecord.getPIC() != null ? rrRecord.getPIC().longValue() : null);
 				
