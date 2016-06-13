@@ -25,7 +25,8 @@ namespace RTSDotNETClient.TestClient
         {
             if (this.DesignMode)
                 return;
-            dataGridView1.DataSource = records;            
+            dataGridView1.DataSource = records;
+            InitComboBoxEnum("TCO", typeof(TCO));
             InitComboBoxEnum("CWR", typeof(CWR));
             InitComboBoxEnum("RBC", typeof(RBC));
             InitComboBoxEnum("RequestReplyType", typeof(RequestReplyType));
@@ -102,9 +103,10 @@ namespace RTSDotNETClient.TestClient
             r.COF = "10225000";
             r.DDI = DateTime.Now.Date;
             r.PFD = "FD";
+            r.TCO = TCO.NotSpecified;
             r.CWR = CWR.OK;
             r.VPN = 4;
-            r.RBC = RBC.CarnetRetained;
+            r.RBC = RBC.NotSpecified;
             r.PIC = 0;
             records.Add(r);
         }

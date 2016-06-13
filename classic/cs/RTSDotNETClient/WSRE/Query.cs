@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Xml;
 using System.Xml.Serialization;
+using System.ComponentModel;
 
 namespace RTSDotNETClient.WSRE
 {
-
     /// <summary>
     /// The request reply type
     /// </summary>
@@ -99,91 +99,191 @@ namespace RTSDotNETClient.WSRE
         /// </summary>
         [XmlAttribute("RequestReplyType")]
         public RequestReplyType RequestReplyType { get; set; }
-        
+
         /// <summary>
         /// TIR Carnet Reference Number
         /// </summary>
         [XmlAttribute("TNO")]
         public string TNO { get; set; }
-        
+
         /// <summary>
         /// ISO3 code of the country of termination
         /// </summary>
         [XmlAttribute("ICC")]
         public string ICC { get; set; }
-        
+
         /// <summary>
         /// Date in Customs Ledger (Termination)
         /// </summary>
+        [XmlIgnore()]
+        public DateTime? DCL { get; set; }
+
+        /// <summary>
+        /// Internal representation of <seealso cref="DCL"/>
+        /// </summary>
+        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         [XmlAttribute("DCL", DataType = "date")]
-        public DateTime DCL { get; set; }
-        
+        public DateTime DCLAsDate
+        {
+            get { return DCL.Value; }
+            set { DCL = value; }
+        }
+
+        /// <summary>
+        /// Tells to the XML Serializer if <seealso cref="DCL"/> has to be serialized
+        /// </summary>
+        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeDCLAsDate()
+        {
+            return DCL.HasValue;
+        }
+
         /// <summary>
         /// Record Number in Customs Ledger (Termination)
         /// </summary>
         [XmlAttribute("CNL")]
         public string CNL { get; set; }
-        
+
         /// <summary>
         /// Name or Number of Customs Office
         /// </summary>
         [XmlAttribute("COF")]
         public string COF { get; set; }
-        
+
         /// <summary>
         /// Date of Discharge
         /// </summary>
+        [XmlIgnore()]
+        public DateTime? DDI { get; set; }
+
+        /// <summary>
+        /// Internal representation of <seealso cref="DDI"/>
+        /// </summary>
+        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         [XmlAttribute("DDI", DataType = "date")]
-        public DateTime DDI { get; set; }
-        
+        public DateTime DDIAsDate
+        {
+            get { return DDI.Value; }
+            set { DDI = value; }
+        }
+
+        /// <summary>
+        /// Tells to the XML Serializer if <seealso cref="DDI"/> has to be serialized
+        /// </summary>
+        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeDDIAsDate()
+        {
+            return DDI.HasValue;
+        }
+
         /// <summary>
         /// Reference Number of Discharge
         /// </summary>
         [XmlAttribute("RND")]
         public string RND { get; set; }
-        
+
         /// <summary>
-        /// Partial/Final Discharge
+        /// Final or Partial Discharge
         /// </summary>
         [XmlAttribute("PFD")]
         public string PFD { get; set; }
 
         /// <summary>
-        /// TIR Carnet Operation (optional). It will be EXIT for SafeTIR exit messages (eTIR)
+        /// Tells to the XML Serializer if <seealso cref="TCO"/> has to be serialized
         /// </summary>
-        [XmlAttribute("TCO")]
-        public string TCO { get; set; }
+        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool TCOSpecified
+        {
+            get
+            {
+                return (this.TCO != TCO.NotSpecified);
+            }
+            set
+            {
+                if (!value)
+                {
+                    this.TCO = TCO.NotSpecified;
+                }
+            }
+        }
 
         /// <summary>
-        /// Discharge with or without Reservation.
+        /// TIR Carnet Operation (optional). It will be LOAD for SafeTIR before load messages (eTIR) and EXIT for SafeTIR exit messages (eTIR)
+        /// </summary>
+        [XmlAttribute("TCO")]
+        public TCO TCO { get; set; }
+
+        /// <summary>
+        /// Discharge with or without Reservation. 
         /// <remarks>If Discharge is without reservation, the string "OK" will be used; if with Reservation, one character string, "R", will be used.</remarks>
         /// </summary>
         [XmlAttribute("CWR")]
         public CWR CWR { get; set; }
-        
+
         /// <summary>
         /// Volet Page Number. This field contains the page number of the volet pertaining to the discharge and must be an even number in the range 2 to 20 (inclusive).
         /// </summary>
         [XmlAttribute("VPN")]
         public int VPN { get; set; }
-        
+
         /// <summary>
         /// A comment
         /// </summary>
         [XmlAttribute("COM")]
         public string COM { get; set; }
-        
+
         /// <summary>
-        /// Carnet / Volet retained or not by Customs
+        /// Tells to the XML Serializer if <seealso cref="RBC"/> has to be serialized
+        /// </summary>
+        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool RBCSpecified
+        {
+            get
+            {
+                return (this.RBC != RBC.NotSpecified);
+            }
+            set
+            {
+                if (!value)
+                {
+                    this.RBC = RBC.NotSpecified;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Carnet / Volet retained or not by customs
         /// </summary>
         [XmlAttribute("RBC")]
         public RBC RBC { get; set; }
-        
+
         /// <summary>
-        /// Number of packages unloaded
+        /// Number of packages discharged
         /// </summary>
+        [XmlIgnore()]
+        public uint? PIC { get; set; }
+
+        /// <summary>
+        /// Internal representation of <seealso cref="PIC"/>
+        /// </summary>
+        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         [XmlAttribute("PIC")]
-        public int PIC { get; set; }
+        public uint PICAsUint
+        {
+            get { return PIC.Value; }
+            set { PIC = value; }
+        }
+
+        /// <summary>
+        /// Tells to the XML Serializer if <seealso cref="PIC"/> has to be serialized
+        /// </summary>
+        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializePICAsUint()
+        {
+            return PIC.HasValue;
+        }
     }
 
 }

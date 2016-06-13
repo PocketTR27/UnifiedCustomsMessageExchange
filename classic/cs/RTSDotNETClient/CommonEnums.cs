@@ -7,6 +7,30 @@ using System.Xml.Serialization;
 namespace RTSDotNETClient
 {
     /// <summary>
+    /// TIR Carnet Operation (optional).
+    /// </summary>
+    public enum TCO
+    {
+        /// <summary>
+        /// No value is given (not specified)
+        /// </summary>
+        [XmlIgnore]
+        NotSpecified,
+
+        /// <summary>
+        /// Before Load TIR operation
+        /// </summary>
+        [XmlEnum("LOAD")]
+        BeforeLoad,
+
+        /// <summary>
+        /// Exit TIR operation
+        /// </summary>
+        [XmlEnum("EXIT")]
+        Exit
+    }
+
+    /// <summary>
     /// Discharge with or without Reservation. 
     /// </summary>
     public enum CWR
@@ -29,6 +53,12 @@ namespace RTSDotNETClient
     /// </summary>
     public enum RBC
     {
+        /// <summary>
+        /// No value is given (not specified)
+        /// </summary>
+        [XmlIgnore]
+        NotSpecified,
+
         /// <summary>
         /// Carnet Retained by Customs
         /// </summary>

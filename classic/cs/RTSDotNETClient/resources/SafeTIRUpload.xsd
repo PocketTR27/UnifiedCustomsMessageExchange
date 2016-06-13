@@ -161,8 +161,8 @@
 	</xs:simpleType>
 	<xs:simpleType name="TCOType">
 		<xs:restriction base="xs:string">
-			<xs:enumeration value="EXIT" />
 			<xs:enumeration value="LOAD" />
+			<xs:enumeration value="EXIT" />
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="CWRType">

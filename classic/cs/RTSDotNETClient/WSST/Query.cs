@@ -6,12 +6,17 @@ using System.ComponentModel;
 
 namespace RTSDotNETClient.WSST
 {
-
     /// <summary>
     /// UPG
     /// </summary>
     public enum UPG
     {
+        /// <summary>
+        /// No value is given (not specified)
+        /// </summary>
+        [XmlIgnore]
+        NotSpecified,
+
         /// <summary>
         /// New
         /// </summary>
@@ -203,10 +208,30 @@ namespace RTSDotNETClient.WSST
         public string PFD {get;set;}
 
         /// <summary>
-        /// TIR Carnet Operation (optional). It will be EXIT for SafeTIR exit messages (eTIR)
+        /// Tells to the XML Serializer if <seealso cref="TCO"/> has to be serialized
+        /// </summary>
+        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool TCOSpecified
+        {
+            get
+            {
+                return (this.TCO != TCO.NotSpecified);
+            }
+            set
+            {
+                if (!value)
+                {
+                    this.TCO = TCO.NotSpecified;
+                }
+            }
+        }
+
+        /// <summary>
+        /// TIR Carnet Operation (optional). It will be LOAD for SafeTIR before load messages (eTIR) and EXIT for SafeTIR exit messages (eTIR)
         /// </summary>
         [XmlAttribute("TCO")]
-        public string TCO { get; set; }
+        public TCO TCO { get; set; }
 
         /// <summary>
         /// Discharge with or without Reservation. 
@@ -226,60 +251,60 @@ namespace RTSDotNETClient.WSST
         /// </summary>
         [XmlAttribute("COM")]
         public string COM {get;set;}
-        
-        /// <summary>
-        /// Carnet / Volet retained or not by customs
-        /// </summary>
-        [XmlIgnore()]
-        public RBC? RBC { get; set; }
-
-        /// <summary>
-        /// Internal representation of <seealso cref="RBC"/>
-        /// </summary>
-        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-        [XmlAttribute("RBC")]
-        public RBC RBCAsRBC
-        {
-            get { return RBC.Value; }
-            set { RBC = value; }
-        }
 
         /// <summary>
         /// Tells to the XML Serializer if <seealso cref="RBC"/> has to be serialized
         /// </summary>
         [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRBCAsRBC()
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool RBCSpecified
         {
-            return RBC.HasValue;
+            get
+            {
+                return (this.RBC != RBC.NotSpecified);
+            }
+            set
+            {
+                if (!value)
+                {
+                    this.RBC = RBC.NotSpecified;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Carnet / Volet retained or not by customs
+        /// </summary>
+        [XmlAttribute("RBC")]
+        public RBC RBC { get; set; }
+
+        /// <summary>
+        /// Tells to the XML Serializer if <seealso cref="UPG"/> has to be serialized
+        /// </summary>
+        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool UPGSpecified
+        {
+            get
+            {
+                return (this.UPG != UPG.NotSpecified);
+            }
+            set
+            {
+                if (!value)
+                {
+                    this.UPG = UPG.NotSpecified;
+                }
+            }
         }
 
         /// <summary>
         /// The previous data supplied by Customs for this TIR number was a mistake and needs to be canceled. All the mandatory fields for the record must be the same for the record being canceled and the record doing the canceling.
         /// <remarks>This delimiter can be used to update an existing record. When using such a mechanism, the new record (without UPG) should be present just after the record (with UPG value = "C") doing the canceling in the same message.</remarks>
         /// </summary>
-        [XmlIgnore()]
-        public UPG? UPG {get;set;}
-
-        /// <summary>
-        /// Internal representation of <seealso cref="UPG"/>
-        /// </summary>
-        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         [XmlAttribute("UPG")]
-        public UPG UPGAsUPG
-        {
-            get { return UPG.Value; }
-            set { UPG = value; }
-        }
+        public UPG UPG {get;set;}
 
-        /// <summary>
-        /// Tells to the XML Serializer if <seealso cref="UPG"/> has to be serialized
-        /// </summary>
-        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeUPGAsUPG()
-        {
-            return UPG.HasValue;
-        }
-        
         /// <summary>
         /// Number of packages discharged
         /// </summary>

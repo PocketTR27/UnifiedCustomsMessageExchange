@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
+using System.ComponentModel;
 
 namespace RTSDotNETClient.WSRQ
 {
@@ -141,10 +142,30 @@ namespace RTSDotNETClient.WSRQ
         public string PFD { get; set; }
 
         /// <summary>
-        /// TIR Carnet Operation (optional). It will be EXIT for SafeTIR exit messages (eTIR)
+        /// Tells to the XML Serializer if <seealso cref="TCO"/> has to be serialized
+        /// </summary>
+        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool TCOSpecified
+        {
+            get
+            {
+                return (this.TCO != TCO.NotSpecified);
+            }
+            set
+            {
+                if (!value)
+                {
+                    this.TCO = TCO.NotSpecified;
+                }
+            }
+        }
+
+        /// <summary>
+        /// TIR Carnet Operation (optional). It will be LOAD for SafeTIR before load messages (eTIR) and EXIT for SafeTIR exit messages (eTIR)
         /// </summary>
         [XmlAttribute("TCO")]
-        public string TCO { get; set; }
+        public TCO TCO { get; set; }
 
         /// <summary>
         /// Discharge with or without Reservation. (If Discharge is without reservation, the string "OK" will be used; if with Reserva-tion, one character string, "R", will be used.)
@@ -163,6 +184,26 @@ namespace RTSDotNETClient.WSRQ
         /// </summary>
         [XmlAttribute("COM")]
         public string COM { get; set; }
+
+        /// <summary>
+        /// Tells to the XML Serializer if <seealso cref="RBC"/> has to be serialized
+        /// </summary>
+        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool RBCSpecified
+        {
+            get
+            {
+                return (this.RBC != RBC.NotSpecified);
+            }
+            set
+            {
+                if (!value)
+                {
+                    this.RBC = RBC.NotSpecified;
+                }
+            }
+        }
 
         /// <summary>
         /// Carnet or volet retained by customs or not

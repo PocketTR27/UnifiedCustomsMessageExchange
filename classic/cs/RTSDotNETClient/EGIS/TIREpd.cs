@@ -15,6 +15,225 @@ namespace RTSDotNETClient.EGIS
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = false)]
+    public partial class EPD025
+    {
+
+        private EPD025HEAHEA hEAHEAField;
+
+        private TRAPRIPC1Type tRAPRIPC1Field;
+
+        private CUSOFFDESESTType cUSOFFDESESTField;
+
+        private List<SEAINFSLIType> sEAINFSLIField;
+
+        private CONTRESULTSType cONTRESULTSField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 0)]
+        public EPD025HEAHEA HEAHEA
+        {
+            get
+            {
+                return this.hEAHEAField;
+            }
+            set
+            {
+                this.hEAHEAField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 1)]
+        public TRAPRIPC1Type TRAPRIPC1
+        {
+            get
+            {
+                return this.tRAPRIPC1Field;
+            }
+            set
+            {
+                this.tRAPRIPC1Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 2)]
+        public CUSOFFDESESTType CUSOFFDESEST
+        {
+            get
+            {
+                return this.cUSOFFDESESTField;
+            }
+            set
+            {
+                this.cUSOFFDESESTField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool SEAINFSLISpecified;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("SEAINFSLI", Order = 3)]
+        public List<SEAINFSLIType> SEAINFSLI
+        {
+            get
+            {
+                return this.sEAINFSLIField;
+            }
+            set
+            {
+                this.sEAINFSLIField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 4)]
+        public CONTRESULTSType CONTRESULTS
+        {
+            get
+            {
+                return this.cONTRESULTSField;
+            }
+            set
+            {
+                this.cONTRESULTSField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
+    public partial class EPD025HEAHEA
+    {
+
+        private string itemField;
+
+        private ItemChoiceType itemElementNameField;
+
+        private string docNumHEA5Field;
+
+        private string item1Field;
+
+        private Item1ChoiceType item1ElementNameField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("GuaranteeNumber", typeof(string), Order = 0)]
+        [System.Xml.Serialization.XmlElementAttribute("TIRCarnet", typeof(string), Order = 0)]
+        [System.Xml.Serialization.XmlChoiceIdentifierAttribute("ItemElementName")]
+        public string Item
+        {
+            get
+            {
+                return this.itemField;
+            }
+            set
+            {
+                this.itemField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 1)]
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public ItemChoiceType ItemElementName
+        {
+            get
+            {
+                return this.itemElementNameField;
+            }
+            set
+            {
+                this.itemElementNameField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 2)]
+        public string DocNumHEA5
+        {
+            get
+            {
+                return this.docNumHEA5Field;
+            }
+            set
+            {
+                this.docNumHEA5Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("ExitDate", typeof(string), Order = 3)]
+        [System.Xml.Serialization.XmlElementAttribute("MessageDate", typeof(string), Order = 3)]
+        [System.Xml.Serialization.XmlChoiceIdentifierAttribute("Item1ElementName")]
+        public string Item1
+        {
+            get
+            {
+                return this.item1Field;
+            }
+            set
+            {
+                this.item1Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 4)]
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public Item1ChoiceType Item1ElementName
+        {
+            get
+            {
+                return this.item1ElementNameField;
+            }
+            set
+            {
+                this.item1ElementNameField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(IncludeInSchema = false)]
+    public enum ItemChoiceType
+    {
+
+        /// <remarks/>
+        GuaranteeNumber,
+
+        /// <remarks/>
+        TIRCarnet,
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(IncludeInSchema = false)]
+    public enum Item1ChoiceType
+    {
+
+        /// <remarks/>
+        ExitDate,
+
+        /// <remarks/>
+        MessageDate,
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class CONTRESULTSType
     {
 
@@ -25,6 +244,7 @@ namespace RTSDotNETClient.EGIS
         private string comConResLNGField;
 
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 0)]
         public string ConResCode
         {
             get
@@ -38,6 +258,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 1)]
         public string ComConRes
         {
             get
@@ -51,6 +272,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 2)]
         public string ComConResLNG
         {
             get
@@ -60,2109 +282,6 @@ namespace RTSDotNETClient.EGIS
             set
             {
                 this.comConResLNGField = value;
-            }
-        }
-    }
-
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class TRACONSEC029Type
-    {
-
-        private string nameTRACONSEC033Field;
-
-        private string strNumTRACONSEC035Field;
-
-        private string posCodTRACONSEC034Field;
-
-        private string citTRACONSEC030Field;
-
-        private string couCodTRACONSEC031Field;
-
-        private string tRACONSEC029LNGField;
-
-        private string tINTRACONSEC036Field;
-
-        private List<TAXType> tAXTRACONSEC037Field;
-
-        /// <remarks/>
-        public string NameTRACONSEC033
-        {
-            get
-            {
-                return this.nameTRACONSEC033Field;
-            }
-            set
-            {
-                this.nameTRACONSEC033Field = value;
-            }
-        }
-
-        /// <remarks/>
-        public string StrNumTRACONSEC035
-        {
-            get
-            {
-                return this.strNumTRACONSEC035Field;
-            }
-            set
-            {
-                this.strNumTRACONSEC035Field = value;
-            }
-        }
-
-        /// <remarks/>
-        public string PosCodTRACONSEC034
-        {
-            get
-            {
-                return this.posCodTRACONSEC034Field;
-            }
-            set
-            {
-                this.posCodTRACONSEC034Field = value;
-            }
-        }
-
-        /// <remarks/>
-        public string CitTRACONSEC030
-        {
-            get
-            {
-                return this.citTRACONSEC030Field;
-            }
-            set
-            {
-                this.citTRACONSEC030Field = value;
-            }
-        }
-
-        /// <remarks/>
-        public string CouCodTRACONSEC031
-        {
-            get
-            {
-                return this.couCodTRACONSEC031Field;
-            }
-            set
-            {
-                this.couCodTRACONSEC031Field = value;
-            }
-        }
-
-        /// <remarks/>
-        public string TRACONSEC029LNG
-        {
-            get
-            {
-                return this.tRACONSEC029LNGField;
-            }
-            set
-            {
-                this.tRACONSEC029LNGField = value;
-            }
-        }
-
-        /// <remarks/>
-        public string TINTRACONSEC036
-        {
-            get
-            {
-                return this.tINTRACONSEC036Field;
-            }
-            set
-            {
-                this.tINTRACONSEC036Field = value;
-            }
-        }
-
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool TAXTRACONSEC037Specified;
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("TAXTRACONSEC037")]
-        public List<TAXType> TAXTRACONSEC037
-        {
-            get
-            {
-                return this.tAXTRACONSEC037Field;
-            }
-            set
-            {
-                this.tAXTRACONSEC037Field = value;
-            }
-        }
-    }
-
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class TAXType
-    {
-
-        private string purposeField;
-
-        private string valueField;
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string purpose
-        {
-            get
-            {
-                return this.purposeField;
-            }
-            set
-            {
-                this.purposeField = value;
-            }
-        }
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlTextAttribute()]
-        public string Value
-        {
-            get
-            {
-                return this.valueField;
-            }
-            set
-            {
-                this.valueField = value;
-            }
-        }
-    }
-
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class TRACORSEC037Type
-    {
-
-        private string namTRACORSEC041Field;
-
-        private string strNumTRACORSEC043Field;
-
-        private string posCodTRACORSEC042Field;
-
-        private string citTRACORSEC038Field;
-
-        private string couCodTRACORSEC039Field;
-
-        private string tRACORSEC037LNGField;
-
-        private string tINTRACORSEC044Field;
-
-        private List<TAXType> tAXTRACORSEC045Field;
-
-        /// <remarks/>
-        public string NamTRACORSEC041
-        {
-            get
-            {
-                return this.namTRACORSEC041Field;
-            }
-            set
-            {
-                this.namTRACORSEC041Field = value;
-            }
-        }
-
-        /// <remarks/>
-        public string StrNumTRACORSEC043
-        {
-            get
-            {
-                return this.strNumTRACORSEC043Field;
-            }
-            set
-            {
-                this.strNumTRACORSEC043Field = value;
-            }
-        }
-
-        /// <remarks/>
-        public string PosCodTRACORSEC042
-        {
-            get
-            {
-                return this.posCodTRACORSEC042Field;
-            }
-            set
-            {
-                this.posCodTRACORSEC042Field = value;
-            }
-        }
-
-        /// <remarks/>
-        public string CitTRACORSEC038
-        {
-            get
-            {
-                return this.citTRACORSEC038Field;
-            }
-            set
-            {
-                this.citTRACORSEC038Field = value;
-            }
-        }
-
-        /// <remarks/>
-        public string CouCodTRACORSEC039
-        {
-            get
-            {
-                return this.couCodTRACORSEC039Field;
-            }
-            set
-            {
-                this.couCodTRACORSEC039Field = value;
-            }
-        }
-
-        /// <remarks/>
-        public string TRACORSEC037LNG
-        {
-            get
-            {
-                return this.tRACORSEC037LNGField;
-            }
-            set
-            {
-                this.tRACORSEC037LNGField = value;
-            }
-        }
-
-        /// <remarks/>
-        public string TINTRACORSEC044
-        {
-            get
-            {
-                return this.tINTRACORSEC044Field;
-            }
-            set
-            {
-                this.tINTRACORSEC044Field = value;
-            }
-        }
-
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool TAXTRACORSEC045Specified;
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("TAXTRACORSEC045")]
-        public List<TAXType> TAXTRACORSEC045
-        {
-            get
-            {
-                return this.tAXTRACORSEC045Field;
-            }
-            set
-            {
-                this.tAXTRACORSEC045Field = value;
-            }
-        }
-    }
-
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class ITIType
-    {
-
-        private string couOfRouCodITI1Field;
-
-        /// <remarks/>
-        public string CouOfRouCodITI1
-        {
-            get
-            {
-                return this.couOfRouCodITI1Field;
-            }
-            set
-            {
-                this.couOfRouCodITI1Field = value;
-            }
-        }
-    }
-
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class RESOFCONROCType
-    {
-
-        private string desROC2Field;
-
-        private string desROC2LNGField;
-
-        private string conIndROC1Field;
-
-        private string poiToTheAttROC51Field;
-
-        /// <remarks/>
-        public string DesROC2
-        {
-            get
-            {
-                return this.desROC2Field;
-            }
-            set
-            {
-                this.desROC2Field = value;
-            }
-        }
-
-        /// <remarks/>
-        public string DesROC2LNG
-        {
-            get
-            {
-                return this.desROC2LNGField;
-            }
-            set
-            {
-                this.desROC2LNGField = value;
-            }
-        }
-
-        /// <remarks/>
-        public string ConIndROC1
-        {
-            get
-            {
-                return this.conIndROC1Field;
-            }
-            set
-            {
-                this.conIndROC1Field = value;
-            }
-        }
-
-        /// <remarks/>
-        public string PoiToTheAttROC51
-        {
-            get
-            {
-                return this.poiToTheAttROC51Field;
-            }
-            set
-            {
-                this.poiToTheAttROC51Field = value;
-            }
-        }
-    }
-
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class TRACONSECGOO013Type
-    {
-
-        private string namTRACONSECGOO017Field;
-
-        private string strNumTRACONSECGOO019Field;
-
-        private string posCodTRACONSECGOO018Field;
-
-        private string cityTRACONSECGOO014Field;
-
-        private string couCodTRACONSECGOO015Field;
-
-        private string tRACONSECGOO013LNGField;
-
-        private string tINTRACONSECGOO020Field;
-
-        private List<TAXType> tAXTRACONSECGOO021Field;
-
-        /// <remarks/>
-        public string NamTRACONSECGOO017
-        {
-            get
-            {
-                return this.namTRACONSECGOO017Field;
-            }
-            set
-            {
-                this.namTRACONSECGOO017Field = value;
-            }
-        }
-
-        /// <remarks/>
-        public string StrNumTRACONSECGOO019
-        {
-            get
-            {
-                return this.strNumTRACONSECGOO019Field;
-            }
-            set
-            {
-                this.strNumTRACONSECGOO019Field = value;
-            }
-        }
-
-        /// <remarks/>
-        public string PosCodTRACONSECGOO018
-        {
-            get
-            {
-                return this.posCodTRACONSECGOO018Field;
-            }
-            set
-            {
-                this.posCodTRACONSECGOO018Field = value;
-            }
-        }
-
-        /// <remarks/>
-        public string CityTRACONSECGOO014
-        {
-            get
-            {
-                return this.cityTRACONSECGOO014Field;
-            }
-            set
-            {
-                this.cityTRACONSECGOO014Field = value;
-            }
-        }
-
-        /// <remarks/>
-        public string CouCodTRACONSECGOO015
-        {
-            get
-            {
-                return this.couCodTRACONSECGOO015Field;
-            }
-            set
-            {
-                this.couCodTRACONSECGOO015Field = value;
-            }
-        }
-
-        /// <remarks/>
-        public string TRACONSECGOO013LNG
-        {
-            get
-            {
-                return this.tRACONSECGOO013LNGField;
-            }
-            set
-            {
-                this.tRACONSECGOO013LNGField = value;
-            }
-        }
-
-        /// <remarks/>
-        public string TINTRACONSECGOO020
-        {
-            get
-            {
-                return this.tINTRACONSECGOO020Field;
-            }
-            set
-            {
-                this.tINTRACONSECGOO020Field = value;
-            }
-        }
-
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool TAXTRACONSECGOO021Specified;
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("TAXTRACONSECGOO021")]
-        public List<TAXType> TAXTRACONSECGOO021
-        {
-            get
-            {
-                return this.tAXTRACONSECGOO021Field;
-            }
-            set
-            {
-                this.tAXTRACONSECGOO021Field = value;
-            }
-        }
-    }
-
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class TRACORSECGOO021Type
-    {
-
-        private string namTRACORSECGOO025Field;
-
-        private string strNumTRACORSECGOO027Field;
-
-        private string posCodTRACORSECGOO026Field;
-
-        private string citTRACORSECGOO022Field;
-
-        private string couCodTRACORSECGOO023Field;
-
-        private string tRACORSECGOO021LNGField;
-
-        private string tINTRACORSECGOO028Field;
-
-        private List<TAXType> tAXTRACORSECGOO029Field;
-
-        /// <remarks/>
-        public string NamTRACORSECGOO025
-        {
-            get
-            {
-                return this.namTRACORSECGOO025Field;
-            }
-            set
-            {
-                this.namTRACORSECGOO025Field = value;
-            }
-        }
-
-        /// <remarks/>
-        public string StrNumTRACORSECGOO027
-        {
-            get
-            {
-                return this.strNumTRACORSECGOO027Field;
-            }
-            set
-            {
-                this.strNumTRACORSECGOO027Field = value;
-            }
-        }
-
-        /// <remarks/>
-        public string PosCodTRACORSECGOO026
-        {
-            get
-            {
-                return this.posCodTRACORSECGOO026Field;
-            }
-            set
-            {
-                this.posCodTRACORSECGOO026Field = value;
-            }
-        }
-
-        /// <remarks/>
-        public string CitTRACORSECGOO022
-        {
-            get
-            {
-                return this.citTRACORSECGOO022Field;
-            }
-            set
-            {
-                this.citTRACORSECGOO022Field = value;
-            }
-        }
-
-        /// <remarks/>
-        public string CouCodTRACORSECGOO023
-        {
-            get
-            {
-                return this.couCodTRACORSECGOO023Field;
-            }
-            set
-            {
-                this.couCodTRACORSECGOO023Field = value;
-            }
-        }
-
-        /// <remarks/>
-        public string TRACORSECGOO021LNG
-        {
-            get
-            {
-                return this.tRACORSECGOO021LNGField;
-            }
-            set
-            {
-                this.tRACORSECGOO021LNGField = value;
-            }
-        }
-
-        /// <remarks/>
-        public string TINTRACORSECGOO028
-        {
-            get
-            {
-                return this.tINTRACORSECGOO028Field;
-            }
-            set
-            {
-                this.tINTRACORSECGOO028Field = value;
-            }
-        }
-
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool TAXTRACORSECGOO029Specified;
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("TAXTRACORSECGOO029")]
-        public List<TAXType> TAXTRACORSECGOO029
-        {
-            get
-            {
-                return this.tAXTRACORSECGOO029Field;
-            }
-            set
-            {
-                this.tAXTRACORSECGOO029Field = value;
-            }
-        }
-    }
-
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class SGICODSD2Type
-    {
-
-        private SGICODSD2TypeSenGooCodSD22 senGooCodSD22Field;
-
-        private bool senGooCodSD22FieldSpecified;
-
-        private decimal senQuaSD23Field;
-
-        /// <remarks/>
-        public SGICODSD2TypeSenGooCodSD22 SenGooCodSD22
-        {
-            get
-            {
-                return this.senGooCodSD22Field;
-            }
-            set
-            {
-                this.senGooCodSD22Field = value;
-            }
-        }
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool SenGooCodSD22Specified
-        {
-            get
-            {
-                return this.senGooCodSD22FieldSpecified;
-            }
-            set
-            {
-                this.senGooCodSD22FieldSpecified = value;
-            }
-        }
-
-        /// <remarks/>
-        public decimal SenQuaSD23
-        {
-            get
-            {
-                return this.senQuaSD23Field;
-            }
-            set
-            {
-                this.senQuaSD23Field = value;
-            }
-        }
-    }
-
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
-    [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
-    public enum SGICODSD2TypeSenGooCodSD22
-    {
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("1")]
-        Item1,
-    }
-
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class AdditionalGoodsMeasurementType
-    {
-
-        private string measureUnitCodeField;
-
-        private decimal goodsQuantityField;
-
-        /// <remarks/>
-        public string MeasureUnitCode
-        {
-            get
-            {
-                return this.measureUnitCodeField;
-            }
-            set
-            {
-                this.measureUnitCodeField = value;
-            }
-        }
-
-        /// <remarks/>
-        public decimal GoodsQuantity
-        {
-            get
-            {
-                return this.goodsQuantityField;
-            }
-            set
-            {
-                this.goodsQuantityField = value;
-            }
-        }
-    }
-
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class PACGS2Type
-    {
-
-        private string marNumOfPacGS21Field;
-
-        private string marNumOfPacGS21LNGField;
-
-        private string kinOfPacGS23Field;
-
-        private string numOfPacGS24Field;
-
-        private string numOfPieGS25Field;
-
-        /// <remarks/>
-        public string MarNumOfPacGS21
-        {
-            get
-            {
-                return this.marNumOfPacGS21Field;
-            }
-            set
-            {
-                this.marNumOfPacGS21Field = value;
-            }
-        }
-
-        /// <remarks/>
-        public string MarNumOfPacGS21LNG
-        {
-            get
-            {
-                return this.marNumOfPacGS21LNGField;
-            }
-            set
-            {
-                this.marNumOfPacGS21LNGField = value;
-            }
-        }
-
-        /// <remarks/>
-        public string KinOfPacGS23
-        {
-            get
-            {
-                return this.kinOfPacGS23Field;
-            }
-            set
-            {
-                this.kinOfPacGS23Field = value;
-            }
-        }
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType = "integer")]
-        public string NumOfPacGS24
-        {
-            get
-            {
-                return this.numOfPacGS24Field;
-            }
-            set
-            {
-                this.numOfPacGS24Field = value;
-            }
-        }
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType = "integer")]
-        public string NumOfPieGS25
-        {
-            get
-            {
-                return this.numOfPieGS25Field;
-            }
-            set
-            {
-                this.numOfPieGS25Field = value;
-            }
-        }
-    }
-
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class CONNR2Type
-    {
-
-        private string conNumNR21Field;
-
-        private string nationalityOfContainerCodeField;
-
-        /// <remarks/>
-        public string ConNumNR21
-        {
-            get
-            {
-                return this.conNumNR21Field;
-            }
-            set
-            {
-                this.conNumNR21Field = value;
-            }
-        }
-
-        /// <remarks/>
-        public string NationalityOfContainerCode
-        {
-            get
-            {
-                return this.nationalityOfContainerCodeField;
-            }
-            set
-            {
-                this.nationalityOfContainerCodeField = value;
-            }
-        }
-    }
-
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class TRACONCE2Type
-    {
-
-        private string namCE27Field;
-
-        private string strAndNumCE222Field;
-
-        private string posCodCE223Field;
-
-        private string citCE224Field;
-
-        private string couCE225Field;
-
-        private string nADLNGGICEField;
-
-        private string tINCE259Field;
-
-        private List<TAXType> tAXCE259Field;
-
-        /// <remarks/>
-        public string NamCE27
-        {
-            get
-            {
-                return this.namCE27Field;
-            }
-            set
-            {
-                this.namCE27Field = value;
-            }
-        }
-
-        /// <remarks/>
-        public string StrAndNumCE222
-        {
-            get
-            {
-                return this.strAndNumCE222Field;
-            }
-            set
-            {
-                this.strAndNumCE222Field = value;
-            }
-        }
-
-        /// <remarks/>
-        public string PosCodCE223
-        {
-            get
-            {
-                return this.posCodCE223Field;
-            }
-            set
-            {
-                this.posCodCE223Field = value;
-            }
-        }
-
-        /// <remarks/>
-        public string CitCE224
-        {
-            get
-            {
-                return this.citCE224Field;
-            }
-            set
-            {
-                this.citCE224Field = value;
-            }
-        }
-
-        /// <remarks/>
-        public string CouCE225
-        {
-            get
-            {
-                return this.couCE225Field;
-            }
-            set
-            {
-                this.couCE225Field = value;
-            }
-        }
-
-        /// <remarks/>
-        public string NADLNGGICE
-        {
-            get
-            {
-                return this.nADLNGGICEField;
-            }
-            set
-            {
-                this.nADLNGGICEField = value;
-            }
-        }
-
-        /// <remarks/>
-        public string TINCE259
-        {
-            get
-            {
-                return this.tINCE259Field;
-            }
-            set
-            {
-                this.tINCE259Field = value;
-            }
-        }
-
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool TAXCE259Specified;
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("TAXCE259")]
-        public List<TAXType> TAXCE259
-        {
-            get
-            {
-                return this.tAXCE259Field;
-            }
-            set
-            {
-                this.tAXCE259Field = value;
-            }
-        }
-    }
-
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class TRACONCO2Type
-    {
-
-        private string namCO27Field;
-
-        private string strAndNumCO222Field;
-
-        private string posCodCO223Field;
-
-        private string citCO224Field;
-
-        private string couCO225Field;
-
-        private string nADLNGGTCOField;
-
-        private string tINCO259Field;
-
-        private List<TAXType> tAXCO259Field;
-
-        /// <remarks/>
-        public string NamCO27
-        {
-            get
-            {
-                return this.namCO27Field;
-            }
-            set
-            {
-                this.namCO27Field = value;
-            }
-        }
-
-        /// <remarks/>
-        public string StrAndNumCO222
-        {
-            get
-            {
-                return this.strAndNumCO222Field;
-            }
-            set
-            {
-                this.strAndNumCO222Field = value;
-            }
-        }
-
-        /// <remarks/>
-        public string PosCodCO223
-        {
-            get
-            {
-                return this.posCodCO223Field;
-            }
-            set
-            {
-                this.posCodCO223Field = value;
-            }
-        }
-
-        /// <remarks/>
-        public string CitCO224
-        {
-            get
-            {
-                return this.citCO224Field;
-            }
-            set
-            {
-                this.citCO224Field = value;
-            }
-        }
-
-        /// <remarks/>
-        public string CouCO225
-        {
-            get
-            {
-                return this.couCO225Field;
-            }
-            set
-            {
-                this.couCO225Field = value;
-            }
-        }
-
-        /// <remarks/>
-        public string NADLNGGTCO
-        {
-            get
-            {
-                return this.nADLNGGTCOField;
-            }
-            set
-            {
-                this.nADLNGGTCOField = value;
-            }
-        }
-
-        /// <remarks/>
-        public string TINCO259
-        {
-            get
-            {
-                return this.tINCO259Field;
-            }
-            set
-            {
-                this.tINCO259Field = value;
-            }
-        }
-
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool TAXCO259Specified;
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("TAXCO259")]
-        public List<TAXType> TAXCO259
-        {
-            get
-            {
-                return this.tAXCO259Field;
-            }
-            set
-            {
-                this.tAXCO259Field = value;
-            }
-        }
-    }
-
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class SPEMENMT2Type
-    {
-
-        private string addInfMT21Field;
-
-        private string addInfMT21LNGField;
-
-        private string addInfCodMT23Field;
-
-        private string expFroECMT24Field;
-
-        private string expFroCouMT25Field;
-
-        /// <remarks/>
-        public string AddInfMT21
-        {
-            get
-            {
-                return this.addInfMT21Field;
-            }
-            set
-            {
-                this.addInfMT21Field = value;
-            }
-        }
-
-        /// <remarks/>
-        public string AddInfMT21LNG
-        {
-            get
-            {
-                return this.addInfMT21LNGField;
-            }
-            set
-            {
-                this.addInfMT21LNGField = value;
-            }
-        }
-
-        /// <remarks/>
-        public string AddInfCodMT23
-        {
-            get
-            {
-                return this.addInfCodMT23Field;
-            }
-            set
-            {
-                this.addInfCodMT23Field = value;
-            }
-        }
-
-        /// <remarks/>
-        public string ExpFroECMT24
-        {
-            get
-            {
-                return this.expFroECMT24Field;
-            }
-            set
-            {
-                this.expFroECMT24Field = value;
-            }
-        }
-
-        /// <remarks/>
-        public string ExpFroCouMT25
-        {
-            get
-            {
-                return this.expFroCouMT25Field;
-            }
-            set
-            {
-                this.expFroCouMT25Field = value;
-            }
-        }
-    }
-
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class PRODOCDC2Type
-    {
-
-        private string docTypDC21Field;
-
-        private string docRefDC23Field;
-
-        private string docRefDCLNGField;
-
-        private string comOfInfDC25Field;
-
-        private string comOfInfDC25LNGField;
-
-        private SerializableDateTimeOffset docRefDateField;
-
-        private bool docRefDateFieldSpecified;
-
-        /// <remarks/>
-        public string DocTypDC21
-        {
-            get
-            {
-                return this.docTypDC21Field;
-            }
-            set
-            {
-                this.docTypDC21Field = value;
-            }
-        }
-
-        /// <remarks/>
-        public string DocRefDC23
-        {
-            get
-            {
-                return this.docRefDC23Field;
-            }
-            set
-            {
-                this.docRefDC23Field = value;
-            }
-        }
-
-        /// <remarks/>
-        public string DocRefDCLNG
-        {
-            get
-            {
-                return this.docRefDCLNGField;
-            }
-            set
-            {
-                this.docRefDCLNGField = value;
-            }
-        }
-
-        /// <remarks/>
-        public string ComOfInfDC25
-        {
-            get
-            {
-                return this.comOfInfDC25Field;
-            }
-            set
-            {
-                this.comOfInfDC25Field = value;
-            }
-        }
-
-        /// <remarks/>
-        public string ComOfInfDC25LNG
-        {
-            get
-            {
-                return this.comOfInfDC25LNGField;
-            }
-            set
-            {
-                this.comOfInfDC25LNGField = value;
-            }
-        }
-
-        /// <remarks/>
-        public SerializableDateTimeOffset DocRefDate
-        {
-            get
-            {
-                return this.docRefDateField;
-            }
-            set
-            {
-                this.docRefDateField = value;
-            }
-        }
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool DocRefDateSpecified
-        {
-            get
-            {
-                return this.docRefDateFieldSpecified;
-            }
-            set
-            {
-                this.docRefDateFieldSpecified = value;
-            }
-        }
-    }
-
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class PREADMREFAR2Type
-    {
-
-        private string preDocTypAR21Field;
-
-        private string preDocRefAR26Field;
-
-        private string preDocRefLNGField;
-
-        private string comOfInfAR29Field;
-
-        private string comOfInfAR29LNGField;
-
-        private SerializableDateTimeOffset preDocRefDateField;
-
-        private bool preDocRefDateFieldSpecified;
-
-        /// <remarks/>
-        public string PreDocTypAR21
-        {
-            get
-            {
-                return this.preDocTypAR21Field;
-            }
-            set
-            {
-                this.preDocTypAR21Field = value;
-            }
-        }
-
-        /// <remarks/>
-        public string PreDocRefAR26
-        {
-            get
-            {
-                return this.preDocRefAR26Field;
-            }
-            set
-            {
-                this.preDocRefAR26Field = value;
-            }
-        }
-
-        /// <remarks/>
-        public string PreDocRefLNG
-        {
-            get
-            {
-                return this.preDocRefLNGField;
-            }
-            set
-            {
-                this.preDocRefLNGField = value;
-            }
-        }
-
-        /// <remarks/>
-        public string ComOfInfAR29
-        {
-            get
-            {
-                return this.comOfInfAR29Field;
-            }
-            set
-            {
-                this.comOfInfAR29Field = value;
-            }
-        }
-
-        /// <remarks/>
-        public string ComOfInfAR29LNG
-        {
-            get
-            {
-                return this.comOfInfAR29LNGField;
-            }
-            set
-            {
-                this.comOfInfAR29LNGField = value;
-            }
-        }
-
-        /// <remarks/>
-        public SerializableDateTimeOffset PreDocRefDate
-        {
-            get
-            {
-                return this.preDocRefDateField;
-            }
-            set
-            {
-                this.preDocRefDateField = value;
-            }
-        }
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool PreDocRefDateSpecified
-        {
-            get
-            {
-                return this.preDocRefDateFieldSpecified;
-            }
-            set
-            {
-                this.preDocRefDateFieldSpecified = value;
-            }
-        }
-    }
-
-    /// <remarks/>
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(GOOITEGDSWithRESOFCONROCType))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(GOOITEGDSType))]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public abstract partial class GOOITEGDSUpperPartType
-    {
-
-        private string iteNumGDS7Field;
-
-        private string comCodTarCodGDS10Field;
-
-        private string gooDesGDS23Field;
-
-        private string gooDesGDS23LNGField;
-
-        private decimal groMasGDS46Field;
-
-        private bool groMasGDS46FieldSpecified;
-
-        private decimal netMasGDS48Field;
-
-        private bool netMasGDS48FieldSpecified;
-
-        private string couOfDisGDS58Field;
-
-        private string couOfDesGDS59Field;
-
-        private string metOfPayGDI12Field;
-
-        private string comRefNumGIM1Field;
-
-        private string uNDanGooCodGDI1Field;
-
-        private List<PREADMREFAR2Type> pREADMREFAR2Field;
-
-        private List<PRODOCDC2Type> pRODOCDC2Field;
-
-        private SPEMENMT2Type sPEMENMT2Field;
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType = "integer")]
-        public string IteNumGDS7
-        {
-            get
-            {
-                return this.iteNumGDS7Field;
-            }
-            set
-            {
-                this.iteNumGDS7Field = value;
-            }
-        }
-
-        /// <remarks/>
-        public string ComCodTarCodGDS10
-        {
-            get
-            {
-                return this.comCodTarCodGDS10Field;
-            }
-            set
-            {
-                this.comCodTarCodGDS10Field = value;
-            }
-        }
-
-        /// <remarks/>
-        public string GooDesGDS23
-        {
-            get
-            {
-                return this.gooDesGDS23Field;
-            }
-            set
-            {
-                this.gooDesGDS23Field = value;
-            }
-        }
-
-        /// <remarks/>
-        public string GooDesGDS23LNG
-        {
-            get
-            {
-                return this.gooDesGDS23LNGField;
-            }
-            set
-            {
-                this.gooDesGDS23LNGField = value;
-            }
-        }
-
-        /// <remarks/>
-        public decimal GroMasGDS46
-        {
-            get
-            {
-                return this.groMasGDS46Field;
-            }
-            set
-            {
-                this.groMasGDS46Field = value;
-            }
-        }
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool GroMasGDS46Specified
-        {
-            get
-            {
-                return this.groMasGDS46FieldSpecified;
-            }
-            set
-            {
-                this.groMasGDS46FieldSpecified = value;
-            }
-        }
-
-        /// <remarks/>
-        public decimal NetMasGDS48
-        {
-            get
-            {
-                return this.netMasGDS48Field;
-            }
-            set
-            {
-                this.netMasGDS48Field = value;
-            }
-        }
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool NetMasGDS48Specified
-        {
-            get
-            {
-                return this.netMasGDS48FieldSpecified;
-            }
-            set
-            {
-                this.netMasGDS48FieldSpecified = value;
-            }
-        }
-
-        /// <remarks/>
-        public string CouOfDisGDS58
-        {
-            get
-            {
-                return this.couOfDisGDS58Field;
-            }
-            set
-            {
-                this.couOfDisGDS58Field = value;
-            }
-        }
-
-        /// <remarks/>
-        public string CouOfDesGDS59
-        {
-            get
-            {
-                return this.couOfDesGDS59Field;
-            }
-            set
-            {
-                this.couOfDesGDS59Field = value;
-            }
-        }
-
-        /// <remarks/>
-        public string MetOfPayGDI12
-        {
-            get
-            {
-                return this.metOfPayGDI12Field;
-            }
-            set
-            {
-                this.metOfPayGDI12Field = value;
-            }
-        }
-
-        /// <remarks/>
-        public string ComRefNumGIM1
-        {
-            get
-            {
-                return this.comRefNumGIM1Field;
-            }
-            set
-            {
-                this.comRefNumGIM1Field = value;
-            }
-        }
-
-        /// <remarks/>
-        public string UNDanGooCodGDI1
-        {
-            get
-            {
-                return this.uNDanGooCodGDI1Field;
-            }
-            set
-            {
-                this.uNDanGooCodGDI1Field = value;
-            }
-        }
-
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool PREADMREFAR2Specified;
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("PREADMREFAR2")]
-        public List<PREADMREFAR2Type> PREADMREFAR2
-        {
-            get
-            {
-                return this.pREADMREFAR2Field;
-            }
-            set
-            {
-                this.pREADMREFAR2Field = value;
-            }
-        }
-
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool PRODOCDC2Specified;
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("PRODOCDC2")]
-        public List<PRODOCDC2Type> PRODOCDC2
-        {
-            get
-            {
-                return this.pRODOCDC2Field;
-            }
-            set
-            {
-                this.pRODOCDC2Field = value;
-            }
-        }
-
-        /// <remarks/>
-        public SPEMENMT2Type SPEMENMT2
-        {
-            get
-            {
-                return this.sPEMENMT2Field;
-            }
-            set
-            {
-                this.sPEMENMT2Field = value;
-            }
-        }
-    }
-
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GOOITEGDSWithRESOFCONROCType : GOOITEGDSUpperPartType
-    {
-
-        private RESOFCONROCType rESOFCONROCField;
-
-        private TRACONCO2Type tRACONCO2Field;
-
-        private TRACONCE2Type tRACONCE2Field;
-
-        private List<CONNR2Type> cONNR2Field;
-
-        private List<PACGS2Type> pACGS2Field;
-
-        private AdditionalGoodsMeasurementType additionalGoodsMeasurementField;
-
-        private SGICODSD2Type sGICODSD2Field;
-
-        private TRACORSECGOO021Type tRACORSECGOO021Field;
-
-        private TRACONSECGOO013Type tRACONSECGOO013Field;
-
-        /// <remarks/>
-        public RESOFCONROCType RESOFCONROC
-        {
-            get
-            {
-                return this.rESOFCONROCField;
-            }
-            set
-            {
-                this.rESOFCONROCField = value;
-            }
-        }
-
-        /// <remarks/>
-        public TRACONCO2Type TRACONCO2
-        {
-            get
-            {
-                return this.tRACONCO2Field;
-            }
-            set
-            {
-                this.tRACONCO2Field = value;
-            }
-        }
-
-        /// <remarks/>
-        public TRACONCE2Type TRACONCE2
-        {
-            get
-            {
-                return this.tRACONCE2Field;
-            }
-            set
-            {
-                this.tRACONCE2Field = value;
-            }
-        }
-
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool CONNR2Specified;
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("CONNR2")]
-        public List<CONNR2Type> CONNR2
-        {
-            get
-            {
-                return this.cONNR2Field;
-            }
-            set
-            {
-                this.cONNR2Field = value;
-            }
-        }
-
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool PACGS2Specified;
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("PACGS2")]
-        public List<PACGS2Type> PACGS2
-        {
-            get
-            {
-                return this.pACGS2Field;
-            }
-            set
-            {
-                this.pACGS2Field = value;
-            }
-        }
-
-        /// <remarks/>
-        public AdditionalGoodsMeasurementType AdditionalGoodsMeasurement
-        {
-            get
-            {
-                return this.additionalGoodsMeasurementField;
-            }
-            set
-            {
-                this.additionalGoodsMeasurementField = value;
-            }
-        }
-
-        /// <remarks/>
-        public SGICODSD2Type SGICODSD2
-        {
-            get
-            {
-                return this.sGICODSD2Field;
-            }
-            set
-            {
-                this.sGICODSD2Field = value;
-            }
-        }
-
-        /// <remarks/>
-        public TRACORSECGOO021Type TRACORSECGOO021
-        {
-            get
-            {
-                return this.tRACORSECGOO021Field;
-            }
-            set
-            {
-                this.tRACORSECGOO021Field = value;
-            }
-        }
-
-        /// <remarks/>
-        public TRACONSECGOO013Type TRACONSECGOO013
-        {
-            get
-            {
-                return this.tRACONSECGOO013Field;
-            }
-            set
-            {
-                this.tRACONSECGOO013Field = value;
-            }
-        }
-    }
-
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GOOITEGDSType : GOOITEGDSUpperPartType
-    {
-
-        private TRACONCO2Type tRACONCO2Field;
-
-        private TRACONCE2Type tRACONCE2Field;
-
-        private List<CONNR2Type> cONNR2Field;
-
-        private List<PACGS2Type> pACGS2Field;
-
-        private AdditionalGoodsMeasurementType additionalGoodsMeasurementField;
-
-        private SGICODSD2Type sGICODSD2Field;
-
-        private TRACORSECGOO021Type tRACORSECGOO021Field;
-
-        private TRACONSECGOO013Type tRACONSECGOO013Field;
-
-        /// <remarks/>
-        public TRACONCO2Type TRACONCO2
-        {
-            get
-            {
-                return this.tRACONCO2Field;
-            }
-            set
-            {
-                this.tRACONCO2Field = value;
-            }
-        }
-
-        /// <remarks/>
-        public TRACONCE2Type TRACONCE2
-        {
-            get
-            {
-                return this.tRACONCE2Field;
-            }
-            set
-            {
-                this.tRACONCE2Field = value;
-            }
-        }
-
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool CONNR2Specified;
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("CONNR2")]
-        public List<CONNR2Type> CONNR2
-        {
-            get
-            {
-                return this.cONNR2Field;
-            }
-            set
-            {
-                this.cONNR2Field = value;
-            }
-        }
-
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool PACGS2Specified;
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("PACGS2")]
-        public List<PACGS2Type> PACGS2
-        {
-            get
-            {
-                return this.pACGS2Field;
-            }
-            set
-            {
-                this.pACGS2Field = value;
-            }
-        }
-
-        /// <remarks/>
-        public AdditionalGoodsMeasurementType AdditionalGoodsMeasurement
-        {
-            get
-            {
-                return this.additionalGoodsMeasurementField;
-            }
-            set
-            {
-                this.additionalGoodsMeasurementField = value;
-            }
-        }
-
-        /// <remarks/>
-        public SGICODSD2Type SGICODSD2
-        {
-            get
-            {
-                return this.sGICODSD2Field;
-            }
-            set
-            {
-                this.sGICODSD2Field = value;
-            }
-        }
-
-        /// <remarks/>
-        public TRACORSECGOO021Type TRACORSECGOO021
-        {
-            get
-            {
-                return this.tRACORSECGOO021Field;
-            }
-            set
-            {
-                this.tRACORSECGOO021Field = value;
-            }
-        }
-
-        /// <remarks/>
-        public TRACONSECGOO013Type TRACONSECGOO013
-        {
-            get
-            {
-                return this.tRACONSECGOO013Field;
-            }
-            set
-            {
-                this.tRACONSECGOO013Field = value;
-            }
-        }
-    }
-
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GUAGUAType
-    {
-
-        private GUAGUATypeGuaTypGUA1 guaTypGUA1Field;
-
-        private GUAGUATypeGUAREFREF gUAREFREFField;
-
-        /// <remarks/>
-        public GUAGUATypeGuaTypGUA1 GuaTypGUA1
-        {
-            get
-            {
-                return this.guaTypGUA1Field;
-            }
-            set
-            {
-                this.guaTypGUA1Field = value;
-            }
-        }
-
-        /// <remarks/>
-        public GUAGUATypeGUAREFREF GUAREFREF
-        {
-            get
-            {
-                return this.gUAREFREFField;
-            }
-            set
-            {
-                this.gUAREFREFField = value;
-            }
-        }
-    }
-
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
-    [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
-    public enum GUAGUATypeGuaTypGUA1
-    {
-
-        /// <remarks/>
-        B,
-    }
-
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
-    public partial class GUAGUATypeGUAREFREF
-    {
-
-        private string othGuaRefREF4Field;
-
-        /// <remarks/>
-        public string OthGuaRefREF4
-        {
-            get
-            {
-                return this.othGuaRefREF4Field;
-            }
-            set
-            {
-                this.othGuaRefREF4Field = value;
             }
         }
     }
@@ -2266,6 +385,7 @@ namespace RTSDotNETClient.EGIS
         private string refNumEST1Field;
 
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 0)]
         public string CouRefNumEST1
         {
             get
@@ -2279,6 +399,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 1)]
         public string RefNumEST1
         {
             get
@@ -2297,721 +418,38 @@ namespace RTSDotNETClient.EGIS
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class CUSOFFTRARNSType
+    public partial class TAXType
     {
 
-        private string couRefNumRNS1Field;
+        private string purposeField;
 
-        private string refNumRNS1Field;
-
-        private string arrTimTRACUS085Field;
+        private string valueField;
 
         /// <remarks/>
-        public string CouRefNumRNS1
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string purpose
         {
             get
             {
-                return this.couRefNumRNS1Field;
+                return this.purposeField;
             }
             set
             {
-                this.couRefNumRNS1Field = value;
+                this.purposeField = value;
             }
         }
 
         /// <remarks/>
-        public string RefNumRNS1
+        [System.Xml.Serialization.XmlTextAttribute()]
+        public string Value
         {
             get
             {
-                return this.refNumRNS1Field;
+                return this.valueField;
             }
             set
             {
-                this.refNumRNS1Field = value;
-            }
-        }
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType = "nonNegativeInteger")]
-        public string ArrTimTRACUS085
-        {
-            get
-            {
-                return this.arrTimTRACUS085Field;
-            }
-            set
-            {
-                this.arrTimTRACUS085Field = value;
-            }
-        }
-    }
-
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class CUSOFFDEPEPTType
-    {
-
-        private string couRefNumEPT1Field;
-
-        private string refNumEPT1Field;
-
-        /// <remarks/>
-        public string CouRefNumEPT1
-        {
-            get
-            {
-                return this.couRefNumEPT1Field;
-            }
-            set
-            {
-                this.couRefNumEPT1Field = value;
-            }
-        }
-
-        /// <remarks/>
-        public string RefNumEPT1
-        {
-            get
-            {
-                return this.refNumEPT1Field;
-            }
-            set
-            {
-                this.refNumEPT1Field = value;
-            }
-        }
-    }
-
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class IdDRVType
-    {
-
-        private string idNumDRVField;
-
-        private string idTypDRVField;
-
-        private string issAuthDRVField;
-
-        private string issCtryDRVField;
-
-        private SerializableDateTimeOffset issDatDRVField;
-
-        private bool issDatDRVFieldSpecified;
-
-        private SerializableDateTimeOffset expDatDRVField;
-
-        private bool expDatDRVFieldSpecified;
-
-        /// <remarks/>
-        public string IdNumDRV
-        {
-            get
-            {
-                return this.idNumDRVField;
-            }
-            set
-            {
-                this.idNumDRVField = value;
-            }
-        }
-
-        /// <remarks/>
-        public string IdTypDRV
-        {
-            get
-            {
-                return this.idTypDRVField;
-            }
-            set
-            {
-                this.idTypDRVField = value;
-            }
-        }
-
-        /// <remarks/>
-        public string IssAuthDRV
-        {
-            get
-            {
-                return this.issAuthDRVField;
-            }
-            set
-            {
-                this.issAuthDRVField = value;
-            }
-        }
-
-        /// <remarks/>
-        public string IssCtryDRV
-        {
-            get
-            {
-                return this.issCtryDRVField;
-            }
-            set
-            {
-                this.issCtryDRVField = value;
-            }
-        }
-
-        /// <remarks/>
-        public SerializableDateTimeOffset IssDatDRV
-        {
-            get
-            {
-                return this.issDatDRVField;
-            }
-            set
-            {
-                this.issDatDRVField = value;
-            }
-        }
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool IssDatDRVSpecified
-        {
-            get
-            {
-                return this.issDatDRVFieldSpecified;
-            }
-            set
-            {
-                this.issDatDRVFieldSpecified = value;
-            }
-        }
-
-        /// <remarks/>
-        public SerializableDateTimeOffset ExpDatDRV
-        {
-            get
-            {
-                return this.expDatDRVField;
-            }
-            set
-            {
-                this.expDatDRVField = value;
-            }
-        }
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool ExpDatDRVSpecified
-        {
-            get
-            {
-                return this.expDatDRVFieldSpecified;
-            }
-            set
-            {
-                this.expDatDRVFieldSpecified = value;
-            }
-        }
-    }
-
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class TRADRVType
-    {
-
-        private string namDRVField;
-
-        private string surNameDRVField;
-
-        private string natDRVField;
-
-        private string rolDRVField;
-
-        private string placeOfBrtDRVField;
-
-        private SerializableDateTimeOffset datOfBrtDRVField;
-
-        private bool datOfBrtDRVFieldSpecified;
-
-        private List<IdDRVType> idDRVField;
-
-        /// <remarks/>
-        public string NamDRV
-        {
-            get
-            {
-                return this.namDRVField;
-            }
-            set
-            {
-                this.namDRVField = value;
-            }
-        }
-
-        /// <remarks/>
-        public string SurNameDRV
-        {
-            get
-            {
-                return this.surNameDRVField;
-            }
-            set
-            {
-                this.surNameDRVField = value;
-            }
-        }
-
-        /// <remarks/>
-        public string NatDRV
-        {
-            get
-            {
-                return this.natDRVField;
-            }
-            set
-            {
-                this.natDRVField = value;
-            }
-        }
-
-        /// <remarks/>
-        public string RolDRV
-        {
-            get
-            {
-                return this.rolDRVField;
-            }
-            set
-            {
-                this.rolDRVField = value;
-            }
-        }
-
-        /// <remarks/>
-        public string PlaceOfBrtDRV
-        {
-            get
-            {
-                return this.placeOfBrtDRVField;
-            }
-            set
-            {
-                this.placeOfBrtDRVField = value;
-            }
-        }
-
-        /// <remarks/>
-        public SerializableDateTimeOffset DatOfBrtDRV
-        {
-            get
-            {
-                return this.datOfBrtDRVField;
-            }
-            set
-            {
-                this.datOfBrtDRVField = value;
-            }
-        }
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool DatOfBrtDRVSpecified
-        {
-            get
-            {
-                return this.datOfBrtDRVFieldSpecified;
-            }
-            set
-            {
-                this.datOfBrtDRVFieldSpecified = value;
-            }
-        }
-
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool IdDRVSpecified;
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("IdDRV")]
-        public List<IdDRVType> IdDRV
-        {
-            get
-            {
-                return this.idDRVField;
-            }
-            set
-            {
-                this.idDRVField = value;
-            }
-        }
-    }
-
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class TraVehicleType
-    {
-
-        private string vehicleTypeCodeField;
-
-        private string vehicleRegistrationNumberField;
-
-        private string vehicleRegistrationLanguageField;
-
-        private string vehicleNationalityField;
-
-        private string vehicleVINField;
-
-        private string vehicleMarkField;
-
-        /// <remarks/>
-        public string VehicleTypeCode
-        {
-            get
-            {
-                return this.vehicleTypeCodeField;
-            }
-            set
-            {
-                this.vehicleTypeCodeField = value;
-            }
-        }
-
-        /// <remarks/>
-        public string VehicleRegistrationNumber
-        {
-            get
-            {
-                return this.vehicleRegistrationNumberField;
-            }
-            set
-            {
-                this.vehicleRegistrationNumberField = value;
-            }
-        }
-
-        /// <remarks/>
-        public string VehicleRegistrationLanguage
-        {
-            get
-            {
-                return this.vehicleRegistrationLanguageField;
-            }
-            set
-            {
-                this.vehicleRegistrationLanguageField = value;
-            }
-        }
-
-        /// <remarks/>
-        public string VehicleNationality
-        {
-            get
-            {
-                return this.vehicleNationalityField;
-            }
-            set
-            {
-                this.vehicleNationalityField = value;
-            }
-        }
-
-        /// <remarks/>
-        public string VehicleVIN
-        {
-            get
-            {
-                return this.vehicleVINField;
-            }
-            set
-            {
-                this.vehicleVINField = value;
-            }
-        }
-
-        /// <remarks/>
-        public string VehicleMark
-        {
-            get
-            {
-                return this.vehicleMarkField;
-            }
-            set
-            {
-                this.vehicleMarkField = value;
-            }
-        }
-    }
-
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class TRACONCE1Type
-    {
-
-        private string namCE17Field;
-
-        private string strAndNumCE122Field;
-
-        private string posCodCE123Field;
-
-        private string citCE124Field;
-
-        private string couCE125Field;
-
-        private string nADLNGCEField;
-
-        private string tINCE159Field;
-
-        private List<TAXType> tAXCE159Field;
-
-        /// <remarks/>
-        public string NamCE17
-        {
-            get
-            {
-                return this.namCE17Field;
-            }
-            set
-            {
-                this.namCE17Field = value;
-            }
-        }
-
-        /// <remarks/>
-        public string StrAndNumCE122
-        {
-            get
-            {
-                return this.strAndNumCE122Field;
-            }
-            set
-            {
-                this.strAndNumCE122Field = value;
-            }
-        }
-
-        /// <remarks/>
-        public string PosCodCE123
-        {
-            get
-            {
-                return this.posCodCE123Field;
-            }
-            set
-            {
-                this.posCodCE123Field = value;
-            }
-        }
-
-        /// <remarks/>
-        public string CitCE124
-        {
-            get
-            {
-                return this.citCE124Field;
-            }
-            set
-            {
-                this.citCE124Field = value;
-            }
-        }
-
-        /// <remarks/>
-        public string CouCE125
-        {
-            get
-            {
-                return this.couCE125Field;
-            }
-            set
-            {
-                this.couCE125Field = value;
-            }
-        }
-
-        /// <remarks/>
-        public string NADLNGCE
-        {
-            get
-            {
-                return this.nADLNGCEField;
-            }
-            set
-            {
-                this.nADLNGCEField = value;
-            }
-        }
-
-        /// <remarks/>
-        public string TINCE159
-        {
-            get
-            {
-                return this.tINCE159Field;
-            }
-            set
-            {
-                this.tINCE159Field = value;
-            }
-        }
-
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool TAXCE159Specified;
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("TAXCE159")]
-        public List<TAXType> TAXCE159
-        {
-            get
-            {
-                return this.tAXCE159Field;
-            }
-            set
-            {
-                this.tAXCE159Field = value;
-            }
-        }
-    }
-
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class TRACONCO1Type
-    {
-
-        private string namCO17Field;
-
-        private string strAndNumCO122Field;
-
-        private string posCodCO123Field;
-
-        private string citCO124Field;
-
-        private string couCO125Field;
-
-        private string nADLNGCOField;
-
-        private string tINCO159Field;
-
-        private List<TAXType> tAXCO159Field;
-
-        /// <remarks/>
-        public string NamCO17
-        {
-            get
-            {
-                return this.namCO17Field;
-            }
-            set
-            {
-                this.namCO17Field = value;
-            }
-        }
-
-        /// <remarks/>
-        public string StrAndNumCO122
-        {
-            get
-            {
-                return this.strAndNumCO122Field;
-            }
-            set
-            {
-                this.strAndNumCO122Field = value;
-            }
-        }
-
-        /// <remarks/>
-        public string PosCodCO123
-        {
-            get
-            {
-                return this.posCodCO123Field;
-            }
-            set
-            {
-                this.posCodCO123Field = value;
-            }
-        }
-
-        /// <remarks/>
-        public string CitCO124
-        {
-            get
-            {
-                return this.citCO124Field;
-            }
-            set
-            {
-                this.citCO124Field = value;
-            }
-        }
-
-        /// <remarks/>
-        public string CouCO125
-        {
-            get
-            {
-                return this.couCO125Field;
-            }
-            set
-            {
-                this.couCO125Field = value;
-            }
-        }
-
-        /// <remarks/>
-        public string NADLNGCO
-        {
-            get
-            {
-                return this.nADLNGCOField;
-            }
-            set
-            {
-                this.nADLNGCOField = value;
-            }
-        }
-
-        /// <remarks/>
-        public string TINCO159
-        {
-            get
-            {
-                return this.tINCO159Field;
-            }
-            set
-            {
-                this.tINCO159Field = value;
-            }
-        }
-
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool TAXCO159Specified;
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("TAXCO159")]
-        public List<TAXType> TAXCO159
-        {
-            get
-            {
-                return this.tAXCO159Field;
-            }
-            set
-            {
-                this.tAXCO159Field = value;
+                this.valueField = value;
             }
         }
     }
@@ -3043,6 +481,7 @@ namespace RTSDotNETClient.EGIS
         private List<TAXType> tAXPC159Field;
 
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 0)]
         public string NamPC17
         {
             get
@@ -3056,6 +495,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 1)]
         public string StrAndNumPC122
         {
             get
@@ -3069,6 +509,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 2)]
         public string PosCodPC123
         {
             get
@@ -3082,6 +523,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 3)]
         public string CitPC124
         {
             get
@@ -3095,6 +537,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 4)]
         public string CouPC125
         {
             get
@@ -3108,6 +551,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 5)]
         public string NADLNGPC
         {
             get
@@ -3121,6 +565,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 6)]
         public string TINPC159
         {
             get
@@ -3134,6 +579,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 7)]
         public string HITPC126
         {
             get
@@ -3146,11 +592,12 @@ namespace RTSDotNETClient.EGIS
             }
         }
 
+        /// <remarks/>
         [System.Xml.Serialization.XmlIgnoreAttribute()]
         public bool TAXPC159Specified;
 
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("TAXPC159")]
+        [System.Xml.Serialization.XmlElementAttribute("TAXPC159", Order = 8)]
         public List<TAXType> TAXPC159
         {
             get
@@ -3162,77 +609,6 @@ namespace RTSDotNETClient.EGIS
                 this.tAXPC159Field = value;
             }
         }
-    }
-
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class ADDITIONALINFORMATIONType
-    {
-
-        private string customsRemarksField;
-
-        private ADDITIONALINFORMATIONTypeHeavyBulkyGoodsInd heavyBulkyGoodsIndField;
-
-        private bool heavyBulkyGoodsIndFieldSpecified;
-
-        /// <remarks/>
-        public string CustomsRemarks
-        {
-            get
-            {
-                return this.customsRemarksField;
-            }
-            set
-            {
-                this.customsRemarksField = value;
-            }
-        }
-
-        /// <remarks/>
-        public ADDITIONALINFORMATIONTypeHeavyBulkyGoodsInd HeavyBulkyGoodsInd
-        {
-            get
-            {
-                return this.heavyBulkyGoodsIndField;
-            }
-            set
-            {
-                this.heavyBulkyGoodsIndField = value;
-            }
-        }
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool HeavyBulkyGoodsIndSpecified
-        {
-            get
-            {
-                return this.heavyBulkyGoodsIndFieldSpecified;
-            }
-            set
-            {
-                this.heavyBulkyGoodsIndFieldSpecified = value;
-            }
-        }
-    }
-
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
-    [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
-    public enum ADDITIONALINFORMATIONTypeHeavyBulkyGoodsInd
-    {
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("0")]
-        Item0,
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("1")]
-        Item1,
     }
 
     /// <remarks/>
@@ -3276,6 +652,7 @@ namespace RTSDotNETClient.EGIS
         private TRACONSEC029Type tRACONSEC029Field;
 
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 0)]
         public EPD029HEAHEA HEAHEA
         {
             get
@@ -3289,6 +666,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 1)]
         public TRAPRIPC1Type TRAPRIPC1
         {
             get
@@ -3302,6 +680,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 2)]
         public TRACONCO1Type TRACONCO1
         {
             get
@@ -3315,6 +694,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 3)]
         public TRACONCE1Type TRACONCE1
         {
             get
@@ -3327,10 +707,12 @@ namespace RTSDotNETClient.EGIS
             }
         }
 
+        /// <remarks/>
         [System.Xml.Serialization.XmlIgnoreAttribute()]
         public bool TRAMEANSSpecified;
 
         /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order = 4)]
         [System.Xml.Serialization.XmlArrayItemAttribute("Vehicle", IsNullable = false)]
         public List<TraVehicleType> TRAMEANS
         {
@@ -3344,11 +726,12 @@ namespace RTSDotNETClient.EGIS
             }
         }
 
+        /// <remarks/>
         [System.Xml.Serialization.XmlIgnoreAttribute()]
         public bool TRADRVSpecified;
 
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("TRADRV")]
+        [System.Xml.Serialization.XmlElementAttribute("TRADRV", Order = 5)]
         public List<TRADRVType> TRADRV
         {
             get
@@ -3362,6 +745,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 6)]
         public CUSOFFDEPEPTType CUSOFFDEPEPT
         {
             get
@@ -3374,11 +758,12 @@ namespace RTSDotNETClient.EGIS
             }
         }
 
+        /// <remarks/>
         [System.Xml.Serialization.XmlIgnoreAttribute()]
         public bool CUSOFFTRARNSSpecified;
 
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("CUSOFFTRARNS")]
+        [System.Xml.Serialization.XmlElementAttribute("CUSOFFTRARNS", Order = 7)]
         public List<CUSOFFTRARNSType> CUSOFFTRARNS
         {
             get
@@ -3392,6 +777,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 8)]
         public CUSOFFDESESTType CUSOFFDESEST
         {
             get
@@ -3404,11 +790,12 @@ namespace RTSDotNETClient.EGIS
             }
         }
 
+        /// <remarks/>
         [System.Xml.Serialization.XmlIgnoreAttribute()]
         public bool SEAINFSLISpecified;
 
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("SEAINFSLI")]
+        [System.Xml.Serialization.XmlElementAttribute("SEAINFSLI", Order = 9)]
         public List<SEAINFSLIType> SEAINFSLI
         {
             get
@@ -3422,6 +809,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 10)]
         public GUAGUAType GUAGUA
         {
             get
@@ -3434,11 +822,12 @@ namespace RTSDotNETClient.EGIS
             }
         }
 
+        /// <remarks/>
         [System.Xml.Serialization.XmlIgnoreAttribute()]
         public bool GOOITEGDSSpecified;
 
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("GOOITEGDS")]
+        [System.Xml.Serialization.XmlElementAttribute("GOOITEGDS", Order = 11)]
         public List<GOOITEGDSType> GOOITEGDS
         {
             get
@@ -3451,11 +840,12 @@ namespace RTSDotNETClient.EGIS
             }
         }
 
+        /// <remarks/>
         [System.Xml.Serialization.XmlIgnoreAttribute()]
         public bool ITISpecified;
 
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("ITI")]
+        [System.Xml.Serialization.XmlElementAttribute("ITI", Order = 12)]
         public List<ITIType> ITI
         {
             get
@@ -3469,6 +859,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 13)]
         public TRACORSEC037Type TRACORSEC037
         {
             get
@@ -3482,6 +873,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 14)]
         public TRACONSEC029Type TRACONSEC029
         {
             get
@@ -3614,7 +1006,10 @@ namespace RTSDotNETClient.EGIS
 
         private string typeOfMvtField;
 
+        private CostType totalInvoicedCostField;
+
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 0)]
         public string RefNumHEA4
         {
             get
@@ -3628,6 +1023,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 1)]
         public string DocNumHEA5
         {
             get
@@ -3641,6 +1037,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 2)]
         public string GuaranteeNumber
         {
             get
@@ -3654,6 +1051,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 3)]
         public TypOfDecHEA24EnumType TypOfDecHEA24
         {
             get
@@ -3681,6 +1079,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 4)]
         public string CouOfDesCodHEA30
         {
             get
@@ -3694,6 +1093,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 5)]
         public string AgrLocOfGooCodHEA38
         {
             get
@@ -3707,6 +1107,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 6)]
         public string AgrLocOfGooHEA39
         {
             get
@@ -3720,6 +1121,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 7)]
         public string AgrLocOfGooHEA39LNG
         {
             get
@@ -3733,6 +1135,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 8)]
         public string PlaOfLoaCodHEA46
         {
             get
@@ -3746,6 +1149,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 9)]
         public string CouOfDisCodHEA55
         {
             get
@@ -3759,6 +1163,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 10)]
         public EPD029HEAHEAInlTraModHEA75 InlTraModHEA75
         {
             get
@@ -3786,6 +1191,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 11)]
         public EPD029HEAHEATraModAtBorHEA76 TraModAtBorHEA76
         {
             get
@@ -3813,6 +1219,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 12)]
         public string IdeOfMeaOfTraAtDHEA78
         {
             get
@@ -3826,6 +1233,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 13)]
         public string IdeOfMeaOfTraAtDHEA78LNG
         {
             get
@@ -3839,6 +1247,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 14)]
         public string NatOfMeaOfTraAtDHEA80
         {
             get
@@ -3852,6 +1261,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 15)]
         public string IdeOfMeaOfTraCroHEA85
         {
             get
@@ -3865,6 +1275,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 16)]
         public string IdeOfMeaOfTraCroHEA85LNG
         {
             get
@@ -3878,6 +1289,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 17)]
         public string NatOfMeaOfTraCroHEA87
         {
             get
@@ -3891,7 +1303,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType = "nonNegativeInteger")]
+        [System.Xml.Serialization.XmlElementAttribute(DataType = "nonNegativeInteger", Order = 18)]
         public string TypOfMeaOfTraCroHEA88
         {
             get
@@ -3905,6 +1317,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 19)]
         public EPD029HEAHEAConIndHEA96 ConIndHEA96
         {
             get
@@ -3932,6 +1345,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 20)]
         public EPD029HEAHEANCTRetCopHEA104 NCTRetCopHEA104
         {
             get
@@ -3959,6 +1373,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 21)]
         public SerializableDateTimeOffset DeclarationAcceptanceDate
         {
             get
@@ -3986,6 +1401,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 22)]
         public string AccDatHEA158
         {
             get
@@ -3999,6 +1415,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 23)]
         public SerializableDateTimeOffset DeclarationReleasedDate
         {
             get
@@ -4026,6 +1443,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 24)]
         public string IssDatHEA186
         {
             get
@@ -4039,6 +1457,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 25)]
         public string NCTSAccDocHEA601LNG
         {
             get
@@ -4052,7 +1471,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType = "integer")]
+        [System.Xml.Serialization.XmlElementAttribute(DataType = "integer", Order = 26)]
         public string TotNumOfIteHEA305
         {
             get
@@ -4066,7 +1485,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType = "integer")]
+        [System.Xml.Serialization.XmlElementAttribute(DataType = "integer", Order = 27)]
         public string TotNumOfPacHEA306
         {
             get
@@ -4080,6 +1499,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 28)]
         public decimal TotGroMasHEA307
         {
             get
@@ -4107,6 +1527,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 29)]
         public EPD029HEAHEABinItiHEA246 BinItiHEA246
         {
             get
@@ -4134,6 +1555,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 30)]
         public ADDITIONALINFORMATIONType ADDITIONALINFORMATION
         {
             get
@@ -4147,6 +1569,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 31)]
         public SerializableDateTimeOffset DeclarationDate
         {
             get
@@ -4174,6 +1597,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 32)]
         public string DecDatHEA383
         {
             get
@@ -4187,6 +1611,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 33)]
         public string DecPlaHEA394
         {
             get
@@ -4200,6 +1625,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 34)]
         public string DecPlaHEA394LNG
         {
             get
@@ -4213,6 +1639,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 35)]
         public string SpeCirIndHEA1
         {
             get
@@ -4226,6 +1653,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 36)]
         public string TraChaMetOfPayHEA1
         {
             get
@@ -4239,6 +1667,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 37)]
         public EPD029HEAHEASecHEA358 SecHEA358
         {
             get
@@ -4266,6 +1695,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 38)]
         public string CodPlUnHEA357
         {
             get
@@ -4279,6 +1709,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 39)]
         public string CodPlUnHEA357LNG
         {
             get
@@ -4292,6 +1723,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 40)]
         public string VehicleMakeName
         {
             get
@@ -4305,6 +1737,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 41)]
         public string VehicleModelName
         {
             get
@@ -4318,6 +1751,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 42)]
         public string VehicleVIN
         {
             get
@@ -4331,6 +1765,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 43)]
         public string TypeOfMvt
         {
             get
@@ -4340,6 +1775,20 @@ namespace RTSDotNETClient.EGIS
             set
             {
                 this.typeOfMvtField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 44)]
+        public CostType TotalInvoicedCost
+        {
+            get
+            {
+                return this.totalInvoicedCostField;
+            }
+            set
+            {
+                this.totalInvoicedCostField = value;
             }
         }
     }
@@ -4432,6 +1881,79 @@ namespace RTSDotNETClient.EGIS
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
     [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class ADDITIONALINFORMATIONType
+    {
+
+        private string customsRemarksField;
+
+        private ADDITIONALINFORMATIONTypeHeavyBulkyGoodsInd heavyBulkyGoodsIndField;
+
+        private bool heavyBulkyGoodsIndFieldSpecified;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 0)]
+        public string CustomsRemarks
+        {
+            get
+            {
+                return this.customsRemarksField;
+            }
+            set
+            {
+                this.customsRemarksField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 1)]
+        public ADDITIONALINFORMATIONTypeHeavyBulkyGoodsInd HeavyBulkyGoodsInd
+        {
+            get
+            {
+                return this.heavyBulkyGoodsIndField;
+            }
+            set
+            {
+                this.heavyBulkyGoodsIndField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool HeavyBulkyGoodsIndSpecified
+        {
+            get
+            {
+                return this.heavyBulkyGoodsIndFieldSpecified;
+            }
+            set
+            {
+                this.heavyBulkyGoodsIndFieldSpecified = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
+    public enum ADDITIONALINFORMATIONTypeHeavyBulkyGoodsInd
+    {
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("0")]
+        Item0,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("1")]
+        Item1,
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
+    [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     public enum EPD029HEAHEASecHEA358
     {
@@ -4443,6 +1965,3016 @@ namespace RTSDotNETClient.EGIS
         /// <remarks/>
         [System.Xml.Serialization.XmlEnumAttribute("1")]
         Item1,
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class CostType
+    {
+
+        private decimal costQuantityField;
+
+        private string costCurrencyCodeField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 0)]
+        public decimal CostQuantity
+        {
+            get
+            {
+                return this.costQuantityField;
+            }
+            set
+            {
+                this.costQuantityField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 1)]
+        public string CostCurrencyCode
+        {
+            get
+            {
+                return this.costCurrencyCodeField;
+            }
+            set
+            {
+                this.costCurrencyCodeField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class TRACONCO1Type
+    {
+
+        private string namCO17Field;
+
+        private string strAndNumCO122Field;
+
+        private string posCodCO123Field;
+
+        private string citCO124Field;
+
+        private string couCO125Field;
+
+        private string nADLNGCOField;
+
+        private string tINCO159Field;
+
+        private List<TAXType> tAXCO159Field;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 0)]
+        public string NamCO17
+        {
+            get
+            {
+                return this.namCO17Field;
+            }
+            set
+            {
+                this.namCO17Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 1)]
+        public string StrAndNumCO122
+        {
+            get
+            {
+                return this.strAndNumCO122Field;
+            }
+            set
+            {
+                this.strAndNumCO122Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 2)]
+        public string PosCodCO123
+        {
+            get
+            {
+                return this.posCodCO123Field;
+            }
+            set
+            {
+                this.posCodCO123Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 3)]
+        public string CitCO124
+        {
+            get
+            {
+                return this.citCO124Field;
+            }
+            set
+            {
+                this.citCO124Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 4)]
+        public string CouCO125
+        {
+            get
+            {
+                return this.couCO125Field;
+            }
+            set
+            {
+                this.couCO125Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 5)]
+        public string NADLNGCO
+        {
+            get
+            {
+                return this.nADLNGCOField;
+            }
+            set
+            {
+                this.nADLNGCOField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 6)]
+        public string TINCO159
+        {
+            get
+            {
+                return this.tINCO159Field;
+            }
+            set
+            {
+                this.tINCO159Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool TAXCO159Specified;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("TAXCO159", Order = 7)]
+        public List<TAXType> TAXCO159
+        {
+            get
+            {
+                return this.tAXCO159Field;
+            }
+            set
+            {
+                this.tAXCO159Field = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class TRACONCE1Type
+    {
+
+        private string namCE17Field;
+
+        private string strAndNumCE122Field;
+
+        private string posCodCE123Field;
+
+        private string citCE124Field;
+
+        private string couCE125Field;
+
+        private string nADLNGCEField;
+
+        private string tINCE159Field;
+
+        private List<TAXType> tAXCE159Field;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 0)]
+        public string NamCE17
+        {
+            get
+            {
+                return this.namCE17Field;
+            }
+            set
+            {
+                this.namCE17Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 1)]
+        public string StrAndNumCE122
+        {
+            get
+            {
+                return this.strAndNumCE122Field;
+            }
+            set
+            {
+                this.strAndNumCE122Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 2)]
+        public string PosCodCE123
+        {
+            get
+            {
+                return this.posCodCE123Field;
+            }
+            set
+            {
+                this.posCodCE123Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 3)]
+        public string CitCE124
+        {
+            get
+            {
+                return this.citCE124Field;
+            }
+            set
+            {
+                this.citCE124Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 4)]
+        public string CouCE125
+        {
+            get
+            {
+                return this.couCE125Field;
+            }
+            set
+            {
+                this.couCE125Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 5)]
+        public string NADLNGCE
+        {
+            get
+            {
+                return this.nADLNGCEField;
+            }
+            set
+            {
+                this.nADLNGCEField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 6)]
+        public string TINCE159
+        {
+            get
+            {
+                return this.tINCE159Field;
+            }
+            set
+            {
+                this.tINCE159Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool TAXCE159Specified;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("TAXCE159", Order = 7)]
+        public List<TAXType> TAXCE159
+        {
+            get
+            {
+                return this.tAXCE159Field;
+            }
+            set
+            {
+                this.tAXCE159Field = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class TraVehicleType
+    {
+
+        private string vehicleTypeCodeField;
+
+        private string vehicleRegistrationNumberField;
+
+        private string vehicleRegistrationLanguageField;
+
+        private string vehicleNationalityField;
+
+        private string vehicleVINField;
+
+        private string vehicleMarkField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 0)]
+        public string VehicleTypeCode
+        {
+            get
+            {
+                return this.vehicleTypeCodeField;
+            }
+            set
+            {
+                this.vehicleTypeCodeField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 1)]
+        public string VehicleRegistrationNumber
+        {
+            get
+            {
+                return this.vehicleRegistrationNumberField;
+            }
+            set
+            {
+                this.vehicleRegistrationNumberField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 2)]
+        public string VehicleRegistrationLanguage
+        {
+            get
+            {
+                return this.vehicleRegistrationLanguageField;
+            }
+            set
+            {
+                this.vehicleRegistrationLanguageField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 3)]
+        public string VehicleNationality
+        {
+            get
+            {
+                return this.vehicleNationalityField;
+            }
+            set
+            {
+                this.vehicleNationalityField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 4)]
+        public string VehicleVIN
+        {
+            get
+            {
+                return this.vehicleVINField;
+            }
+            set
+            {
+                this.vehicleVINField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 5)]
+        public string VehicleMark
+        {
+            get
+            {
+                return this.vehicleMarkField;
+            }
+            set
+            {
+                this.vehicleMarkField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class TRADRVType
+    {
+
+        private string namDRVField;
+
+        private string surNameDRVField;
+
+        private string natDRVField;
+
+        private string rolDRVField;
+
+        private string placeOfBrtDRVField;
+
+        private SerializableDateTimeOffset datOfBrtDRVField;
+
+        private bool datOfBrtDRVFieldSpecified;
+
+        private List<IdDRVType> idDRVField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 0)]
+        public string NamDRV
+        {
+            get
+            {
+                return this.namDRVField;
+            }
+            set
+            {
+                this.namDRVField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 1)]
+        public string SurNameDRV
+        {
+            get
+            {
+                return this.surNameDRVField;
+            }
+            set
+            {
+                this.surNameDRVField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 2)]
+        public string NatDRV
+        {
+            get
+            {
+                return this.natDRVField;
+            }
+            set
+            {
+                this.natDRVField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 3)]
+        public string RolDRV
+        {
+            get
+            {
+                return this.rolDRVField;
+            }
+            set
+            {
+                this.rolDRVField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 4)]
+        public string PlaceOfBrtDRV
+        {
+            get
+            {
+                return this.placeOfBrtDRVField;
+            }
+            set
+            {
+                this.placeOfBrtDRVField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 5)]
+        public SerializableDateTimeOffset DatOfBrtDRV
+        {
+            get
+            {
+                return this.datOfBrtDRVField;
+            }
+            set
+            {
+                this.datOfBrtDRVField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool DatOfBrtDRVSpecified
+        {
+            get
+            {
+                return this.datOfBrtDRVFieldSpecified;
+            }
+            set
+            {
+                this.datOfBrtDRVFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool IdDRVSpecified;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("IdDRV", Order = 6)]
+        public List<IdDRVType> IdDRV
+        {
+            get
+            {
+                return this.idDRVField;
+            }
+            set
+            {
+                this.idDRVField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class IdDRVType
+    {
+
+        private string idNumDRVField;
+
+        private string idTypDRVField;
+
+        private string issAuthDRVField;
+
+        private string issCtryDRVField;
+
+        private SerializableDateTimeOffset issDatDRVField;
+
+        private bool issDatDRVFieldSpecified;
+
+        private SerializableDateTimeOffset expDatDRVField;
+
+        private bool expDatDRVFieldSpecified;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 0)]
+        public string IdNumDRV
+        {
+            get
+            {
+                return this.idNumDRVField;
+            }
+            set
+            {
+                this.idNumDRVField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 1)]
+        public string IdTypDRV
+        {
+            get
+            {
+                return this.idTypDRVField;
+            }
+            set
+            {
+                this.idTypDRVField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 2)]
+        public string IssAuthDRV
+        {
+            get
+            {
+                return this.issAuthDRVField;
+            }
+            set
+            {
+                this.issAuthDRVField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 3)]
+        public string IssCtryDRV
+        {
+            get
+            {
+                return this.issCtryDRVField;
+            }
+            set
+            {
+                this.issCtryDRVField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 4)]
+        public SerializableDateTimeOffset IssDatDRV
+        {
+            get
+            {
+                return this.issDatDRVField;
+            }
+            set
+            {
+                this.issDatDRVField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool IssDatDRVSpecified
+        {
+            get
+            {
+                return this.issDatDRVFieldSpecified;
+            }
+            set
+            {
+                this.issDatDRVFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 5)]
+        public SerializableDateTimeOffset ExpDatDRV
+        {
+            get
+            {
+                return this.expDatDRVField;
+            }
+            set
+            {
+                this.expDatDRVField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool ExpDatDRVSpecified
+        {
+            get
+            {
+                return this.expDatDRVFieldSpecified;
+            }
+            set
+            {
+                this.expDatDRVFieldSpecified = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class CUSOFFDEPEPTType
+    {
+
+        private string couRefNumEPT1Field;
+
+        private string refNumEPT1Field;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 0)]
+        public string CouRefNumEPT1
+        {
+            get
+            {
+                return this.couRefNumEPT1Field;
+            }
+            set
+            {
+                this.couRefNumEPT1Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 1)]
+        public string RefNumEPT1
+        {
+            get
+            {
+                return this.refNumEPT1Field;
+            }
+            set
+            {
+                this.refNumEPT1Field = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class CUSOFFTRARNSType
+    {
+
+        private string couRefNumRNS1Field;
+
+        private string refNumRNS1Field;
+
+        private string arrTimTRACUS085Field;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 0)]
+        public string CouRefNumRNS1
+        {
+            get
+            {
+                return this.couRefNumRNS1Field;
+            }
+            set
+            {
+                this.couRefNumRNS1Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 1)]
+        public string RefNumRNS1
+        {
+            get
+            {
+                return this.refNumRNS1Field;
+            }
+            set
+            {
+                this.refNumRNS1Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(DataType = "nonNegativeInteger", Order = 2)]
+        public string ArrTimTRACUS085
+        {
+            get
+            {
+                return this.arrTimTRACUS085Field;
+            }
+            set
+            {
+                this.arrTimTRACUS085Field = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GUAGUAType
+    {
+
+        private GUAGUATypeGuaTypGUA1 guaTypGUA1Field;
+
+        private GUAGUATypeGUAREFREF gUAREFREFField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 0)]
+        public GUAGUATypeGuaTypGUA1 GuaTypGUA1
+        {
+            get
+            {
+                return this.guaTypGUA1Field;
+            }
+            set
+            {
+                this.guaTypGUA1Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 1)]
+        public GUAGUATypeGUAREFREF GUAREFREF
+        {
+            get
+            {
+                return this.gUAREFREFField;
+            }
+            set
+            {
+                this.gUAREFREFField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
+    public enum GUAGUATypeGuaTypGUA1
+    {
+
+        /// <remarks/>
+        B,
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
+    public partial class GUAGUATypeGUAREFREF
+    {
+
+        private string othGuaRefREF4Field;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 0)]
+        public string OthGuaRefREF4
+        {
+            get
+            {
+                return this.othGuaRefREF4Field;
+            }
+            set
+            {
+                this.othGuaRefREF4Field = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GOOITEGDSType : GOOITEGDSUpperPartType
+    {
+
+        private TRACONCO2Type tRACONCO2Field;
+
+        private TRACONCE2Type tRACONCE2Field;
+
+        private List<CONNR2Type> cONNR2Field;
+
+        private List<PACGS2Type> pACGS2Field;
+
+        private AdditionalGoodsMeasurementType additionalGoodsMeasurementField;
+
+        private CostType invoicedCostField;
+
+        private SGICODSD2Type sGICODSD2Field;
+
+        private TRACORSECGOO021Type tRACORSECGOO021Field;
+
+        private TRACONSECGOO013Type tRACONSECGOO013Field;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 0)]
+        public TRACONCO2Type TRACONCO2
+        {
+            get
+            {
+                return this.tRACONCO2Field;
+            }
+            set
+            {
+                this.tRACONCO2Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 1)]
+        public TRACONCE2Type TRACONCE2
+        {
+            get
+            {
+                return this.tRACONCE2Field;
+            }
+            set
+            {
+                this.tRACONCE2Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool CONNR2Specified;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("CONNR2", Order = 2)]
+        public List<CONNR2Type> CONNR2
+        {
+            get
+            {
+                return this.cONNR2Field;
+            }
+            set
+            {
+                this.cONNR2Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool PACGS2Specified;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("PACGS2", Order = 3)]
+        public List<PACGS2Type> PACGS2
+        {
+            get
+            {
+                return this.pACGS2Field;
+            }
+            set
+            {
+                this.pACGS2Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 4)]
+        public AdditionalGoodsMeasurementType AdditionalGoodsMeasurement
+        {
+            get
+            {
+                return this.additionalGoodsMeasurementField;
+            }
+            set
+            {
+                this.additionalGoodsMeasurementField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 5)]
+        public CostType InvoicedCost
+        {
+            get
+            {
+                return this.invoicedCostField;
+            }
+            set
+            {
+                this.invoicedCostField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 6)]
+        public SGICODSD2Type SGICODSD2
+        {
+            get
+            {
+                return this.sGICODSD2Field;
+            }
+            set
+            {
+                this.sGICODSD2Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 7)]
+        public TRACORSECGOO021Type TRACORSECGOO021
+        {
+            get
+            {
+                return this.tRACORSECGOO021Field;
+            }
+            set
+            {
+                this.tRACORSECGOO021Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 8)]
+        public TRACONSECGOO013Type TRACONSECGOO013
+        {
+            get
+            {
+                return this.tRACONSECGOO013Field;
+            }
+            set
+            {
+                this.tRACONSECGOO013Field = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class TRACONCO2Type
+    {
+
+        private string namCO27Field;
+
+        private string strAndNumCO222Field;
+
+        private string posCodCO223Field;
+
+        private string citCO224Field;
+
+        private string couCO225Field;
+
+        private string nADLNGGTCOField;
+
+        private string tINCO259Field;
+
+        private List<TAXType> tAXCO259Field;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 0)]
+        public string NamCO27
+        {
+            get
+            {
+                return this.namCO27Field;
+            }
+            set
+            {
+                this.namCO27Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 1)]
+        public string StrAndNumCO222
+        {
+            get
+            {
+                return this.strAndNumCO222Field;
+            }
+            set
+            {
+                this.strAndNumCO222Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 2)]
+        public string PosCodCO223
+        {
+            get
+            {
+                return this.posCodCO223Field;
+            }
+            set
+            {
+                this.posCodCO223Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 3)]
+        public string CitCO224
+        {
+            get
+            {
+                return this.citCO224Field;
+            }
+            set
+            {
+                this.citCO224Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 4)]
+        public string CouCO225
+        {
+            get
+            {
+                return this.couCO225Field;
+            }
+            set
+            {
+                this.couCO225Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 5)]
+        public string NADLNGGTCO
+        {
+            get
+            {
+                return this.nADLNGGTCOField;
+            }
+            set
+            {
+                this.nADLNGGTCOField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 6)]
+        public string TINCO259
+        {
+            get
+            {
+                return this.tINCO259Field;
+            }
+            set
+            {
+                this.tINCO259Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool TAXCO259Specified;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("TAXCO259", Order = 7)]
+        public List<TAXType> TAXCO259
+        {
+            get
+            {
+                return this.tAXCO259Field;
+            }
+            set
+            {
+                this.tAXCO259Field = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class TRACONCE2Type
+    {
+
+        private string namCE27Field;
+
+        private string strAndNumCE222Field;
+
+        private string posCodCE223Field;
+
+        private string citCE224Field;
+
+        private string couCE225Field;
+
+        private string nADLNGGICEField;
+
+        private string tINCE259Field;
+
+        private List<TAXType> tAXCE259Field;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 0)]
+        public string NamCE27
+        {
+            get
+            {
+                return this.namCE27Field;
+            }
+            set
+            {
+                this.namCE27Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 1)]
+        public string StrAndNumCE222
+        {
+            get
+            {
+                return this.strAndNumCE222Field;
+            }
+            set
+            {
+                this.strAndNumCE222Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 2)]
+        public string PosCodCE223
+        {
+            get
+            {
+                return this.posCodCE223Field;
+            }
+            set
+            {
+                this.posCodCE223Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 3)]
+        public string CitCE224
+        {
+            get
+            {
+                return this.citCE224Field;
+            }
+            set
+            {
+                this.citCE224Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 4)]
+        public string CouCE225
+        {
+            get
+            {
+                return this.couCE225Field;
+            }
+            set
+            {
+                this.couCE225Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 5)]
+        public string NADLNGGICE
+        {
+            get
+            {
+                return this.nADLNGGICEField;
+            }
+            set
+            {
+                this.nADLNGGICEField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 6)]
+        public string TINCE259
+        {
+            get
+            {
+                return this.tINCE259Field;
+            }
+            set
+            {
+                this.tINCE259Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool TAXCE259Specified;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("TAXCE259", Order = 7)]
+        public List<TAXType> TAXCE259
+        {
+            get
+            {
+                return this.tAXCE259Field;
+            }
+            set
+            {
+                this.tAXCE259Field = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class CONNR2Type
+    {
+
+        private string conNumNR21Field;
+
+        private string nationalityOfContainerCodeField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 0)]
+        public string ConNumNR21
+        {
+            get
+            {
+                return this.conNumNR21Field;
+            }
+            set
+            {
+                this.conNumNR21Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 1)]
+        public string NationalityOfContainerCode
+        {
+            get
+            {
+                return this.nationalityOfContainerCodeField;
+            }
+            set
+            {
+                this.nationalityOfContainerCodeField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class PACGS2Type
+    {
+
+        private string marNumOfPacGS21Field;
+
+        private string marNumOfPacGS21LNGField;
+
+        private string kinOfPacGS23Field;
+
+        private string numOfPacGS24Field;
+
+        private string numOfPieGS25Field;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 0)]
+        public string MarNumOfPacGS21
+        {
+            get
+            {
+                return this.marNumOfPacGS21Field;
+            }
+            set
+            {
+                this.marNumOfPacGS21Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 1)]
+        public string MarNumOfPacGS21LNG
+        {
+            get
+            {
+                return this.marNumOfPacGS21LNGField;
+            }
+            set
+            {
+                this.marNumOfPacGS21LNGField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 2)]
+        public string KinOfPacGS23
+        {
+            get
+            {
+                return this.kinOfPacGS23Field;
+            }
+            set
+            {
+                this.kinOfPacGS23Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(DataType = "integer", Order = 3)]
+        public string NumOfPacGS24
+        {
+            get
+            {
+                return this.numOfPacGS24Field;
+            }
+            set
+            {
+                this.numOfPacGS24Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(DataType = "integer", Order = 4)]
+        public string NumOfPieGS25
+        {
+            get
+            {
+                return this.numOfPieGS25Field;
+            }
+            set
+            {
+                this.numOfPieGS25Field = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class AdditionalGoodsMeasurementType
+    {
+
+        private string measureUnitCodeField;
+
+        private decimal goodsQuantityField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 0)]
+        public string MeasureUnitCode
+        {
+            get
+            {
+                return this.measureUnitCodeField;
+            }
+            set
+            {
+                this.measureUnitCodeField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 1)]
+        public decimal GoodsQuantity
+        {
+            get
+            {
+                return this.goodsQuantityField;
+            }
+            set
+            {
+                this.goodsQuantityField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class SGICODSD2Type
+    {
+
+        private SGICODSD2TypeSenGooCodSD22 senGooCodSD22Field;
+
+        private bool senGooCodSD22FieldSpecified;
+
+        private decimal senQuaSD23Field;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 0)]
+        public SGICODSD2TypeSenGooCodSD22 SenGooCodSD22
+        {
+            get
+            {
+                return this.senGooCodSD22Field;
+            }
+            set
+            {
+                this.senGooCodSD22Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool SenGooCodSD22Specified
+        {
+            get
+            {
+                return this.senGooCodSD22FieldSpecified;
+            }
+            set
+            {
+                this.senGooCodSD22FieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 1)]
+        public decimal SenQuaSD23
+        {
+            get
+            {
+                return this.senQuaSD23Field;
+            }
+            set
+            {
+                this.senQuaSD23Field = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
+    public enum SGICODSD2TypeSenGooCodSD22
+    {
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("1")]
+        Item1,
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class TRACORSECGOO021Type
+    {
+
+        private string namTRACORSECGOO025Field;
+
+        private string strNumTRACORSECGOO027Field;
+
+        private string posCodTRACORSECGOO026Field;
+
+        private string citTRACORSECGOO022Field;
+
+        private string couCodTRACORSECGOO023Field;
+
+        private string tRACORSECGOO021LNGField;
+
+        private string tINTRACORSECGOO028Field;
+
+        private List<TAXType> tAXTRACORSECGOO029Field;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 0)]
+        public string NamTRACORSECGOO025
+        {
+            get
+            {
+                return this.namTRACORSECGOO025Field;
+            }
+            set
+            {
+                this.namTRACORSECGOO025Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 1)]
+        public string StrNumTRACORSECGOO027
+        {
+            get
+            {
+                return this.strNumTRACORSECGOO027Field;
+            }
+            set
+            {
+                this.strNumTRACORSECGOO027Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 2)]
+        public string PosCodTRACORSECGOO026
+        {
+            get
+            {
+                return this.posCodTRACORSECGOO026Field;
+            }
+            set
+            {
+                this.posCodTRACORSECGOO026Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 3)]
+        public string CitTRACORSECGOO022
+        {
+            get
+            {
+                return this.citTRACORSECGOO022Field;
+            }
+            set
+            {
+                this.citTRACORSECGOO022Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 4)]
+        public string CouCodTRACORSECGOO023
+        {
+            get
+            {
+                return this.couCodTRACORSECGOO023Field;
+            }
+            set
+            {
+                this.couCodTRACORSECGOO023Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 5)]
+        public string TRACORSECGOO021LNG
+        {
+            get
+            {
+                return this.tRACORSECGOO021LNGField;
+            }
+            set
+            {
+                this.tRACORSECGOO021LNGField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 6)]
+        public string TINTRACORSECGOO028
+        {
+            get
+            {
+                return this.tINTRACORSECGOO028Field;
+            }
+            set
+            {
+                this.tINTRACORSECGOO028Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool TAXTRACORSECGOO029Specified;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("TAXTRACORSECGOO029", Order = 7)]
+        public List<TAXType> TAXTRACORSECGOO029
+        {
+            get
+            {
+                return this.tAXTRACORSECGOO029Field;
+            }
+            set
+            {
+                this.tAXTRACORSECGOO029Field = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class TRACONSECGOO013Type
+    {
+
+        private string namTRACONSECGOO017Field;
+
+        private string strNumTRACONSECGOO019Field;
+
+        private string posCodTRACONSECGOO018Field;
+
+        private string cityTRACONSECGOO014Field;
+
+        private string couCodTRACONSECGOO015Field;
+
+        private string tRACONSECGOO013LNGField;
+
+        private string tINTRACONSECGOO020Field;
+
+        private List<TAXType> tAXTRACONSECGOO021Field;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 0)]
+        public string NamTRACONSECGOO017
+        {
+            get
+            {
+                return this.namTRACONSECGOO017Field;
+            }
+            set
+            {
+                this.namTRACONSECGOO017Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 1)]
+        public string StrNumTRACONSECGOO019
+        {
+            get
+            {
+                return this.strNumTRACONSECGOO019Field;
+            }
+            set
+            {
+                this.strNumTRACONSECGOO019Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 2)]
+        public string PosCodTRACONSECGOO018
+        {
+            get
+            {
+                return this.posCodTRACONSECGOO018Field;
+            }
+            set
+            {
+                this.posCodTRACONSECGOO018Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 3)]
+        public string CityTRACONSECGOO014
+        {
+            get
+            {
+                return this.cityTRACONSECGOO014Field;
+            }
+            set
+            {
+                this.cityTRACONSECGOO014Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 4)]
+        public string CouCodTRACONSECGOO015
+        {
+            get
+            {
+                return this.couCodTRACONSECGOO015Field;
+            }
+            set
+            {
+                this.couCodTRACONSECGOO015Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 5)]
+        public string TRACONSECGOO013LNG
+        {
+            get
+            {
+                return this.tRACONSECGOO013LNGField;
+            }
+            set
+            {
+                this.tRACONSECGOO013LNGField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 6)]
+        public string TINTRACONSECGOO020
+        {
+            get
+            {
+                return this.tINTRACONSECGOO020Field;
+            }
+            set
+            {
+                this.tINTRACONSECGOO020Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool TAXTRACONSECGOO021Specified;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("TAXTRACONSECGOO021", Order = 7)]
+        public List<TAXType> TAXTRACONSECGOO021
+        {
+            get
+            {
+                return this.tAXTRACONSECGOO021Field;
+            }
+            set
+            {
+                this.tAXTRACONSECGOO021Field = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(GOOITEGDSWithRESOFCONROCType))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(GOOITEGDSType))]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public abstract partial class GOOITEGDSUpperPartType
+    {
+
+        private string iteNumGDS7Field;
+
+        private string comCodTarCodGDS10Field;
+
+        private string gooDesGDS23Field;
+
+        private string gooDesGDS23LNGField;
+
+        private decimal groMasGDS46Field;
+
+        private bool groMasGDS46FieldSpecified;
+
+        private decimal netMasGDS48Field;
+
+        private bool netMasGDS48FieldSpecified;
+
+        private string couOfDisGDS58Field;
+
+        private string couOfDesGDS59Field;
+
+        private string metOfPayGDI12Field;
+
+        private string comRefNumGIM1Field;
+
+        private string uNDanGooCodGDI1Field;
+
+        private List<PREADMREFAR2Type> pREADMREFAR2Field;
+
+        private List<PRODOCDC2Type> pRODOCDC2Field;
+
+        private SPEMENMT2Type sPEMENMT2Field;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(DataType = "integer", Order = 0)]
+        public string IteNumGDS7
+        {
+            get
+            {
+                return this.iteNumGDS7Field;
+            }
+            set
+            {
+                this.iteNumGDS7Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 1)]
+        public string ComCodTarCodGDS10
+        {
+            get
+            {
+                return this.comCodTarCodGDS10Field;
+            }
+            set
+            {
+                this.comCodTarCodGDS10Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 2)]
+        public string GooDesGDS23
+        {
+            get
+            {
+                return this.gooDesGDS23Field;
+            }
+            set
+            {
+                this.gooDesGDS23Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 3)]
+        public string GooDesGDS23LNG
+        {
+            get
+            {
+                return this.gooDesGDS23LNGField;
+            }
+            set
+            {
+                this.gooDesGDS23LNGField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 4)]
+        public decimal GroMasGDS46
+        {
+            get
+            {
+                return this.groMasGDS46Field;
+            }
+            set
+            {
+                this.groMasGDS46Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool GroMasGDS46Specified
+        {
+            get
+            {
+                return this.groMasGDS46FieldSpecified;
+            }
+            set
+            {
+                this.groMasGDS46FieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 5)]
+        public decimal NetMasGDS48
+        {
+            get
+            {
+                return this.netMasGDS48Field;
+            }
+            set
+            {
+                this.netMasGDS48Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool NetMasGDS48Specified
+        {
+            get
+            {
+                return this.netMasGDS48FieldSpecified;
+            }
+            set
+            {
+                this.netMasGDS48FieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 6)]
+        public string CouOfDisGDS58
+        {
+            get
+            {
+                return this.couOfDisGDS58Field;
+            }
+            set
+            {
+                this.couOfDisGDS58Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 7)]
+        public string CouOfDesGDS59
+        {
+            get
+            {
+                return this.couOfDesGDS59Field;
+            }
+            set
+            {
+                this.couOfDesGDS59Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 8)]
+        public string MetOfPayGDI12
+        {
+            get
+            {
+                return this.metOfPayGDI12Field;
+            }
+            set
+            {
+                this.metOfPayGDI12Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 9)]
+        public string ComRefNumGIM1
+        {
+            get
+            {
+                return this.comRefNumGIM1Field;
+            }
+            set
+            {
+                this.comRefNumGIM1Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 10)]
+        public string UNDanGooCodGDI1
+        {
+            get
+            {
+                return this.uNDanGooCodGDI1Field;
+            }
+            set
+            {
+                this.uNDanGooCodGDI1Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool PREADMREFAR2Specified;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("PREADMREFAR2", Order = 11)]
+        public List<PREADMREFAR2Type> PREADMREFAR2
+        {
+            get
+            {
+                return this.pREADMREFAR2Field;
+            }
+            set
+            {
+                this.pREADMREFAR2Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool PRODOCDC2Specified;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("PRODOCDC2", Order = 12)]
+        public List<PRODOCDC2Type> PRODOCDC2
+        {
+            get
+            {
+                return this.pRODOCDC2Field;
+            }
+            set
+            {
+                this.pRODOCDC2Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 13)]
+        public SPEMENMT2Type SPEMENMT2
+        {
+            get
+            {
+                return this.sPEMENMT2Field;
+            }
+            set
+            {
+                this.sPEMENMT2Field = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class PREADMREFAR2Type
+    {
+
+        private string preDocTypAR21Field;
+
+        private string preDocRefAR26Field;
+
+        private string preDocRefLNGField;
+
+        private string comOfInfAR29Field;
+
+        private string comOfInfAR29LNGField;
+
+        private SerializableDateTimeOffset preDocRefDateField;
+
+        private bool preDocRefDateFieldSpecified;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 0)]
+        public string PreDocTypAR21
+        {
+            get
+            {
+                return this.preDocTypAR21Field;
+            }
+            set
+            {
+                this.preDocTypAR21Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 1)]
+        public string PreDocRefAR26
+        {
+            get
+            {
+                return this.preDocRefAR26Field;
+            }
+            set
+            {
+                this.preDocRefAR26Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 2)]
+        public string PreDocRefLNG
+        {
+            get
+            {
+                return this.preDocRefLNGField;
+            }
+            set
+            {
+                this.preDocRefLNGField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 3)]
+        public string ComOfInfAR29
+        {
+            get
+            {
+                return this.comOfInfAR29Field;
+            }
+            set
+            {
+                this.comOfInfAR29Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 4)]
+        public string ComOfInfAR29LNG
+        {
+            get
+            {
+                return this.comOfInfAR29LNGField;
+            }
+            set
+            {
+                this.comOfInfAR29LNGField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 5)]
+        public SerializableDateTimeOffset PreDocRefDate
+        {
+            get
+            {
+                return this.preDocRefDateField;
+            }
+            set
+            {
+                this.preDocRefDateField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool PreDocRefDateSpecified
+        {
+            get
+            {
+                return this.preDocRefDateFieldSpecified;
+            }
+            set
+            {
+                this.preDocRefDateFieldSpecified = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class PRODOCDC2Type
+    {
+
+        private string docTypDC21Field;
+
+        private string docRefDC23Field;
+
+        private string docRefDCLNGField;
+
+        private string comOfInfDC25Field;
+
+        private string comOfInfDC25LNGField;
+
+        private SerializableDateTimeOffset docRefDateField;
+
+        private bool docRefDateFieldSpecified;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 0)]
+        public string DocTypDC21
+        {
+            get
+            {
+                return this.docTypDC21Field;
+            }
+            set
+            {
+                this.docTypDC21Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 1)]
+        public string DocRefDC23
+        {
+            get
+            {
+                return this.docRefDC23Field;
+            }
+            set
+            {
+                this.docRefDC23Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 2)]
+        public string DocRefDCLNG
+        {
+            get
+            {
+                return this.docRefDCLNGField;
+            }
+            set
+            {
+                this.docRefDCLNGField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 3)]
+        public string ComOfInfDC25
+        {
+            get
+            {
+                return this.comOfInfDC25Field;
+            }
+            set
+            {
+                this.comOfInfDC25Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 4)]
+        public string ComOfInfDC25LNG
+        {
+            get
+            {
+                return this.comOfInfDC25LNGField;
+            }
+            set
+            {
+                this.comOfInfDC25LNGField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 5)]
+        public SerializableDateTimeOffset DocRefDate
+        {
+            get
+            {
+                return this.docRefDateField;
+            }
+            set
+            {
+                this.docRefDateField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool DocRefDateSpecified
+        {
+            get
+            {
+                return this.docRefDateFieldSpecified;
+            }
+            set
+            {
+                this.docRefDateFieldSpecified = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class SPEMENMT2Type
+    {
+
+        private string addInfMT21Field;
+
+        private string addInfMT21LNGField;
+
+        private string addInfCodMT23Field;
+
+        private string expFroECMT24Field;
+
+        private string expFroCouMT25Field;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 0)]
+        public string AddInfMT21
+        {
+            get
+            {
+                return this.addInfMT21Field;
+            }
+            set
+            {
+                this.addInfMT21Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 1)]
+        public string AddInfMT21LNG
+        {
+            get
+            {
+                return this.addInfMT21LNGField;
+            }
+            set
+            {
+                this.addInfMT21LNGField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 2)]
+        public string AddInfCodMT23
+        {
+            get
+            {
+                return this.addInfCodMT23Field;
+            }
+            set
+            {
+                this.addInfCodMT23Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 3)]
+        public string ExpFroECMT24
+        {
+            get
+            {
+                return this.expFroECMT24Field;
+            }
+            set
+            {
+                this.expFroECMT24Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 4)]
+        public string ExpFroCouMT25
+        {
+            get
+            {
+                return this.expFroCouMT25Field;
+            }
+            set
+            {
+                this.expFroCouMT25Field = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GOOITEGDSWithRESOFCONROCType : GOOITEGDSUpperPartType
+    {
+
+        private RESOFCONROCType rESOFCONROCField;
+
+        private TRACONCO2Type tRACONCO2Field;
+
+        private TRACONCE2Type tRACONCE2Field;
+
+        private List<CONNR2Type> cONNR2Field;
+
+        private List<PACGS2Type> pACGS2Field;
+
+        private AdditionalGoodsMeasurementType additionalGoodsMeasurementField;
+
+        private CostType invoicedCostField;
+
+        private SGICODSD2Type sGICODSD2Field;
+
+        private TRACORSECGOO021Type tRACORSECGOO021Field;
+
+        private TRACONSECGOO013Type tRACONSECGOO013Field;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 0)]
+        public RESOFCONROCType RESOFCONROC
+        {
+            get
+            {
+                return this.rESOFCONROCField;
+            }
+            set
+            {
+                this.rESOFCONROCField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 1)]
+        public TRACONCO2Type TRACONCO2
+        {
+            get
+            {
+                return this.tRACONCO2Field;
+            }
+            set
+            {
+                this.tRACONCO2Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 2)]
+        public TRACONCE2Type TRACONCE2
+        {
+            get
+            {
+                return this.tRACONCE2Field;
+            }
+            set
+            {
+                this.tRACONCE2Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool CONNR2Specified;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("CONNR2", Order = 3)]
+        public List<CONNR2Type> CONNR2
+        {
+            get
+            {
+                return this.cONNR2Field;
+            }
+            set
+            {
+                this.cONNR2Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool PACGS2Specified;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("PACGS2", Order = 4)]
+        public List<PACGS2Type> PACGS2
+        {
+            get
+            {
+                return this.pACGS2Field;
+            }
+            set
+            {
+                this.pACGS2Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 5)]
+        public AdditionalGoodsMeasurementType AdditionalGoodsMeasurement
+        {
+            get
+            {
+                return this.additionalGoodsMeasurementField;
+            }
+            set
+            {
+                this.additionalGoodsMeasurementField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 6)]
+        public CostType InvoicedCost
+        {
+            get
+            {
+                return this.invoicedCostField;
+            }
+            set
+            {
+                this.invoicedCostField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 7)]
+        public SGICODSD2Type SGICODSD2
+        {
+            get
+            {
+                return this.sGICODSD2Field;
+            }
+            set
+            {
+                this.sGICODSD2Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 8)]
+        public TRACORSECGOO021Type TRACORSECGOO021
+        {
+            get
+            {
+                return this.tRACORSECGOO021Field;
+            }
+            set
+            {
+                this.tRACORSECGOO021Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 9)]
+        public TRACONSECGOO013Type TRACONSECGOO013
+        {
+            get
+            {
+                return this.tRACONSECGOO013Field;
+            }
+            set
+            {
+                this.tRACONSECGOO013Field = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class RESOFCONROCType
+    {
+
+        private string desROC2Field;
+
+        private string desROC2LNGField;
+
+        private string conIndROC1Field;
+
+        private string poiToTheAttROC51Field;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 0)]
+        public string DesROC2
+        {
+            get
+            {
+                return this.desROC2Field;
+            }
+            set
+            {
+                this.desROC2Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 1)]
+        public string DesROC2LNG
+        {
+            get
+            {
+                return this.desROC2LNGField;
+            }
+            set
+            {
+                this.desROC2LNGField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 2)]
+        public string ConIndROC1
+        {
+            get
+            {
+                return this.conIndROC1Field;
+            }
+            set
+            {
+                this.conIndROC1Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 3)]
+        public string PoiToTheAttROC51
+        {
+            get
+            {
+                return this.poiToTheAttROC51Field;
+            }
+            set
+            {
+                this.poiToTheAttROC51Field = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class ITIType
+    {
+
+        private string couOfRouCodITI1Field;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 0)]
+        public string CouOfRouCodITI1
+        {
+            get
+            {
+                return this.couOfRouCodITI1Field;
+            }
+            set
+            {
+                this.couOfRouCodITI1Field = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class TRACORSEC037Type
+    {
+
+        private string namTRACORSEC041Field;
+
+        private string strNumTRACORSEC043Field;
+
+        private string posCodTRACORSEC042Field;
+
+        private string citTRACORSEC038Field;
+
+        private string couCodTRACORSEC039Field;
+
+        private string tRACORSEC037LNGField;
+
+        private string tINTRACORSEC044Field;
+
+        private List<TAXType> tAXTRACORSEC045Field;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 0)]
+        public string NamTRACORSEC041
+        {
+            get
+            {
+                return this.namTRACORSEC041Field;
+            }
+            set
+            {
+                this.namTRACORSEC041Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 1)]
+        public string StrNumTRACORSEC043
+        {
+            get
+            {
+                return this.strNumTRACORSEC043Field;
+            }
+            set
+            {
+                this.strNumTRACORSEC043Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 2)]
+        public string PosCodTRACORSEC042
+        {
+            get
+            {
+                return this.posCodTRACORSEC042Field;
+            }
+            set
+            {
+                this.posCodTRACORSEC042Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 3)]
+        public string CitTRACORSEC038
+        {
+            get
+            {
+                return this.citTRACORSEC038Field;
+            }
+            set
+            {
+                this.citTRACORSEC038Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 4)]
+        public string CouCodTRACORSEC039
+        {
+            get
+            {
+                return this.couCodTRACORSEC039Field;
+            }
+            set
+            {
+                this.couCodTRACORSEC039Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 5)]
+        public string TRACORSEC037LNG
+        {
+            get
+            {
+                return this.tRACORSEC037LNGField;
+            }
+            set
+            {
+                this.tRACORSEC037LNGField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 6)]
+        public string TINTRACORSEC044
+        {
+            get
+            {
+                return this.tINTRACORSEC044Field;
+            }
+            set
+            {
+                this.tINTRACORSEC044Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool TAXTRACORSEC045Specified;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("TAXTRACORSEC045", Order = 7)]
+        public List<TAXType> TAXTRACORSEC045
+        {
+            get
+            {
+                return this.tAXTRACORSEC045Field;
+            }
+            set
+            {
+                this.tAXTRACORSEC045Field = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class TRACONSEC029Type
+    {
+
+        private string nameTRACONSEC033Field;
+
+        private string strNumTRACONSEC035Field;
+
+        private string posCodTRACONSEC034Field;
+
+        private string citTRACONSEC030Field;
+
+        private string couCodTRACONSEC031Field;
+
+        private string tRACONSEC029LNGField;
+
+        private string tINTRACONSEC036Field;
+
+        private List<TAXType> tAXTRACONSEC037Field;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 0)]
+        public string NameTRACONSEC033
+        {
+            get
+            {
+                return this.nameTRACONSEC033Field;
+            }
+            set
+            {
+                this.nameTRACONSEC033Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 1)]
+        public string StrNumTRACONSEC035
+        {
+            get
+            {
+                return this.strNumTRACONSEC035Field;
+            }
+            set
+            {
+                this.strNumTRACONSEC035Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 2)]
+        public string PosCodTRACONSEC034
+        {
+            get
+            {
+                return this.posCodTRACONSEC034Field;
+            }
+            set
+            {
+                this.posCodTRACONSEC034Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 3)]
+        public string CitTRACONSEC030
+        {
+            get
+            {
+                return this.citTRACONSEC030Field;
+            }
+            set
+            {
+                this.citTRACONSEC030Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 4)]
+        public string CouCodTRACONSEC031
+        {
+            get
+            {
+                return this.couCodTRACONSEC031Field;
+            }
+            set
+            {
+                this.couCodTRACONSEC031Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 5)]
+        public string TRACONSEC029LNG
+        {
+            get
+            {
+                return this.tRACONSEC029LNGField;
+            }
+            set
+            {
+                this.tRACONSEC029LNGField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 6)]
+        public string TINTRACONSEC036
+        {
+            get
+            {
+                return this.tINTRACONSEC036Field;
+            }
+            set
+            {
+                this.tINTRACONSEC036Field = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool TAXTRACONSEC037Specified;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("TAXTRACONSEC037", Order = 7)]
+        public List<TAXType> TAXTRACONSEC037
+        {
+            get
+            {
+                return this.tAXTRACONSEC037Field;
+            }
+            set
+            {
+                this.tAXTRACONSEC037Field = value;
+            }
+        }
     }
 
     /// <remarks/>
@@ -4468,6 +5000,7 @@ namespace RTSDotNETClient.EGIS
         private CONTRESULTSType cONTRESULTSField;
 
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 0)]
         public EPD045HEAHEA HEAHEA
         {
             get
@@ -4481,6 +5014,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 1)]
         public TRAPRIPC1Type TRAPRIPC1
         {
             get
@@ -4494,6 +5028,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 2)]
         public CUSOFFDEPEPTType CUSOFFDEPEPT
         {
             get
@@ -4507,6 +5042,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 3)]
         public CUSOFFDESESTType CUSOFFDESEST
         {
             get
@@ -4519,11 +5055,12 @@ namespace RTSDotNETClient.EGIS
             }
         }
 
+        /// <remarks/>
         [System.Xml.Serialization.XmlIgnoreAttribute()]
         public bool SEAINFSLISpecified;
 
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("SEAINFSLI")]
+        [System.Xml.Serialization.XmlElementAttribute("SEAINFSLI", Order = 4)]
         public List<SEAINFSLIType> SEAINFSLI
         {
             get
@@ -4537,6 +5074,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 5)]
         public CONTRESULTSType CONTRESULTS
         {
             get
@@ -4561,15 +5099,15 @@ namespace RTSDotNETClient.EGIS
 
         private string itemField;
 
-        private ItemChoiceType itemElementNameField;
+        private ItemChoiceType1 itemElementNameField;
 
         private string docNumHEA5Field;
 
         private string writeOffDateField;
 
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("GuaranteeNumber", typeof(string))]
-        [System.Xml.Serialization.XmlElementAttribute("TIRCarnet", typeof(string))]
+        [System.Xml.Serialization.XmlElementAttribute("GuaranteeNumber", typeof(string), Order = 0)]
+        [System.Xml.Serialization.XmlElementAttribute("TIRCarnet", typeof(string), Order = 0)]
         [System.Xml.Serialization.XmlChoiceIdentifierAttribute("ItemElementName")]
         public string Item
         {
@@ -4584,8 +5122,9 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 1)]
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public ItemChoiceType ItemElementName
+        public ItemChoiceType1 ItemElementName
         {
             get
             {
@@ -4598,6 +5137,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 2)]
         public string DocNumHEA5
         {
             get
@@ -4611,6 +5151,7 @@ namespace RTSDotNETClient.EGIS
         }
 
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order = 3)]
         public string WriteOffDate
         {
             get
@@ -4628,203 +5169,6 @@ namespace RTSDotNETClient.EGIS
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(IncludeInSchema = false)]
-    public enum ItemChoiceType
-    {
-
-        /// <remarks/>
-        GuaranteeNumber,
-
-        /// <remarks/>
-        TIRCarnet,
-    }
-
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = false)]
-    public partial class EPD025
-    {
-
-        private EPD025HEAHEA hEAHEAField;
-
-        private TRAPRIPC1Type tRAPRIPC1Field;
-
-        private CUSOFFDESESTType cUSOFFDESESTField;
-
-        private List<SEAINFSLIType> sEAINFSLIField;
-
-        private CONTRESULTSType cONTRESULTSField;
-
-        /// <remarks/>
-        public EPD025HEAHEA HEAHEA
-        {
-            get
-            {
-                return this.hEAHEAField;
-            }
-            set
-            {
-                this.hEAHEAField = value;
-            }
-        }
-
-        /// <remarks/>
-        public TRAPRIPC1Type TRAPRIPC1
-        {
-            get
-            {
-                return this.tRAPRIPC1Field;
-            }
-            set
-            {
-                this.tRAPRIPC1Field = value;
-            }
-        }
-
-        /// <remarks/>
-        public CUSOFFDESESTType CUSOFFDESEST
-        {
-            get
-            {
-                return this.cUSOFFDESESTField;
-            }
-            set
-            {
-                this.cUSOFFDESESTField = value;
-            }
-        }
-
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool SEAINFSLISpecified;
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("SEAINFSLI")]
-        public List<SEAINFSLIType> SEAINFSLI
-        {
-            get
-            {
-                return this.sEAINFSLIField;
-            }
-            set
-            {
-                this.sEAINFSLIField = value;
-            }
-        }
-
-        /// <remarks/>
-        public CONTRESULTSType CONTRESULTS
-        {
-            get
-            {
-                return this.cONTRESULTSField;
-            }
-            set
-            {
-                this.cONTRESULTSField = value;
-            }
-        }
-    }
-
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
-    public partial class EPD025HEAHEA
-    {
-
-        private string itemField;
-
-        private ItemChoiceType1 itemElementNameField;
-
-        private string docNumHEA5Field;
-
-        private string item1Field;
-
-        private Item1ChoiceType item1ElementNameField;
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("GuaranteeNumber", typeof(string))]
-        [System.Xml.Serialization.XmlElementAttribute("TIRCarnet", typeof(string))]
-        [System.Xml.Serialization.XmlChoiceIdentifierAttribute("ItemElementName")]
-        public string Item
-        {
-            get
-            {
-                return this.itemField;
-            }
-            set
-            {
-                this.itemField = value;
-            }
-        }
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public ItemChoiceType1 ItemElementName
-        {
-            get
-            {
-                return this.itemElementNameField;
-            }
-            set
-            {
-                this.itemElementNameField = value;
-            }
-        }
-
-        /// <remarks/>
-        public string DocNumHEA5
-        {
-            get
-            {
-                return this.docNumHEA5Field;
-            }
-            set
-            {
-                this.docNumHEA5Field = value;
-            }
-        }
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("ExitDate", typeof(string))]
-        [System.Xml.Serialization.XmlElementAttribute("MessageDate", typeof(string))]
-        [System.Xml.Serialization.XmlChoiceIdentifierAttribute("Item1ElementName")]
-        public string Item1
-        {
-            get
-            {
-                return this.item1Field;
-            }
-            set
-            {
-                this.item1Field = value;
-            }
-        }
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public Item1ChoiceType Item1ElementName
-        {
-            get
-            {
-                return this.item1ElementNameField;
-            }
-            set
-            {
-                this.item1ElementNameField = value;
-            }
-        }
-    }
-
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
-    [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(IncludeInSchema = false)]
     public enum ItemChoiceType1
     {
 
@@ -4834,19 +5178,4 @@ namespace RTSDotNETClient.EGIS
         /// <remarks/>
         TIRCarnet,
     }
-
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.3038")]
-    [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(IncludeInSchema = false)]
-    public enum Item1ChoiceType
-    {
-
-        /// <remarks/>
-        ExitDate,
-
-        /// <remarks/>
-        MessageDate,
-    }
-
 }
