@@ -4,8 +4,10 @@ import org.iru.epd.message.EPD004;
 import org.iru.epd.message.EPD005;
 import org.iru.epd.message.EPD009;
 import org.iru.epd.message.EPD016;
+import org.iru.epd.message.EPD025;
 import org.iru.epd.message.EPD028;
 import org.iru.epd.message.EPD029;
+import org.iru.epd.message.EPD045;
 import org.iru.epd.message.EPD051;
 import org.iru.epd.message.EPD055;
 import org.iru.epd.message.EPD060;
@@ -26,7 +28,9 @@ public enum G2BMessage {
 	TIRPreDeclarationCancellationReply(EPD009.class),
 	TIRPreDeclarationAmendmentAccepted(EPD004.class),
 	TIRPreDeclarationAmendmentRejected(EPD005.class),
-	TIRPreDeclarationReqOnNonArrMov(EPD140.class);
+	TIRPreDeclarationReqOnNonArrMov(EPD140.class),
+	TIRPreDeclarationUpdateSealsNotification(EPD025.class),
+	TIRPreDeclarationDischargeNotification(EPD045.class);
 	
 	private final Class<?> payloadClass;
 	
