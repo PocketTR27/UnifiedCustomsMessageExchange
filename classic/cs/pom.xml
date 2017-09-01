@@ -57,7 +57,7 @@
 									<classifier>doc</classifier>
 								</artifact>
 								<artifact>
-									<file>Help/Documentation.chm</file>
+									<file>Help/Help/Documentation.chm</file>
 									<type>chm</type>
 									<classifier>doc</classifier>
 								</artifact>

@@ -17,7 +17,7 @@
 
         <files>
                 <file>
-                        <source>Help/Documentation.chm</source>
+                        <source>Help/Help/Documentation.chm</source>
                         <outputDirectory>.</outputDirectory>
                 </file>
         </files>
