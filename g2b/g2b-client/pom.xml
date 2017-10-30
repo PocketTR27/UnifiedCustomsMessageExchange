@@ -16,9 +16,9 @@
 
         <dependencies>
         	<dependency>
-        		<groupId>org.iru.tirepd.g2b</groupId>
+        		<groupId>org.iru.rts.classic.tirepd</groupId>
         		<artifactId>g2b-ws</artifactId>
-        		<version>${project.version}</version>
+        		<version>${rts.version}</version>
         	</dependency>
         	<dependency>
         		<groupId>commons-io</groupId>

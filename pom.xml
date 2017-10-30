@@ -17,6 +17,7 @@
 
 	<properties>
 		<slf4j.version>1.7.2</slf4j.version>
+		<rts.version>2.12</rts.version>
 	</properties>
 
 	<dependencyManagement>

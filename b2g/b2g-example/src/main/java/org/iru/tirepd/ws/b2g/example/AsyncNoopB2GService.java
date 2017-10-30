@@ -2,8 +2,8 @@ package org.iru.tirepd.ws.b2g.example;
 
 import javax.jws.WebService;
 
-import org.iru.tirepd.ws.b2g_1.TIREPDB2GUploadAck;
-import org.iru.tirepd.ws.b2g_1.TIREPDB2GUploadParams;
+import org.iru.rts.ws.tirepd_b2g_1.TIREPDB2GUploadAck;
+import org.iru.rts.ws.tirepd_b2g_1.TIREPDB2GUploadParams;
 
 @WebService(endpointInterface="org.iru.tirepd.ws.b2g_1.TIREPDB2GServiceClassSoap")
 public class AsyncNoopB2GService extends AbstractB2GExampleService {

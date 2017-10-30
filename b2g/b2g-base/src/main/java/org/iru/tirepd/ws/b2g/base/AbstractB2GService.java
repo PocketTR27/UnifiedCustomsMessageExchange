@@ -8,9 +8,9 @@ import javax.xml.bind.JAXBException;
 
 import org.iru.common.crypto.wscrypto.CipheredData;
 import org.iru.common.crypto.wscrypto.Decrypter;
-import org.iru.tirepd.ws.b2g_1.TIREPDB2GServiceClassSoap;
-import org.iru.tirepd.ws.b2g_1.TIREPDB2GUploadAck;
-import org.iru.tirepd.ws.b2g_1.TIREPDB2GUploadParams;
+import org.iru.rts.ws.tirepd_b2g_1.TIREPDB2GServiceClassSoap;
+import org.iru.rts.ws.tirepd_b2g_1.TIREPDB2GUploadAck;
+import org.iru.rts.ws.tirepd_b2g_1.TIREPDB2GUploadParams;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

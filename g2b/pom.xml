@@ -15,7 +15,6 @@
         <packaging>pom</packaging>
 
 	<modules>
-	  <module>g2b-ws</module>
 	  <module>g2b-client</module>
 	</modules>
 

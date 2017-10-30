@@ -15,7 +15,6 @@
         <packaging>pom</packaging>
 
 	<modules>
-	  <module>b2g-ws</module>
 	  <module>b2g-base</module>
 	  <module>b2g-example</module>
 	  <module>b2g-example-jboss</module>

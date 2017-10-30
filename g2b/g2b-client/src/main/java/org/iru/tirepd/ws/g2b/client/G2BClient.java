@@ -12,10 +12,10 @@ import javax.xml.namespace.QName;
 
 import org.iru.common.crypto.wscrypto.CipheredData;
 import org.iru.common.crypto.wscrypto.Encrypter;
-import org.iru.tirepd.ws.g2b_1.TIREPDG2BService;
-import org.iru.tirepd.ws.g2b_1.TIREPDG2BServiceClassSoap;
-import org.iru.tirepd.ws.g2b_1.TIREPDG2BUploadAck;
-import org.iru.tirepd.ws.g2b_1.TIREPDG2BUploadParams;
+import org.iru.rts.ws.tirepd_g2b_1.TIREPDG2BService;
+import org.iru.rts.ws.tirepd_g2b_1.TIREPDG2BServiceClassSoap;
+import org.iru.rts.ws.tirepd_g2b_1.TIREPDG2BUploadAck;
+import org.iru.rts.ws.tirepd_g2b_1.TIREPDG2BUploadParams;
 
 public class G2BClient {
 	

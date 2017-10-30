@@ -15,11 +15,11 @@
         <packaging>jar</packaging>
 
         <dependencies>
-        	<dependency>
-        		<groupId>org.iru.tirepd.b2g</groupId>
-        		<artifactId>b2g-ws</artifactId>
-        		<version>${project.version}</version>
-        	</dependency>
+			<dependency>
+			    <groupId>org.iru.rts.classic.tirepd</groupId>
+			    <artifactId>b2g-ws</artifactId>
+			    <version>${rts.version}</version>
+			</dependency>
         	<dependency>
         		<groupId>commons-io</groupId>
         		<artifactId>commons-io</artifactId>
