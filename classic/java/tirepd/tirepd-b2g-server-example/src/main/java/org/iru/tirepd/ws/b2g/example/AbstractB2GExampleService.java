@@ -16,6 +16,13 @@ import org.iru.tirepd.ws.b2g.base.AbstractB2GService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * AbstractB2GExampleService shows how to create a subclass of AbstractB2GService
+ * which uses lazy initialization of key and certificate (hence the use of 
+ * tirepdb2G method) embedded in the application. It is thus very simple,
+ * but not good for production as the keys and certificates ought to be
+ * managed outside of the application.
+ */
 public abstract class AbstractB2GExampleService extends AbstractB2GService {
 
 	protected final Logger log = LoggerFactory.getLogger(getClass());

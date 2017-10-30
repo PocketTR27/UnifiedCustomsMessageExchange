@@ -5,6 +5,12 @@ import javax.jws.WebService;
 import org.iru.rts.ws.tirepd_b2g_1.TIREPDB2GUploadAck;
 import org.iru.rts.ws.tirepd_b2g_1.TIREPDB2GUploadParams;
 
+/**
+ * AsyncNoopB2GService is a complete implementation of B2G endpoint,
+ * which does nothing with the message content it received. A real
+ * implementation should push the message for asynchronous processing
+ * (for instance, by using a JMS queue in JEE environment).
+ */
 @WebService(endpointInterface="org.iru.tirepd.ws.b2g_1.TIREPDB2GServiceClassSoap")
 public class AsyncNoopB2GService extends AbstractB2GExampleService {
 

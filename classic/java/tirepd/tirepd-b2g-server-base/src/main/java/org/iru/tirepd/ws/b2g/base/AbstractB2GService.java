@@ -14,6 +14,11 @@ import org.iru.rts.ws.tirepd_b2g_1.TIREPDB2GUploadParams;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ *  AbstractB2GService is the base implementation that knows the details
+ *  of the B2G protocol (in particular the error codes).
+ *  Subclasses should not only have to implement the abstract methods.
+ */	
 public abstract class AbstractB2GService implements TIREPDB2GServiceClassSoap {
 
 	private static final Logger log = LoggerFactory.getLogger(AbstractB2GService.class);
