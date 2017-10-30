@@ -48,11 +48,7 @@
 			<artifactId>tirepd-messages</artifactId>
 			<version>${project.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>org.iru.tirepd.g2b</groupId>
-			<artifactId>g2b-client</artifactId>
-			<version>${project.version}</version>
-		</dependency>
+		
 	</dependencies>
  
 </project>
