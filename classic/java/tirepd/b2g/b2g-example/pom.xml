@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>org.iru.tirepd</groupId>
+		<artifactId>b2g</artifactId>
+		<version>1.6-SNAPSHOT</version>
+	</parent>
+
+	<groupId>org.iru.tirepd.b2g</groupId>
+	<artifactId>b2g-example</artifactId>
+	<name>B2G Example implementation (war)</name>
+	<packaging>war</packaging>
+
+	<dependencies>
+	
+		<dependency>
+			<groupId>org.iru.tirepd.b2g</groupId>
+			<artifactId>b2g-base</artifactId>
+			<version>${project.version}</version>
+			<type>jar</type>
+		</dependency>
+	
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<scope>compile</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-jdk14</artifactId>
+			<version>${slf4j.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.iru.tirepd</groupId>
+			<artifactId>tirepd-messages</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		
+	</dependencies>
+ 
+</project>

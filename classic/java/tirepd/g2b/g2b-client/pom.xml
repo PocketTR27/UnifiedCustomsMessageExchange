@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+        <modelVersion>4.0.0</modelVersion>
+
+	<parent>
+	  <groupId>org.iru.tirepd</groupId>
+	  <artifactId>g2b</artifactId>
+	  <version>1.6-SNAPSHOT</version>
+	</parent>
+
+        <groupId>org.iru.tirepd.g2b</groupId>
+        <artifactId>g2b-client</artifactId>
+        <name>G2B ws client</name>
+        <packaging>jar</packaging>
+
+        <dependencies>
+        	<dependency>
+        		<groupId>org.iru.rts.classic.tirepd</groupId>
+        		<artifactId>g2b-ws</artifactId>
+        		<version>${rts.version}</version>
+        	</dependency>
+        	<dependency>
+        		<groupId>commons-io</groupId>
+        		<artifactId>commons-io</artifactId>
+        	</dependency>
+        	<dependency>
+        		<groupId>org.iru.rts.classic</groupId>
+        		<artifactId>wscrypto</artifactId>
+        	</dependency>
+        	<dependency>
+        		<groupId>org.iru.tirepd</groupId>
+        		<artifactId>tirepd-messages</artifactId>
+        		<version>${project.version}</version>
+        	</dependency>
+        </dependencies>
+
+</project>
+
