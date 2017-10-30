@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<jboss-web>
-
-	<context-root>b2g-example</context-root>
-	
-</jboss-web>

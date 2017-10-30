@@ -4,22 +4,20 @@
         <modelVersion>4.0.0</modelVersion>
 
 	<parent>
-	  <groupId>org.iru.tirepd</groupId>
-	  <artifactId>g2b</artifactId>
-	  <version>1.6-SNAPSHOT</version>
+		<groupId>org.iru.rts.classic</groupId>
+		<artifactId>tirepd-rts</artifactId>
+		<version>2.8.1-SNAPSHOT</version>
 	</parent>
 
-        <groupId>org.iru.tirepd.g2b</groupId>
-        <artifactId>g2b-client</artifactId>
-        <name>G2B ws client</name>
-        <packaging>jar</packaging>
+        <artifactId>tirepd-b2g-server-base</artifactId>
+        <packaging>ejb</packaging>
 
         <dependencies>
-        	<dependency>
-        		<groupId>org.iru.rts.classic.tirepd</groupId>
-        		<artifactId>g2b-ws</artifactId>
-        		<version>${rts.version}</version>
-        	</dependency>
+		<dependency>
+			<groupId>org.iru.rts.classic.tirepd</groupId>
+			<artifactId>b2g-ws</artifactId>
+			<version>${rtsapi.version}</version>
+		</dependency>
         	<dependency>
         		<groupId>commons-io</groupId>
         		<artifactId>commons-io</artifactId>
@@ -27,13 +25,15 @@
         	<dependency>
         		<groupId>org.iru.rts.classic</groupId>
         		<artifactId>wscrypto</artifactId>
+                        <version>${project.version}</version>
         	</dependency>
         	<dependency>
-        		<groupId>org.iru.tirepd</groupId>
-        		<artifactId>tirepd-messages</artifactId>
-        		<version>${project.version}</version>
+        		<groupId>org.slf4j</groupId>
+        		<artifactId>slf4j-api</artifactId>
         	</dependency>
         </dependencies>
+
+
 
 </project>
 
