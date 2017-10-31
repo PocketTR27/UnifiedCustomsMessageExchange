@@ -14,7 +14,7 @@
 
 	<properties>
 		<rtsapi.version>2.12</rtsapi.version>
-		<spring.version>3.2.18.RELEASE</spring.version>
+		<test.spring.version>3.2.18.RELEASE</test.spring.version>
 		<slf4j.version>1.7.7</slf4j.version>
 	</properties>
 
@@ -39,15 +39,30 @@
 				<version>2.5</version>
 			</dependency>
 
+
 			<dependency>
 				<groupId>org.slf4j</groupId>
 				<artifactId>slf4j-api</artifactId>
 				<version>${slf4j.version}</version>
 			</dependency>
+				
 			<dependency>
-				<groupId>javax.servlet</groupId>
-				<artifactId>servlet-api</artifactId>
-				<version>2.5</version>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-beans</artifactId>
+				<version>${test.spring.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-test</artifactId>
+				<version>${test.spring.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context</artifactId>
+				<version>${test.spring.version}</version>
+				<scope>test</scope>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
