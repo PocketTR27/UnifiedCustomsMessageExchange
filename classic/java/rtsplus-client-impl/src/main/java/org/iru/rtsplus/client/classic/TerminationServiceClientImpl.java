@@ -128,8 +128,6 @@ public class TerminationServiceClientImpl extends AbstractWSSClient implements T
 		return r;
 	}
 	
-	private static boolean isEmpty(Object s) { return s == null || s.toString().trim().length() == 0; }
-
 	private static ReconciliationRequestType convertRequestRecordToReconciliationRequest(RequestRecord record) {
 		ReconciliationRequestType rr = new ReconciliationRequestType();
 		
