@@ -67,7 +67,7 @@ public class Decrypter {
 			Matcher pm = CryptoUtil.BODY_REGEX.matcher(stringResponse);
 			if (! pm.matches())
 				new IllegalArgumentException();
-			byte[] hash = DigestUtils.sha(pm.group(CryptoUtil.BODY_GROUP).getBytes(CryptoUtil.UNICODE_CHARSET));
+			byte[] hash = DigestUtils.sha1(pm.group(CryptoUtil.BODY_GROUP).getBytes(CryptoUtil.UNICODE_CHARSET));
 			
 			boolean eq = Arrays.equals(hash, responseHash);
 			if (! eq)

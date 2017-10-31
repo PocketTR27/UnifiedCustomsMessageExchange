@@ -31,7 +31,7 @@ public class CryptoUtil {
 	}
 	
 	public static String getThumbprint(X509Certificate cert) throws CertificateEncodingException {
-		return DigestUtils.shaHex(cert.getEncoded());
+		return DigestUtils.sha1Hex(cert.getEncoded());
 	}
 
 	static final IvParameterSpec IV_SPEC = new IvParameterSpec(new byte[] { 0x03, 0x01, 0x04, 0x01, 0x05, 0x09, 0x02, 0x06 });

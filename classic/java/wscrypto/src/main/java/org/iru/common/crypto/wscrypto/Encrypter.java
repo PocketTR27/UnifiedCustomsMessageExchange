@@ -54,7 +54,7 @@ public class Encrypter {
 			Matcher pm = CryptoUtil.BODY_REGEX.matcher(s);
 			if (! pm.matches())
 				new IllegalArgumentException();
-			byte[] hash = DigestUtils.sha(pm.group(CryptoUtil.BODY_GROUP).getBytes(CryptoUtil.UNICODE_CHARSET));
+			byte[] hash = DigestUtils.sha1(pm.group(CryptoUtil.BODY_GROUP).getBytes(CryptoUtil.UNICODE_CHARSET));
 			jxpc.setValue(CryptoUtil.ENVELOPE_HASH_JXPATH, hash);		
 			sw = new StringWriter();
 			m.marshal(obj, sw);
