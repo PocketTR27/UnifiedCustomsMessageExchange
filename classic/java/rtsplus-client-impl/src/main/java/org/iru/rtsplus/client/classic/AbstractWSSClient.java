@@ -41,7 +41,7 @@ public class AbstractWSSClient extends AbstractQueryClient {
 	}
 	
 	public static String getThumbprint(X509Certificate cert) throws CertificateEncodingException {
-		return DigestUtils.shaHex(cert.getEncoded());
+		return DigestUtils.sha1Hex(cert.getEncoded());
 	}
 	
 	protected XMLGregorianCalendar convertToXML(GregorianCalendar d) throws DatatypeConfigurationException  {
