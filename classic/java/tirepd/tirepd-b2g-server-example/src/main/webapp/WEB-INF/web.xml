@@ -43,12 +43,12 @@
 	</servlet-mapping>
 	 
 	<servlet>
-		<servlet-name>NoNSB2GService-1</servlet-name>
-		<servlet-class>org.iru.tirepd.ws.b2g.example.NoNSB2GService</servlet-class>
+		<servlet-name>B2GObjectLoggingService-1</servlet-name>
+		<servlet-class>org.iru.tirepd.ws.b2g.example.AsyncB2GExampleObjectLoggingService</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>NoNSB2GService-1</servlet-name>
-		<url-pattern>/services/NoNSB2GService-1</url-pattern>
+		<servlet-name>B2GObjectLoggingService-1</servlet-name>
+		<url-pattern>/services/B2GObjectLoggingService-1</url-pattern>
 	</servlet-mapping>
 	 
 </web-app>
