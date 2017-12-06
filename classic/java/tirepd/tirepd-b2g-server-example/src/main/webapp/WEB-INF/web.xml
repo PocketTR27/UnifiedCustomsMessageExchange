@@ -29,7 +29,7 @@
 
 	<context-param>
 		<param-name>G2BEndoint</param-name>
-		<param-value>https://ws-test.iru.org/rts2/TIREPDG2B/TIREPDG2BService.asmx?wsdl</param-value>
+		<param-value>https://apps-test.iru.org/rts2/TIREPDG2B/TIREPDG2BService.asmx?wsdl</param-value>
 	</context-param>
 	
 
