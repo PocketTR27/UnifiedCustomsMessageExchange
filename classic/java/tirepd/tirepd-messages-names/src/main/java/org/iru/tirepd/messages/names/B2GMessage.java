@@ -1,16 +1,19 @@
 package org.iru.tirepd.messages.names;
 
-import org.iru.epd.message.EPD013;
-import org.iru.epd.message.EPD014;
-import org.iru.epd.message.EPD015;
-import org.iru.epd.message.EPD141;
+import org.iru.epd.model.message.envelope.EnvelopeType;
+import org.iru.epd.model.message.nons.EPD013;
+import org.iru.epd.model.message.nons.EPD014;
+import org.iru.epd.model.message.nons.EPD015;
+import org.iru.epd.model.message.nons.EPD141;
 
 public enum B2GMessage {
 
 	TIRPreDeclaration(EPD015.class),
 	TIRPreDeclarationCancellationNotice(EPD014.class),
 	TIRPreDeclarationAmendment(EPD013.class),
-	TIRPreDeclarationInfOnNonArrMov(EPD141.class);
+	TIRPreDeclarationInfOnNonArrMov(EPD141.class),
+	Envelope(EnvelopeType.class);
+	
 
 	private final Class<?> payloadClass;
 	

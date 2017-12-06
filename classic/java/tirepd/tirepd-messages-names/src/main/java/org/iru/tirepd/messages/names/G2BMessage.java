@@ -1,19 +1,20 @@
 package org.iru.tirepd.messages.names;
 
-import org.iru.epd.message.EPD004;
-import org.iru.epd.message.EPD005;
-import org.iru.epd.message.EPD009;
-import org.iru.epd.message.EPD016;
-import org.iru.epd.message.EPD025;
-import org.iru.epd.message.EPD028;
-import org.iru.epd.message.EPD029;
-import org.iru.epd.message.EPD045;
-import org.iru.epd.message.EPD051;
-import org.iru.epd.message.EPD055;
-import org.iru.epd.message.EPD060;
-import org.iru.epd.message.EPD140;
-import org.iru.epd.message.EPD917;
-import org.iru.epd.message.EPD928;
+import org.iru.epd.model.message.envelope.EnvelopeType;
+import org.iru.epd.model.message.nons.EPD004;
+import org.iru.epd.model.message.nons.EPD005;
+import org.iru.epd.model.message.nons.EPD009;
+import org.iru.epd.model.message.nons.EPD016;
+import org.iru.epd.model.message.nons.EPD025;
+import org.iru.epd.model.message.nons.EPD028;
+import org.iru.epd.model.message.nons.EPD029;
+import org.iru.epd.model.message.nons.EPD045;
+import org.iru.epd.model.message.nons.EPD051;
+import org.iru.epd.model.message.nons.EPD055;
+import org.iru.epd.model.message.nons.EPD060;
+import org.iru.epd.model.message.nons.EPD140;
+import org.iru.epd.model.message.nons.EPD917;
+import org.iru.epd.model.message.nons.EPD928;
 
 public enum G2BMessage {
 	
@@ -30,7 +31,8 @@ public enum G2BMessage {
 	TIRPreDeclarationAmendmentRejected(EPD005.class),
 	TIRPreDeclarationReqOnNonArrMov(EPD140.class),
 	TIRPreDeclarationUpdateSealsNotification(EPD025.class),
-	TIRPreDeclarationDischargeNotification(EPD045.class);
+	TIRPreDeclarationDischargeNotification(EPD045.class),
+	Envelope(EnvelopeType.class);
 	
 	private final Class<?> payloadClass;
 	
