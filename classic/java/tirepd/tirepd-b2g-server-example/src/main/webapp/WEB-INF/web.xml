@@ -34,12 +34,12 @@
 	
 
 	<servlet>
-		<servlet-name>AsyncNoopB2GService-1</servlet-name>
-		<servlet-class>org.iru.tirepd.ws.b2g.example.AsyncNoopB2GService</servlet-class>
+		<servlet-name>B2GStringLoggingService-1</servlet-name>
+		<servlet-class>org.iru.tirepd.ws.b2g.example.AsyncB2GExampleStringLoggingService</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>AsyncNoopB2GService-1</servlet-name>
-		<url-pattern>/services/AsyncNoopB2GService-1</url-pattern>
+		<servlet-name>B2GStringLoggingService-1</servlet-name>
+		<url-pattern>/services/B2GStringLoggingService-1</url-pattern>
 	</servlet-mapping>
 	 
 	<servlet>
