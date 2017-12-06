@@ -37,7 +37,7 @@ public abstract class AbstractB2GExampleService extends AbstractB2GService {
 	protected WebServiceContext context;
 
 	@Override
-	protected final String getHostID() {
+	protected String getHostID() {
 		try {
 			return InetAddress.getLocalHost().getHostName();
 		} catch (UnknownHostException e) {
@@ -47,7 +47,7 @@ public abstract class AbstractB2GExampleService extends AbstractB2GService {
 	}
 
 	@Override
-	protected final byte[] lookupPrivateKey(String certificateThumbprint,
+	protected byte[] lookupPrivateKey(String certificateThumbprint,
 			String subscriber) {
 		if (certTP.equals(certificateThumbprint.toLowerCase()) && this.subscriber.equals(subscriber))
 			return privateKey;
