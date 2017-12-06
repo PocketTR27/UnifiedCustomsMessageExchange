@@ -25,7 +25,7 @@ import org.w3c.dom.Element;
  * implementation should push the message for asynchronous processing
  * (for instance, by using a JMS queue in JEE environment).
  */
-@WebService(endpointInterface="org.iru.tirepd.ws.b2g_1.TIREPDB2GServiceClassSoap")
+@WebService(endpointInterface="org.iru.rts.ws.tirepd_b2g_1.TIREPDB2GServiceClassSoap")
 public class AsyncB2GExampleObjectLoggingService extends AbstractB2GExampleService {
 
 	@Override
