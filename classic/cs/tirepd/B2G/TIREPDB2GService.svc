@@ -1,0 +1,1 @@
+<%@ ServiceHost Service="B2G.TIREPDB2GService" %>

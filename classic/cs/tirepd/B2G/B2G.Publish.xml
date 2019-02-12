@@ -1,0 +1,17 @@
+<publishData>
+  <publishTarget publishUrl="c:\temp\b2g\">
+    <file relUrl="Web.config" publishTime="02/12/2019 16:31:29" />
+    <file relUrl="bin/RTSJAVA_recv.all.pfx" publishTime="02/12/2019 15:35:45" />
+    <file relUrl="bin/RTSJAVA_recv.cer.pem" publishTime="02/12/2019 15:35:45" />
+    <file relUrl="TIREPDB2GService.svc" publishTime="02/12/2019 16:52:35" />
+    <file relUrl="bin/RTSJAVA_recv.key.der" publishTime="02/12/2019 15:35:45" />
+    <file relUrl="bin/B2G.dll" publishTime="02/12/2019 16:32:40" />
+    <file relUrl="bin/IRU.Encryption.pdb" publishTime="02/12/2019 16:32:40" />
+    <file relUrl="bin/RTSJAVA_send.cer.der" publishTime="02/12/2019 15:35:45" />
+    <file relUrl="bin/TIREPD.Messages.dll" publishTime="02/12/2019 16:32:40" />
+    <file relUrl="bin/TIREPD.Messages.pdb" publishTime="02/12/2019 16:32:40" />
+    <file relUrl="bin/B2G.dll.config" publishTime="02/12/2019 16:31:29" />
+    <file relUrl="bin/B2G.pdb" publishTime="02/12/2019 16:32:40" />
+    <file relUrl="bin/IRU.Encryption.dll" publishTime="02/12/2019 16:32:40" />
+  </publishTarget>
+</publishData>

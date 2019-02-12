@@ -13,6 +13,7 @@
 
 	<modules>
 		<module>rts-client</module>
+		<module>tirepd</module>
 	</modules>
 
 </project>

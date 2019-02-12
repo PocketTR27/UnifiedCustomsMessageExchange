@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="textBox1.Text" xml:space="preserve">
+    <value>&lt;EPD015&gt; &lt;HEAHEA&gt; &lt;RefNumHEA4&gt;XX59108714P1&lt;/RefNumHEA4&gt; &lt;TypOfDecHEA24&gt;TIR&lt;/TypOfDecHEA24&gt; &lt;CouOfDesCodHEA30&gt;CZ&lt;/CouOfDesCodHEA30&gt; &lt;CouOfDisCodHEA55&gt;UA&lt;/CouOfDisCodHEA55&gt; &lt;InlTraModHEA75&gt;3&lt;/InlTraModHEA75&gt; &lt;TraModAtBorHEA76&gt;3&lt;/TraModAtBorHEA76&gt; &lt;IdeOfMeaOfTraAtDHEA78&gt;ZTR56788&lt;/IdeOfMeaOfTraAtDHEA78&gt; &lt;IdeOfMeaOfTraAtDHEA78LNG&gt;SK&lt;/IdeOfMeaOfTraAtDHEA78LNG&gt; &lt;NatOfMeaOfTraAtDHEA80&gt;SK&lt;/NatOfMeaOfTraAtDHEA80&gt; &lt;IdeOfMeaOfTraCroDHEA85&gt;AB107&lt;/IdeOfMeaOfTraCroDHEA85&gt; &lt;NatOfMeaOfTraCroDHEA87&gt;SK&lt;/NatOfMeaOfTraCroDHEA87&gt; &lt;ConIndHEA96&gt;0&lt;/ConIndHEA96&gt; &lt;NCTSAccDocHEA601LNG&gt;SK&lt;/NCTSAccDocHEA601LNG&gt; &lt;TotNumOfIteHEA305&gt;1&lt;/TotNumOfIteHEA305&gt; &lt;TotNumOfPacHEA306&gt;12&lt;/TotNumOfPacHEA306&gt; &lt;TotGroMasHEA307&gt;1000.000&lt;/TotGroMasHEA307&gt; &lt;DecDatHEA383&gt;20080903&lt;/DecDatHEA383&gt; &lt;DecPlaHEA394&gt;Vysne Nemecke&lt;/DecPlaHEA394&gt; &lt;DecPlaHEA394LNG&gt;SK&lt;/DecPlaHEA394LNG&gt; &lt;/HEAHEA&gt; &lt;TRAPRIPC1&gt; &lt;NamPC17&gt;VADUAL Logistik spol. s r.o.&lt;/NamPC17&gt; &lt;StrAndNumPC122&gt;Ružová 228&lt;/StrAndNumPC122&gt; &lt;PosCodPC123&gt;908 71&lt;/PosCodPC123&gt; &lt;CitPC124&gt;Moravský Svätý Ján&lt;/CitPC124&gt; &lt;CouPC125&gt;SK&lt;/CouPC125&gt; &lt;NADLNGPC&gt;SK&lt;/NADLNGPC&gt; &lt;TINPC159&gt;SVK04026795&lt;/TINPC159&gt; &lt;/TRAPRIPC1&gt;&lt;TRACONCO1&gt; &lt;NamCO17&gt;UZOBOR&lt;/NamCO17&gt; &lt;StrAndNumCO122&gt;ZTTT678&lt;/StrAndNumCO122&gt; &lt;PosCodCO123&gt;08767&lt;/PosCodCO123&gt; &lt;CitCO124&gt;KYJEV&lt;/CitCO124&gt; &lt;CouCO125&gt;UA&lt;/CouCO125&gt; &lt;NADLNGCO&gt;SK&lt;/NADLNGCO&gt; &lt;/TRACONCO1&gt; &lt;TRACONCE1&gt; &lt;NamCE17&gt;CZECHOFRUKT&lt;/NamCE17&gt; &lt;StrAndNumCE122&gt;RESTT. 45&lt;/StrAndNumCE122&gt; &lt;PosCodCE123&gt;78798&lt;/PosCodCE123&gt; &lt;CitCE124&gt;PRAHA&lt;/CitCE124&gt; &lt;CouCE125&gt;CZ&lt;/CouCE125&gt; &lt;NADLNGCE&gt;SK&lt;/NADLNGCE&gt; &lt;/TRACONCE1&gt; &lt;CUSOFFDEPEPT&gt; &lt;RefNumEPT1&gt;SK532100&lt;/RefNumEPT1&gt; &lt;/CUSOFFDEPEPT&gt; &lt;CUSOFFDESEST&gt; &lt;RefNumEST1&gt;CZ176600&lt;/RefNumEST1&gt; &lt;/CUSOFFDESEST&gt; &lt;GUAGUA&gt; &lt;GuaTypGUA1&gt;B&lt;/GuaTypGUA1&gt; &lt;GUAREFREF&gt; &lt;OthGuaRefREF4&gt;XX59108714&lt;/OthGuaRefREF4&gt; &lt;/GUAREFREF&gt; &lt;/GUAGUA&gt; &lt;GOOITEGDS&gt; &lt;IteNumGDS7&gt;1&lt;/IteNumGDS7&gt; &lt;GooDesGDS23&gt;Zula&lt;/GooDesGDS23&gt; &lt;GooDesGDS23LNG&gt;UK&lt;/GooDesGDS23LNG&gt; &lt;GroMasGDS46&gt;1000.000&lt;/GroMasGDS46&gt; &lt;PRODOCDC2&gt; &lt;DocTypDC21&gt;952&lt;/DocTypDC21&gt; &lt;DocRefDC23&gt;XX59108714&lt;/DocRefDC23&gt; &lt;DocRefDCLNG&gt;EN&lt;/DocRefDCLNG&gt;&lt;/PRODOCDC2&gt; &lt;PRODOCDC2&gt; &lt;DocTypDC21&gt;730&lt;/DocTypDC21&gt; &lt;DocRefDC23&gt;6768687&lt;/DocRefDC23&gt; &lt;DocRefDCLNG&gt;UK&lt;/DocRefDCLNG&gt; &lt;/PRODOCDC2&gt; &lt;PACGS2&gt; &lt;MarNumOfPacGS21&gt;76544&lt;/MarNumOfPacGS21&gt; &lt;MarNumOfPacGS21LNG&gt;UK&lt;/MarNumOfPacGS21LNG&gt; &lt;KinOfPacGS23&gt;GB&lt;/KinOfPacGS23&gt; &lt;NumOfPacGS24&gt;12&lt;/NumOfPacGS24&gt; &lt;/PACGS2&gt; &lt;/GOOITEGDS&gt; &lt;/EPD015&gt;</value>
+  </data>
+</root>

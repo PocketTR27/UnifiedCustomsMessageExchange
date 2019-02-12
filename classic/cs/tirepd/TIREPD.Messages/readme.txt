@@ -1,0 +1,1 @@
+﻿Message classes in this assembly are generated automatically from the XSD definition using "WSCF.Blue" tool (http://wscfblue.codeplex.com/)
