@@ -233,6 +233,6 @@
   -->
   <PropertyGroup>
     <PostBuildEvent>IF NOT EXIST $(TargetDir)\certificates MKDIR $(TargetDir)\certificates
-IF EXIST $(ProjectDir)\..\..\rts-keys\src\main\resources COPY /Y $(ProjectDir)\..\..\rts-keys\src\main\resources\*.* $(TargetDir)\certificates\</PostBuildEvent>
+IF EXIST $(ProjectDir)\..\..\..\rts-keys\src\main\resources COPY /Y $(ProjectDir)\..\..\..\rts-keys\src\main\resources\*.* $(TargetDir)\certificates\</PostBuildEvent>
   </PropertyGroup>
 </Project>
