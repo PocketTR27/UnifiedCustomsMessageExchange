@@ -97,12 +97,26 @@ namespace B2G
             else if (messageName == "TIRPreDeclarationCancellationNotice")
             {
                 EPD014 epd014 = (EPD014)Deserialize(messageContent, typeof(EPD014));
-                Log(string.Format("TIR Amendment received MRN = {0}", epd014.HEAHEA.DocNumHEA5), EventLogEntryType.Information);
+                Log(string.Format("TIR Cancellation Request received MRN = {0}", epd014.HEAHEA.DocNumHEA5), EventLogEntryType.Information);
                 Thread thread = new Thread(new ParameterizedThreadStart(ProcessResponseAsynchronously));
                 thread.Start(epd014);
             }
+            else if (messageName == "TIRPreDeclarationAmendment")
+            {
+                EPD013 epd013 = (EPD013)Deserialize(messageContent, typeof(EPD013));
+                Log(string.Format("TIR Amendment received MRN = {0}", epd013.HEAHEA.DocNumHEA5), EventLogEntryType.Information);
+                Thread thread = new Thread(new ParameterizedThreadStart(ProcessResponseAsynchronously));
+                thread.Start(epd013);
+            }
+            else if (messageName == "TIRPreDeclarationInfOnNonArrMov")
+            {
+                EPD141 epd141 = (EPD141)Deserialize(messageContent, typeof(EPD141));
+                Log(string.Format("TIR Information on non-arrived movement received MRN = {0}", epd141.HEAHEA.DocNumHEA5), EventLogEntryType.Information);
+                Thread thread = new Thread(new ParameterizedThreadStart(ProcessResponseAsynchronously));
+                thread.Start(epd141);
+            }
             else
-                throw new B2GException("Incorrect value for MessageName", AckReturnCode.AnyUnclassifiedError);
+                throw new B2GException(string.Format("Incorrect value for MessageName {0}",messageName), AckReturnCode.AnyUnclassifiedError);
         }
 
         private void ProcessResponseAsynchronously(object epd)
@@ -131,14 +145,35 @@ namespace B2G
                     Log("Response Content : " + response, EventLogEntryType.Information);
                     TIREPDG2BUploadAck result = SendG2BResponse("TIRPreDeclarationCancellationReply", response);
                     if (result.ReturnCode == (int)AckReturnCode.Success)
-                        Log(string.Format("EPD009 transmitted with success for TIR Amendment {0}", epd009.HEAHEA.DocNumHEA5), EventLogEntryType.Information);
+                        Log(string.Format("EPD009 transmitted with success for TIR Cancellation Request {0}", epd009.HEAHEA.DocNumHEA5), EventLogEntryType.Information);
                     else
-                        Log(string.Format("G2B error returned for TIR Amendment {0} : return code {1}", epd009.HEAHEA.DocNumHEA5, result.ReturnCode), EventLogEntryType.Information);
+                        Log(string.Format("G2B error returned for TIR Cancellation Request {0} : return code {1}", epd009.HEAHEA.DocNumHEA5, result.ReturnCode), EventLogEntryType.Information);
+                }
+                else if (epd is EPD013)
+                {
+                    Thread.Sleep(10000); // short break before processing the response
+                    EPD013 epd013 = (EPD013)epd;
+                    EPD004 epd004 = BuildEPD004(epd013);//here we accept the amendment, use EPD005 to refuse it
+                    string response = Serialize(epd004);
+                    Log("Response Content : " + response, EventLogEntryType.Information);
+                    TIREPDG2BUploadAck result = SendG2BResponse("TIRPreDeclarationAmendmentAccepted", response);
+                    if (result.ReturnCode == (int)AckReturnCode.Success)
+                        Log(string.Format("EPD004 transmitted with success for TIR Amendment {0}", epd004.HEAHEA.DocNumHEA5), EventLogEntryType.Information);
+                    else
+                        Log(string.Format("G2B error returned for TIR Amendment {0} : return code {1}", epd004.HEAHEA.DocNumHEA5, result.ReturnCode), EventLogEntryType.Information);
+                }
+                else if (epd is EPD141)
+                {
+                    Thread.Sleep(10000); // short break before processing the response
+                    EPD141 epd141 = (EPD141)epd;
+
+                    Log(string.Format("TIR Information on non-arrived movement processed {0}", epd141.HEAHEA.DocNumHEA5), EventLogEntryType.Information);//no response message exists for an EPD141, here we simply log the entry
                 }
             }
             catch (Exception ex)
             {
                 Log(ex.Message + "\r\n" + ex.StackTrace, EventLogEntryType.Error);
+                throw new B2GException("An exception occured: " + ex.Message, AckReturnCode.AnyUnclassifiedError);
             }
         }
 
@@ -192,6 +227,45 @@ namespace B2G
             epd009.TRAPRIPC1.TINPC159 = epd014.TRAPRIPC1.TINPC159;
             epd009.TRAPRIPC1.HITPC126 = epd014.TRAPRIPC1.HITPC126;
             return epd009;
+        }
+
+        private EPD004 BuildEPD004(EPD013 epd013)
+        {
+            EPD004 epd004 = new EPD004();
+
+            epd004.HEAHEA = new EPD004HEAHEA();
+            epd004.HEAHEA.DocNumHEA5 = epd013.HEAHEA.DocNumHEA5;
+            epd004.HEAHEA.GuaranteeNumber = epd013.HEAHEA.GuaranteeNumber;
+            if (epd013.HEAHEA.AmendmentDateSpecified)
+            {
+                epd004.HEAHEA.AmendmentDate = epd013.HEAHEA.AmendmentDate;
+                epd004.HEAHEA.AmendmentDateSpecified = true;
+            }
+            epd004.HEAHEA.AmendmentAcceptanceDate = DateTime.UtcNow.Date;
+            epd004.HEAHEA.AmendmentAcceptanceDateSpecified = true;
+
+            if (epd013.TRAPRIPC1 != null)
+            {
+                epd004.TRAPRIPC1 = new TRAPRIPC1Type();
+                epd004.TRAPRIPC1.NamPC17 = epd013.TRAPRIPC1.NamPC17;
+                epd004.TRAPRIPC1.StrAndNumPC122 = epd013.TRAPRIPC1.StrAndNumPC122;
+                epd004.TRAPRIPC1.PosCodPC123 = epd013.TRAPRIPC1.PosCodPC123;
+                epd004.TRAPRIPC1.CitPC124 = epd013.TRAPRIPC1.CitPC124;
+                epd004.TRAPRIPC1.CouPC125 = epd013.TRAPRIPC1.CouPC125;
+                epd004.TRAPRIPC1.NADLNGPC = epd013.TRAPRIPC1.NADLNGPC;
+                epd004.TRAPRIPC1.TINPC159 = epd013.TRAPRIPC1.TINPC159;
+                epd004.TRAPRIPC1.HITPC126 = epd013.TRAPRIPC1.HITPC126;
+                epd004.TRAPRIPC1.TAXPC159 = epd013.TRAPRIPC1.TAXPC159;
+            }
+
+            if (epd013.CUSOFFDEPEPT != null)
+            {
+                epd004.CUSOFFDEPEPT = new CUSOFFDEPEPTType();
+                if (!string.IsNullOrEmpty(epd013.CUSOFFDEPEPT.CouRefNumEPT1)) { epd004.CUSOFFDEPEPT.CouRefNumEPT1 = epd013.CUSOFFDEPEPT.CouRefNumEPT1;}
+                epd004.CUSOFFDEPEPT.RefNumEPT1 = epd013.CUSOFFDEPEPT.RefNumEPT1;
+            }
+
+            return epd004;
         }
 
         private TIREPDG2BUploadAck SendG2BResponse(string messageName, string messageContent)
