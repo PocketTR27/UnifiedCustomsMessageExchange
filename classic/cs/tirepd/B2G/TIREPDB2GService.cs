@@ -20,7 +20,6 @@ namespace B2G
         {
             try
             {
-                ValidateParams(su);
                 string messageContent = DecryptMessageContent(su);
                 ProcessMessageContent(su.MessageName,messageContent);
                 return new TIREPDB2GUploadAck(AckReturnCode.Success, su.SubscriberMessageID);
@@ -53,7 +52,8 @@ namespace B2G
                 password = null;
             X509Certificate2 cert = EncryptionHelper.GetCertificateFromFile(file, password);
             try
-            {                
+            {
+                ValidateParams(su, cert.PublicKey.Key.KeySize);
                 return EncryptionHelper.X509DecryptString(su.ESessionKey, su.MessageContent, su.CertificateID, cert);
             }
             catch (Exception ex)
@@ -63,13 +63,13 @@ namespace B2G
             }
         }
 
-        private void ValidateParams(TIREPDB2GUploadParams su)
+        private void ValidateParams(TIREPDB2GUploadParams su, int keyLength)
         {
             if (string.IsNullOrEmpty(su.SubscriberID) || su.SubscriberID != ConfigurationManager.AppSettings["SubscriberID"])
                 throw new B2GException(AckReturnCode.MissingOrInvalidSubscriberID);
             if (string.IsNullOrEmpty(su.CertificateID))
                 throw new B2GException(AckReturnCode.MissingOrInvalidCertificateID);
-            if (su.ESessionKey == null || su.ESessionKey.Length != 128)
+            if (su.ESessionKey == null || (keyLength > 0 && su.ESessionKey.Length * 8 != keyLength))
                 throw new B2GException(AckReturnCode.MissingOrInvalidESessionKey);
             if (string.IsNullOrEmpty(su.SubscriberMessageID))
                 throw new B2GException(AckReturnCode.MissingOrInvalidSubscriberMessageID);
