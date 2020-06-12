@@ -3,6 +3,7 @@ package org.iru.rts.client.plus;
 import java.net.URL;
 
 import org.iru.rts.client.ClientFactory;
+import org.iru.rts.client.EGISClient;
 import org.iru.rts.client.HolderQueryClient;
 import org.iru.rts.client.ReconciliationClient;
 import org.iru.rts.client.UploadClient;
@@ -78,6 +79,11 @@ public class ClientFactoryImpl implements ClientFactory {
 		UploadClientImpl c = new UploadClientImpl();
 		setAbstractWSSClientProperties(c, wsdlLocation);
 		return c;
+	}
+
+	@Override
+	public EGISClient getEGISClient(URL wsdlLocation) {
+		throw new UnsupportedOperationException("not implemented yet");
 	}
 
 }

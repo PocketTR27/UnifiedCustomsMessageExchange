@@ -48,7 +48,13 @@
 		</constructor-arg>
 	</bean>
 
-
+	<bean class="org.iru.rts.client.EGISClient" factory-bean="rtsjavaFactory" factory-method="getEGISClient">
+		<constructor-arg>
+			<bean class="java.net.URL">
+				<constructor-arg type="java.lang.String" value="https://apps-test.iru.org/RTS2/EGIS_WS/electronicGuaranteeInformationService.asmx?WSDL"/>
+			</bean>
+		</constructor-arg>
+	</bean>
 
 	<bean id="datatypeFactory" class="javax.xml.datatype.DatatypeFactory" factory-method="newInstance"/>
 	<bean id="xdate" factory-bean="datatypeFactory" factory-method="newXMLGregorianCalendar">
@@ -103,6 +109,11 @@
 	</bean>
 
 	<bean class="org.iru.rts.test.TestHolderQuery.Carnet">
+		<property name="number" value="AB12345678" />
+		<property name="result" value="5" />
+	</bean>
+
+	<bean class="org.iru.rts.test.TestEGIS.Carnet">
 		<property name="number" value="AB12345678" />
 		<property name="result" value="5" />
 	</bean>

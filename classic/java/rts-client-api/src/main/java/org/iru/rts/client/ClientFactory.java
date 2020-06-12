@@ -7,6 +7,7 @@ public interface ClientFactory {
 	HolderQueryClient getHolderQueryClient(URL wsdlLocation);
 	ReconciliationClient getReconciliationClient(URL wsdlLocation);
 	UploadClient getUploadClient(URL wsdlLocation);
+	EGISClient getEGISClient(URL wsdlLocation);
 	
 	public void setSender(String sender);
 	

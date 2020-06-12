@@ -10,6 +10,7 @@ import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
 import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBElement;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 
@@ -33,7 +34,9 @@ public class Encrypter {
 	}
 	
 	private byte[] getUnicodeBytes(Object obj) throws JAXBException {
-		JAXBContext context = JAXBContext.newInstance(obj.getClass());
+		Class<?> clazz = obj instanceof JAXBElement ? ((JAXBElement<?>) obj).getValue().getClass() : obj.getClass();
+
+		JAXBContext context = JAXBContext.newInstance(clazz);
 		Marshaller m = context.createMarshaller();
 		m.setProperty(Marshaller.JAXB_ENCODING, CryptoUtil.UNICODE_CHARSET.displayName());
 		m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
@@ -42,7 +45,7 @@ public class Encrypter {
 		m.marshal(obj, sw);
 		
 		boolean withHash = true;
-		JXPathContext jxpc = JXPathContext.newContext(obj);
+		JXPathContext jxpc = JXPathContext.newContext(obj instanceof JAXBElement ? ((JAXBElement<?>) obj).getValue() : obj);
 		try {
 			jxpc.getValue(CryptoUtil.ENVELOPE_HASH_JXPATH);
 		} catch (JXPathException e) {

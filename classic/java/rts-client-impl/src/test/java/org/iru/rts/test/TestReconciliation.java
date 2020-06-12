@@ -8,6 +8,7 @@ import java.util.List;
 
 import javax.xml.bind.JAXBException;
 import javax.xml.datatype.DatatypeConfigurationException;
+import javax.xml.stream.XMLStreamException;
 
 import org.iru.rts.client.classic.ReconciliationClientImpl;
 import org.junit.Assert;
@@ -23,9 +24,10 @@ public class TestReconciliation {
 
 	@Autowired
 	private ReconciliationClientImpl wsrq;
-	 
+
 	@Test
-	public void wsrq() throws JAXBException, GeneralSecurityException, IOException, DatatypeConfigurationException {
+	public void wsrq() throws JAXBException, GeneralSecurityException, IOException, DatatypeConfigurationException,
+			XMLStreamException {
 		List<?> list = wsrq.downloadReconciliationRequests(new SimpleDateFormat("yyyyMMddHHmmssZ").format(new Date()));
 		Assert.assertEquals(0, list.size());
 	}

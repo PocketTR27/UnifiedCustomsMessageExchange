@@ -9,6 +9,7 @@ import javax.xml.bind.JAXBException;
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.namespace.QName;
+import javax.xml.stream.XMLStreamException;
 
 import org.iru.common.crypto.wscrypto.CipheredData;
 import org.iru.common.crypto.wscrypto.Decrypter;
@@ -27,8 +28,9 @@ import org.iru.rts.ws.wsrq_1.ReconciliationResponse;
 public class ReconciliationClientImpl extends AbstractQueryClient implements ReconciliationClient {
 
 	private static final String INFORMATION_EXCHANGE_VERSION = "1.0.0";
-	
-	public List<RequestRecord> downloadReconciliationRequests(String senderMessageID) throws JAXBException, GeneralSecurityException, IOException, DatatypeConfigurationException {
+
+	public List<RequestRecord> downloadReconciliationRequests(String senderMessageID) throws JAXBException,
+			GeneralSecurityException, IOException, DatatypeConfigurationException, XMLStreamException {
 		
 		ReconciliationQueryBodyType body = new ReconciliationQueryBodyType();
 		body.setPassword(password);

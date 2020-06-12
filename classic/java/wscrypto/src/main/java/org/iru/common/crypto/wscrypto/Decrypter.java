@@ -13,8 +13,12 @@ import java.util.regex.Matcher;
 
 import javax.crypto.Cipher;
 import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBElement;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
+import javax.xml.stream.XMLInputFactory;
+import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamReader;
 
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.jxpath.JXPathContext;
@@ -23,14 +27,15 @@ import org.apache.commons.jxpath.JXPathException;
 public class Decrypter {
 
 	RSAPrivateKey privKey;
-	
+
 	public void setPrivateKeyDER(byte[] key) throws GeneralSecurityException, IOException {
 		KeyFactory keyFactory = KeyFactory.getInstance("RSA");
 		KeySpec ks = new PKCS8EncodedKeySpec(key);
-		privKey = (RSAPrivateKey) keyFactory.generatePrivate(ks);		
+		privKey = (RSAPrivateKey) keyFactory.generatePrivate(ks);
 	}
-	
-	public Object decryptPayload(CipheredData cdata, Class<?> payloadClazz) throws JAXBException, GeneralSecurityException {
+
+	public Object decryptPayload(CipheredData cdata, Class<?> payloadClazz)
+			throws JAXBException, GeneralSecurityException, XMLStreamException {
 		
 		Cipher rsaCipher = Cipher.getInstance(CryptoUtil.RSA_CIPHER);
 	    rsaCipher.init(Cipher.UNWRAP_MODE, privKey);
@@ -48,10 +53,18 @@ public class Decrypter {
 	    
 	    if (payloadClazz.equals(String.class))
 	    	return stringResponse;
-	    
+		
 	    JAXBContext context = JAXBContext.newInstance(payloadClazz);
-	    Unmarshaller m = context.createUnmarshaller();
-	    Object result = m.unmarshal(new StringReader(stringResponse));
+		Unmarshaller m = context.createUnmarshaller();
+		Object result = null;
+		try {
+			result = m.unmarshal(new StringReader(stringResponse));
+		} catch (JAXBException e) {
+			XMLInputFactory xif = XMLInputFactory.newFactory();
+			XMLStreamReader xsr = xif.createXMLStreamReader(new StringReader(stringResponse));
+			JAXBElement<?> element = m.unmarshal(xsr, payloadClazz);
+			result = element.getValue();
+		}
 
 	    JXPathContext jxpc = JXPathContext.newContext(result);
 

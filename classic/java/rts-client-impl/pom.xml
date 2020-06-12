@@ -42,6 +42,17 @@
         	</dependency>
 
         	<dependency>
+        		<groupId>org.iru.rts.classic.egis</groupId>
+        		<artifactId>egis-bo</artifactId>
+        		<version>${rtsapi.version}</version>
+        	</dependency>
+        	<dependency>
+        		<groupId>org.iru.rts.classic.egis</groupId>
+        		<artifactId>egis-ws</artifactId>
+        		<version>${rtsapi.version}</version>
+        	</dependency>
+
+        	<dependency>
         		<groupId>org.iru.rts.classic.wsst</groupId>
         		<artifactId>safetirupload-bo</artifactId>
         		<version>${rtsapi.version}</version>

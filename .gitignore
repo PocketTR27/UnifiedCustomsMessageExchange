@@ -5,3 +5,7 @@ target/
 .classpath
 *.orig
 nb-configuration.xml
+.mvn/
+.vscode/
+.factorypath
+*.code-workspace

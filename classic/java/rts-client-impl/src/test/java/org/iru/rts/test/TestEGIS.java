@@ -11,8 +11,8 @@ import javax.xml.stream.XMLStreamException;
 
 import junit.framework.Assert;
 
-import org.iru.rts.client.HolderQueryResponse;
-import org.iru.rts.client.classic.HolderQueryClientImpl;
+import org.iru.rts.client.EGISResponse;
+import org.iru.rts.client.classic.EGISClientImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,10 +21,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:test.xml" })
-public class TestHolderQuery {
+public class TestEGIS {
 
 	@Autowired
-	private HolderQueryClientImpl tchq;
+	private EGISClientImpl egis;
 
 	public static class Carnet {
 		private String number;
@@ -47,7 +47,7 @@ public class TestHolderQuery {
 	public void queryInvalidCarnet() throws DatatypeConfigurationException, IOException, JAXBException,
 			GeneralSecurityException, XMLStreamException {
 		
-		HolderQueryResponse response = tchq.queryCarnet(carnet.number, new SimpleDateFormat("yyyyMMddHHmmssZ").format(new Date()));
+		EGISResponse response = egis.queryCarnet(carnet.number, new SimpleDateFormat("yyyyMMddHHmmssZ").format(new Date()));
 
 		Assert.assertEquals(carnet.result, response.getResult());
 		Assert.assertEquals(carnet.number, response.getCarnetNumber());
@@ -57,6 +57,7 @@ public class TestHolderQuery {
 			Assert.assertNull(response.getNumTerminations());
 			Assert.assertNull(response.getValidityDate());
 		}
+		Assert.assertEquals(carnet.number, response.getRequestedGuaranteeNumber());
 	}
 	
 }

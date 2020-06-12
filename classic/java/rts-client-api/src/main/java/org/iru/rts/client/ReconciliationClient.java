@@ -6,11 +6,12 @@ import java.util.List;
 
 import javax.xml.bind.JAXBException;
 import javax.xml.datatype.DatatypeConfigurationException;
+import javax.xml.stream.XMLStreamException;
 
 import org.iru.rts.safetirreconciliation.RequestRecord;
 
 public interface ReconciliationClient {
 
-	public List<RequestRecord> downloadReconciliationRequests(String senderMessageID) throws JAXBException, GeneralSecurityException, IOException, DatatypeConfigurationException;
+	public List<RequestRecord> downloadReconciliationRequests(String senderMessageID) throws JAXBException, GeneralSecurityException, IOException, DatatypeConfigurationException, XMLStreamException;
 	
 }

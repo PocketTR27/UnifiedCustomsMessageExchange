@@ -23,6 +23,11 @@
         		<artifactId>safetirreconciliation-bo</artifactId>
         		<version>${rtsapi.version}</version>
         	</dependency>
+        	<dependency>
+        		<groupId>org.iru.rts.classic.egis</groupId>
+        		<artifactId>egis-bo</artifactId>
+        		<version>${rtsapi.version}</version>
+        	</dependency>
 
         </dependencies>
 

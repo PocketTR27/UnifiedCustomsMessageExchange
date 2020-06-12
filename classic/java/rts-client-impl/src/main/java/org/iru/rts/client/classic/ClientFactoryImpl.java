@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.Collections;
 
 import org.iru.rts.client.ClientFactory;
+import org.iru.rts.client.EGISClient;
 import org.iru.rts.client.HolderQueryClient;
 import org.iru.rts.client.ReconciliationClient;
 import org.iru.rts.client.UploadClient;
@@ -82,6 +83,11 @@ public class ClientFactoryImpl implements ClientFactory {
 		return c;
 	}
 
-
+	@Override
+	public EGISClient getEGISClient(URL wsdlLocation) {
+		EGISClientImpl c = new EGISClientImpl();
+		setAbstractQueryClientProperties(c, wsdlLocation);
+		return c;
+	}
 
 }

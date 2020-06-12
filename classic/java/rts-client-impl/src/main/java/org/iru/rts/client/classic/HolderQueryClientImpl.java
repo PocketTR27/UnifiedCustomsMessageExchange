@@ -10,6 +10,7 @@ import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.namespace.QName;
+import javax.xml.stream.XMLStreamException;
 
 import org.iru.common.crypto.wscrypto.CipheredData;
 import org.iru.common.crypto.wscrypto.Decrypter;
@@ -28,14 +29,17 @@ import org.iru.rts.ws.tchq_1.TIRHolderQuery;
 import org.iru.rts.ws.tchq_1.TIRHolderResponse;
 
 public class HolderQueryClientImpl extends AbstractQueryClient implements HolderQueryClient {
-	
-	
-	public HolderQueryResponse queryCarnet(String carnetNumber, String queryID) throws DatatypeConfigurationException, IOException, JAXBException, GeneralSecurityException  {
+
+	public HolderQueryResponse queryCarnet(String carnetNumber, String queryID)
+			throws DatatypeConfigurationException, IOException, JAXBException, GeneralSecurityException,
+			XMLStreamException {
 		return queryCarnet(carnetNumber, queryID, HolderQueryReason.OTHER);
 	}
-	
+
 	@Override
-	public HolderQueryResponse queryCarnet(String carnetNumber, String queryID, HolderQueryReason reason) throws DatatypeConfigurationException, IOException, JAXBException, GeneralSecurityException  {
+	public HolderQueryResponse queryCarnet(String carnetNumber, String queryID, HolderQueryReason reason)
+			throws DatatypeConfigurationException, IOException, JAXBException, GeneralSecurityException,
+			XMLStreamException {
 			
 		BodyType b = new BodyType();
 		b.setCarnetNumber(carnetNumber);
