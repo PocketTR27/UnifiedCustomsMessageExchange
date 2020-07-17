@@ -30,7 +30,7 @@ namespace B2GTester
             BasicHttpBinding binding = new BasicHttpBinding();
             EndpointAddress remoteAddress = new EndpointAddress(B2GUrl);
 
-            TIREPDB2GServiceClient cli = new TIREPDB2GServiceClient(binding, remoteAddress);
+            TIREPDB2GServiceClassSoapClient cli = new TIREPDB2GServiceClassSoapClient(binding, remoteAddress);
             TIREPDB2GUploadParams parameters = new TIREPDB2GUploadParams();
             parameters.MessageName = textBox2.Text;
             parameters.SubscriberID = ConfigurationManager.AppSettings["SubscriberID"];
@@ -39,7 +39,7 @@ namespace B2GTester
             parameters.ESessionKey = encryptionResult.SessionKey;
             parameters.MessageContent = encryptionResult.Encrypted;
             parameters.SubscriberMessageID = Guid.NewGuid().ToString();
-            parameters.TimeSent = DateTime.UtcNow.ToString("u").Replace(" ", "T");
+            parameters.TimeSent = DateTime.UtcNow;
             TIREPDB2GUploadAck result = cli.TIREPDB2G(parameters);
             MessageBox.Show(string.Format("Return Code = {0}", result.ReturnCode));
         }

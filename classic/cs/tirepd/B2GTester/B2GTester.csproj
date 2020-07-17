@@ -86,8 +86,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Service References\B2G\www.iru.org.wsdl" />
-    <None Include="Service References\B2G\www.iru.org.xsd" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -98,6 +96,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <None Include="Service References\B2G\TIREPDB2GService.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

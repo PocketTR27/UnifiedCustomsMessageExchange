@@ -17,13 +17,10 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="https://apps-test.iru.org/RTS2/TIREPDG2B/TIREPDG2BService.asmx" Protocol="http" SourceId="1" />
+    <MetadataSource Address="c:\dev\Customs\RTS-API\classic\tirepd\g2b-ws\src\wsdl\TIREPDG2BService.wsdl" Protocol="file" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="schema1.xsd" MetadataType="Schema" ID="39343327-156f-4728-80a0-f000a4be2fab" SourceId="1" SourceUrl="https://apps-test.iru.org/RTS2/TIREPDG2B/TIREPDG2BService.asmx?schema=schema1" />
-    <MetadataFile FileName="TIREPDG2BService.wsdl" MetadataType="Wsdl" ID="a40727b1-d92e-4ceb-80db-f5b5a2a30d78" SourceId="1" SourceUrl="https://apps-test.iru.org/RTS2/TIREPDG2B/TIREPDG2BService.asmx?wsdl" />
-    <MetadataFile FileName="TIREPDG2BService1.wsdl" MetadataType="Wsdl" ID="c2cf747c-d997-4434-b6bd-1c5461f6ca6c" SourceId="1" SourceUrl="https://apps-test.iru.org/RTS2/TIREPDG2B/TIREPDG2BService.asmx?wsdl=wsdl1" />
-    <MetadataFile FileName="TIREPDG2BService.disco" MetadataType="Disco" ID="74f632f2-f590-43fe-beb5-2a1295c26a63" SourceId="1" SourceUrl="https://apps-test.iru.org/RTS2/TIREPDG2B/TIREPDG2BService.asmx?disco" />
+    <MetadataFile FileName="TIREPDG2BService2.wsdl" MetadataType="Wsdl" ID="044c68a0-6786-4493-bc73-378340a7d62f" SourceId="1" SourceUrl="file:///c:/dev/Customs/RTS-API/classic/tirepd/g2b-ws/src/wsdl/TIREPDG2BService.wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

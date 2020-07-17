@@ -22,28 +22,20 @@ namespace B2GTester.B2G {
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string SubscriberIDField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string CertificateIDField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private byte[] ESessionKeyField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string SubscriberMessageIDField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string InformationExchangeVersionField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string MessageNameField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string TimeSentField;
+        private System.DateTime TimeSentField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private byte[] MessageContentField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
@@ -56,7 +48,7 @@ namespace B2GTester.B2G {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, EmitDefaultValue=false)]
         public string SubscriberID {
             get {
                 return this.SubscriberIDField;
@@ -69,7 +61,7 @@ namespace B2GTester.B2G {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, EmitDefaultValue=false, Order=1)]
         public string CertificateID {
             get {
                 return this.CertificateIDField;
@@ -82,7 +74,7 @@ namespace B2GTester.B2G {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, EmitDefaultValue=false, Order=2)]
         public byte[] ESessionKey {
             get {
                 return this.ESessionKeyField;
@@ -95,7 +87,7 @@ namespace B2GTester.B2G {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, EmitDefaultValue=false, Order=3)]
         public string SubscriberMessageID {
             get {
                 return this.SubscriberMessageIDField;
@@ -108,7 +100,7 @@ namespace B2GTester.B2G {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, EmitDefaultValue=false, Order=4)]
         public string InformationExchangeVersion {
             get {
                 return this.InformationExchangeVersionField;
@@ -121,7 +113,7 @@ namespace B2GTester.B2G {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=5)]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, EmitDefaultValue=false, Order=5)]
         public string MessageName {
             get {
                 return this.MessageNameField;
@@ -134,20 +126,20 @@ namespace B2GTester.B2G {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=6)]
-        public string TimeSent {
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=6)]
+        public System.DateTime TimeSent {
             get {
                 return this.TimeSentField;
             }
             set {
-                if ((object.ReferenceEquals(this.TimeSentField, value) != true)) {
+                if ((this.TimeSentField.Equals(value) != true)) {
                     this.TimeSentField = value;
                     this.RaisePropertyChanged("TimeSent");
                 }
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=7)]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, EmitDefaultValue=false, Order=7)]
         public byte[] MessageContent {
             get {
                 return this.MessageContentField;
@@ -187,6 +179,7 @@ namespace B2GTester.B2G {
         
         private int ReturnCodeField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int ReturnCodeReasonField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
@@ -238,7 +231,7 @@ namespace B2GTester.B2G {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=3)]
+        [System.Runtime.Serialization.DataMemberAttribute(Order=3)]
         public int ReturnCodeReason {
             get {
                 return this.ReturnCodeReasonField;
@@ -262,11 +255,11 @@ namespace B2GTester.B2G {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(Namespace="http://www.iru.org", ConfigurationName="B2G.ITIREPDB2GService")]
-    public interface ITIREPDB2GService {
+    [System.ServiceModel.ServiceContractAttribute(Namespace="http://www.iru.org", ConfigurationName="B2G.TIREPDB2GServiceClassSoap")]
+    public interface TIREPDB2GServiceClassSoap {
         
         // CODEGEN: Generating message contract since element name su from namespace http://www.iru.org is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://www.iru.org/TIREPDB2G", ReplyAction="http://www.iru.org/ITIREPDB2GService/TIREPDB2GResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.iru.org/TIREPDB2G", ReplyAction="*")]
         B2GTester.B2G.TIREPDB2GResponse TIREPDB2G(B2GTester.B2G.TIREPDB2GRequest request);
     }
     
@@ -339,34 +332,34 @@ namespace B2GTester.B2G {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface ITIREPDB2GServiceChannel : B2GTester.B2G.ITIREPDB2GService, System.ServiceModel.IClientChannel {
+    public interface TIREPDB2GServiceClassSoapChannel : B2GTester.B2G.TIREPDB2GServiceClassSoap, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class TIREPDB2GServiceClient : System.ServiceModel.ClientBase<B2GTester.B2G.ITIREPDB2GService>, B2GTester.B2G.ITIREPDB2GService {
+    public partial class TIREPDB2GServiceClassSoapClient : System.ServiceModel.ClientBase<B2GTester.B2G.TIREPDB2GServiceClassSoap>, B2GTester.B2G.TIREPDB2GServiceClassSoap {
         
-        public TIREPDB2GServiceClient() {
+        public TIREPDB2GServiceClassSoapClient() {
         }
         
-        public TIREPDB2GServiceClient(string endpointConfigurationName) : 
+        public TIREPDB2GServiceClassSoapClient(string endpointConfigurationName) : 
                 base(endpointConfigurationName) {
         }
         
-        public TIREPDB2GServiceClient(string endpointConfigurationName, string remoteAddress) : 
+        public TIREPDB2GServiceClassSoapClient(string endpointConfigurationName, string remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public TIREPDB2GServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public TIREPDB2GServiceClassSoapClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public TIREPDB2GServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public TIREPDB2GServiceClassSoapClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        B2GTester.B2G.TIREPDB2GResponse B2GTester.B2G.ITIREPDB2GService.TIREPDB2G(B2GTester.B2G.TIREPDB2GRequest request) {
+        B2GTester.B2G.TIREPDB2GResponse B2GTester.B2G.TIREPDB2GServiceClassSoap.TIREPDB2G(B2GTester.B2G.TIREPDB2GRequest request) {
             return base.Channel.TIREPDB2G(request);
         }
         
@@ -374,7 +367,7 @@ namespace B2GTester.B2G {
             B2GTester.B2G.TIREPDB2GRequest inValue = new B2GTester.B2G.TIREPDB2GRequest();
             inValue.Body = new B2GTester.B2G.TIREPDB2GRequestBody();
             inValue.Body.su = su;
-            B2GTester.B2G.TIREPDB2GResponse retVal = ((B2GTester.B2G.ITIREPDB2GService)(this)).TIREPDB2G(inValue);
+            B2GTester.B2G.TIREPDB2GResponse retVal = ((B2GTester.B2G.TIREPDB2GServiceClassSoap)(this)).TIREPDB2G(inValue);
             return retVal.Body.TIREPDB2GResult;
         }
     }

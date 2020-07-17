@@ -70,9 +70,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Service References\G2B\schema1.xsd" />
-    <None Include="Service References\G2B\TIREPDG2BService.wsdl" />
-    <None Include="Service References\G2B\TIREPDG2BService1.wsdl" />
+    <None Include="Service References\G2B\TIREPDG2BService2.wsdl" />
     <None Include="WSTIREPDB2G.wsdl">
       <SubType>Designer</SubType>
     </None>
@@ -92,9 +90,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\G2B\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\G2B\TIREPDG2BService.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\G2B\configuration91.svcinfo" />

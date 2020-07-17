@@ -22,27 +22,20 @@ namespace B2G.G2B {
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string SubscriberIDField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string CertificateIDField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private byte[] ESessionKeyField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string SubscriberMessageIDField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string InformationExchangeVersionField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string MessageNameField;
         
         private System.DateTime TimeSentField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private byte[] MessageContentField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
@@ -55,7 +48,7 @@ namespace B2G.G2B {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, EmitDefaultValue=false)]
         public string SubscriberID {
             get {
                 return this.SubscriberIDField;
@@ -68,7 +61,7 @@ namespace B2G.G2B {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, EmitDefaultValue=false, Order=1)]
         public string CertificateID {
             get {
                 return this.CertificateIDField;
@@ -81,7 +74,7 @@ namespace B2G.G2B {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, EmitDefaultValue=false, Order=2)]
         public byte[] ESessionKey {
             get {
                 return this.ESessionKeyField;
@@ -94,7 +87,7 @@ namespace B2G.G2B {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, EmitDefaultValue=false, Order=3)]
         public string SubscriberMessageID {
             get {
                 return this.SubscriberMessageIDField;
@@ -107,7 +100,7 @@ namespace B2G.G2B {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, EmitDefaultValue=false, Order=4)]
         public string InformationExchangeVersion {
             get {
                 return this.InformationExchangeVersionField;
@@ -120,7 +113,7 @@ namespace B2G.G2B {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=5)]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, EmitDefaultValue=false, Order=5)]
         public string MessageName {
             get {
                 return this.MessageNameField;
@@ -146,7 +139,7 @@ namespace B2G.G2B {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=7)]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, EmitDefaultValue=false, Order=7)]
         public byte[] MessageContent {
             get {
                 return this.MessageContentField;
@@ -185,6 +178,9 @@ namespace B2G.G2B {
         private string SubscriberMessageIDField;
         
         private int ReturnCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ReturnCodeReasonField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -231,6 +227,19 @@ namespace B2G.G2B {
                 if ((this.ReturnCodeField.Equals(value) != true)) {
                     this.ReturnCodeField = value;
                     this.RaisePropertyChanged("ReturnCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=3)]
+        public int ReturnCodeReason {
+            get {
+                return this.ReturnCodeReasonField;
+            }
+            set {
+                if ((this.ReturnCodeReasonField.Equals(value) != true)) {
+                    this.ReturnCodeReasonField = value;
+                    this.RaisePropertyChanged("ReturnCodeReason");
                 }
             }
         }

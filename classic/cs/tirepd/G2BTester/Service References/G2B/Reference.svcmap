@@ -17,13 +17,10 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://172.25.65.50/RTS2/TIREPDG2B/TIREPDG2BService.asmx" Protocol="http" SourceId="1" />
+    <MetadataSource Address="c:\dev\Customs\RTS-API\classic\tirepd\g2b-ws\src\wsdl\TIREPDG2BService.wsdl" Protocol="file" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="TIREPDG2BService.wsdl" MetadataType="Wsdl" ID="d62215e0-a1ce-4534-a176-7eea9ae33916" SourceId="1" SourceUrl="http://172.25.65.50/RTS2/TIREPDG2B/TIREPDG2BService.asmx?wsdl" />
-    <MetadataFile FileName="TIREPDG2BService.disco" MetadataType="Disco" ID="d9b49049-ec8f-4be7-8dab-5f97305c22c2" SourceId="1" SourceUrl="http://172.25.65.50/RTS2/TIREPDG2B/TIREPDG2BService.asmx?disco" />
-    <MetadataFile FileName="TIREPDG2BService1.wsdl" MetadataType="Wsdl" ID="cf9fc936-7ad4-4afc-ae3b-38b0b052d840" SourceId="1" SourceUrl="http://172.25.65.50/RTS2/TIREPDG2B/TIREPDG2BService.asmx?wsdl=wsdl1" />
-    <MetadataFile FileName="schema1.xsd" MetadataType="Schema" ID="adaf1dac-5938-4b0d-8553-49c7775546ff" SourceId="1" SourceUrl="http://172.25.65.50/RTS2/TIREPDG2B/TIREPDG2BService.asmx?schema=schema1" />
+    <MetadataFile FileName="TIREPDG2BService2.wsdl" MetadataType="Wsdl" ID="165401be-a22a-4b69-9dac-bbedaba95089" SourceId="1" SourceUrl="file:///c:/dev/Customs/RTS-API/classic/tirepd/g2b-ws/src/wsdl/TIREPDG2BService.wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

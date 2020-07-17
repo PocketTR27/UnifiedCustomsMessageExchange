@@ -86,7 +86,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Service References\G2B\TIREPDG2BService.wsdl" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -97,6 +96,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <None Include="Service References\G2B\TIREPDG2BService2.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\IRU.Encryption\IRU.Encryption.csproj">
@@ -109,11 +109,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\G2B\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\G2B\schema1.xsd" />
-    <None Include="Service References\G2B\TIREPDG2BService.disco" />
-    <None Include="Service References\G2B\TIREPDG2BService1.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\G2B\configuration91.svcinfo" />

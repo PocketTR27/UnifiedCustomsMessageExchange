@@ -17,11 +17,10 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost/B2G/mex" Protocol="mex" SourceId="1" />
+    <MetadataSource Address="c:\dev\Customs\RTS-API\classic\tirepd\b2g-ws\src\wsdl\TIREPDB2GService.wsdl" Protocol="file" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="www.iru.org.wsdl" MetadataType="Wsdl" ID="d571d3ad-a22a-47e7-9799-23bc167de01a" SourceId="1" SourceUrl="http://localhost/B2G/mex" />
-    <MetadataFile FileName="www.iru.org.xsd" MetadataType="Schema" ID="329f24df-70f8-4143-8f59-3f1dee11be96" SourceId="1" SourceUrl="http://localhost/B2G/mex" />
+    <MetadataFile FileName="TIREPDB2GService.wsdl" MetadataType="Wsdl" ID="4026c46c-d3d9-4036-ab61-5a19fee3ef74" SourceId="1" SourceUrl="file:///c:/dev/Customs/RTS-API/classic/tirepd/b2g-ws/src/wsdl/TIREPDB2GService.wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

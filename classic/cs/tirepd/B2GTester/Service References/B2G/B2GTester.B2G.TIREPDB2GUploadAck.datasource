@@ -6,5 +6,5 @@
     cause the file to be unrecognizable by the program.
 -->
 <GenericObjectDataSource DisplayName="TIREPDB2GUploadAck" Version="1.0" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
-   <TypeInfo>B2GTester.B2G.TIREPDB2GUploadAck</TypeInfo>
+   <TypeInfo>B2GTester.B2G.TIREPDB2GUploadAck, Service References.B2G.Reference.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</TypeInfo>
 </GenericObjectDataSource>
