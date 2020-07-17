@@ -1,0 +1,12 @@
+**/obj/
+**/bin/
+**/Help/Working/
+**/Help/Help/
+*.suo
+*.user
+*.log
+*.shfbproj_*
+*.cache
+.vs
+**/packages/
+**/App_Data/RTSJAVA_*
