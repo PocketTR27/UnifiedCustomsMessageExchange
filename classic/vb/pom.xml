@@ -3,20 +3,16 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>org.iru.rts</groupId>
-		<artifactId>rts-all</artifactId>
+		<groupId>org.iru.rts.classic</groupId>
+		<artifactId>rts-classic</artifactId>
 		<version>2.15.3-SNAPSHOT</version>
 	</parent>
 
-	<groupId>org.iru.rts.classic</groupId>
-	<artifactId>rts-classic</artifactId>
+	<artifactId>rts-classic-vb</artifactId>
 	<packaging>pom</packaging>
 
 	<modules>
-		<module>java</module>
-		<module>cs</module>
-		<module>vb</module>
-		<module>rts-keys</module>
+		<module>tirepd</module>
 	</modules>
 
 </project>
