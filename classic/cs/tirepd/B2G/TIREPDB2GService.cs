@@ -1,15 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Diagnostics;
+using System.IO;
 using System.Security.Cryptography.X509Certificates;
 using System.ServiceModel;
-using System.Configuration;
-using System.Globalization;
-using System.Diagnostics;
+using System.Threading;
+using System.Xml.Serialization;
+
+using B2G.G2B;
 using IRU.Encryption;
 using TIREPD.Messages;
-using System.Xml.Serialization;
-using System.IO;
-using B2G.G2B;
-using System.Threading;
 
 namespace B2G
 {
@@ -125,25 +126,48 @@ namespace B2G
             {
                 if (epd is EPD015)
                 {
-                    Thread.Sleep(2000); // short break before processing the response
                     EPD015 epd015 = (EPD015)epd;
-                    EPD928 epd928 = BuildEPD928(epd015);
-                    string response = Serialize(epd928);
-                    Log("Response Content : " + response, EventLogEntryType.Information);
-                    TIREPDG2BUploadAck result = SendG2BResponse("TIRPreDeclarationReceived", response);
-                    if (result.ReturnCode == (int)AckReturnCode.Success)
-                        Log(string.Format("EPD928 transmitted with success for TIR Pre-Declaration {0}", epd928.HEAHEA.RefNumHEA4), EventLogEntryType.Information);
+
+                    Thread.Sleep(2000); // Please write/call your code to validate the structure of the message and to persist it in DB here instead of doing a simple wait
+                    bool success = true;
+
+                    if (success)
+                    {
+                        EPD928 epd928 = BuildEPD928(epd015);
+                        string response = Serialize(epd928);
+                        Log("Response Content : " + response, EventLogEntryType.Information);
+                        TIREPDG2BUploadAck result = SendG2BResponse("TIRPreDeclarationReceived", response);
+
+                        if (result.ReturnCode == (int)AckReturnCode.Success)
+                            Log(string.Format("EPD928 transmitted with success for TIR Pre-Declaration {0}", epd928.HEAHEA.RefNumHEA4), EventLogEntryType.Information);
+                        else
+                            Log(string.Format("G2B error returned for TIR Pre-Declaration {0} : return code {1}", epd928.HEAHEA.RefNumHEA4, result.ReturnCode), EventLogEntryType.Information);
+                    }
                     else
-                        Log(string.Format("G2B error returned for TIR Pre-Declaration {0} : return code {1}", epd928.HEAHEA.RefNumHEA4, result.ReturnCode), EventLogEntryType.Information);
+                    {
+                        EPD917 epd917 = BuildEPD917(epd015);
+                        string response = Serialize(epd917);
+                        Log("Response Content : " + response, EventLogEntryType.Information);
+                        TIREPDG2BUploadAck result = SendG2BResponse("TIRPreDeclarationError", response);
+
+                        if (result.ReturnCode == (int)AckReturnCode.Success)
+                            Log(string.Format("EPD917 transmitted with success for TIR Pre-Declaration {0}", epd917.HEAHEA.RefNumHEA4), EventLogEntryType.Information);
+                        else
+                            Log(string.Format("G2B error returned for TIR Pre-Declaration {0} : return code {1}", epd917.HEAHEA.RefNumHEA4, result.ReturnCode), EventLogEntryType.Information);
+                    }
                 }
                 else if (epd is EPD014)
                 {
-                    Thread.Sleep(10000); // short break before processing the response
                     EPD014 epd014 = (EPD014)epd;
-                    EPD009 epd009 = BuildEPD009(epd014);
+
+                    Thread.Sleep(10000); // Please write/call your code to validate the structure of the message and to persist it in DB here instead of doing a simple wait
+                    bool success = true;
+
+                    EPD009 epd009 = BuildEPD009(epd014, success);
                     string response = Serialize(epd009);
                     Log("Response Content : " + response, EventLogEntryType.Information);
                     TIREPDG2BUploadAck result = SendG2BResponse("TIRPreDeclarationCancellationReply", response);
+
                     if (result.ReturnCode == (int)AckReturnCode.Success)
                         Log(string.Format("EPD009 transmitted with success for TIR Cancellation Request {0}", epd009.HEAHEA.DocNumHEA5), EventLogEntryType.Information);
                     else
@@ -151,23 +175,43 @@ namespace B2G
                 }
                 else if (epd is EPD013)
                 {
-                    Thread.Sleep(10000); // short break before processing the response
                     EPD013 epd013 = (EPD013)epd;
-                    EPD004 epd004 = BuildEPD004(epd013);//here we accept the amendment, use EPD005 to refuse it
-                    string response = Serialize(epd004);
-                    Log("Response Content : " + response, EventLogEntryType.Information);
-                    TIREPDG2BUploadAck result = SendG2BResponse("TIRPreDeclarationAmendmentAccepted", response);
-                    if (result.ReturnCode == (int)AckReturnCode.Success)
-                        Log(string.Format("EPD004 transmitted with success for TIR Amendment {0}", epd004.HEAHEA.DocNumHEA5), EventLogEntryType.Information);
+
+                    Thread.Sleep(10000); // Please write/call your code to validate the structure of the message and to persist it in DB here instead of doing a simple wait
+                    bool success = true;
+
+                    if (success)
+                    {
+                        EPD004 epd004 = BuildEPD004(epd013);
+                        string response = Serialize(epd004);
+                        Log("Response Content : " + response, EventLogEntryType.Information);
+                        TIREPDG2BUploadAck result = SendG2BResponse("TIRPreDeclarationAmendmentAccepted", response);
+
+                        if (result.ReturnCode == (int)AckReturnCode.Success)
+                            Log(string.Format("EPD004 transmitted with success for TIR Amendment {0}", epd004.HEAHEA.DocNumHEA5), EventLogEntryType.Information);
+                        else
+                            Log(string.Format("G2B error returned for TIR Amendment {0} : return code {1}", epd004.HEAHEA.DocNumHEA5, result.ReturnCode), EventLogEntryType.Information);
+                    }
                     else
-                        Log(string.Format("G2B error returned for TIR Amendment {0} : return code {1}", epd004.HEAHEA.DocNumHEA5, result.ReturnCode), EventLogEntryType.Information);
+                    {
+                        EPD005 epd005 = BuildEPD005(epd013);
+                        string response = Serialize(epd005);
+                        Log("Response Content : " + response, EventLogEntryType.Information);
+                        TIREPDG2BUploadAck result = SendG2BResponse("TIRPreDeclarationAmendmentRejected", response);
+
+                        if (result.ReturnCode == (int)AckReturnCode.Success)
+                            Log(string.Format("EPD005 transmitted with success for TIR Amendment {0}", epd005.HEAHEA.DocNumHEA5), EventLogEntryType.Information);
+                        else
+                            Log(string.Format("G2B error returned for TIR Amendment {0} : return code {1}", epd005.HEAHEA.DocNumHEA5, result.ReturnCode), EventLogEntryType.Information);
+                    }
                 }
                 else if (epd is EPD141)
                 {
-                    Thread.Sleep(10000); // short break before processing the response
                     EPD141 epd141 = (EPD141)epd;
 
-                    Log(string.Format("TIR Information on non-arrived movement processed {0}", epd141.HEAHEA.DocNumHEA5), EventLogEntryType.Information);//no response message exists for an EPD141, here we simply log the entry
+                    Thread.Sleep(10000); // Please write/call your code to validate the structure of the message and to persist it in DB here instead of doing a simple wait
+
+                    Log(string.Format("TIR Information on non-arrived movement processed {0}", epd141.HEAHEA.DocNumHEA5), EventLogEntryType.Information);
                 }
             }
             catch (Exception ex)
@@ -196,15 +240,29 @@ namespace B2G
             return epd928;
         }
 
-        private EPD009 BuildEPD009(EPD014 epd014)
+        private EPD917 BuildEPD917(EPD015 epd015)
+        {
+            EPD917 epd917 = new EPD917();
+            epd917.HEAHEA = new EPD917HEAHEA();
+            epd917.FUNERRER1 = new FUNERRER1Type();
+            epd917.HEAHEA.RefNumHEA4 = epd015.HEAHEA.RefNumHEA4;
+            epd917.FUNERRER1.ErrPoiER12 = "/EPD015/HEAHEA/RefNUMHEA4";
+            epd917.FUNERRER1.OriAttValER14 = epd015.HEAHEA.RefNumHEA4;
+            epd917.FUNERRER1.ErrTypER11 = "12";
+            epd917.FUNERRER1.ErrReaER13 = "Duplicate LRN";
+            return epd917;
+        }
+
+        private EPD009 BuildEPD009(EPD014 epd014, bool acceptIt)
         {
             EPD009 epd009 = new EPD009();
             epd009.HEAHEA = new EPD009HEAHEA();
             epd009.CUSOFFDEPEPT = new CUSOFFDEPEPTType();
             epd009.TRAPRIPC1 = new TRAPRIPC1Type();
             epd009.HEAHEA.DocNumHEA5 = epd014.HEAHEA.DocNumHEA5;
-            epd009.HEAHEA.CanDecHEA93 = EPD009HEAHEACanDecHEA93.Item1;
+            epd009.HEAHEA.CanDecHEA93 = acceptIt ? EPD009HEAHEACanDecHEA93.Item1 : EPD009HEAHEACanDecHEA93.Item0;
             epd009.HEAHEA.CanDecHEA93Specified = true;
+
             if (epd014.HEAHEA.CancellationRequestDateSpecified)
             {
                 epd009.HEAHEA.CancellationRequestDateSpecified = true;
@@ -212,11 +270,13 @@ namespace B2G
                 epd009.HEAHEA.CancellationDecisionDate = DateTime.Now.Date;
                 epd009.HEAHEA.CancellationDecisionDateSpecified = true;
             }
+
             if (!String.IsNullOrEmpty(epd014.HEAHEA.DatOfCanReqHEA147))
             {
                 epd009.HEAHEA.DatOfCanReqHEA147 = epd014.HEAHEA.DatOfCanReqHEA147;
                 epd009.HEAHEA.DatOfCanDecHEA146 = DateTime.Now.ToString("yyyyMMdd");
             }
+
             epd009.CUSOFFDEPEPT.RefNumEPT1 = epd014.CUSOFFDEPEPT.RefNumEPT1;
             epd009.TRAPRIPC1.CitPC124 = epd014.TRAPRIPC1.CitPC124;
             epd009.TRAPRIPC1.CouPC125 = epd014.TRAPRIPC1.CouPC125;
@@ -236,6 +296,7 @@ namespace B2G
             epd004.HEAHEA = new EPD004HEAHEA();
             epd004.HEAHEA.DocNumHEA5 = epd013.HEAHEA.DocNumHEA5;
             epd004.HEAHEA.GuaranteeNumber = epd013.HEAHEA.GuaranteeNumber;
+
             if (epd013.HEAHEA.AmendmentDateSpecified)
             {
                 epd004.HEAHEA.AmendmentDate = epd013.HEAHEA.AmendmentDate;
@@ -266,6 +327,57 @@ namespace B2G
             }
 
             return epd004;
+        }
+
+        private EPD005 BuildEPD005(EPD013 epd013)
+        {
+            EPD005 epd005 = new EPD005();
+            epd005.HEAHEA = new EPD005HEAHEA();
+            epd005.HEAHEA.DocNumHEA5 = epd013.HEAHEA.DocNumHEA5;
+            epd005.HEAHEA.GuaranteeNumber = epd013.HEAHEA.GuaranteeNumber;
+
+            if (epd013.HEAHEA.AmendmentDateSpecified)
+            {
+                epd005.HEAHEA.AmendmentDate = epd013.HEAHEA.AmendmentDate;
+                epd005.HEAHEA.AmendmentDateSpecified = true;
+            }
+
+            epd005.HEAHEA.AmendmentRejectionDate = DateTime.UtcNow.Date;
+            epd005.HEAHEA.AmendmentRejectionDateSpecified = true;
+
+            FUNERRER1Type funerrer1 = new FUNERRER1Type();
+            funerrer1.ErrPoiER12 = "EPD013/HEAHEA/DocNumHEA5";
+            funerrer1.OriAttValER14 = epd013.HEAHEA.DocNumHEA5;
+            funerrer1.ErrTypER11 = "12";
+            funerrer1.ErrReaER13 = "MRN has been already use for Transit";
+            epd005.FUNERRER1 = new List<FUNERRER1Type>();
+            epd005.FUNERRER1.Add(funerrer1);
+
+            if (epd013.TRAPRIPC1 != null)
+            {
+                epd005.TRAPRIPC1 = new TRAPRIPC1Type();
+                epd005.TRAPRIPC1.NamPC17 = epd013.TRAPRIPC1.NamPC17;
+                epd005.TRAPRIPC1.StrAndNumPC122 = epd013.TRAPRIPC1.StrAndNumPC122;
+                epd005.TRAPRIPC1.PosCodPC123 = epd013.TRAPRIPC1.PosCodPC123;
+                epd005.TRAPRIPC1.CitPC124 = epd013.TRAPRIPC1.CitPC124;
+                epd005.TRAPRIPC1.CouPC125 = epd013.TRAPRIPC1.CouPC125;
+                epd005.TRAPRIPC1.NADLNGPC = epd013.TRAPRIPC1.NADLNGPC;
+                epd005.TRAPRIPC1.TINPC159 = epd013.TRAPRIPC1.TINPC159;
+                epd005.TRAPRIPC1.HITPC126 = epd013.TRAPRIPC1.HITPC126;
+                epd005.TRAPRIPC1.TAXPC159 = epd013.TRAPRIPC1.TAXPC159;
+            }
+
+            if (epd013.CUSOFFDEPEPT != null)
+            {
+                epd005.CUSOFFDEPEPT = new CUSOFFDEPEPTType();
+
+                if (!string.IsNullOrEmpty(epd013.CUSOFFDEPEPT.CouRefNumEPT1))
+                    epd005.CUSOFFDEPEPT.CouRefNumEPT1 = epd013.CUSOFFDEPEPT.CouRefNumEPT1;
+
+                epd005.CUSOFFDEPEPT.RefNumEPT1 = epd013.CUSOFFDEPEPT.RefNumEPT1;
+            }
+
+            return epd005;
         }
 
         private TIREPDG2BUploadAck SendG2BResponse(string messageName, string messageContent)
