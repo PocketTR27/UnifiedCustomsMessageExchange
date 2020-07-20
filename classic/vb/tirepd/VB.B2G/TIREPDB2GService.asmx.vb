@@ -307,7 +307,7 @@ Public Class TIREPDB2GService
         Dim funerrer1 As FUNERRER1Type = New FUNERRER1Type
         funerrer1.ErrPoiER12 = "EPD013/HEAHEA/DocNumHEA5"
         funerrer1.OriAttValER14 = epd013.HEAHEA.DocNumHEA5
-        funerrer1.ErrTypER11 = 12
+        funerrer1.ErrTypER11 = "12"
         funerrer1.ErrReaER13 = "MRN has been already use for Transit"
         epd005.FUNERRER1 = New List(Of FUNERRER1Type)
         epd005.FUNERRER1.Add(funerrer1)
