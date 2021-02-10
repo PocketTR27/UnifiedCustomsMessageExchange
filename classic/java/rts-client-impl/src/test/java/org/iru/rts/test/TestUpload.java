@@ -43,4 +43,17 @@ public class TestUpload {
 		ReturnCode rc = stuc.wsre(Collections.singletonList(wsreRecord), new SimpleDateFormat("yyyyMMddHHmmssZ").format(new Date()));
 		Assert.assertEquals(2, rc.codeValue());
 	}
+
+	@Test
+	public void wsstEmpty() throws JAXBException, GeneralSecurityException, DatatypeConfigurationException {
+		ReturnCode rc = stuc.wsst(Collections.emptyList(), new SimpleDateFormat("yyyyMMddHHmmssZ").format(new Date()));
+		Assert.assertEquals(2, rc.codeValue());
+	}
+	
+	@Test
+	public void wsreEmpty() throws JAXBException, GeneralSecurityException, DatatypeConfigurationException {
+		ReturnCode rc = stuc.wsre(Collections.emptyList(), new SimpleDateFormat("yyyyMMddHHmmssZ").format(new Date()));
+		Assert.assertEquals(2, rc.codeValue());
+	}
+
 }
